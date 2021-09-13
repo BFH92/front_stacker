@@ -30,6 +30,10 @@ const App = () => {
             <Route path="/compagny" render={() => <Compagny key={uuidv4()} />} />
             <Route path="/user-dashboard" render={() => <UserDashboard key={uuidv4()} />} />
             <Route path="/compagny-dashboard" render={() => <CompagnyDashboard key={uuidv4()} />} />
+            <Route path="/users/sign-in" render={() => <UserSignIn/>}/>
+            <Route path="/users/sign-up" render={() => <UserSignup/>}/>
+            <Route path="/companies/sign-in" render={() => <CompanySignIn/>}/>
+            <Route path="/companies/sign-up" render={() => <CompanySignUp/>}/>
           </main>
         </Switch>
       </div>
