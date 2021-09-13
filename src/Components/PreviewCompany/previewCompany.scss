@@ -1,0 +1,8 @@
+@import '../../Styles/variables.scss';
+
+.container__preview--company {
+  background-color: $blue;
+  aspect-ratio: 1/1;
+  padding: $padding;
+  border-radius: $medium-radius;
+}

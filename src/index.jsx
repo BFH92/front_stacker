@@ -10,10 +10,12 @@ import './Styles/main.scss';
 import Home from './Pages/Home';
 import About from './Pages/About';
 import Stacks from './Pages/Stacks';
-import SearchCompagny from './Pages/SearchCompagny';
-import Compagny from './Pages/Compagny';
+import SearchCompany from './Pages/SearchCompany';
+import Company from './Pages/Company';
 import UserDashboard from './Pages/UserDashboard';
-import CompagnyDashboard from './Pages/CompagnyDashboard';
+import CompanyDashboard from './Pages/CompanyDashboard';
+import Notifications from './Pages/Notifications';
+import Settings from './Pages/Settings';
 import AsideNavbar from './Components/AsideNavbar';
 import UserSignIn from "./Pages/UserSignIn";
 import UserSignUp from "./Pages/UserSignUp";
@@ -41,6 +43,7 @@ const App = () => {
             <Route path="/" exact render={() => <Home/>} />
             <Route path="/about" render={() => <About />} />
             <Route path="/stacks" render={() => <Stacks />} />
+
             <Route path="/search-compagny" render={() => <SearchCompagny />} />
             <Route path="/compagny" render={() => <Compagny key={uuidv4()} />} />
             <Route path="/user-dashboard" render={() => <UserDashboard key={uuidv4()} />} />
@@ -49,6 +52,8 @@ const App = () => {
             <Route path="/companies/sign-in" render={() => <CompanySignIn/>}/>
             <Route path="/users/sign-up" render={() => <UserSignUp/>}/>
             <Route path="/companies/sign-up" render={() => <CompanySignUp/>}/>
+            <Route path="/user/notifications" render={() => <Notifications />} />
+            <Route path="/user/settings" render={() => <Settings />} />
           </main>
         </Switch>
       </div>
