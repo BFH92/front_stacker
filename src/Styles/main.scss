@@ -20,3 +20,11 @@
   font-weight: bold;
 
 }
+
+.card {
+  background-color: $medium-grey;
+  padding: $padding * 2;
+  color: $black;
+  border-radius: $small-radius;
+  margin: 50px;
+}

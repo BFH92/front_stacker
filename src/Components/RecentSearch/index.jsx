@@ -14,13 +14,6 @@ const RecentSearch = () => {
           <PreviewRecentSearch />
           <PreviewRecentSearch />
           <PreviewRecentSearch />
-          <PreviewRecentSearch />
-          <PreviewRecentSearch />
-          <PreviewRecentSearch />
-          <PreviewRecentSearch />
-          <PreviewRecentSearch />
-          <PreviewRecentSearch />
-          <PreviewRecentSearch />
         </ul>
       </div>
     </div>
