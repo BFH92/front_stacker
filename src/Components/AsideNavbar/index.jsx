@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './asideNavbar.scss';
 import Home from '../../Assets/Svg/AsideNavbar/Home';
@@ -7,9 +7,32 @@ import About from '../../Assets/Svg/AsideNavbar/About';
 import Stacks from '../../Assets/Svg/AsideNavbar/Stacks';
 import Login from '../../Assets/Svg/AsideNavbar/Login';
 import Logout from '../../Assets/Svg/AsideNavbar/Logout';
+import {useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
+import UsersAPIManager from '../../Services/RailsApi/UsersFetch';
+import { RegisterUserLogoutStatus } from '../../Store';
 
-const AsideNavbar = () => {
-  const [isConnected, setIsConnected] = useState(false);
+const AsideNavbar = ({user}) => {
+  const history = useHistory()
+  const dispatch = useDispatch()
+  user.setIsLogged(useSelector(state=> state.user.isLogged))
+  const logout = async (e) => {
+    e.preventDefault();
+    dispatch(RegisterUserLogoutStatus())
+    const response = await UsersAPIManager.logout();
+    user.setIsLogged(false)
+    console.log(response)
+    history.push('/')
+   ;
+   }
+
+   useEffect(() => {
+     console.log("changer le button")
+     
+     return() => {
+     }
+   }, [dispatch]);
+
 
   return (
     <nav className="container__aside--nav">
@@ -50,19 +73,21 @@ const AsideNavbar = () => {
         </ul>
       </div>
       <div className="container--bottom">
-        {isConnected ?
+        {user.isLogged ?
           <div className="item">
-            <div className="container--svg">
-              <Logout />
+            <div className="container--svg" onClick={logout}>
+              <Logout/>
             </div>
             <label htmlFor="Bold/Logout">Logout</label>
           </div>
         :
           <div className="item">
+            <Link to="/users/sign-in">
             <div className="container--svg">
               <Login />
             </div>
             <label htmlFor="Bold/Login">Login</label>
+            </Link>
           </div>
         }
       </div>
