@@ -19,11 +19,18 @@ import UserSignUp from "./Pages/UserSignUp";
 import CompanySignIn from "./Pages/CompanySignIn";
 import CompanySignUp from "./Pages/CompanySignUp";
 
+//redux
+import { Provider } from 'react-redux';
+import { store, persistor } from "./Store/store";
+import { PersistGate } from 'redux-persist/integration/react'
+
 
 
 const App = () => {
 
   return (
+    <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
     <Router>
       <div className="container__all">
         <AsideNavbar />
@@ -38,13 +45,14 @@ const App = () => {
             <Route path="/compagny-dashboard" render={() => <CompagnyDashboard key={uuidv4()} />} />
             <Route path="/users/sign-in" render={() => <UserSignIn/>}/>
             <Route path="/companies/sign-in" render={() => <CompanySignIn/>}/>
-
             <Route path="/users/sign-up" render={() => <UserSignUp/>}/>
             <Route path="/companies/sign-up" render={() => <CompanySignUp/>}/>
           </main>
         </Switch>
       </div>
     </Router>
+    </PersistGate>
+    </Provider>
   )
 }
 
