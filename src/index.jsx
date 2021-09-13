@@ -9,10 +9,10 @@ import './Styles/main.scss';
 import Home from './Pages/Home';
 import About from './Pages/About';
 import Stacks from './Pages/Stacks';
-import SearchCompagny from './Pages/SearchCompagny';
-import Compagny from './Pages/Compagny';
+import SearchCompany from './Pages/SearchCompany';
+import Company from './Pages/Company';
 import UserDashboard from './Pages/UserDashboard';
-import CompagnyDashboard from './Pages/CompagnyDashboard';
+import CompanyDashboard from './Pages/CompanyDashboard';
 import AsideNavbar from './Components/AsideNavbar';
 
 const App = () => {
@@ -26,10 +26,10 @@ const App = () => {
             <Route path="/" exact render={() => <Home />} />
             <Route path="/about" render={() => <About />} />
             <Route path="/stacks" render={() => <Stacks />} />
-            <Route path="/search/compagny" render={() => <SearchCompagny />} />
-            <Route path="/compagny" render={() => <Compagny key={uuidv4()} />} />
+            <Route path="/search/company" render={() => <SearchCompany />} />
+            <Route path="/company" render={() => <Company key={uuidv4()} />} />
             <Route path="/user/dashboard" render={() => <UserDashboard key={uuidv4()} />} />
-            <Route path="/compagny/dashboard" render={() => <CompagnyDashboard key={uuidv4()} />} />
+            <Route path="/company/dashboard" render={() => <CompanyDashboard key={uuidv4()} />} />
           </main>
         </Switch>
       </div>
