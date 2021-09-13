@@ -11,7 +11,7 @@ const Header = () => {
       <div className="container__subnav">
         <ul>
           <li>
-            <Link to="/compagny/dashboard">
+            <Link to="/company/dashboard">
               Espace Entreprise
             </Link>
           </li>
