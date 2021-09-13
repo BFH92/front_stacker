@@ -1,2 +1,8 @@
 @import '../../Styles/variables.scss';
 
+.container__recent--search {
+  display: grid;
+  place-items: center;
+  background-color: $dark-grey;
+  color: $white;
+}

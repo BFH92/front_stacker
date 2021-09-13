@@ -1,10 +1,14 @@
 import React from 'react';
+import './resultsCompanies.scss';
 import HeaderResultsCompanies from '../HeaderResultsCompanies';
 
 const ResultsCompanies = () => {
 
   return (
-    <HeaderResultsCompanies />
+    <div className="results__main--grid">
+      <HeaderResultsCompanies />
+
+    </div>  
   );
 };
 

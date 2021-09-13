@@ -8,10 +8,10 @@ const HeaderResultsCompanies = () => {
   return (
     <header className="container__header__results--companies">
       <div className="container--left">
-        {howManyResults} entreprises sur {howManyCompanies} correspondent à vos critères.
+        <h1>{howManyResults} sur {howManyCompanies} entreprises.</h1>        
       </div>
-      <div className="container--right">
-        
+      <div className="container__filter--right">
+        <p>Sort by Date</p>
       </div>
     </header>
   );

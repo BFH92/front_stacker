@@ -1,2 +1,7 @@
 @import '../../Styles/variables.scss';
 
+.results__main--grid {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-gap: $padding * 2;
+}

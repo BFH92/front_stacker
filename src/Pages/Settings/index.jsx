@@ -1,10 +1,12 @@
 import React from 'react';
 import './settings.scss';
+import Header from '../../Components/Header';
 
 const Settings = () => {
 
   return (
-    <div className="container__settings">
+    <div className="">
+      <Header />
       <h1>SETTINGS</h1>
     </div>
   );

@@ -22,7 +22,9 @@ const Header = () => {
         <Link to="/user/settings">
           <Settings />
         </Link>
-        <p>User Name</p>
+        <Link to="/user/dashboard">
+          <p>User Name</p>
+        </Link>        
       </div>
     </header>
   );
