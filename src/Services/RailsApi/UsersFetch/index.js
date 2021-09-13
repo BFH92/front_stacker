@@ -34,7 +34,7 @@ export default class UsersAPIManager {
     };
     const response = await API.delete("/users/sign_out", authorizedConfig);
     console.log(response);
-    Cookies.remove("token");
+    Cookies.remove("API_Authentication_token");
     return response;
   }
 

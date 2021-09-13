@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import SignInForm from '../../Components/Forms/SignInForm';
-import UsersAPIManager from "../../Services/RailsApi/UsersFetch";
+import CompaniesAPIManager from "../../Services/RailsApi/CompaniesFetch";
 
-const UserSignIn = () => {
+const CompanySignIn = () => {
 
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   
   const login = async (e) => {
     e.preventDefault();
-    const response = await UsersAPIManager.login(email, password);
+    const response = await CompaniesAPIManager.login(email, password);
   };
   return (
     <div>
@@ -18,4 +18,4 @@ const UserSignIn = () => {
   );
 }
 
-export default UserSignIn;
+export default CompanySignIn;

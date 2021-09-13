@@ -42,7 +42,7 @@ export default class CompaniesAPIManager {
   static async login(email, password) {
     const response = await API.post(
       "/companies/sign_in",
-      { user: { email, password } },
+      { company: { email, password } },
       config
     );
 

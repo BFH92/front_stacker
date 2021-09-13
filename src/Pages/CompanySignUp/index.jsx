@@ -1,14 +1,14 @@
 import React,{useState} from 'react';
 import SignUpForm from '../../Components/Forms/SignUpForm';
-import UsersAPIManager from '../../Services/RailsApi/UsersFetch';
+import CompaniesAPIManager from '../../Services/RailsApi/UsersFetch';
 
-const UserSignUp = () => {
+const CompanySignUp = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   
   const SignUp = async (e) => {
     e.preventDefault();
-    const response = await UsersAPIManager.register(email, password);
+    const response = await CompaniesAPIManager.register(email, password);
   //console.log(response.data.user_id)
   //response.status === 200? dispatch(RegisterUserLoginStatus(response.data.user_id)):dispatch(RegisterUserLogoutStatus());
   //history.push("/")
@@ -21,4 +21,4 @@ const UserSignUp = () => {
   );
 }
 
-export default UserSignUp;
+export default CompanySignUp;

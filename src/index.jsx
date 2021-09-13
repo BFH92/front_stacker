@@ -14,6 +14,12 @@ import Compagny from './Pages/Compagny';
 import UserDashboard from './Pages/UserDashboard';
 import CompagnyDashboard from './Pages/CompagnyDashboard';
 import AsideNavbar from './Components/AsideNavbar';
+import UserSignIn from "./Pages/UserSignIn";
+import UserSignUp from "./Pages/UserSignUp";
+import CompanySignIn from "./Pages/CompanySignIn";
+import CompanySignUp from "./Pages/CompanySignUp";
+
+
 
 const App = () => {
 
@@ -31,8 +37,9 @@ const App = () => {
             <Route path="/user-dashboard" render={() => <UserDashboard key={uuidv4()} />} />
             <Route path="/compagny-dashboard" render={() => <CompagnyDashboard key={uuidv4()} />} />
             <Route path="/users/sign-in" render={() => <UserSignIn/>}/>
-            <Route path="/users/sign-up" render={() => <UserSignup/>}/>
             <Route path="/companies/sign-in" render={() => <CompanySignIn/>}/>
+
+            <Route path="/users/sign-up" render={() => <UserSignUp/>}/>
             <Route path="/companies/sign-up" render={() => <CompanySignUp/>}/>
           </main>
         </Switch>

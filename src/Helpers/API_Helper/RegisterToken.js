@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie'
 
-export const registerUserToken = (token) => {
+export const registerToken = (token) => {
   token = token.replace(/Bearer /g, "");
   Cookies.set("API_Authentication_token", token);
 };
