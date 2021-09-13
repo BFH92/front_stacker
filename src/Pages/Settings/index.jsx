@@ -1,14 +1,15 @@
 import React from 'react';
+import './settings.scss';
 import Header from '../../Components/Header';
 
-const CompagnyDashboard = () => {
+const Settings = () => {
 
   return (
     <div className="">
       <Header />
-      <h1>COMPAGNY DASHBOARD</h1>
-  </div>
+      <h1>SETTINGS</h1>
+    </div>
   );
 };
 
-export default CompagnyDashboard;
+export default Settings;

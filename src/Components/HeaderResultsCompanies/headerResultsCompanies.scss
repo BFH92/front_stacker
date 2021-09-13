@@ -1,0 +1,21 @@
+@import '../../Styles/variables.scss';
+
+.container__header__results--companies {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-gap: $padding;
+
+  .container__filter--right {
+    display: grid;
+    place-items: center;
+
+    p {
+      padding: $padding;
+      background-color: $blue;
+      color: $white;
+      font-weight: 800;
+      border-radius: $medium-radius;
+      cursor: pointer;
+    }
+  }
+}

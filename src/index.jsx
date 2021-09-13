@@ -12,7 +12,9 @@ import Stacks from './Pages/Stacks';
 import SearchCompany from './Pages/SearchCompany';
 import Company from './Pages/Company';
 import UserDashboard from './Pages/UserDashboard';
-import CompanyDashboard from './Pages/CompanyDashboard';
+import CompagnyDashboard from './Pages/CompanyDashboard';
+import Notifications from './Pages/Notifications';
+import Settings from './Pages/Settings';
 import AsideNavbar from './Components/AsideNavbar';
 
 const App = () => {
@@ -27,9 +29,11 @@ const App = () => {
             <Route path="/about" render={() => <About />} />
             <Route path="/stacks" render={() => <Stacks />} />
             <Route path="/search/company" render={() => <SearchCompany />} />
-            <Route path="/company" render={() => <Company key={uuidv4()} />} />
+            <Route path="/compagny" exact render={() => <Company key={uuidv4()} />} />
             <Route path="/user/dashboard" render={() => <UserDashboard key={uuidv4()} />} />
-            <Route path="/company/dashboard" render={() => <CompanyDashboard key={uuidv4()} />} />
+            <Route path="/compagny/dashboard" render={() => <CompagnyDashboard key={uuidv4()} />} />
+            <Route path="/user/notifications" render={() => <Notifications />} />
+            <Route path="/user/settings" render={() => <Settings />} />
           </main>
         </Switch>
       </div>

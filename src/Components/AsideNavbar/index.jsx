@@ -24,7 +24,7 @@ const AsideNavbar = () => {
             </Link>
           </li>
           <li className="item">
-            <Link to="/search/compagny" className="item">
+            <Link to="/search/company" className="item">
               <div className="container--svg">
                 <Search />
               </div>
