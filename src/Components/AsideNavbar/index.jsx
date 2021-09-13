@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './asideNavbar.scss';
 import Home from '../../Assets/Svg/AsideNavbar/Home';
@@ -7,21 +7,20 @@ import About from '../../Assets/Svg/AsideNavbar/About';
 import Stacks from '../../Assets/Svg/AsideNavbar/Stacks';
 import Login from '../../Assets/Svg/AsideNavbar/Login';
 import Logout from '../../Assets/Svg/AsideNavbar/Logout';
-import { useSelector, useDispatch } from 'react-redux';
+import {useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import UsersAPIManager from '../../Services/RailsApi/UsersFetch';
 import { RegisterUserLogoutStatus } from '../../Store';
 
-const AsideNavbar = () => {
-  const [isLogged, setIsLogged] = useState(useSelector(state => state.user.isLogged));
+const AsideNavbar = ({user}) => {
   const history = useHistory()
   const dispatch = useDispatch()
-
+  user.setIsLogged(useSelector(state=> state.user.isLogged))
   const logout = async (e) => {
     e.preventDefault();
     dispatch(RegisterUserLogoutStatus())
     const response = await UsersAPIManager.logout();
-    setIsLogged(false)
+    user.setIsLogged(false)
     console.log(response)
     history.push('/')
    ;
@@ -29,9 +28,10 @@ const AsideNavbar = () => {
 
    useEffect(() => {
      console.log("changer le button")
+     
      return() => {
      }
-   }, [isLogged]);
+   }, [dispatch]);
 
 
   return (
@@ -73,7 +73,7 @@ const AsideNavbar = () => {
         </ul>
       </div>
       <div className="container--bottom">
-        {isLogged ?
+        {user.isLogged ?
           <div className="item">
             <div className="container--svg" onClick={logout}>
               <Logout/>

@@ -15,9 +15,7 @@ const CompanySignUp = () => {
       const response = await CompaniesAPIManager.register(email, password);
       response.status === 200? history.push("/"): window.alert("couac!");
       response.status === 200? dispatch(RegisterUserLoginStatus(response.data.user_id,"company")):dispatch(RegisterUserLogoutStatus());
-
     }
-
   return (
     <div>
       <SignUpForm user={{email, setEmail, password, setPassword, SignUp}}/>

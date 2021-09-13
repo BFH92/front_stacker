@@ -18,7 +18,7 @@ const LoggedUserReducer = (state = initialUserState, action) => {
       }
     case REGISTER_USER_LOGOUT_STATUS:
       return {
-        state: undefined,
+        isLogged: undefined,
         id: undefined,
         logged_as: undefined
 

@@ -7,8 +7,7 @@ import {RegisterUserLoginStatus, RegisterUserLogoutStatus} from '../../Store'
 
   
 
-const UserSignIn = () => {
-//TODO: import un useContext pour la variabel isLogged
+const UserSignIn = ({user}) => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const history = useHistory()
@@ -18,14 +17,9 @@ const UserSignIn = () => {
     const response = await UsersAPIManager.login(email, password);
     history.push("/")
     response.status === 200? dispatch(RegisterUserLoginStatus(response.data.user_id,"user")):dispatch(RegisterUserLogoutStatus());
-    response.status === 200? setIsLogged(true):setIsLogged(false);
-
+    user.setIsLogged(true)
   };
-  useEffect(() => {
-    console.log("changer le button")
-    return() => {
-    }
-  }, [isLogged]);
+  
   return (
     <div>
       <SignInForm user={{email, setEmail, password, setPassword, login}}/>
