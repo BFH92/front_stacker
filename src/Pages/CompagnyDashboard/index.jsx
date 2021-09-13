@@ -1,9 +1,13 @@
 import React from 'react';
+import Header from '../../Components/Header';
 
 const CompagnyDashboard = () => {
 
   return (
-    <h1>COMPAGNY DASHBOARD</h1>
+    <div className="">
+      <Header />
+      <h1>COMPAGNY DASHBOARD</h1>
+  </div>
   );
 };
 

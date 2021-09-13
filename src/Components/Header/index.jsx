@@ -10,6 +10,11 @@ const Header = () => {
     <header className="container__header">
       <div className="container__subnav">
         <ul>
+          <li>
+            <Link to="/compagny/dashboard">
+              Espace Entreprise
+            </Link>
+          </li>
           <li>Services</li>
           <li>Pricing</li>
           <li>Blog</li>

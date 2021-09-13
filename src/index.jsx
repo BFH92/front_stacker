@@ -29,7 +29,7 @@ const App = () => {
             <Route path="/about" render={() => <About />} />
             <Route path="/stacks" render={() => <Stacks />} />
             <Route path="/search/compagny" render={() => <SearchCompagny />} />
-            <Route path="/compagny" render={() => <Compagny key={uuidv4()} />} />
+            <Route path="/compagny" exact render={() => <Compagny key={uuidv4()} />} />
             <Route path="/user/dashboard" render={() => <UserDashboard key={uuidv4()} />} />
             <Route path="/compagny/dashboard" render={() => <CompagnyDashboard key={uuidv4()} />} />
             <Route path="/user/notifications" render={() => <Notifications />} />

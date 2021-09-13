@@ -4,7 +4,7 @@ import './previewRecentSearch.scss';
 const PreviewRecentSearch = () => {
 
   return (
-    <li className="item">
+    <li className="recent--search--item">
       <p>23 Résultats</p>
       <p>TAGS: Javascrip, Python, Ruby</p>
       <p>DATE: 13/11/2021</p>
