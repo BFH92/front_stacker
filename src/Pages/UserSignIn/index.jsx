@@ -4,6 +4,7 @@ import UsersAPIManager from "../../Services/RailsApi/UsersFetch";
 import { useHistory } from 'react-router';
 import { useDispatch, useSelector} from 'react-redux';
 import {RegisterUserLoginStatus, RegisterUserLogoutStatus} from '../../Store'
+import { Link } from "react-router-dom";
 
   
 
@@ -21,9 +22,17 @@ const UserSignIn = ({user}) => {
   };
   
   return (
+    <>
     <div>
       <SignInForm user={{email, setEmail, password, setPassword, login}}/>
     </div>
+    <Link to="/users/sign-up">
+    <div>
+    Pas de compte ? S'inscrire
+    </div>
+    </Link>
+
+    </>
   );
 }
 
