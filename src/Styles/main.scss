@@ -1,0 +1,12 @@
+@import './variables.scss';
+
+.container__all {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+
+.container__main {
+  background-color: $light-grey;
+}

@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import './Styles/reset.scss';
 import './Styles/variables.scss';
+import './Styles/main.scss';
 // import Header from './Components/Header'; À importer dans les autres components
 import Home from './Pages/Home';
 import About from './Pages/About';
@@ -18,16 +19,20 @@ const App = () => {
 
   return (
     <Router>
-      <AsideNavbar />
-      <Switch>
-        <Route path="/" exact render={() => <Home />} />
-        <Route path="/about" render={() => <About />} />
-        <Route path="/stacks" render={() => <Stacks />} />
-        <Route path="/search-compagny" render={() => <SearchCompagny />} />
-        <Route path="/compagny" render={() => <Compagny key={uuidv4()} />} />
-        <Route path="/user-dashboard" render={() => <UserDashboard key={uuidv4()} />} />
-        <Route path="/compagny-dashboard" render={() => <CompagnyDashboard key={uuidv4()} />} />
-      </Switch>
+      <div className="container__all">
+        <AsideNavbar />
+        <Switch>
+          <main className="container__main">
+            <Route path="/" exact render={() => <Home />} />
+            <Route path="/about" render={() => <About />} />
+            <Route path="/stacks" render={() => <Stacks />} />
+            <Route path="/search-compagny" render={() => <SearchCompagny />} />
+            <Route path="/compagny" render={() => <Compagny key={uuidv4()} />} />
+            <Route path="/user-dashboard" render={() => <UserDashboard key={uuidv4()} />} />
+            <Route path="/compagny-dashboard" render={() => <CompagnyDashboard key={uuidv4()} />} />
+          </main>
+        </Switch>
+      </div>
     </Router>
   )
 }

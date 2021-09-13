@@ -1,0 +1,45 @@
+@import '../../Styles/variables.scss';
+
+.container__aside--nav {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  background-color: $white;
+  padding: $padding * 2;
+
+  .container__items {
+    display: grid;
+    grid-gap: $padding * 2;
+  }
+
+  .item {
+    display: grid;
+    grid-auto-flow: row;
+    grid-gap: $padding / 2;
+
+    .container--svg {
+      width: 100%;
+      aspect-ratio: 1/1;
+      display: grid;
+      place-items: center;
+      background-color: $blue;
+      border-radius: $small-radius;
+    }
+
+    svg {
+      fill: $blue;
+    }
+
+    label {
+      text-align: center;
+    }
+  }
+}
+
+#nav--Home,
+#nav--Search,
+#nav--Stacks,
+#nav--About,
+#nav--Login,
+#nav--Logout {
+  fill: $white;
+}
