@@ -44,10 +44,10 @@ const App = () => {
             <Route path="/about" render={() => <About />} />
             <Route path="/stacks" render={() => <Stacks />} />
 
-            <Route path="/search-compagny" render={() => <SearchCompagny />} />
-            <Route path="/compagny" render={() => <Compagny key={uuidv4()} />} />
+            <Route path="/search-compagny" render={() => <SearchCompany />} />
+            <Route path="/compagny" render={() => <Company key={uuidv4()} />} />
             <Route path="/user-dashboard" render={() => <UserDashboard key={uuidv4()} />} />
-            <Route path="/compagny-dashboard" render={() => <CompagnyDashboard key={uuidv4()} />} />
+            <Route path="/compagny-dashboard" render={() => <CompanyDashboard key={uuidv4()} />} />
             <Route path="/users/sign-in" render={() => <UserSignIn user={{setIsLogged}}/>}/>
             <Route path="/companies/sign-in" render={() => <CompanySignIn/>}/>
             <Route path="/users/sign-up" render={() => <UserSignUp/>}/>
