@@ -7,7 +7,7 @@ const Settings = () => {
   return (
     <div className="">
       <Header />
-      <h1>SETTINGS</h1>
+      <div className="container__title-pane">Settings</div>
     </div>
   );
 };

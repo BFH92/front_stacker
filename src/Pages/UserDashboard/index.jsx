@@ -7,7 +7,7 @@ const UserDashboard = () => {
   return (
     <div className="">
       <Header />
-      <h1>USER DASHBOARD</h1>
+      <div className="container__title-pane">My Dashboard</div>
     </div>
   );
 };

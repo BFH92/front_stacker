@@ -6,7 +6,7 @@ const CompanyDashboard = () => {
   return (
     <div className="">
       <Header />
-      <h1>COMPANY DASHBOARD</h1>
+      <div className="container__title-pane">Company Dashboard</div>
   </div>
   );
 };
