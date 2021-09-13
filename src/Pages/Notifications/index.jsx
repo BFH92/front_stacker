@@ -7,7 +7,7 @@ const Notifications = () => {
   return (
     <div className="">
       <Header />
-      <h1>NOTIFICATIONS</h1>
+      <div className="container__title-pane">Notifications</div>
     </div>
   );
 };
