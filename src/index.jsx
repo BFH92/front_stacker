@@ -13,6 +13,8 @@ import SearchCompagny from './Pages/SearchCompagny';
 import Compagny from './Pages/Compagny';
 import UserDashboard from './Pages/UserDashboard';
 import CompagnyDashboard from './Pages/CompagnyDashboard';
+import Notifications from './Pages/Notifications';
+import Settings from './Pages/Settings';
 import AsideNavbar from './Components/AsideNavbar';
 
 const App = () => {
@@ -30,6 +32,8 @@ const App = () => {
             <Route path="/compagny" render={() => <Compagny key={uuidv4()} />} />
             <Route path="/user/dashboard" render={() => <UserDashboard key={uuidv4()} />} />
             <Route path="/compagny/dashboard" render={() => <CompagnyDashboard key={uuidv4()} />} />
+            <Route path="/user/notifications" render={() => <Notifications />} />
+            <Route path="/user/settings" render={() => <Settings />} />
           </main>
         </Switch>
       </div>

@@ -1,9 +1,13 @@
 import React from 'react';
+import './filterSystem.scss';
 
 const FilterSystem = () => {
 
   return (
-    <h1>FILTER SYSTEM</h1>
+    <div className="container_filter--system">
+      <h3>FILTER SYSTEM</h3>
+    </div>
+    
   );
 };
 

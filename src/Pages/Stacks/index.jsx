@@ -1,9 +1,13 @@
 import React from 'react';
+import Header from '../../Components/Header';
 
 const Stacks = () => {
 
   return (
-    <h1>STACKS</h1>
+    <div className="">
+      <Header />
+      <h1>STACKS</h1>
+    </div>
   );
 };
 
