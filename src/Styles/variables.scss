@@ -1,0 +1,16 @@
+$font-size: 13px;
+$medium-font-size: $font-size * 1.25;
+$negative-font-size: -13px;
+$big-font-size: 65px;
+
+$padding: 13px;
+$small-padding: $padding / 2;
+$negative-small-padding: -$padding / 2;
+
+$blue: rgb(0, 0, 255);
+$black: rgb(0, 0, 0);
+$white: rgb(255, 255, 255);
+$light-grey: rgb(198, 198, 198);
+$dark-grey: rgb(126, 126, 126);
+
+$border: 1px solid $light-grey;
