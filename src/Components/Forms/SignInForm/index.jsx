@@ -5,7 +5,7 @@ import './sign_in_form.scss';
 const SignInForm = ({ user }) => {
   return (
     <>
-      <div className="form__container">
+      <div className="form__container--signin">
         <form className="form">
           <div className="input__container">
             <label>

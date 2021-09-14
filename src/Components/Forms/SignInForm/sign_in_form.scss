@@ -1,7 +1,7 @@
 @import '../../../Styles/variables.scss';
 
 
-.form__container {
+.form__container--signin{
   display: flex;
   justify-content: center;
   margin: 8% 8% 8% 3%;
@@ -22,6 +22,7 @@
     border: solid 3px $blue;
     border-radius: 10px;
     padding: $padding;
+    
   }
 
   button{
