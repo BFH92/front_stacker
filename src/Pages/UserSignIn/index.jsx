@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import SignInForm from "../../Components/Forms/SignInForm";
 import UsersAPIManager from "../../Services/RailsApi/UsersFetch";
 import { useHistory } from "react-router";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { RegisterUserLoginStatus, RegisterUserLogoutStatus } from "../../Store";
 import { Link } from "react-router-dom";
 import Header from "../../Components/Header";
