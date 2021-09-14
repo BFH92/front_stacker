@@ -48,17 +48,20 @@ export default class UsersAPIManager {
     let token = await response.headers.authorization;
     console.log(response);
 
-    token ? registerToken(token) : Cookies.set("isLogged?", "false");
+    //token ? registerToken(token) : Cookies.set("isLogged?", "false");
     this.login(email, password);
     return response;
   }
   static async logout() {
-    const authorizedConfig = {
+    const cookie = Cookies.get("API_Authentication_token")
+    console.log(cookie);
+    const authorizedConfig =  {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${Cookies.get("API_Authentication_token")}`,
+        "Authorization": `Bearer ${cookie}`,
       },
     };
+  
     const response = await API.delete("/users/sign_out", authorizedConfig);
     console.log(response);
     Cookies.remove("API_Authentication_token");

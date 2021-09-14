@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { RegisterUserLoginStatus, RegisterUserLogoutStatus } from "../../Store";
 import { Link } from "react-router-dom";
 
-const UserSignUp = () => {
+const UserSignUp = ({user}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const history = useHistory();
@@ -20,6 +20,7 @@ const UserSignUp = () => {
     response.status === 200
       ? dispatch(RegisterUserLoginStatus(response.data.user_id, "user"))
       : dispatch(RegisterUserLogoutStatus());
+      user.setIsLogged(true)
     return response;
   };
   return (

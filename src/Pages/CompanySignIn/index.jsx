@@ -6,7 +6,7 @@ import { useDispatch} from 'react-redux';
 import {RegisterUserLoginStatus, RegisterUserLogoutStatus} from '../../Store'
 import { Link } from "react-router-dom";
 
-const CompanySignIn = () => {
+const CompanySignIn = ({user}) => {
 
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -16,8 +16,10 @@ const CompanySignIn = () => {
     e.preventDefault();
     const response = await CompaniesAPIManager.login(email, password);
     history.push("/")
+    console.log("LOGIN COMPANY")
+    console.log(response)
     response.status === 200? dispatch(RegisterUserLoginStatus(response.data.user_id,"company")):dispatch(RegisterUserLogoutStatus());
-
+    user.setIsLogged(true);
   };
   return (
     <>

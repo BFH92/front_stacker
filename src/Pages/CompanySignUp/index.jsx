@@ -5,7 +5,7 @@ import { useHistory } from 'react-router';
 import { useDispatch} from 'react-redux';
 import {RegisterUserLoginStatus, RegisterUserLogoutStatus} from '../../Store'
 
-const CompanySignUp = () => {
+const CompanySignUp = ({user}) => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const history = useHistory()
@@ -15,6 +15,7 @@ const CompanySignUp = () => {
       const response = await CompaniesAPIManager.register(email, password);
       response.status === 200? history.push("/"): window.alert("couac!");
       response.status === 200? dispatch(RegisterUserLoginStatus(response.data.user_id,"company")):dispatch(RegisterUserLogoutStatus());
+      user.setIsLogged(true)
     }
   return (
     <div>

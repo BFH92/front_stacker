@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react'
-
+import './new_password_form.scss';
 
 const NewPasswordForm = ({user}) => {
   const [confirmedPassword, setConfirmedPassword] = useState("")
   const comparePassword = (e) => {
-    if (user.password === confirmedPassword){
+    if (user.password === confirmedPassword && confirmedPassword){
       return true
     }else{
       return false
@@ -15,8 +15,9 @@ const NewPasswordForm = ({user}) => {
   },);
   return (
       <>
-      <div>
-        <form>
+      <div className="form__container--newpassword">
+        <form className="form">
+          <div className="input__container">
         <label>
           email
             <input
@@ -49,6 +50,7 @@ const NewPasswordForm = ({user}) => {
           <p>
             Inscrivez votre nouveau mot de passe
           </p>}
+          </div>
         </form>
       </div>
     </>
