@@ -5,10 +5,8 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import DraftsIcon from '@material-ui/icons/Drafts';
-import SendIcon from '@material-ui/icons/Send';
 import './userDropdown.scss';
+import More from '../../../../Assets/Svg/Header/More';
 
 const StyledMenu = withStyles({
   paper: {
@@ -54,13 +52,15 @@ const UserDropdown = () => {
 
   return (
     <div className="container__dropdown">
-      <Button
-        aria-controls="customized-menu"
-        aria-haspopup="true"
-        onClick={handleClick}
-      >
-        Salut, Antoine
-      </Button>
+        <Button
+          aria-controls="customized-menu"
+          aria-haspopup="true"
+          onClick={handleClick}
+          className="btn--dropdown"
+        >
+          Salut, Antoine
+          <More />
+        </Button>
       <StyledMenu
         id="customized-menu"
         anchorEl={anchorEl}
@@ -69,21 +69,12 @@ const UserDropdown = () => {
         onClose={handleClose}
       >
         <StyledMenuItem>
-          <ListItemIcon>
-            <SendIcon fontSize="small" />
-          </ListItemIcon>
           <ListItemText primary="Sent mail" />
         </StyledMenuItem>
         <StyledMenuItem>
-          <ListItemIcon>
-            <DraftsIcon fontSize="small" />
-          </ListItemIcon>
           <ListItemText primary="Drafts" />
         </StyledMenuItem>
         <StyledMenuItem>
-          <ListItemIcon>
-            <InboxIcon fontSize="small" />
-          </ListItemIcon>
           <ListItemText primary="Inbox" />
         </StyledMenuItem>
       </StyledMenu>

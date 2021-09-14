@@ -4,6 +4,8 @@ import './header.scss';
 import Notifications from '../../Assets/Svg/Header/Notifications';
 import Settings from '../../Assets/Svg/Header/Settings';
 import UserAvatarDropdown from './UserAvatarDropdown';
+import Badge from '@material-ui/core/Badge';
+import ThemeSwitch from './ThemeSwitch';
 
 const Header = () => {
 
@@ -22,8 +24,11 @@ const Header = () => {
         </ul>
       </div>
       <div className="container__user--informations">
+        <ThemeSwitch />
         <Link to="/user/notifications">
-          <Notifications />
+          <Badge color="secondary" variant="dot">
+            <Notifications />
+          </Badge>
         </Link>
         <Link to="/user/settings">
           <Settings />

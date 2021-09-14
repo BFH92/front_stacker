@@ -22,9 +22,9 @@ const App = () => {
   return (
     <Router>
       <div className="container__all">
-        <AsideNavbar />
-        <Switch>
-          <main className="container__main">
+        <AsideNavbar />        
+        <main className="container__main">
+          <Switch>
             <Route path="/" exact render={() => <Home />} />
             <Route path="/about" render={() => <About />} />
             <Route path="/stacks" render={() => <Stacks />} />
@@ -34,8 +34,8 @@ const App = () => {
             <Route path="/compagny/dashboard" render={() => <CompagnyDashboard key={uuidv4()} />} />
             <Route path="/user/notifications" render={() => <Notifications />} />
             <Route path="/user/settings" render={() => <Settings />} />
-          </main>
-        </Switch>
+          </Switch>
+        </main>        
       </div>
     </Router>
   )

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Badge from '@material-ui/core/Badge';
 import Avatar from '@material-ui/core/Avatar';
 import { withStyles } from '@material-ui/core/styles';
@@ -6,8 +7,8 @@ import './userAvatar.scss';
 
 const StyledBadge = withStyles((theme) => ({
   badge: {
-    backgroundColor: '#44b700',
-    color: '#44b700',
+    backgroundColor: 'rgb(92, 30, 226)',
+    color: 'rgb(92, 30, 226)',
     boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
     '&::after': {
       position: 'absolute',
@@ -37,16 +38,18 @@ const UserAvatar = () => {
 
   return (    
     <div className="container__avatar">
-      <StyledBadge
-        overlap="circular"
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'right',
-        }}
-        variant="dot"
-      >
-        <Avatar className="avatar--color">A</Avatar>
-      </StyledBadge>
+      <Link to="/user/dashboard">
+        <StyledBadge
+          overlap="circular"
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'right',
+          }}
+          variant="dot"
+        >
+          <Avatar className="avatar--color">A</Avatar>
+        </StyledBadge>      
+      </Link>
     </div>
   );
 };

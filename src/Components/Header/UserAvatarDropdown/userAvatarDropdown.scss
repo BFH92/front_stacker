@@ -3,5 +3,5 @@
 .user__avatar__dropdown {
   display: grid;
   grid-auto-flow: column;
-  grid-gap: $padding;
+  grid-gap: $padding / 2;
 }

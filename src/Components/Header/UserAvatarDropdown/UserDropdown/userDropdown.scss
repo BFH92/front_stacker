@@ -1,7 +1,15 @@
 @import '../../../../Styles/variables.scss';
 
-button {
-  padding: 0 !important;
+.btn--dropdown {
   text-transform: none !important;
   color: $blue !important;
+  font-weight: 400 !important;
+
+  svg {
+    margin-left: $padding / 2 !important;
+  }
+}
+
+.MuiList-padding {
+  padding: 0 !important;
 }
