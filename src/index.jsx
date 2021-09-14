@@ -21,7 +21,9 @@ import UserSignIn from "./Pages/UserSignIn";
 import UserSignUp from "./Pages/UserSignUp";
 import CompanySignIn from "./Pages/CompanySignIn";
 import CompanySignUp from "./Pages/CompanySignUp";
-import NewPassword from "./Pages/Settings/NewPassword";
+import NewPassword from "./Pages/NewPassword";
+import GetPassword from "./Pages/Settings/GetPassword";
+
 //redux
 import { Provider, useSelector } from 'react-redux';
 import { store, persistor } from "./Store/store";
@@ -55,6 +57,8 @@ const App = () => {
             <Route path="/user/notifications" render={() => <Notifications />} />
             <Route exact path="/user/settings" render={() => <Settings />} />
             <Route path="/user/settings/new-password" render={() => <NewPassword user={{setIsLogged}}/>} />
+            <Route path="/user/settings/get-password" render={() => <GetPassword/>} />
+
           </main>
         </Switch>
       </div>

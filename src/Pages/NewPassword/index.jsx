@@ -1,22 +1,24 @@
 import React,{useState} from 'react';
-import NewPasswordForm from '../../../Components/Forms/NewPasswordForm';
-import SettingsHeader from '../../../Components/SettingsHeader';
-import UsersAPIManager from '../../../Services/RailsApi/UsersFetch';
+import NewPasswordForm from '../../Components/Forms/NewPasswordForm';
+import SettingsHeader from '../../Components/SettingsHeader';
+import UsersAPIManager from '../../Services/RailsApi/UsersFetch';
 import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
-import { RegisterUserLoginStatus, RegisterUserLogoutStatus } from '../../../Store';
-
+import { RegisterUserLoginStatus, RegisterUserLogoutStatus } from '../../Store';
+import {useLocation} from "react-router-dom";
 
 const NewPassword = ({user}) => {
     const [password, setPassword] = useState("")
-
+    const [email, setEmail] = useState("")
+    const search = useLocation().search;
+    const reset_token= new URLSearchParams(search).get('reset_token');
+    
+    console.log(reset_token)
     const history = useHistory()
     const dispatch = useDispatch()
-    const token =  "reset_password"
-    const email= "stacker@yopmail.com"
     const resetPassword = async (e) => {
       e.preventDefault();
-      const response = await UsersAPIManager.resetPassword(password,token);
+      let response = await UsersAPIManager.resetPassword(password,email,reset_token);
       response = await UsersAPIManager.login(email, password);
       history.push("/")
       response.status === 200? dispatch(RegisterUserLoginStatus(response.data.user_id,"user")):dispatch(RegisterUserLogoutStatus());
@@ -25,7 +27,7 @@ const NewPassword = ({user}) => {
     return(
     <div>
     <SettingsHeader/>
-    <NewPasswordForm user={{password, setPassword, resetPassword}}/>
+    <NewPasswordForm user={{password, setPassword, resetPassword,email, setEmail}}/>
     </div>
   );
 }

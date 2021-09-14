@@ -8,7 +8,7 @@ const Settings = () => {
   return (
     <div className="">
       <SettingsHeader/>
-      <Link to="./settings/new-password">reset password</Link>
+      <Link to="./settings/get-password">reset password</Link>
     </div>
   );
 };

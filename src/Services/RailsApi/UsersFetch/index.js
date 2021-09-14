@@ -11,6 +11,16 @@ const config = {
 };
 
 export default class UsersAPIManager {
+  static async sendPasswordInstructions(email) {
+    const response = await API.post(
+      "/forgotten_password",
+      {
+        "email":email,
+      },
+      config
+    );
+    return response
+  }
   static async resetPassword(password,email,reset_token) {
     const response = await API.post(
       "/reset_password",
@@ -26,7 +36,6 @@ export default class UsersAPIManager {
     console.log(response);
 
     token ? registerToken(token) : Cookies.set("isLogged?", "false");
-    this.login(email, password);
     return response;
   }
   static async register(email, password) {

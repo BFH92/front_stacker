@@ -1,4 +1,5 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react'
+
 
 const NewPasswordForm = ({user}) => {
   const [confirmedPassword, setConfirmedPassword] = useState("")
@@ -19,6 +20,14 @@ const NewPasswordForm = ({user}) => {
       <>
       <div>
         <form>
+        <label>
+          email
+            <input
+              type="text"
+              value={user.email}
+              onChange={(e) => user.setEmail(e.target.value)}
+            />
+          </label>
           <label>
           Mot de passe
             <input
