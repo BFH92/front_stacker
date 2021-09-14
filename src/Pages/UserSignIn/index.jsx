@@ -24,12 +24,19 @@ const UserSignIn = ({ user }) => {
 
   return (
     <>
-      <div>
-        <SignInForm user={{ email, setEmail, password, setPassword, login }} />
-      </div>
-      <Link to="/users/sign-up">
-        <p>Pas de compte ? S'inscrire</p>
-      </Link>
+    <div>
+      <SignInForm user={{email, setEmail, password, setPassword, login}}/>
+    </div>
+    <Link to="/user/sign-up">
+    <div>
+    Pas de compte ? S'inscrire
+    </div>
+    </Link>
+    <Link to="/user/settings/get-password">
+    <div>
+    Mot de passe oublié
+    </div>
+    </Link>
     </>
   );
 };

@@ -82,7 +82,7 @@ const AsideNavbar = ({user}) => {
           </div>
         :
           <div className="item">
-            <Link to="/users/sign-in">
+            <Link to="/user/sign-in">
             <div className="container--svg">
               <Login />
             </div>
