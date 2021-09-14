@@ -1,8 +1,10 @@
 import React from 'react';
+import SettingsHeader from '../../SettingsHeader';
 
 const GetPasswordForm = ({user}) => {
   return (
       <>
+      <SettingsHeader/>
       <div>
         <form>
         <label>

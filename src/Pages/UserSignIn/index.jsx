@@ -31,6 +31,11 @@ const UserSignIn = ({user}) => {
     Pas de compte ? S'inscrire
     </div>
     </Link>
+    <Link to="/user/settings/get-password">
+    <div>
+    Mot de passe oublié
+    </div>
+    </Link>
 
     </>
   );
