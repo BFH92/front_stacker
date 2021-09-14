@@ -25,7 +25,7 @@ import NewPassword from "./Pages/NewPassword";
 import GetPassword from "./Pages/Settings/GetPassword";
 
 //redux
-import { Provider, useSelector } from 'react-redux';
+import { Provider} from 'react-redux';
 import { store, persistor } from "./Store/store";
 import { PersistGate } from 'redux-persist/integration/react'
 
@@ -46,7 +46,7 @@ const App = () => {
             <Route path="/about" render={() => <About />} />
             <Route path="/stacks" render={() => <Stacks />} />
 
-            <Route path="/user-dashboard" render={() => <UserDashboard key={uuidv4()} />} />
+            <Route path="/user/dashboard" render={() => <UserDashboard key={uuidv4()} />} />
             <Route path="/user/sign-in" render={() => <UserSignIn user={{setIsLogged}}/>}/>
             <Route path="/user/sign-up" render={() => <UserSignUp/>}/>
             <Route path="/user/notifications" render={() => <Notifications />} />
@@ -54,9 +54,9 @@ const App = () => {
             <Route path="/user/settings/new-password" render={() => <NewPassword user={{setIsLogged,identity:"user"}}/>} />
             <Route path="/user/settings/get-password" render={() => <GetPassword identity={"company"}/>} />
           
-            <Route path="/search-company" render={() => <SearchCompany />} />
+            <Route path="/search/company" render={() => <SearchCompany />} />
             <Route exact path="/company" render={() => <Company key={uuidv4()} />} />
-            <Route path="/company-dashboard" render={() => <CompanyDashboard key={uuidv4()} />} />
+            <Route path="/company/dashboard" render={() => <CompanyDashboard key={uuidv4()} />} />
             <Route path="/company/sign-in" render={() => <CompanySignIn/>}/>
             <Route path="/company/sign-up" render={() => <CompanySignUp/>}/>
             <Route path="/company/settings/new-password" render={() => <NewPassword user={{setIsLogged, identity:"company"}}/>} />

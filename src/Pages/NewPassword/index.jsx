@@ -24,15 +24,17 @@ const NewPassword = ({user}) => {
         case ("company"):
           console.log("fetch company")
           response = await CompaniesAPIManager.resetPassword(password,email,reset_token);
+          response = await CompaniesAPIManager.login(email, password);
           break;
         case ("user"):
           console.log("user")
           response = await UsersAPIManager.resetPassword(password,email,reset_token);
+          response = await UsersAPIManager.login(email, password);
         break;
         default:
         console.log("hey")
         }
-      response = await UsersAPIManager.login(email, password);
+    
       history.push("/")
       response.status === 200? dispatch(RegisterUserLoginStatus(response.data.user_id,"user")):dispatch(RegisterUserLogoutStatus());
       user.setIsLogged(true)

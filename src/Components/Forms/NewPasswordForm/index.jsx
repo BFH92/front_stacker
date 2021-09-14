@@ -4,7 +4,7 @@ import React, {useEffect, useState} from 'react'
 const NewPasswordForm = ({user}) => {
   const [confirmedPassword, setConfirmedPassword] = useState("")
   const comparePassword = (e) => {
-    if (user.password == confirmedPassword){
+    if (user.password === confirmedPassword){
       return true
     }else{
       return false
@@ -12,8 +12,7 @@ const NewPasswordForm = ({user}) => {
   }
   useEffect(() => {
   comparePassword()
-
-  }, [confirmedPassword]);
+  },);
   return (
       <>
       <div>
@@ -35,7 +34,7 @@ const NewPasswordForm = ({user}) => {
             />
           </label>
           <label>
-            Confirmaton de mot de passe
+            Confirmation de mot de passe
             <input
               type="password"
               //value={confirmedPassword}
@@ -47,9 +46,9 @@ const NewPasswordForm = ({user}) => {
             Changer de mot de passe
           </button>
           :
-          <a onClick={()=>{console.log("mdp différents")}}>
-            Changer de mot de passe
-          </a>}
+          <p>
+            Inscrivez votre nouveau mot de passe
+          </p>}
         </form>
       </div>
     </>
