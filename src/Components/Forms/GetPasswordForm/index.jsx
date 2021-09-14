@@ -21,8 +21,6 @@ const GetPasswordForm = ({user}) => {
         </form>
       </div>
     </>
-
-
   );
 }
 

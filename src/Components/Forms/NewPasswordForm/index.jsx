@@ -5,11 +5,9 @@ const NewPasswordForm = ({user}) => {
   const [confirmedPassword, setConfirmedPassword] = useState("")
   const comparePassword = (e) => {
     if (user.password == confirmedPassword){
-      console.log("great")
       return true
     }else{
       return false
-      console.log("oups")
     }
   }
   useEffect(() => {
