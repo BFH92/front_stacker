@@ -1,13 +1,14 @@
 import React from 'react';
 import './settings.scss';
-import Header from '../../Components/Header';
+import {Link} from 'react-router-dom';
+import SettingsHeader from '../../Components/SettingsHeader';
 
 const Settings = () => {
 
   return (
     <div className="">
-      <Header />
-      <div className="container__title-pane">Settings</div>
+      <SettingsHeader/>
+      <Link to="./settings/get-password">reset password</Link>
     </div>
   );
 };
