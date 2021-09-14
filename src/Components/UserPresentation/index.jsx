@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router';
+import { useParams } from 'react-router-dom';
 
 const UserPresentation = () => {
     return (
@@ -7,7 +7,9 @@ const UserPresentation = () => {
             <h2>Presentation</h2>
             <div className="presentation--all">
                 <div className="all--items">
-                    dnlekznclkznc
+                    <ul>
+                        {/*<li>{user.first_name}</li>*/}
+                    </ul>
                 </div>
             </div>
         </div>
