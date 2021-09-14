@@ -46,18 +46,22 @@ const App = () => {
             <Route path="/about" render={() => <About />} />
             <Route path="/stacks" render={() => <Stacks />} />
 
-            <Route path="/search-compagny" render={() => <SearchCompany />} />
-            <Route path="/compagny" render={() => <Company key={uuidv4()} />} />
             <Route path="/user-dashboard" render={() => <UserDashboard key={uuidv4()} />} />
-            <Route path="/compagny-dashboard" render={() => <CompanyDashboard key={uuidv4()} />} />
             <Route path="/user/sign-in" render={() => <UserSignIn user={{setIsLogged}}/>}/>
-            <Route path="/companies/sign-in" render={() => <CompanySignIn/>}/>
             <Route path="/user/sign-up" render={() => <UserSignUp/>}/>
-            <Route path="/companies/sign-up" render={() => <CompanySignUp/>}/>
             <Route path="/user/notifications" render={() => <Notifications />} />
-            <Route exact path="/user/settings" render={() => <Settings />} />
-            <Route path="/user/settings/new-password" render={() => <NewPassword user={{setIsLogged}}/>} />
-            <Route path="/user/settings/get-password" render={() => <GetPassword/>} />
+            <Route exact path="/user/settings" render={() => <Settings identity={"user"}/>} />
+            <Route path="/user/settings/new-password" render={() => <NewPassword user={{setIsLogged,identity:"user"}}/>} />
+            <Route path="/user/settings/get-password" render={() => <GetPassword identity={"company"}/>} />
+          
+            <Route path="/search-company" render={() => <SearchCompany />} />
+            <Route exact path="/company" render={() => <Company key={uuidv4()} />} />
+            <Route path="/company-dashboard" render={() => <CompanyDashboard key={uuidv4()} />} />
+            <Route path="/company/sign-in" render={() => <CompanySignIn/>}/>
+            <Route path="/company/sign-up" render={() => <CompanySignUp/>}/>
+            <Route path="/company/settings/new-password" render={() => <NewPassword user={{setIsLogged, identity:"company"}}/>} />
+            <Route path="/company/settings/get-password" render={() => <GetPassword identity={"company"}/>} />
+            <Route exact path="/company/settings" render={() => <Settings/>} />
 
           </main>
         </Switch>

@@ -13,7 +13,7 @@ const config = {
 export default class UsersAPIManager {
   static async sendPasswordInstructions(email) {
     const response = await API.post(
-      "/forgotten_password",
+      "/user/forgotten_password",
       {
         "email":email,
       },
@@ -23,7 +23,7 @@ export default class UsersAPIManager {
   }
   static async resetPassword(password,email,reset_token) {
     const response = await API.post(
-      "/reset_password",
+      "/user/reset_password",
       {
         "email":email,
         "token":reset_token,
