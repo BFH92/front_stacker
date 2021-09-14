@@ -5,6 +5,7 @@ import { useHistory } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { RegisterUserLoginStatus, RegisterUserLogoutStatus } from "../../Store";
 import { Link } from "react-router-dom";
+import Header from "../../Components/Header";
 
 const UserSignIn = ({ user }) => {
   const [email, setEmail] = useState("");
@@ -24,24 +25,20 @@ const UserSignIn = ({ user }) => {
 
   return (
     <>
-    <div>
-      <SignInForm user={{email, setEmail, password, setPassword, login}}/>
-    </div>
-    <Link to="/user/sign-up">
-    <div>
-    Pas de compte ? S'inscrire
-    </div>
-    </Link>
-    <Link to="/user/settings/get-password">
-    <div>
-    Mot de passe oublié
-    </div>
-    </Link>
-    <Link to="/company/sign-in">
-    <div>
-    Vous êtes une entreprise ? espace entreprise
-    </div>
-    </Link>
+      <div>
+        <Header />
+      <h1>Espace utilisateur</h1>
+        <SignInForm user={{ email, setEmail, password, setPassword, login }} />
+      </div>
+      <Link to="/user/sign-up">
+        <h3>Pas de compte ? S'inscrire</h3>
+      </Link>
+      <Link to="/user/settings/get-password">
+        <h3>Mot de passe oublié</h3>
+      </Link>
+      <Link to="/company/sign-in">
+        <h3>Vous êtes une entreprise ? espace entreprise</h3>
+      </Link>
     </>
   );
 };
