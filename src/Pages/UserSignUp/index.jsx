@@ -24,7 +24,7 @@ const UserSignUp = () => {
     <div>
       <SignUpForm user={{email, setEmail, password, setPassword, SignUp}}/>
     </div>
-    <Link to="/users/sign-in">
+    <Link to="/user/sign-in">
     <div>
     Déjà un compte ? Se connecter
     </div>

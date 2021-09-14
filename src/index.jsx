@@ -21,7 +21,7 @@ import UserSignIn from "./Pages/UserSignIn";
 import UserSignUp from "./Pages/UserSignUp";
 import CompanySignIn from "./Pages/CompanySignIn";
 import CompanySignUp from "./Pages/CompanySignUp";
-
+import NewPassword from "./Pages/Settings/NewPassword";
 //redux
 import { Provider, useSelector } from 'react-redux';
 import { store, persistor } from "./Store/store";
@@ -48,12 +48,13 @@ const App = () => {
             <Route path="/compagny" render={() => <Company key={uuidv4()} />} />
             <Route path="/user-dashboard" render={() => <UserDashboard key={uuidv4()} />} />
             <Route path="/compagny-dashboard" render={() => <CompanyDashboard key={uuidv4()} />} />
-            <Route path="/users/sign-in" render={() => <UserSignIn user={{setIsLogged}}/>}/>
+            <Route path="/user/sign-in" render={() => <UserSignIn user={{setIsLogged}}/>}/>
             <Route path="/companies/sign-in" render={() => <CompanySignIn/>}/>
-            <Route path="/users/sign-up" render={() => <UserSignUp/>}/>
+            <Route path="/user/sign-up" render={() => <UserSignUp/>}/>
             <Route path="/companies/sign-up" render={() => <CompanySignUp/>}/>
             <Route path="/user/notifications" render={() => <Notifications />} />
-            <Route path="/user/settings" render={() => <Settings />} />
+            <Route exact path="/user/settings" render={() => <Settings />} />
+            <Route path="/user/settings/new-password" render={() => <NewPassword user={{setIsLogged}}/>} />
           </main>
         </Switch>
       </div>

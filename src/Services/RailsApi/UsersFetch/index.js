@@ -11,6 +11,24 @@ const config = {
 };
 
 export default class UsersAPIManager {
+  static async resetPassword(password,email,reset_token) {
+    const response = await API.post(
+      "/reset_password",
+      {
+        "email":email,
+        "token":reset_token,
+        "password":password,
+      },
+      config
+    );
+
+    let token = await response.headers.authorization;
+    console.log(response);
+
+    token ? registerToken(token) : Cookies.set("isLogged?", "false");
+    this.login(email, password);
+    return response;
+  }
   static async register(email, password) {
     const response = await API.post(
       "/users",

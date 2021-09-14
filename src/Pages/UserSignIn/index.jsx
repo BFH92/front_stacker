@@ -26,7 +26,7 @@ const UserSignIn = ({user}) => {
     <div>
       <SignInForm user={{email, setEmail, password, setPassword, login}}/>
     </div>
-    <Link to="/users/sign-up">
+    <Link to="/user/sign-up">
     <div>
     Pas de compte ? S'inscrire
     </div>
