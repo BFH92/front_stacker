@@ -1,10 +1,11 @@
 import React from "react";
 //styles
-import './sign_up_form.scss'
+import './sign_up_form.scss';
+
 const SignUpForm = ({ user }) => {
   return (
     <>
-      <div className="form__container">
+      <div className="form__container--signup">
         <form className="form" /*</div>onSubmit={fetchRegister}*/>
           <div className="input__container">
             <label>
