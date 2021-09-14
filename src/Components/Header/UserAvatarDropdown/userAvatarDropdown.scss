@@ -1,0 +1,7 @@
+@import '../../../Styles/variables.scss';
+
+.user__avatar__dropdown {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: $padding;
+}

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './header.scss';
 import Notifications from '../../Assets/Svg/Header/Notifications';
 import Settings from '../../Assets/Svg/Header/Settings';
+import UserAvatarDropdown from './UserAvatarDropdown';
 
 const Header = () => {
 
@@ -27,9 +28,7 @@ const Header = () => {
         <Link to="/user/settings">
           <Settings />
         </Link>
-        <Link to="/user/dashboard">
-          <p>User Name</p>
-        </Link>        
+        <UserAvatarDropdown />
       </div>
     </header>
   );
