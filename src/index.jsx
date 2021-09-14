@@ -25,7 +25,7 @@ import NewPassword from "./Pages/NewPassword";
 import GetPassword from "./Pages/Settings/GetPassword";
 
 //redux
-import { Provider, useSelector } from 'react-redux';
+import { Provider} from 'react-redux';
 import { store, persistor } from "./Store/store";
 import { PersistGate } from 'redux-persist/integration/react'
 
