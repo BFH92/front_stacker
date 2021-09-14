@@ -1,33 +1,36 @@
-import React, {useState} from "react";
-import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { v4 as uuidv4 } from 'uuid';
+import React, {useState}    from "react";
+import { v4 as uuidv4 }     from 'uuid';
+import ReactDOM             from 'react-dom';
+import { BrowserRouter 
+as Router, Route, Switch }  from 'react-router-dom';
+
+//styles
 import './Styles/reset.scss';
 import './Styles/variables.scss';
 import './Styles/main.scss';
 
-// import Header from './Components/Header'; À importer dans les autres components
-import Home from './Pages/Home';
-import About from './Pages/About';
-import Stacks from './Pages/Stacks';
-import SearchCompany from './Pages/SearchCompany';
-import Company from './Pages/Company';
-import UserDashboard from './Pages/UserDashboard';
-import CompanyDashboard from './Pages/CompanyDashboard';
-import Notifications from './Pages/Notifications';
-import Settings from './Pages/Settings';
-import AsideNavbar from './Components/AsideNavbar';
-import UserSignIn from "./Pages/UserSignIn";
-import UserSignUp from "./Pages/UserSignUp";
-import CompanySignIn from "./Pages/CompanySignIn";
-import CompanySignUp from "./Pages/CompanySignUp";
-import NewPassword from "./Pages/NewPassword";
-import GetPassword from "./Pages/Settings/GetPassword";
+//components
+import Home                 from './Pages/Home';
+import About                from './Pages/About';
+import Stacks               from './Pages/Stacks';
+import SearchCompany        from './Pages/SearchCompany';
+import Company              from './Pages/Company';
+import UserDashboard        from './Pages/UserDashboard';
+import CompanyDashboard     from './Pages/CompanyDashboard';
+import Notifications        from './Pages/Notifications';
+import Settings             from './Pages/Settings';
+import AsideNavbar          from './Components/AsideNavbar';
+import UserSignIn           from "./Pages/UserSignIn";
+import UserSignUp           from "./Pages/UserSignUp";
+import CompanySignIn        from "./Pages/CompanySignIn";
+import CompanySignUp        from "./Pages/CompanySignUp";
+import NewPassword          from "./Pages/NewPassword";
+import GetPassword          from "./Pages/Settings/GetPassword";
 
 //redux
-import { Provider} from 'react-redux';
+import { Provider}          from 'react-redux';
 import { store, persistor } from "./Store/store";
-import { PersistGate } from 'redux-persist/integration/react'
+import { PersistGate }      from 'redux-persist/integration/react'
 
 
 
@@ -42,26 +45,26 @@ const App = () => {
         <AsideNavbar  user={{isLogged, setIsLogged}}/>
         <Switch>
           <main className="container__main">
-            <Route path="/" exact render={() => <Home/>} />
-            <Route path="/about" render={() => <About />} />
-            <Route path="/stacks" render={() => <Stacks />} />
-
-            <Route path="/user/dashboard" render={() => <UserDashboard key={uuidv4()} />} />
-            <Route path="/user/sign-in" render={() => <UserSignIn user={{setIsLogged}}/>}/>
-            <Route path="/user/sign-up" render={() => <UserSignUp/>}/>
-            <Route path="/user/notifications" render={() => <Notifications />} />
-            <Route exact path="/user/settings" render={() => <Settings identity={"user"}/>} />
-            <Route path="/user/settings/new-password" render={() => <NewPassword user={{setIsLogged,identity:"user"}}/>} />
-            <Route path="/user/settings/get-password" render={() => <GetPassword identity={"company"}/>} />
-          
-            <Route path="/search/company" render={() => <SearchCompany />} />
-            <Route exact path="/company" render={() => <Company key={uuidv4()} />} />
-            <Route path="/company/dashboard" render={() => <CompanyDashboard key={uuidv4()} />} />
-            <Route path="/company/sign-in" render={() => <CompanySignIn/>}/>
-            <Route path="/company/sign-up" render={() => <CompanySignUp/>}/>
-            <Route path="/company/settings/new-password" render={() => <NewPassword user={{setIsLogged, identity:"company"}}/>} />
-            <Route path="/company/settings/get-password" render={() => <GetPassword identity={"company"}/>} />
-            <Route exact path="/company/settings" render={() => <Settings/>} />
+            <Route exact path= "/"                             render={() => <Home/>} />
+            <Route       path="/about"                         render={() => <About />} />
+            <Route       path="/stacks"                        render={() => <Stacks />} />
+        
+            <Route       path="/user/dashboard"                render={() => <UserDashboard key={uuidv4()} />} />
+            <Route       path="/user/sign-in"                  render={() => <UserSignIn user={{setIsLogged}}/>}/>
+            <Route       path="/user/sign-up"                  render={() => <UserSignUp/>}/>
+            <Route       path="/user/notifications"            render={() => <Notifications />} />
+            <Route exact path="/user/settings"                 render={() => <Settings identity={"user"}/>} />
+            <Route       path="/user/settings/new-password"    render={() => <NewPassword user={{setIsLogged,identity:"user"}}/>} />
+            <Route       path="/user/settings/get-password"    render={() => <GetPassword identity={"company"}/>} />
+                
+            <Route       path="/search/company"                render={() => <SearchCompany />} />
+            <Route exact path="/company"                       render={() => <Company key={uuidv4()} />} />
+            <Route       path="/company/dashboard"             render={() => <CompanyDashboard key={uuidv4()} />} />
+            <Route       path="/company/sign-in"               render={() => <CompanySignIn/>}/>
+            <Route       path="/company/sign-up"               render={() => <CompanySignUp/>}/>
+            <Route       path="/company/settings/new-password" render={() => <NewPassword user={{setIsLogged, identity:"company"}}/>} />
+            <Route       path="/company/settings/get-password" render={() => <GetPassword identity={"company"}/>} />
+            <Route exact path="/company/settings"              render={() => <Settings/>} />
 
           </main>
         </Switch>
