@@ -12,6 +12,28 @@ const config = {
 };
 
 export default class CompaniesAPIManager {
+  static async sendPasswordInstructions(email) {
+    const response = await API.post(
+      "/company/forgotten_password",
+      {
+        "email":email,
+      },
+      config
+    );
+    return response
+  }
+  static async resetPassword(password,email,reset_token) {
+    const response = await API.post(
+      "/company/reset_password",
+      {
+        "email":email,
+        "token":reset_token,
+        "password":password,
+      },
+      config
+    );
+    return response
+  }
   static async register(email, password) {
     const response = await API.post(
       "/companies",
