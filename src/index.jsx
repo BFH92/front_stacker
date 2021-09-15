@@ -27,10 +27,8 @@ import GetPassword from "./Pages/Settings/GetPassword";
 //redux
 import { Provider} from 'react-redux';
 import { store, persistor } from "./Store/store";
-import { PersistGate } from 'redux-persist/integration/react'
-import { useSelector } from "react-redux"
-
-
+import { PersistGate } from 'redux-persist/integration/react';
+import { useSelector } from "react-redux";
 
 const App = () => {
   const [isLogged, setIsLogged] = useState("");
@@ -50,8 +48,6 @@ const App = () => {
       />
     );
   };
-  
-
 
   const PrivateRoute = ({ component: Component, ...rest }) => {
     const isLogged = useSelector(state => state.user.isLogged)
@@ -76,8 +72,9 @@ const App = () => {
     <Router>
       <div className="container__all">
         <AsideNavbar  user={{isLogged, setIsLogged}}/>
-        <Switch>
-          <main className="container__main">
+        
+        <main className="container__main">
+          <Switch>
             <Route path="/" exact render={() => <Home/>} />
             <Route path="/about" render={() => <About />} />
             <Route path="/stacks" render={() => <Stacks />} />
@@ -98,16 +95,15 @@ const App = () => {
             <Route path="/company/sign-up" render={() => <CompanySignUp user={{setIsLogged}}/>}/>
             <Route path="/company/settings/new-password" render={() => <NewPassword user={{setIsLogged, identity:"company"}}/>} />
             <Route path="/company/settings/get-password" render={() => <GetPassword identity={"company"}/>} />
-            <PrivateRoute exact path="/company/settings" component={Settings} identity={"company"} />
-            
-
-          </main>
-        </Switch>
+            <PrivateRoute exact path="/company/settings" component={Settings} identity={"company"} />            
+          </Switch>
+        </main>
+        
       </div>
     </Router>
     </PersistGate>
     </Provider>
-  )
-}
+  );
+};
 
 ReactDOM.render(<App />, document.getElementById('root'));
