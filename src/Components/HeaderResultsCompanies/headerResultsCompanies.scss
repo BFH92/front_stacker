@@ -5,6 +5,11 @@
   grid-template-columns: 1fr auto;
   grid-gap: $padding;
 
+  .container--left {
+    display: grid;
+    align-items: center;
+  }
+
   .container__filter--right {
     display: grid;
     place-items: center;

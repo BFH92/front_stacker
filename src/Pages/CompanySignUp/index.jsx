@@ -1,11 +1,14 @@
-import React,{useState} from 'react';
-import SignUpForm from '../../Components/Forms/SignUpForm';
-import CompaniesAPIManager from '../../Services/RailsApi/UsersFetch';
-import { useHistory } from 'react-router';
-import { useDispatch} from 'react-redux';
-import {RegisterUserLoginStatus, RegisterUserLogoutStatus} from '../../Store'
+import React, { useState } from "react";
+import SignUpForm from "../../Components/Forms/SignUpForm";
+import CompaniesAPIManager from "../../Services/RailsApi/UsersFetch";
+import { useHistory } from "react-router";
+import { useDispatch } from "react-redux";
+import { Link } from 'react-router-dom';
+import { RegisterUserLoginStatus, RegisterUserLogoutStatus } from "../../Store";
+import Header from "../../Components/Header";
 
-const CompanySignUp = () => {
+
+const CompanySignUp = ({user}) => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const history = useHistory()
@@ -15,12 +18,27 @@ const CompanySignUp = () => {
       const response = await CompaniesAPIManager.register(email, password);
       response.status === 200? history.push("/"): window.alert("couac!");
       response.status === 200? dispatch(RegisterUserLoginStatus(response.data.user_id,"company")):dispatch(RegisterUserLogoutStatus());
-    }
+      user.setIsLogged(true)
+    };
+
   return (
-    <div>
-      <SignUpForm user={{email, setEmail, password, setPassword, SignUp}}/>
-    </div>
+    <>
+      <div>
+        <Header />
+        <h1>Créer espace entreprise</h1>
+        <SignUpForm user={{ email, setEmail, password, setPassword, SignUp }} />
+      </div>
+      <Link to="/company/sign-in">
+        <h3>Déjà un compte ? Se Connecter</h3>
+      </Link>
+      <Link to="/company/settings/get-password">
+        <h3>Mot de passe oublié</h3>
+      </Link>
+      <Link to="/user/sign-in">
+        <h3>Créer un espace utilisateur</h3>
+      </Link>
+    </>
   );
-}
+};
 
 export default CompanySignUp;

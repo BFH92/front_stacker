@@ -1,10 +1,7 @@
-import React, {useState}    from "react";
-import { v4 as uuidv4 }     from 'uuid';
-import ReactDOM             from 'react-dom';
-import { BrowserRouter 
-as Router, Route, Switch }  from 'react-router-dom';
-
-//styles
+import React, {useState} from "react";
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 import './Styles/reset.scss';
 import './Styles/variables.scss';
 import './Styles/main.scss';
@@ -30,12 +27,48 @@ import GetPassword          from "./Pages/Settings/GetPassword";
 //redux
 import { Provider}          from 'react-redux';
 import { store, persistor } from "./Store/store";
-import { PersistGate }      from 'redux-persist/integration/react'
+import { PersistGate } from 'redux-persist/integration/react'
+import { useSelector } from "react-redux"
 
 
 
 const App = () => {
   const [isLogged, setIsLogged] = useState("");
+  const CompanyRoute = ({ component:Component, ...rest }) => {
+    const logged_as = useSelector(state => state.user.logged_as)
+  
+    return (
+      <Route
+        {...rest}
+        render={(props) =>
+          logged_as === "company" ? (
+            <Component {...props} />
+          ) : (
+            <Redirect to={{ pathname: "./sign-in" }} />
+          )
+        }
+      />
+    );
+  };
+  
+
+
+  const PrivateRoute = ({ component: Component, ...rest }) => {
+    const isLogged = useSelector(state => state.user.isLogged)
+    console.log(isLogged)
+    return (
+      <Route
+        {...rest}
+        render={(props) =>
+         isLogged ? (
+            <Component {...props} />
+          ) : (
+            <Redirect to={{ pathname: "/user/sign-in" }} />
+         )
+        }
+      />
+    );
+  };
 
   return (
     <Provider store={store}>

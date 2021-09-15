@@ -9,7 +9,7 @@ const GetPassword = (user) => {
   const sendPasswordInstructions = async (e) => {
     e.preventDefault();
     let response;
-
+    
     switch (user.identity){
     case ("company"):
       response = await CompaniesAPIManager.sendPasswordInstructions(email);

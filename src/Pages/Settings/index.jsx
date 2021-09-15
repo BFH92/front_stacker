@@ -11,13 +11,12 @@ import SettingsHeader from '../../Components/SettingsHeader';
 
 const Settings = () => {
 
+
   return (
     <div className="">
-      <Header />
-      <div className="container__title-pane">Settings</div>
-      <CompanyForm />
-      <UserForm />
       <SettingsHeader/>
+      <CompanyForm />
+      <UserForm/>
       <Link to="./settings/get-password">reset password</Link>
     </div>
   );
