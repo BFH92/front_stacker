@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './filterSystem.scss';
-import RadioButtonsGroup from './RadioGroup';
-import SimpleSlider from './SimpleSlider';
 import ChipsArray from './ChipsArray';
+import RadioButtonsGroup from './RadioGroup';
+// import SimpleSlider from './SimpleSlider';
 
 const FilterSystem = () => {
 
@@ -11,7 +11,7 @@ const FilterSystem = () => {
       <div className="grid__filter--groups">
         <ChipsArray />
         <RadioButtonsGroup />
-        <SimpleSlider />
+        {/* <SimpleSlider /> */}
       </div>
     </div>    
   );

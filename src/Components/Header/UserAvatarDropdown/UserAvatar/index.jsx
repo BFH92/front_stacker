@@ -7,9 +7,9 @@ import './userAvatar.scss';
 
 const StyledBadge = withStyles((theme) => ({
   badge: {
-    backgroundColor: 'rgb(92, 30, 226)',
-    color: 'rgb(92, 30, 226)',
-    boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
+    backgroundColor: 'rgb(76, 175, 80)',
+    color: 'rgb(76, 175, 80)',
+    boxShadow: `0 0 0 2px rgb(246, 247, 254)`,
     '&::after': {
       position: 'absolute',
       top: 0,
@@ -17,7 +17,7 @@ const StyledBadge = withStyles((theme) => ({
       width: '100%',
       height: '100%',
       borderRadius: '50%',
-      animation: '$ripple 1.2s infinite ease-in-out',
+      animation: '$ripple 1.5s infinite ease-in-out',
       border: '1px solid currentColor',
       content: '""',
     },
