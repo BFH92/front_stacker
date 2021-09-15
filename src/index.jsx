@@ -1,12 +1,11 @@
 import React, {useState} from "react";
-import { useSelector } from "react-redux"
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import './Styles/reset.scss';
 import './Styles/variables.scss';
 import './Styles/main.scss';
-import { useSelector } from "react-redux";
+
 // import Header from './Components/Header'; À importer dans les autres components
 import Home from './Pages/Home';
 import About from './Pages/About';
@@ -29,6 +28,7 @@ import GetPassword from "./Pages/Settings/GetPassword";
 import { Provider} from 'react-redux';
 import { store, persistor } from "./Store/store";
 import { PersistGate } from 'redux-persist/integration/react'
+import { useSelector } from "react-redux"
 
 
 
