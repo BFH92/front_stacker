@@ -5,8 +5,11 @@ import Header from '../../Components/Header';
 import RecentSearch from '../../Components/RecentSearch';
 import ResultsCompanies from '../../Components/ResultsCompanies';
 
+
 const SearchCompany = () => {
 
+  
+  
   return (
     <div className="container__search--companies">
       <FilterSystem />
