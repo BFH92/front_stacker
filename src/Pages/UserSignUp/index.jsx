@@ -5,6 +5,7 @@ import { useHistory } from "react-router";
 import { useDispatch } from "react-redux";
 import { RegisterUserLoginStatus, RegisterUserLogoutStatus } from "../../Store";
 import { Link } from "react-router-dom";
+import Header from "../../Components/Header";
 
 const UserSignUp = ({user}) => {
   const [email, setEmail] = useState("");
@@ -25,14 +26,14 @@ const UserSignUp = ({user}) => {
   };
   return (
     <>
-    <div>
-      <SignUpForm user={{email, setEmail, password, setPassword, SignUp}}/>
-    </div>
-    <Link to="/user/sign-in">
-    <div>
-    Déjà un compte ? Se connecter
-    </div>
-    </Link>
+      <div>
+        <Header />
+      <h1>Créer espace utilisateur</h1>
+        <SignUpForm user={{ email, setEmail, password, setPassword, SignUp }} />
+      </div>
+      <Link to="/user/sign-in">
+        <h3>Déjà un compte ? Se connecter</h3>
+      </Link>
     </>
   );
 };

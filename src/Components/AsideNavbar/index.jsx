@@ -7,7 +7,9 @@ import About from "../../Assets/Svg/AsideNavbar/About";
 import Stacks from "../../Assets/Svg/AsideNavbar/Stacks";
 import Login from "../../Assets/Svg/AsideNavbar/Login";
 import Logout from "../../Assets/Svg/AsideNavbar/Logout";
+
 import { useDispatch, useSelector} from "react-redux";
+
 import { useHistory } from "react-router";
 import UsersAPIManager from "../../Services/RailsApi/UsersFetch";
 import { RegisterUserLogoutStatus } from "../../Store";
@@ -16,9 +18,10 @@ import CompaniesAPIManager from "../../Services/RailsApi/CompaniesFetch";
 const AsideNavbar = ({ user }) => {
   const history = useHistory();
   const dispatch = useDispatch();
+
   let logged_as
   logged_as = useSelector(state=> state.user.logged_as)
-  
+
   const logout = async (e) => {
   
     e.preventDefault();

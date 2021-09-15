@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import { useSelector } from "react-redux"
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
@@ -33,12 +34,12 @@ import { PersistGate } from 'redux-persist/integration/react'
 
 const App = () => {
   const [isLogged, setIsLogged] = useState("");
+
   
   const CompanyRoute = ({ component:Component, ...rest }) => {
     const logged_as = useSelector(state => state.user.logged_as)
-  
-    return (
-      <Route
+      return(
+    <Route
         {...rest}
         render={(props) =>
           logged_as === "company" ? (
@@ -46,10 +47,29 @@ const App = () => {
           ) : (
             <Redirect to={{ pathname: "./sign-in" }} />
           )
-        }
+    
+      />
+    );
+};
+
+
+  const PrivateRoute = ({ component: Component, ...rest }) => {
+    const isLogged = useSelector(state => state.user.isLogged)
+    console.log(isLogged)
+    return (
+      <Route
+        {...rest}
+        render={(props) =>
+         isLogged ? (
+            <Component {...props} />
+          ) : (
+            <Redirect to={{ pathname: "/user/sign-in" }} />
+         )
+        
       />
     );
   };
+
   return (
     <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
@@ -66,7 +86,8 @@ const App = () => {
             <Route path="/user/sign-in" render={() => <UserSignIn user={{setIsLogged}}/>}/>
             <Route path="/user/sign-up" render={() => <UserSignUp user={{setIsLogged}}/>}/>
             <Route path="/user/notifications" render={() => <Notifications />} />
-            <Route exact path="/user/settings" render={() => <Settings identity={"user"}/>} />
+            <PrivateRoute exact path="/user/settings" component={Settings} identity={"user"} />
+            
             <Route path="/user/settings/new-password" render={() => <NewPassword user={{setIsLogged,identity:"user"}}/>} />
             <Route path="/user/settings/get-password" render={() => <GetPassword identity={"company"}/>} />
 
@@ -77,7 +98,8 @@ const App = () => {
             <Route path="/company/sign-up" render={() => <CompanySignUp user={{setIsLogged}}/>}/>
             <Route path="/company/settings/new-password" render={() => <NewPassword user={{setIsLogged, identity:"company"}}/>} />
             <Route path="/company/settings/get-password" render={() => <GetPassword identity={"company"}/>} />
-            <Route exact path="/company/settings" render={() => <Settings/>} />
+            <PrivateRoute exact path="/company/settings" component={Settings} identity={"company"} />
+            
 
           </main>
         </Switch>
