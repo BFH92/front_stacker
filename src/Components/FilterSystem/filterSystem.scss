@@ -1,6 +1,9 @@
 @import '../../Styles/variables.scss';
 
-.container_filter--system {
+.container__filter--system {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  grid-gap: $padding * 2;
   padding: $padding * 2;
   color: $white !important;
   background-color: $blue;
@@ -26,4 +29,8 @@
 .title__filter {
   display: grid;
   align-items: center;
+}
+
+#Arrow--Down-Circle {
+  stroke: $white;
 }
