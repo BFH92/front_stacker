@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import UserInfoManager from '../../Services/RailsApi/UserInfoManager';
 import { useHistory } from "react-router";
-import {useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
 
 export const EditUserPresentation = () => {
     const userId = useSelector(state => state.user.id);
@@ -12,22 +12,22 @@ export const EditUserPresentation = () => {
     const [github_link, setGithub_Link] = useState("");
     useEffect (() => {
         getUserDetail()
-    });
+    }, []);
 
     const getUserDetail = async() => {
-        const {detail} = await UserInfoManager.getDetails(userId)
+        const detail = await UserInfoManager.getDetails(userId)
         console.log(detail)
         setFirst_Name(detail.first_name)
         setLast_Name(detail.last_name)
         setDescription(detail.description)
-        setGithub_Link(detail)
+        setGithub_Link(detail.github_link)
     }
 
     const history = useHistory();
 
-    const UpdateDetail = async (e) => {
+    const updateUserDetails = async (e) => {
         e.preventDefault();
-        const reponse = await UserInfoManager.updateUserDetails(first_name, last_name, description, github_link);
+        const response = await UserInfoManager.updateDetails(first_name, last_name, description, github_link);
         Promise.resolve(response)
         history.push(`/user/dashboard`)
     };
@@ -41,7 +41,7 @@ export const EditUserPresentation = () => {
                         Prénom
                         <input
                         type="text"
-                        value={first_name}
+                        value={first_name? first_name : null}
                         onChange={(e)=>setFirst_Name(e.target.value)}
                         />
                     </label>
@@ -49,7 +49,7 @@ export const EditUserPresentation = () => {
                         Nom de famille
                         <input
                         type="text"
-                        value={last_name}
+                        value={last_name? last_name : null}
                         onChange={(e)=>setLast_Name(e.target.value)}
                         />
                     </label>
@@ -57,7 +57,7 @@ export const EditUserPresentation = () => {
                         Description
                         <input
                         type="text"
-                        value={description}
+                        value={description? description : null}
                         onChange={(e)=>setDescription(e.target.value)}
                         />
                     </label>
@@ -65,11 +65,11 @@ export const EditUserPresentation = () => {
                         GitHub Link
                         <input
                         type="text"
-                        value={github_link}
+                        value={github_link? github_link : null}
                         onChange={(e)=>setGithub_Link(e.target.value)}
                         />
                     </label>
-                    <button onClick={UpdateDetail}>sauvegarder</button>
+                    <button onClick={updateUserDetails}>sauvegarder</button>
                 </form>
             </div>
         </div>

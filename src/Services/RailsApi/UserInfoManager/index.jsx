@@ -20,4 +20,26 @@ export default class UserInfoManager {
     );
     return response;
   };
+
+  static async updateDetails(id, first_name, last_name, description, github_link){
+    const authorizedConfig = {
+        headers: {
+          Accept:'application/json',
+          Authorization: `Bearer ${Cookies.get("token")}`,
+        },
+    };
+    let data = new FormData();
+    data.append('first_name', first_name);
+    data.append('last_name', last_name);
+    data.append('description', description);
+    data.append('github_link', github_link);
+
+    const response = await API.put(
+        `/users/${id}`,
+        data,
+        authorizedConfig
+    );
+    return response;
+  }
+
 }
