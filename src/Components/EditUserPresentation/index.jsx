@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import UsersAPIManager from '../../Services/RailsApi/UsersFetch';
+import UserInfoManager from '../../Services/RailsApi/UserInfoManager';
 import { useHistory } from "react-router";
-import {useParams} from 'react-router-dom';
+import {useSelector} from 'react-redux';
 
 export const EditUserPresentation = () => {
-    const { u } = useParams();
-
+    const userId = useSelector(state => state.user.id);
+    console.log(userId)
     const [first_name, setFirst_Name] = useState("");
     const [last_name, setLast_Name] = useState("");
     const [description, setDescription] = useState("");
@@ -15,7 +15,8 @@ export const EditUserPresentation = () => {
     });
 
     const getUserDetail = async() => {
-        const {detail} = await UsersAPIManager.getDetails(u)
+        const {detail} = await UserInfoManager.getDetails(userId)
+        console.log(detail)
         setFirst_Name(detail.first_name)
         setLast_Name(detail.last_name)
         setDescription(detail.description)
@@ -26,7 +27,7 @@ export const EditUserPresentation = () => {
 
     const UpdateDetail = async (e) => {
         e.preventDefault();
-        const reponse = await UsersAPIManager.updateUserDetails(first_name, last_name, description, github_link);
+        const reponse = await UserInfoManager.updateUserDetails(first_name, last_name, description, github_link);
         Promise.resolve(response)
         history.push(`/user/dashboard`)
     };
