@@ -28,7 +28,7 @@ const NegativeLeftIconButton = (props) => {
   return (
     <div>
       <NegativeCustomizedButton
-        endIcon={props.svg}
+        startIcon={props.svg}
       >
         {props.name}
       </NegativeCustomizedButton>

@@ -3,7 +3,7 @@ import './filterSystem.scss';
 import ChipsArray from './ChipsArray';
 import RadioButtonsGroup from './RadioGroup';
 // import SimpleSlider from './SimpleSlider';
-import NegativeLeftIconButton from '../CTAs/NegativeLeftIconButton';
+import NegativeRightIconButton from '../CTAs/NegativeRightIconButton';
 import Save from '../../Assets/Svg/UI/Save';
 
 const FilterSystem = () => {
@@ -19,7 +19,7 @@ const FilterSystem = () => {
       </div>
       <div className="container--bottom">
         <div className="container__cta">
-          <NegativeLeftIconButton name={"Enregistrer"} svg={<Save />}/>
+          <NegativeRightIconButton name={"Enregistrer"} svg={<Save />}/>
         </div>
       </div>
     </div>    
