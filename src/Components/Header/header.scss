@@ -13,14 +13,15 @@
   ul {
     display: grid;
     grid-auto-flow: column;
-    grid-gap: $padding;
+    grid-gap: $padding * 2;
+    font-weight: 500;
   }
 }
 
 .container__user--informations {
   display: grid;
   grid-auto-flow: column;
-  grid-gap: $padding;
+  grid-gap: $padding * 2;
 
   & * {
     display: grid;
@@ -29,6 +30,7 @@
 }
 
 #header--Notifications,
-#header--Settings {
+#header--Settings,
+#header--Arrow---Down-2 {
   stroke: $blue;
 }

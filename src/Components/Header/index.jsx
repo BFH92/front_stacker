@@ -1,9 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import "./header.scss";
-import Notifications from "../../Assets/Svg/Header/Notifications";
 import Settings from "../../Assets/Svg/Header/Settings";
+import './header.scss';
+import Notifications from '../../Assets/Svg/Header/Notifications';
+import UserAvatarDropdown from './UserAvatarDropdown';
+import Badge from '@material-ui/core/Badge';
+import ThemeSwitch from './ThemeSwitch';
 
 const Header = () => {
   const isLogged = useSelector((state) => state.user.isLogged);
@@ -19,19 +22,20 @@ const Header = () => {
           <li>Blog</li>
         </ul>
       </div>
-      {isLogged ? (
-        <div className="container__user--informations">
-          <Link to="/user/notifications">
+    { isLogged ? (
+      <div className="container__user--informations">
+        <ThemeSwitch />
+        <Link to="/user/notifications">
+          <Badge color="secondary" variant="dot">
             <Notifications />
-          </Link>
-          <Link to="/user/settings">
-            <Settings />
-          </Link>
-          <Link to="/user/dashboard">
-            <p>User Name</p>
-          </Link>
-        </div>
-      ) : (
+          </Badge>
+        </Link>
+        <Link to="/user/settings">
+          <Settings />
+        </Link>
+        <UserAvatarDropdown />
+      </div>)
+      : (
         <h1>Stacker</h1>
       )}
     </header>

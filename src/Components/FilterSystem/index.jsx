@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './filterSystem.scss';
+import RadioButtonsGroup from './RadioGroup';
+import SimpleSlider from './SimpleSlider';
+import ChipsArray from './ChipsArray';
 
 const FilterSystem = () => {
 
   return (
     <div className="container_filter--system">
-      <h3>FILTER SYSTEM</h3>
+      <div className="grid__filter--groups">
+        <ChipsArray />
+        <RadioButtonsGroup />
+        <SimpleSlider />
+      </div>
     </div>    
   );
 };

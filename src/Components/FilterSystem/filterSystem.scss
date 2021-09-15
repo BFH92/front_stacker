@@ -1,9 +1,29 @@
 @import '../../Styles/variables.scss';
 
 .container_filter--system {
-  display: grid;
-  place-items: center;
-  color: $white;
+  padding: $padding * 2;
+  color: $white !important;
   background-color: $blue;
   overflow-y: scroll;
+}
+
+.container__filter--group {
+  display: grid !important;
+  grid-gap: $padding;
+}
+
+.container__filter--group.inline--grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: $padding * 2;
+}
+
+.grid__filter--groups {
+  display: grid !important;
+  grid-gap: $padding * 2 !important;
+}
+
+.title__filter {
+  display: grid;
+  align-items: center;
 }
