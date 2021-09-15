@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import "./asideNavbar.scss";
 import Home from "../../Assets/Svg/AsideNavbar/Home";
@@ -7,29 +7,37 @@ import About from "../../Assets/Svg/AsideNavbar/About";
 import Stacks from "../../Assets/Svg/AsideNavbar/Stacks";
 import Login from "../../Assets/Svg/AsideNavbar/Login";
 import Logout from "../../Assets/Svg/AsideNavbar/Logout";
-import { useDispatch } from "react-redux";
+
+import { useDispatch, useSelector} from "react-redux";
+
 import { useHistory } from "react-router";
 import UsersAPIManager from "../../Services/RailsApi/UsersFetch";
 import { RegisterUserLogoutStatus } from "../../Store";
+import CompaniesAPIManager from "../../Services/RailsApi/CompaniesFetch";
 
 const AsideNavbar = ({ user }) => {
   const history = useHistory();
   const dispatch = useDispatch();
 
+  let logged_as
+  logged_as = useSelector(state=> state.user.logged_as)
+
   const logout = async (e) => {
+  
     e.preventDefault();
+    let response;
     dispatch(RegisterUserLogoutStatus());
-    const response = await UsersAPIManager.logout();
+    logged_as === "company" ? response = await CompaniesAPIManager.logout() : response = await UsersAPIManager.logout();
+  
     user.setIsLogged(false);
     console.log(response);
     history.push("/");
   };
 
   useEffect(() => {
-    console.log("changer le button");
-
+    
     return () => {};
-  }, [dispatch]);
+  }, [logged_as]);
 
   return (
     <nav className="container__aside--nav">
@@ -43,14 +51,17 @@ const AsideNavbar = ({ user }) => {
               <label htmlFor="Bold/Home">Home</label>
             </Link>
           </li>
-          <li className="item">
+
+          {logged_as === "company"?(
+            ""):(<li className="item">
             <Link to="/search/company" className="item">
               <div className="container--svg">
                 <Search />
               </div>
               <label htmlFor="Bold/Search">Search</label>
             </Link>
-          </li>
+          </li> )}
+        
           <li className="item">
             <Link to="/stacks" className="item">
               <div className="container--svg">

@@ -3,7 +3,7 @@ import {  REGISTER_USER_LOGIN_STATUS,  REGISTER_USER_LOGOUT_STATUS } from "../Ty
 const initialUserState = {
   isLogged: false,
   id: undefined,
-  logged_as: undefined
+  logged_as: "visitor"
 }
 
 const LoggedUserReducer = (state = initialUserState, action) => {
@@ -20,7 +20,7 @@ const LoggedUserReducer = (state = initialUserState, action) => {
       return {
         isLogged: undefined,
         id: undefined,
-        logged_as: undefined
+        logged_as: "visitor"
 
     }
 

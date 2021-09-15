@@ -14,9 +14,10 @@ const Settings = () => {
 
   return (
     <div className="">
-      <Header />
-      <div className="container__title-pane">Settings</div>
-      <Link to="./settings/get-password"><h3>Reset password</h3></Link>
+      <SettingsHeader/>
+      <CompanyForm />
+      <UserForm/>
+      <Link to="./settings/get-password">reset password</Link>
     </div>
   );
 };

@@ -7,19 +7,22 @@ import { RegisterUserLoginStatus, RegisterUserLogoutStatus } from "../../Store";
 import { Link } from "react-router-dom";
 import Header from "../../Components/Header";
 
-const CompanySignIn = () => {
+
+  const CompanySignIn = ({user}) => {
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const history = useHistory();
   const dispatch = useDispatch();
 
+
   const login = async (e) => {
     e.preventDefault();
     const response = await CompaniesAPIManager.login(email, password);
-    history.push("/");
-    response.status === 200
-      ? dispatch(RegisterUserLoginStatus(response.data.user_id, "company"))
-      : dispatch(RegisterUserLogoutStatus());
+    history.push("/")
+    response.status === 200? dispatch(RegisterUserLoginStatus(response.data.user_id,"company")):dispatch(RegisterUserLogoutStatus());
+    user.setIsLogged(true);
+
   };
   return (
     <>

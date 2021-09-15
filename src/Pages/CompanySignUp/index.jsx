@@ -7,19 +7,20 @@ import { Link } from 'react-router-dom';
 import { RegisterUserLoginStatus, RegisterUserLogoutStatus } from "../../Store";
 import Header from "../../Components/Header";
 
-const CompanySignUp = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const history = useHistory();
-  const dispatch = useDispatch();
+
+const CompanySignUp = ({user}) => {
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const history = useHistory()
+  const dispatch = useDispatch()
   const SignUp = async (e) => {
-    e.preventDefault();
-    const response = await CompaniesAPIManager.register(email, password);
-    response.status === 200 ? history.push("/") : window.alert("couac!");
-    response.status === 200
-      ? dispatch(RegisterUserLoginStatus(response.data.user_id, "company"))
-      : dispatch(RegisterUserLogoutStatus());
-  };
+      e.preventDefault();
+      const response = await CompaniesAPIManager.register(email, password);
+      response.status === 200? history.push("/"): window.alert("couac!");
+      response.status === 200? dispatch(RegisterUserLoginStatus(response.data.user_id,"company")):dispatch(RegisterUserLogoutStatus());
+      user.setIsLogged(true)
+    };
+
   return (
     <>
       <div>
