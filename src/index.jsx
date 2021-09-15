@@ -34,12 +34,11 @@ import { PersistGate } from 'redux-persist/integration/react'
 
 const App = () => {
   const [isLogged, setIsLogged] = useState("");
-
-  
   const CompanyRoute = ({ component:Component, ...rest }) => {
     const logged_as = useSelector(state => state.user.logged_as)
-      return(
-    <Route
+  
+    return (
+      <Route
         {...rest}
         render={(props) =>
           logged_as === "company" ? (
@@ -47,10 +46,11 @@ const App = () => {
           ) : (
             <Redirect to={{ pathname: "./sign-in" }} />
           )
-    
+        }
       />
     );
-};
+  };
+  
 
 
   const PrivateRoute = ({ component: Component, ...rest }) => {
@@ -65,7 +65,7 @@ const App = () => {
           ) : (
             <Redirect to={{ pathname: "/user/sign-in" }} />
          )
-        
+        }
       />
     );
   };
