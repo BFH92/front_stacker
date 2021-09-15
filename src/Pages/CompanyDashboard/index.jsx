@@ -1,14 +1,14 @@
 import React from 'react';
 import Header from '../../Components/Header';
 
-const CompagnyDashboard = () => {
+const CompanyDashboard = () => {
 
   return (
     <div className="">
       <Header />
-      <h1>COMPAGNY DASHBOARD</h1>
+      <div className="container__title-pane">Company Dashboard</div>
   </div>
   );
 };
 
-export default CompagnyDashboard;
+export default CompanyDashboard;

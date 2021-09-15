@@ -6,7 +6,7 @@ const Stacks = () => {
   return (
     <div className="">
       <Header />
-      <h1>STACKS</h1>
+      <div className="container__title-pane">Stacks</div>
     </div>
   );
 };

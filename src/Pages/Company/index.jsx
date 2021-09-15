@@ -3,8 +3,8 @@ import React from 'react';
 const Company = () => {
 
   return (
-    <h1>COMPANY</h1>
-  );
+    <div className="container__title-pane">Company</div>
+    );
 };
 
 export default Company;

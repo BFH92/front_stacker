@@ -1,15 +1,43 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import './asideNavbar.scss';
-import Home from '../../Assets/Svg/AsideNavbar/Home';
-import Search from '../../Assets/Svg/AsideNavbar/Search';
-import About from '../../Assets/Svg/AsideNavbar/About';
-import Stacks from '../../Assets/Svg/AsideNavbar/Stacks';
-import Login from '../../Assets/Svg/AsideNavbar/Login';
-import Logout from '../../Assets/Svg/AsideNavbar/Logout';
+import React, { useEffect, useCallback } from "react";
+import { Link } from "react-router-dom";
+import "./asideNavbar.scss";
+import Home from "../../Assets/Svg/AsideNavbar/Home";
+import Search from "../../Assets/Svg/AsideNavbar/Search";
+import About from "../../Assets/Svg/AsideNavbar/About";
+import Stacks from "../../Assets/Svg/AsideNavbar/Stacks";
+import Login from "../../Assets/Svg/AsideNavbar/Login";
+import Logout from "../../Assets/Svg/AsideNavbar/Logout";
 
-const AsideNavbar = () => {
-  const [isConnected, setIsConnected] = useState(false);
+import { useDispatch, useSelector} from "react-redux";
+
+import { useHistory } from "react-router";
+import UsersAPIManager from "../../Services/RailsApi/UsersFetch";
+import { RegisterUserLogoutStatus } from "../../Store";
+import CompaniesAPIManager from "../../Services/RailsApi/CompaniesFetch";
+
+const AsideNavbar = ({ user }) => {
+  const history = useHistory();
+  const dispatch = useDispatch();
+
+  let logged_as
+  logged_as = useSelector(state=> state.user.logged_as)
+
+  const logout = async (e) => {
+  
+    e.preventDefault();
+    let response;
+    dispatch(RegisterUserLogoutStatus());
+    logged_as === "company" ? response = await CompaniesAPIManager.logout() : response = await UsersAPIManager.logout();
+  
+    user.setIsLogged(false);
+    console.log(response);
+    history.push("/");
+  };
+
+  useEffect(() => {
+    
+    return () => {};
+  }, [logged_as]);
 
   return (
     <nav className="container__aside--nav">
@@ -23,14 +51,17 @@ const AsideNavbar = () => {
               <label htmlFor="Bold/Home">Home</label>
             </Link>
           </li>
-          <li className="item">
+
+          {logged_as === "company"?(
+            ""):(<li className="item">
             <Link to="/search/company" className="item">
               <div className="container--svg">
                 <Search />
               </div>
               <label htmlFor="Bold/Search">Search</label>
             </Link>
-          </li>
+          </li> )}
+        
           <li className="item">
             <Link to="/stacks" className="item">
               <div className="container--svg">
@@ -50,21 +81,23 @@ const AsideNavbar = () => {
         </ul>
       </div>
       <div className="container--bottom">
-        {isConnected ?
+        {user.isLogged ? (
           <div className="item">
-            <div className="container--svg">
+            <div className="container--svg" onClick={logout}>
               <Logout />
             </div>
             <label htmlFor="Bold/Logout">Logout</label>
           </div>
-        :
+        ) : (
           <div className="item">
-            <div className="container--svg">
-              <Login />
-            </div>
-            <label htmlFor="Bold/Login">Login</label>
+            <Link to="/user/sign-in">
+              <div className="container--svg">
+                <Login />
+              </div>
+              <label htmlFor="Bold/Login">Login</label>
+            </Link>
           </div>
-        }
+        )}
       </div>
     </nav>
   );
