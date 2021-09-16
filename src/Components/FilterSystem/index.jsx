@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import './filterSystem.scss';
 import ChipsArray from './ChipsArray';
 import RadioButtonsGroup from './RadioGroup';
@@ -7,13 +7,20 @@ import NegativeRightIconButton from '../CTAs/NegativeRightIconButton';
 import Save from '../../Assets/Svg/UI/Save';
 
 const FilterSystem = () => {
-
+  const [stacks, setStacks] = useState([])
+  console.log(stacks)
+  const [staffSize, setStaffSize] = useState([])
+  console.log(staffSize)
+  useEffect(() => {
+    const url = `http://localhost:3000/companies?stack=${stacks}&staff_size=${staffSize}`
+    console.log(url)
+  }, [stacks, staffSize]);
   return (
     <div className="container__filter--system">
       <div className="container--top">
         <div className="grid__filter--groups">
-          <ChipsArray />
-          <RadioButtonsGroup />
+          <ChipsArray companies={{setStacks}}/>
+          <RadioButtonsGroup companies={{staffSize,setStaffSize}}/>
           {/* <SimpleSlider /> */}
         </div>
       </div>

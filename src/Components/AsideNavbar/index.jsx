@@ -29,7 +29,6 @@ const AsideNavbar = ({ user }) => {
     dispatch(RegisterUserLogoutStatus());
     logged_as === "company" ? response = await CompaniesAPIManager.logout() : response = await UsersAPIManager.logout();
   
-    user.setIsLogged(false);
     console.log(response);
     history.push("/");
   };

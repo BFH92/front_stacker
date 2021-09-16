@@ -13,18 +13,28 @@ const WhiteStyleChip = withStyles({
   }
 })(Chip);
 
-const ChipsArray = () => {
+const ChipsArray = ({companies}) => {
   const [chipData, setChipData] = useState([
     { key: uuidv4(), label: 'Angular' },
-    { key: uuidv4(), label: 'Javascript' },
+    { key: uuidv4(), label: 'JavaScript' },
     { key: uuidv4(), label: 'Node.js' },
-    { key: uuidv4(), label: 'jQuery' },
-    { key: uuidv4(), label: 'Polymer' },
+    { key: uuidv4(), label: 'PostgreSQL' },
+    { key: uuidv4(), label: 'Docker' },
     { key: uuidv4(), label: 'React.js' },
     { key: uuidv4(), label: 'Vue.js' },
     { key: uuidv4(), label: 'Python' },
   ]);
 
+  let stacksList = []
+  
+  chipData.map((data)=>
+    stacksList.push(data.label)
+  ) 
+  stacksList = stacksList.join(",")
+  
+  companies.setStacks(stacksList)
+
+  
   const handleDelete = (chipToDelete) => () => {
     setChipData((chips) => chips.filter((chip) => chip.key !== chipToDelete.key));
   };
