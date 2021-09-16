@@ -6,18 +6,26 @@ import RadioButtonsGroup from './RadioGroup';
 import NegativeRightIconButton from '../CTAs/NegativeRightIconButton';
 import Save from '../../Assets/Svg/UI/Save';
 import { FilterContext } from '../../Context/FilterContext';
+import { API_URL } from '../../Config/API_URL';
 const FilterSystem = () => {
   //TODO: use context pour set L'url
   const {setUrl}= useContext(FilterContext);
   
   const [stacks, setStacks] = useState([])
-  const [staffSize, setStaffSize] = useState([])
+  const [staffSize, setStaffSize] = useState("")
 
   console.log(stacks)
   console.log(staffSize)
-
+  
   useEffect(() => {
-    setUrl(`http://localhost:3000/companies?stack=${stacks}&staff_size=${staffSize}`) 
+    if (stacks && staffSize)
+    (setUrl(API_URL+`companies?stack=${stacks}&staff_size=${staffSize}`))
+    else if (stacks)
+    (setUrl(API_URL+`companies?stack=${stacks}`))
+    else if (staffSize)
+    (setUrl(API_URL+`companies?staff_size=${staffSize}`))
+    else
+    (setUrl(API_URL+'companies'))
   }, [stacks, staffSize, setUrl]);
 
   return (
