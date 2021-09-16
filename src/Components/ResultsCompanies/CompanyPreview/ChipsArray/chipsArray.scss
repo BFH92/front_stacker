@@ -1,0 +1,11 @@
+@import '../../../../Styles/variables.scss';
+
+.container__chips {
+  display: flex;
+  flex-wrap: wrap;
+
+  .chip--item {
+    margin-right: 5px;
+    margin-bottom: 5px;
+  }
+}

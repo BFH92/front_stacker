@@ -13,6 +13,7 @@ const Header = () => {
   return (
     <header className="container__header">
       <div className="container__subnav">
+        <h1>Stacker</h1>
         <ul>
           <li>
             <Link to="/company/dashboard">Espace Entreprise</Link>
@@ -22,22 +23,28 @@ const Header = () => {
           <li>Blog</li>
         </ul>
       </div>
-    { isLogged ? (
+  
       <div className="container__user--informations">
         <ThemeSwitch />
-        <Link to="/user/notifications">
-          <Badge color="secondary" variant="dot">
-            <Notifications />
-          </Badge>
-        </Link>
-        <Link to="/user/settings">
-          <Settings />
-        </Link>
-        <UserAvatarDropdown />
-      </div>)
-      : (
-        <h1>Stacker</h1>
-      )}
+        {isLogged ? (
+          <div className="container__connected--user">
+            <Link to="/user/notifications">
+              <Badge color="secondary" variant="dot">
+                <Notifications />
+              </Badge>
+            </Link>
+            <Link to="/user/settings">
+              <Settings />
+            </Link>
+            <UserAvatarDropdown />
+          </div>)
+        :
+          (<ul className="container__no--connected--user">
+            <li>Se connecter</li>
+            <li>S'inscrire</li>
+          </ul>)
+        }
+      </div>
     </header>
   );
 };

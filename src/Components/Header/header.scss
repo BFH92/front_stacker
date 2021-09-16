@@ -8,6 +8,8 @@
 
 .container__subnav {
   display: grid;
+  grid-auto-flow: column;
+  grid-gap: $padding * 2;
   place-items: center;
 
   ul {
@@ -27,6 +29,19 @@
     display: grid;
     place-items: center;
   }
+}
+
+.container__connected--user {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: $padding * 2;
+}
+
+.container__no--connected--user {
+  display: grid;
+  grid-auto-flow: column;
+  place-items: center;
+  grid-gap: $padding * 2;
 }
 
 #header--Notifications,

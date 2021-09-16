@@ -15,7 +15,7 @@ const WhiteRadio = withStyles({
 })((props) => <Radio color="default" {...props} />);
 
 const RadioButtonsGroup = () => {
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState('tous');
 
   const handleChange = (event) => {
     setValue(event.target.value);
