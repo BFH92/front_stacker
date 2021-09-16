@@ -1,0 +1,16 @@
+@import '../../../Styles/variables.scss';
+
+.container__chips {
+  display: flex;
+  flex-wrap: wrap;
+
+  .chip--item {
+    margin-right: 5px;
+    margin-bottom: 5px;
+  }
+}
+
+.MuiChip-labelSmall {
+  padding-left: 4px !important;
+  padding-right: 9px !important;
+}

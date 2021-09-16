@@ -40,66 +40,72 @@ const AsideNavbar = ({ user }) => {
   }, [logged_as]);
 
   return (
-    <nav className="container__aside--nav">
-      <div className="container--top">
-        <ul className="container__items">
-          <li>
-            <Link to="/" className="item">
-              <div className="container--svg">
-                <Home />
-              </div>
-              <label htmlFor="Bold/Home">Home</label>
-            </Link>
-          </li>
+    <div className="container__aside--nav--all">
 
-          {logged_as === "company"?(
-            ""):(<li className="item">
-            <Link to="/search/company" className="item">
-              <div className="container--svg">
-                <Search />
+      <nav className="container__aside--nav">
+        <div className="container--top">
+          <ul className="container__items">
+            <li>
+              <Link to="/" className="item">
+                <div className="container--svg">
+                  <Home />
+                </div>
+                <label htmlFor="Bold/Home">Home</label>
+              </Link>
+            </li>
+
+            {logged_as === "company"?(
+              ""):(<li className="item">
+              <Link to="/search/company" className="item">
+                <div className="container--svg">
+                  <Search />
+                </div>
+                <label htmlFor="Bold/Search">Search</label>
+              </Link>
+            </li> )}
+          
+            <li className="item">
+              <Link to="/stacks" className="item">
+                <div className="container--svg">
+                  <Stacks />
+                </div>
+                <label htmlFor="Bold/Stacks">Stacks</label>
+              </Link>
+            </li>
+            <li className="item">
+              <Link to="/about" className="item">
+                <div className="container--svg">
+                  <About />
+                </div>
+                <label htmlFor="Bold/About">About</label>
+              </Link>
+            </li>
+          </ul>
+        </div>
+        <div className="container--bottom">
+          {user.isLogged ? (
+            <div className="item">
+              <div className="container--svg" onClick={logout}>
+                <Logout />
               </div>
-              <label htmlFor="Bold/Search">Search</label>
-            </Link>
-          </li> )}
-        
-          <li className="item">
-            <Link to="/stacks" className="item">
-              <div className="container--svg">
-                <Stacks />
-              </div>
-              <label htmlFor="Bold/Stacks">Stacks</label>
-            </Link>
-          </li>
-          <li className="item">
-            <Link to="/about" className="item">
-              <div className="container--svg">
-                <About />
-              </div>
-              <label htmlFor="Bold/About">About</label>
-            </Link>
-          </li>
-        </ul>
-      </div>
-      <div className="container--bottom">
-        {user.isLogged ? (
-          <div className="item">
-            <div className="container--svg" onClick={logout}>
-              <Logout />
+              <label htmlFor="Bold/Logout">Logout</label>
             </div>
-            <label htmlFor="Bold/Logout">Logout</label>
-          </div>
-        ) : (
-          <div className="item">
-            <Link to="/user/sign-in">
-              <div className="container--svg">
-                <Login />
-              </div>
-              <label htmlFor="Bold/Login">Login</label>
-            </Link>
-          </div>
-        )}
-      </div>
-    </nav>
+          ) : (
+            <div className="item">
+              <Link to="/user/sign-in">
+                <div className="container--svg">
+                  <Login />
+                </div>
+                <label htmlFor="Bold/Login">Login</label>
+              </Link>
+            </div>
+          )}
+        </div>
+      </nav>
+
+      <div className="container__aside--nav--color"></div>
+
+    </div>
   );
 };
 

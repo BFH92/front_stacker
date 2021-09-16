@@ -1,10 +1,28 @@
 @import '../../Styles/variables.scss';
 
+.container__aside--nav--all {
+  position: relative;
+}
+
+.container__aside--nav--color {
+  top: 0;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: $purple;
+  z-index: -999;
+}
+
 .container__aside--nav {
+  height: 100%;
+  width: 100%;
   display: grid;
   grid-template-rows: 1fr auto;
-  background-color: $white;
+  background-color: $light-grey;
   padding: $padding * 2;
+  border-top-right-radius: $big-radius * 1.25;
+  border-bottom-right-radius: $big-radius * 1.25;
+  box-shadow: 3px 1px 30px 2px $black-opacity25;
 
   .container__items {
     display: grid;
