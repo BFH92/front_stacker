@@ -1,21 +1,23 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState,useEffect, useContext} from 'react';
 import './filterSystem.scss';
 import ChipsArray from './ChipsArray';
 import RadioButtonsGroup from './RadioGroup';
 // import SimpleSlider from './SimpleSlider';
 import NegativeRightIconButton from '../CTAs/NegativeRightIconButton';
 import Save from '../../Assets/Svg/UI/Save';
-
+import { FilterContext } from '../../Context/FilterContext';
 const FilterSystem = () => {
   //TODO: use context pour set L'url
+
+  const {setUrl}= useContext(FilterContext);
+  
   const [stacks, setStacks] = useState([])
   console.log(stacks)
   const [staffSize, setStaffSize] = useState([])
   console.log(staffSize)
   useEffect(() => {
-    const url = `http://localhost:3000/companies?stack=${stacks}&staff_size=${staffSize}`
-    console.log(url)
-  }, [stacks, staffSize]);
+    setUrl(`http://localhost:3000/companies?stack=${stacks}&staff_size=${staffSize}`) 
+  }, [stacks, staffSize, setUrl]);
   return (
     <div className="container__filter--system">
       <div className="container--top">

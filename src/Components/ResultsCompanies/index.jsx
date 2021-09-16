@@ -1,14 +1,18 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import './resultsCompanies.scss';
 import HeaderResultsCompanies from '../HeaderResultsCompanies';
 import PreviewCompany from '../PreviewCompany';
 import ProgressBar from '../Loaders/ProgressBar';
 import ProgressCircle from '../Loaders/ProgressCircle';
 import { CompaniesList } from '../../Services/RailsApi/CompaniesFetch/CompaniesDetails'
+import { FilterContext } from '../../Context/FilterContext';
 
 const ResultsCompanies = () => {
   //TODO: use Context here pour l'url
-  const {data} = CompaniesList('http://localhost:3000/companies');
+
+  const {url} = useContext(FilterContext)
+
+  const {data} = CompaniesList(url);
   const [company, setCompany] = useState([])
 
   useEffect(() => {

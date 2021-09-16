@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { useState, UseContext } from 'react';
 import './searchCompagny.scss';
-import FilterSystem from '../../Components/FilterSystem';
+import { FilterContext } from '../../Context/FilterContext';
 import Header from '../../Components/Header';
 import RecentSearch from '../../Components/RecentSearch';
 import ResultsCompanies from '../../Components/ResultsCompanies';
 import { API_URL } from '../../Config/API_URL';
+import FilterSystem from '../../Components/FilterSystem';
 
 const SearchCompany = () => {
 const[url, setUrl] = useState(API_URL+'companies');
 console.log(url)
 //TODO: create context here
   return (
+    <FilterContext.Provider value={{url , setUrl}}>
     <div className="container__search--companies">
       <FilterSystem />
       <div className="container--right">
@@ -21,6 +23,7 @@ console.log(url)
         </div>
       </div>
     </div>
+    </FilterContext.Provider>
   );
 };
 
