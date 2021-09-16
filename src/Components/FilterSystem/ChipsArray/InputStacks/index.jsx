@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import { v4 as uuidv4 } from 'uuid';
@@ -29,24 +29,28 @@ const CustomNegativeInput = withStyles({
 })(TextField);
 
 const InputStacks = ({value}) => {
+  let input = value.chipData
+  const[inputData, setInputData]=useState("")
+
+  const handleInputStacks = (e) => {
+    setInputData(e.target.value);
+  }
+
+  const addInputStacks = (e) => {
+    e.preventDefault()
+    //condition si stack existe 
+    input.push({ key: uuidv4(), label: inputData })
+    //else aler tag n'existe pas
+    value.setChipData(input)
+    setInputData("")
+  }
+
+
+
 
   
-  
-  const handleInputStacks = (e) => {
-    e.preventDefault()
-    console.log(value.chipData)
-    let input = value.chipData
-    input.push({ key: uuidv4(), label: 'Java' })
-    value.setChipData(input)
-    console.log(input)
-  }
-  
-  useEffect(() => {
-  
-  }, []);
-  
   return (
-    <form noValidate onSubmit={handleInputStacks}>
+    <form noValidate onSubmit={addInputStacks}> 
       <CustomNegativeInput
         label="Recherche par stacks"
         variant="outlined"
@@ -54,8 +58,10 @@ const InputStacks = ({value}) => {
         InputLabelProps={{
           style: { color: '#fff' }, 
        }}
+       value={inputData}
+       onChange={handleInputStacks}
        autoComplete="off"
-      />
+      /> 
     </form  >
   );
 };

@@ -25,14 +25,14 @@ const ChipsArray = ({companies}) => {
     { key: uuidv4(), label: 'Python' },
   ]);
   
-  useEffect(() => {
+ useEffect(() => {
     let stacksList = []
     chipData.map((data)=>
       stacksList.push(data.label)
     ) 
     stacksList = stacksList.join(",")
     companies.setStacks(stacksList)
-  }, [chipData]);
+ });
   
   const handleDelete = (chipToDelete) => () => {
     setChipData((chips) => chips.filter((chip) => chip.key !== chipToDelete.key));
