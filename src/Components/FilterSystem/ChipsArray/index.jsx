@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Chip from '@material-ui/core/Chip';
 import { withStyles } from '@material-ui/core/styles';
 import { v4 as uuidv4 } from 'uuid';
@@ -24,16 +24,15 @@ const ChipsArray = ({companies}) => {
     { key: uuidv4(), label: 'Vue.js' },
     { key: uuidv4(), label: 'Python' },
   ]);
-
-  let stacksList = []
   
-  chipData.map((data)=>
-    stacksList.push(data.label)
-  ) 
-  stacksList = stacksList.join(",")
-  
-  companies.setStacks(stacksList)
-
+  useEffect(() => {
+    let stacksList = []
+    chipData.map((data)=>
+      stacksList.push(data.label)
+    ) 
+    stacksList = stacksList.join(",")
+    companies.setStacks(stacksList)
+  }, [chipData]);
   
   const handleDelete = (chipToDelete) => () => {
     setChipData((chips) => chips.filter((chip) => chip.key !== chipToDelete.key));
@@ -41,7 +40,7 @@ const ChipsArray = ({companies}) => {
 
   return (
     <div className="container__filter--group">
-      <InputStacks />
+      <InputStacks value={{chipData, setChipData}}/>
       <ul className="container__chips">
         {chipData.map((data) => {
           return (

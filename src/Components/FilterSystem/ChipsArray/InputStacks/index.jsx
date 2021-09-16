@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import { v4 as uuidv4 } from 'uuid';
 
 const CustomNegativeInput = withStyles({
   root: {
@@ -27,10 +28,25 @@ const CustomNegativeInput = withStyles({
   },
 })(TextField);
 
-const InputStacks = () => {
+const InputStacks = ({value}) => {
 
+  
+  
+  const handleInputStacks = (e) => {
+    e.preventDefault()
+    console.log(value.chipData)
+    let input = value.chipData
+    input.push({ key: uuidv4(), label: 'Java' })
+    value.setChipData(input)
+    console.log(input)
+  }
+  
+  useEffect(() => {
+  
+  }, []);
+  
   return (
-    <form noValidate>
+    <form noValidate onSubmit={handleInputStacks}>
       <CustomNegativeInput
         label="Recherche par stacks"
         variant="outlined"
@@ -40,7 +56,7 @@ const InputStacks = () => {
        }}
        autoComplete="off"
       />
-    </form>
+    </form  >
   );
 };
 

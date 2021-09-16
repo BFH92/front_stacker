@@ -14,8 +14,7 @@ const FilterSystem = () => {
   const [stacks, setStacks] = useState([])
   const [staffSize, setStaffSize] = useState("")
 
-  console.log(stacks)
-  console.log(staffSize)
+
   
  
   useEffect(() => {
