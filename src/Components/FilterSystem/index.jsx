@@ -17,15 +17,16 @@ const FilterSystem = () => {
   console.log(stacks)
   console.log(staffSize)
   
+ 
   useEffect(() => {
-    if (stacks && staffSize)
-    (setUrl(API_URL+`companies?stack=${stacks}&staff_size=${staffSize}`))
-    else if (stacks)
-    (setUrl(API_URL+`companies?stack=${stacks}`))
-    else if (staffSize)
-    (setUrl(API_URL+`companies?staff_size=${staffSize}`))
-    else
-    (setUrl(API_URL+'companies'))
+    let urlParameters = [API_URL+ 'companies?']
+    if (staffSize)(urlParameters.push(`staff_size=${staffSize}`))
+    if (stacks)(urlParameters.push(`stack=${stacks}`))
+    
+    urlParameters = urlParameters.join("&")
+    console.log(urlParameters)
+    setUrl(urlParameters)
+
   }, [stacks, staffSize, setUrl]);
 
   return (
