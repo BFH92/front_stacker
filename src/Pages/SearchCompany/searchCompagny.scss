@@ -1,0 +1,22 @@
+@import '../../Styles/variables.scss';
+
+.container__search--companies {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+
+  .container--right {
+    position: relative;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    overflow-y: scroll;
+  }
+}
+
+.container__results--all {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  grid-gap: $padding * 2;
+  padding: $padding * 2;
+}

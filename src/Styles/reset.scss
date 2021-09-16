@@ -1,14 +1,15 @@
 @import './variables.scss';
 
-// html {
-//   -webkit-font-smoothing: antialiased;
-//   -moz-osx-font-smoothing: grayscale;
-//   text-rendering: optimizeLegibility;
-// }
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
 
 body {
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: Roboto, sans-serif;
   font-size: $font-size;
+  color: $blue;
   overscroll-behavior-y: none;
   overscroll-behavior-x: none;
 }

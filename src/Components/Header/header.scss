@@ -1,0 +1,51 @@
+@import '../../Styles/variables.scss';
+
+.container__header {
+  display: flex;
+  justify-content: space-between;
+  padding: $padding * 2;
+}
+
+.container__subnav {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: $padding * 2;
+  place-items: center;
+
+  ul {
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: $padding * 2;
+    font-weight: 500;
+  }
+}
+
+.container__user--informations {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: $padding * 2;
+
+  & * {
+    display: grid;
+    place-items: center;
+  }
+}
+
+.container__connected--user {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: $padding * 2;
+}
+
+.container__no--connected--user {
+  display: grid;
+  grid-auto-flow: column;
+  place-items: center;
+  grid-gap: $padding * 2;
+}
+
+#header--Notifications,
+#header--Settings,
+#header--Arrow---Down-2 {
+  stroke: $blue;
+}

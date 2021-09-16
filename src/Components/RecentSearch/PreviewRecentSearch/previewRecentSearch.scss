@@ -1,0 +1,19 @@
+@import '../../../Styles/variables.scss';
+
+.recent--search--item {
+  display: grid;
+  grid-gap: $padding;
+  border: 2px solid $purple;
+  background-color: $white;
+  border-radius: $medium-radius;
+  padding: $padding;
+  cursor: pointer;
+
+  .container__date {
+    color: $medium-grey;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-gap: $padding;
+    font-weight: 600;
+  }
+}

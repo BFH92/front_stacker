@@ -1,16 +1,23 @@
 $font-size: 13px;
-$medium-font-size: $font-size * 1.25;
-$negative-font-size: -13px;
 $big-font-size: 65px;
 
 $padding: 13px;
-$small-padding: $padding / 2;
-$negative-small-padding: -$padding / 2;
 
-$blue: rgb(0, 0, 255);
-$black: rgb(0, 0, 0);
+$purple: rgb(92, 30, 226);
+$blue: rgb(92, 30, 226);
+$blueeeee: rgb(0, 41, 103);
+$black: rgb(21, 23, 24);
+$black-opacity25: rgba(21, 23, 24, 0.25);
 $white: rgb(255, 255, 255);
-$light-grey: rgb(198, 198, 198);
-$dark-grey: rgb(126, 126, 126);
 
-$border: 1px solid $light-grey;
+$danger: rgb(235, 41, 86);
+$success: rgb(76, 175, 80);
+$warning: rgb(231, 189, 38);
+
+$light-grey: rgb(246, 247, 254);
+$medium-grey: rgb(189, 189, 189);
+$dark-grey: rgb(151, 164, 184);
+
+$big-radius: 30px;
+$medium-radius: 20px;
+$small-radius: 10px;
