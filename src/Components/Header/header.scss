@@ -8,19 +8,22 @@
 
 .container__subnav {
   display: grid;
+  grid-auto-flow: column;
+  grid-gap: $padding * 2;
   place-items: center;
 
   ul {
     display: grid;
     grid-auto-flow: column;
-    grid-gap: $padding;
+    grid-gap: $padding * 2;
+    font-weight: 500;
   }
 }
 
 .container__user--informations {
   display: grid;
   grid-auto-flow: column;
-  grid-gap: $padding;
+  grid-gap: $padding * 2;
 
   & * {
     display: grid;
@@ -28,7 +31,21 @@
   }
 }
 
+.container__connected--user {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: $padding * 2;
+}
+
+.container__no--connected--user {
+  display: grid;
+  grid-auto-flow: column;
+  place-items: center;
+  grid-gap: $padding * 2;
+}
+
 #header--Notifications,
-#header--Settings {
+#header--Settings,
+#header--Arrow---Down-2 {
   stroke: $blue;
 }

@@ -3,7 +3,7 @@ import React from 'react';
 import './settings.scss';
 //components
 import Header from '../../Components/Header';
-import { UserForm } from '../../Components/Forms/UserForm';
+import { UserForm } from '../../Components/Forms/UserEditForm';
 import { CompanyForm } from '../../Components/Forms/CompanyForm';
 import {Link} from 'react-router-dom';
 import SettingsHeader from '../../Components/SettingsHeader';
