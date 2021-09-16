@@ -4,12 +4,12 @@ import FilterSystem from '../../Components/FilterSystem';
 import Header from '../../Components/Header';
 import RecentSearch from '../../Components/RecentSearch';
 import ResultsCompanies from '../../Components/ResultsCompanies';
-
+import { API_URL } from '../../Config/API_URL';
 
 const SearchCompany = () => {
-
-  
-  
+const[url, setUrl] = useState(API_URL+'companies');
+console.log(url)
+//TODO: create context here
   return (
     <div className="container__search--companies">
       <FilterSystem />

@@ -7,6 +7,7 @@ import ProgressCircle from '../Loaders/ProgressCircle';
 import { CompaniesList } from '../../Services/RailsApi/CompaniesFetch/CompaniesDetails'
 
 const ResultsCompanies = () => {
+  //TODO: use Context here pour l'url
   const {data} = CompaniesList('http://localhost:3000/companies');
   const [company, setCompany] = useState([])
 
