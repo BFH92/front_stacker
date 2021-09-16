@@ -21,7 +21,7 @@ const AsideNavbar = ({ user }) => {
 
   let logged_as
   logged_as = useSelector(state=> state.user.logged_as)
-
+  let isLogged = useSelector(state=> state.user.isLogged)
   const logout = async (e) => {
   
     e.preventDefault();
@@ -38,6 +38,10 @@ const AsideNavbar = ({ user }) => {
     
     return () => {};
   }, [logged_as]);
+  useEffect(() => {
+    
+    return () => {};
+  }, [isLogged]);
 
   return (
     <div className="container__aside--nav--all">
@@ -83,7 +87,7 @@ const AsideNavbar = ({ user }) => {
           </ul>
         </div>
         <div className="container--bottom">
-          {user.isLogged ? (
+          {isLogged ? (
             <div className="item">
               <div className="container--svg" onClick={logout}>
                 <Logout />

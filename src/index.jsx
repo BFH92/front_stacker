@@ -31,7 +31,8 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { useSelector } from "react-redux";
 
 const App = () => {
-  const [isLogged, setIsLogged] = useState("");
+  const [isLogged, setIsLogged] = useState(false);
+  console.log(isLogged)
   const CompanyRoute = ({ component:Component, ...rest }) => {
     const logged_as = useSelector(state => state.user.logged_as)
   
