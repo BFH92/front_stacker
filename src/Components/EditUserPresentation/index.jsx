@@ -10,18 +10,19 @@ export const EditUserPresentation = () => {
     const [last_name, setLast_Name] = useState("");
     const [description, setDescription] = useState("");
     const [github_link, setGithub_Link] = useState("");
-    useEffect (() => {
-        getUserDetail()
-    }, []);
 
     const getUserDetail = async() => {
         const detail = await UserInfoManager.getDetails(userId)
         console.log(detail)
-        setFirst_Name(detail.first_name)
-        setLast_Name(detail.last_name)
-        setDescription(detail.description)
-        setGithub_Link(detail.github_link)
+        setFirst_Name(detail.data.first_name)
+        setLast_Name(detail.data.last_name)
+        setDescription(detail.data.description)
+        setGithub_Link(detail.data.github_link)
     }
+
+    useEffect (() => {
+        getUserDetail()
+    }, []);
 
     const history = useHistory();
 
@@ -34,7 +35,7 @@ export const EditUserPresentation = () => {
 
     return (
         <div>
-            <h2>Modifier ma présentation</h2>
+            <h3>Modifier ma présentation</h3>
             <div>
                 <form>
                     <label>
