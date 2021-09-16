@@ -1,6 +1,6 @@
 import React from 'react';
 import './recentSearch.scss';
-import PreviewRecentSearch from '../PreviewRecentSearch';
+import PreviewRecentSearch from './PreviewRecentSearch';
 
 const RecentSearch = () => {
 

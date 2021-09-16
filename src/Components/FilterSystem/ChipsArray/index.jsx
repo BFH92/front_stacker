@@ -13,7 +13,7 @@ const WhiteStyleChip = withStyles({
   }
 })(Chip);
 
-const ChipsArray = ({companies}) => {
+const ChipsArray = ({data}) => {
   const [chipData, setChipData] = useState([
     { key: uuidv4(), label: 'Symphony' },
     { key: uuidv4(), label: 'JavaScript' },
@@ -31,7 +31,7 @@ const ChipsArray = ({companies}) => {
       stacksList.push(data.label)
     ) 
     stacksList = stacksList.join(",")
-    companies.setStacks(stacksList)
+    data.setStacks(stacksList)
  });
   
   const handleDelete = (chipToDelete) => () => {
