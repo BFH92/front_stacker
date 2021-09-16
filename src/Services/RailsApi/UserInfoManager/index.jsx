@@ -33,7 +33,7 @@ export default class UserInfoManager {
     data.append('last_name', last_name);
     data.append('description', description);
     data.append('github_link', github_link);
-
+    console.log(data)
     const response = await API.put(
         `/users/${id}`,
         data,
