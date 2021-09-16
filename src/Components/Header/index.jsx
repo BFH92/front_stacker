@@ -13,7 +13,6 @@ const Header = () => {
   return (
     <header className="container__header">
       <div className="container__subnav">
-        <h1>Stacker</h1>
         <ul>
           <li>
             <Link to="/company/dashboard">Espace Entreprise</Link>
@@ -45,6 +44,7 @@ const Header = () => {
           </ul>)
         }
       </div>
+
     </header>
   );
 };

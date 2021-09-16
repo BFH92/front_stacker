@@ -17,9 +17,10 @@
   height: 100%;
   width: 100%;
   display: grid;
+  padding: $padding;
+  grid-gap: $padding * 2;
   grid-template-rows: 1fr auto;
   background-color: $light-grey;
-  padding: $padding * 2;
   border-top-right-radius: $big-radius * 1.25;
   border-bottom-right-radius: $big-radius * 1.25;
   box-shadow: 3px 1px 30px 2px $black-opacity25;
@@ -33,13 +34,17 @@
     display: grid;
     grid-auto-flow: row;
     grid-gap: $padding / 2;
+    padding: $padding;
+    border-radius: 50%;
+    transition: all 0.15s ease-in-out;
+    cursor: pointer;
 
     .container--svg {
       width: 100%;
-      aspect-ratio: 1/1;
+      // aspect-ratio: 1/1;
       display: grid;
       place-items: center;
-      background-color: $blue;
+      background-color: none;
       border-radius: $small-radius;
     }
 
@@ -53,11 +58,16 @@
   }
 }
 
-#nav--Home,
 #nav--Search,
 #nav--Stacks,
-#nav--About,
-#nav--Login,
+#nav--About {
+  fill: $black;
+}
+
+#nav--Login {
+  fill: $success;
+}
+
 #nav--Logout {
-  fill: $white;
+  fill: $danger;
 }
