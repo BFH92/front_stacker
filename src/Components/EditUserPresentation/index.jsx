@@ -27,7 +27,7 @@ export const EditUserPresentation = () => {
 
     const updateUserDetails = async (e) => {
         e.preventDefault();
-        const response = await UserInfoManager.updateDetails(first_name, last_name, description, github_link);
+        const response = await UserInfoManager.updateDetails(userId, first_name, last_name, description, github_link);
         Promise.resolve(response)
         history.push(`/user/dashboard`)
     };
