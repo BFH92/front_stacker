@@ -8,16 +8,18 @@ import Save from '../../Assets/Svg/UI/Save';
 import { FilterContext } from '../../Context/FilterContext';
 const FilterSystem = () => {
   //TODO: use context pour set L'url
-
   const {setUrl}= useContext(FilterContext);
   
   const [stacks, setStacks] = useState([])
-  console.log(stacks)
   const [staffSize, setStaffSize] = useState([])
+
+  console.log(stacks)
   console.log(staffSize)
+
   useEffect(() => {
     setUrl(`http://localhost:3000/companies?stack=${stacks}&staff_size=${staffSize}`) 
   }, [stacks, staffSize, setUrl]);
+
   return (
     <div className="container__filter--system">
       <div className="container--top">

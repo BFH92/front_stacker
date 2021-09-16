@@ -25,10 +25,11 @@ const RadioButtonsGroup = ({companies}) => {
     <div className="container__filter--group">
       <label htmlFor="" className="title__filter">Effectifs</label>
       <RadioGroup aria-label="gender" name="gender1" value={companies.staffSize} onChange={handleChange}>
-        <FormControlLabel value="1-9" control={<WhiteRadio />} label="1-9" />
-        <FormControlLabel value="10-49" control={<WhiteRadio />} label="10-49" />
-        <FormControlLabel value="49+" control={<WhiteRadio />} label="49+" />
-        <FormControlLabel value="" control={<WhiteRadio />} label="Tous" />
+        <FormControlLabel value="0..9" control={<WhiteRadio />} label="0..9" />
+        <FormControlLabel value="10..49" control={<WhiteRadio />} label="10..49" />
+        <FormControlLabel value="50..249" control={<WhiteRadio />} label="50..249" />
+        <FormControlLabel value="250..+" control={<WhiteRadio />} label="250..+" />
+        <FormControlLabel value="" control={<WhiteRadio />} label="Toutes" />
       </RadioGroup>
     </div>
   );

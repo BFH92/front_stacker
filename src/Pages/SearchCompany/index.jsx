@@ -8,9 +8,9 @@ import { API_URL } from '../../Config/API_URL';
 import FilterSystem from '../../Components/FilterSystem';
 
 const SearchCompany = () => {
-const[url, setUrl] = useState(API_URL+'companies');
-console.log(url)
-//TODO: create context here
+
+  const[url, setUrl] = useState(API_URL+'companies');
+
   return (
     <FilterContext.Provider value={{url , setUrl}}>
     <div className="container__search--companies">

@@ -9,7 +9,6 @@ import { FilterContext } from '../../Context/FilterContext';
 
 const ResultsCompanies = () => {
   //TODO: use Context here pour l'url
-
   const {url} = useContext(FilterContext)
 
   const {data} = CompaniesList(url);
