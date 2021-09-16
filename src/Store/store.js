@@ -31,7 +31,8 @@ if (window.navigator.userAgent.includes("Chrome")) {
 } else {
   store = createStore(
     persistedReducer,
-    compose(applyMiddleware(thunkMiddleware))
+    compose(applyMiddleware(thunkMiddleware),window.__REDUX_DEVTOOLS_EXTENSION__ &&
+        window.__REDUX_DEVTOOLS_EXTENSION__())
   );
 }
 
