@@ -29,19 +29,26 @@ const CustomNegativeInput = withStyles({
 })(TextField);
 
 const InputStacks = ({value}) => {
-  let input = value.chipData
+  
   const[inputData, setInputData]=useState("")
 
   const handleInputStacks = (e) => {
     setInputData(e.target.value);
   }
+  let labels = new Set()
+  value.chipData.map((element)=>
+    labels.add(element.label)
+  )
 
   const addInputStacks = (e) => {
     e.preventDefault()
-    //condition si stack existe 
-    input.push({ key: uuidv4(), label: inputData })
-    //else aler tag n'existe pas
-    value.setChipData(input)
+    labels.add(inputData)
+    labels = Array.from(labels)
+    let StackList =[] 
+    labels.map((label)=>
+    StackList.push({ key: uuidv4(), label: label})
+    )
+    value.setChipData(StackList)
     setInputData("")
   }
 
