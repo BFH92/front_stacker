@@ -41,7 +41,7 @@ export const EditUserPresentation = () => {
                         Prénom
                         <input
                         type="text"
-                        value={first_name? first_name : null}
+                        value={first_name? first_name : ""}
                         onChange={(e)=>setFirst_Name(e.target.value)}
                         />
                     </label>
@@ -49,7 +49,7 @@ export const EditUserPresentation = () => {
                         Nom de famille
                         <input
                         type="text"
-                        value={last_name? last_name : null}
+                        value={last_name? last_name : ""}
                         onChange={(e)=>setLast_Name(e.target.value)}
                         />
                     </label>
@@ -57,7 +57,7 @@ export const EditUserPresentation = () => {
                         Description
                         <input
                         type="text"
-                        value={description? description : null}
+                        value={description? description : ""}
                         onChange={(e)=>setDescription(e.target.value)}
                         />
                     </label>
@@ -65,7 +65,7 @@ export const EditUserPresentation = () => {
                         GitHub Link
                         <input
                         type="text"
-                        value={github_link? github_link : null}
+                        value={github_link? github_link : ""}
                         onChange={(e)=>setGithub_Link(e.target.value)}
                         />
                     </label>
