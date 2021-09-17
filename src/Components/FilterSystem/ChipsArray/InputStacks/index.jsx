@@ -46,21 +46,24 @@ const InputStacks = ({value}) => {
 
   const addInputStacks = (e) => {
     e.preventDefault()
+    if (inputData) {
     labels.add(inputData)
     labels = Array.from(labels)
     let StackList =[] 
     labels.map((label)=>
     StackList.push({ key: uuidv4(), label: label})
     )
+
     value.setChipData(StackList)
     setInputData("")
+    }
   }
 
 
 
   
   return (
-    <form noValidate onSubmit={addInputStacks}>
+    <form noValidate onSubmit={addInputStacks} >
     <Autocomplete 
     //The component has two states that can be controlled:
     //the "value" state with the value/onChange props combination. This state represents the value selected by the user, for instance when pressing Enter.
@@ -68,12 +71,16 @@ const InputStacks = ({value}) => {
 
         value={stacks}
         onChange={(event, newValue) => {
-          setStacks(newValue);
+          setInputData(newValue);
+          console.log(newValue)
         }}
-        inputValue={inputData}
+
+        inputValue={stacks}
         onInputChange={(event, newInputValue) => {
-          setInputData(newInputValue);
+          setStacks(newInputValue);  
+          console.log(newInputValue)
         }}
+        
         id="controllable-states-demo"
         options={stacksList}
         sx={{ width: 250}}
