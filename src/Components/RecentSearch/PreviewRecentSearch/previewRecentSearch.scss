@@ -2,12 +2,36 @@
 
 .recent--search--item {
   display: grid;
-  grid-gap: $padding;
-  border: 2px solid $purple;
+  grid-auto-flow: column;
   background-color: $white;
   border-radius: $medium-radius;
-  padding: $padding;
-  cursor: pointer;
+  box-shadow: 0px 0px 10px -5px $medium-grey;
+
+  .container__cta {
+    box-shadow: inset -5px 0px 5px -5px $medium-grey;
+    display: grid;
+    place-items: center;
+    padding: $padding;
+    border-top-left-radius: $medium-radius;
+    border-bottom-left-radius: $medium-radius;
+    transition: all 0.15s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $purple;
+      box-shadow: inset -5px 0px 5px -5px $black-opacity25;
+
+      #UI--LeftSimpleArrow {
+        stroke: $white;
+      }
+    }
+  }
+
+  .container__informations {
+    display: grid;
+    grid-gap: $padding;
+    padding: $padding;
+  }
 
   .container__date {
     color: $medium-grey;
@@ -16,4 +40,8 @@
     grid-gap: $padding;
     font-weight: 600;
   }
+}
+
+#UI--LeftSimpleArrow {
+  stroke: $purple;
 }

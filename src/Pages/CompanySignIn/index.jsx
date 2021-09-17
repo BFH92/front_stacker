@@ -5,7 +5,6 @@ import { useHistory } from "react-router";
 import { useDispatch } from "react-redux";
 import { RegisterUserLoginStatus, RegisterUserLogoutStatus } from "../../Store";
 import { Link } from "react-router-dom";
-import Header from "../../Components/Header";
 
 
   const CompanySignIn = ({user}) => {
@@ -27,7 +26,6 @@ import Header from "../../Components/Header";
   return (
     <>
       <div>
-        <Header />
         <h1>Espace entreprise</h1>
         <SignInForm user={{ email, setEmail, password, setPassword, login }} />
       </div>

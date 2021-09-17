@@ -7,9 +7,6 @@ import Exemple from '../../../../Assets/Svg/Stacks/Exemple';
 
 const OutlinedPurpleStyleChip = withStyles({
   root: {
-    backgroundColor:'rgb(246, 247, 254)',
-    borderColor:'rgb(189, 189, 189)',
-    color:'rgb(21, 23, 24)',
   }
 })(Chip);
 
@@ -29,7 +26,6 @@ const ChipsArray = () => {
           return (
             <li key={data.key} className="chip--item">
               <OutlinedPurpleStyleChip
-                variant="outlined"
                 size="small"
                 label={data.label}
                 icon={<Exemple />}
