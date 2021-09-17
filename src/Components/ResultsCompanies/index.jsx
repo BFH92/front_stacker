@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useContext} from 'react';
 import './resultsCompanies.scss';
-//import HeaderResultsCompanies from '../HeaderResultsCompanies';
+import HeaderResultsCompanies from '../ResultsCompanies/HeaderResultsCompanies';
 import PreviewCompany from '../PreviewCompany';
 import ProgressBar from '../Loaders/ProgressBar';
 import ProgressCircle from '../Loaders/ProgressCircle';
