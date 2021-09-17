@@ -9,10 +9,10 @@ const CompanyDashboard = () => {
     <div className="">
       <Header />
       <div className="container__title-pane">Company Dashboard</div>
-      <div className="container__results--all">
-      <CompanyPresentation />
-      <RecentSearch />
-      </div>
+        <div className="container__results--all">
+        <CompanyPresentation />
+        <RecentSearch />
+        </div>
     </div>
   );
 };
