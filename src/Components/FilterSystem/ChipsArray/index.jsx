@@ -14,6 +14,7 @@ const WhiteStyleChip = withStyles({
 })(Chip);
 
 const ChipsArray = ({data}) => {
+  const [chipData, setChipData] = useState([]);
   
  useEffect(() => {
     let stacksList = []
