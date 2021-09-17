@@ -1,51 +1,68 @@
 import React from "react";
+import './header.scss';
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Settings from "../../Assets/Svg/Header/Settings";
-import './header.scss';
 import Notifications from '../../Assets/Svg/Header/Notifications';
-import UserAvatarDropdown from './UserAvatarDropdown';
+import UserAvatar from './UserAvatar';
 import Badge from '@material-ui/core/Badge';
 import ThemeSwitch from './ThemeSwitch';
+import { createStyles, makeStyles } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Button from "@material-ui/core/Button";
+import Nav from './NavTabs';
+
+const useStyles = makeStyles(() =>
+  createStyles({
+    root: {
+      flexGrow: 1
+    },
+    logo: {
+      flexGrow: 1,
+      display: "grid",
+      justifyContent: "start",
+    },
+    grid_column_auto: {
+      display: "grid",
+      gridAutoFlow: "column",
+      placeItems: "center",
+      gridGap: 20,
+    }
+  })
+);
 
 const Header = () => {
   const isLogged = useSelector((state) => state.user.isLogged);
-  return (
-    <header className="container__header">
-      <div className="container__subnav">
-        <ul>
-          <li>
-            <Link to="/company/dashboard">Espace Entreprise</Link>
-          </li>
-          <li>Services</li>
-          <li>Pricing</li>
-          <li>Blog</li>
-        </ul>
-      </div>
+  const classes = useStyles();
   
-      <div className="container__user--informations">
-        <ThemeSwitch />
-        {isLogged ? (
-          <div className="container__connected--user">
-            <Link to="/user/notifications">
-              <Badge color="secondary" variant="dot">
-                <Notifications />
-              </Badge>
-            </Link>
-            <Link to="/user/settings">
-              <Settings />
-            </Link>
-            <UserAvatarDropdown />
-          </div>)
-        :
-          (<ul className="container__no--connected--user">
-            <li>Se connecter</li>
-            <li>S'inscrire</li>
-          </ul>)
-        }
-      </div>
-
-    </header>
+  return (
+    <AppBar position="static" className={classes.root}>
+      <Toolbar>
+        <Nav />
+        <div className={classes.grid_column_auto}>        
+          <ThemeSwitch />
+          {isLogged ? (
+            <div className={classes.grid_column_auto}>
+              <Link to="/user/notifications">
+                <Badge color="secondary" variant="dot">
+                  <Notifications />
+                </Badge>
+              </Link>
+              <Link to="/user/settings">
+                <Settings />
+              </Link>
+              <UserAvatar />
+            </div>
+          ) : (
+            <div className={classes.grid_column_auto}>
+              <Button color="inherit">Se Connecter</Button>
+              <Button color="inherit">S'inscrire</Button>
+            </div>
+          )}
+        </div>
+      </Toolbar>
+    </AppBar>
   );
 };
 

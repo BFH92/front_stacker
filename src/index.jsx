@@ -31,23 +31,9 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { useSelector } from "react-redux";
 
 // MUI Theme
-import { createTheme, ThemeProvider } from "@material-ui/core";
-
-const LightTheme = createTheme({
-  palette: {
-    primary: {
-      main: 'rgb(76, 175, 80)'
-    },
-  },
-});
-
-const DarkTheme = createTheme({
-  palette: {
-    primary: {
-      main: 'rgb(76, 175, 80)'
-    },
-  },
-});
+import { ThemeProvider } from "@material-ui/core";
+import LightTheme from "./Assets/Themes/LightTheme";
+import DarkTheme from "./Assets/Themes/DarkTheme";
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -87,12 +73,12 @@ const App = () => {
   };
 
   return (
-    <ThemeProvider theme={darkMode ? LightTheme : DarkTheme}>
+    <ThemeProvider theme={darkMode ? DarkTheme : LightTheme}>
       <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
       <Router>        
         <div className="container__all">
-          <AsideNavbar  user={{isLogged, setIsLogged}}/>
+          <AsideNavbar user={{isLogged, setIsLogged}}/>
           
           <main className="container__main">
             <Switch>
