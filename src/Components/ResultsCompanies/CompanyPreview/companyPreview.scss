@@ -1,0 +1,36 @@
+@import '../../../Styles/variables.scss';
+
+.container__company--preview {
+  padding: $padding;
+  border-radius: $medium-radius;
+  background-color: $white;
+  display: grid;
+  grid-gap: $padding;
+
+  .top--informations {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-gap: $padding;
+
+    .text--informations {
+      display: grid;
+      align-items: center;
+
+      small {
+        color: $medium-grey;
+        font-size: $font-size;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+#previewCompany--FavoriteBorder {
+  stroke: $warning;
+}
+#Light--FavoriteFill {
+  fill: $warning;
+}
+#previewCompany--FavoriteFill {
+  stroke: $warning;
+}

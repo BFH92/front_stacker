@@ -21,8 +21,8 @@ const ResultsCompanies = () => {
   return (
     <div className="results__main--grid">
       <HeaderResultsCompanies />
-      <ProgressBar />
-      <ProgressCircle />
+      {/* <ProgressBar />
+      <ProgressCircle /> */}
       <div className="results--all">
         <div className="all--items">
           <ul>
