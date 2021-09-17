@@ -16,7 +16,6 @@ import UserDashboard from './Pages/UserDashboard';
 import CompanyDashboard from './Pages/CompanyDashboard';
 import Notifications from './Pages/Notifications';
 import Settings from './Pages/Settings';
-import AsideNavbar from './Components/AsideNavbar';
 import UserSignIn from "./Pages/UserSignIn";
 import UserSignUp from "./Pages/UserSignUp";
 import CompanySignIn from "./Pages/CompanySignIn";
@@ -78,7 +77,7 @@ const App = () => {
       <PersistGate loading={null} persistor={persistor}>
       <Router>        
         <div className="container__all">
-          <Header user={{isLogged, setIsLogged}}/>
+          <Header user={{isLogged, setIsLogged}} />
           
           <main className="container__main">
             <Switch>

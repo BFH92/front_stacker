@@ -4,11 +4,10 @@ import './settings.scss';
 //components
 import { UserForm } from '../../Components/Forms/UserEditForm';
 import { CompanyForm } from '../../Components/Forms/CompanyForm';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 const Settings = () => {
-
 
   return (
     <div className="">

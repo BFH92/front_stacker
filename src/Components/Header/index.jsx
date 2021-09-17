@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import './header.scss';
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector} from "react-redux";
 import { Link } from "react-router-dom";
 import Settings from "../../Assets/Svg/Header/Settings";
 import Notifications from '../../Assets/Svg/Header/Notifications';
@@ -12,6 +12,11 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import Nav from './NavTabs';
+
+import { useHistory } from "react-router";
+import UsersAPIManager from "../../Services/RailsApi/UsersFetch";
+import { RegisterUserLogoutStatus } from "../../Store";
+import CompaniesAPIManager from "../../Services/RailsApi/CompaniesFetch";
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -32,9 +37,31 @@ const useStyles = makeStyles(() =>
   })
 );
 
-const Header = () => {
+const Header = ({ user }) => {
   const isLogged = useSelector((state) => state.user.isLogged);
   const classes = useStyles();
+
+  const history = useHistory();
+  const dispatch = useDispatch();
+
+  let logged_as
+  logged_as = useSelector(state=> state.user.logged_as)
+
+  const logout = async (e) => {
+  
+    e.preventDefault();
+    let response;
+    dispatch(RegisterUserLogoutStatus());
+    logged_as === "company" ? response = await CompaniesAPIManager.logout() : response = await UsersAPIManager.logout();
+  
+    user.setIsLogged(false);
+    console.log(response);
+    history.push("/");
+  };
+
+  useEffect(() => {    
+    return () => {};
+  }, [logged_as]);
   
   return (
     <AppBar position="static" className={classes.root}>
@@ -53,11 +80,12 @@ const Header = () => {
                 <Settings />
               </Link>
               <UserAvatar />
+              
             </div>
           ) : (
             <div className={classes.grid_column_auto}>
-              <Button color="inherit">Se Connecter</Button>
-              <Button color="inherit">S'inscrire</Button>
+              <Button color="inherit">Connection</Button>
+              <Button color="inherit">Inscription</Button>
             </div>
           )}
         </div>
