@@ -21,13 +21,16 @@ export default class CompanyInfoManager {
     return response;
   };
 
-  static async updateDetails(id, 
+  static async updateDetails(
+    id, 
     name, 
     description, 
     github_link, 
     staff_size, 
-    company_category_id, 
-    is_it_recruiting //, stack
+    is_it_recruiting,
+    website_link
+    //company_category_id, 
+    //, stack
     ){
     const authorizedConfig = {
         headers: {
@@ -40,8 +43,9 @@ export default class CompanyInfoManager {
     data.append('description', description);
     data.append('github_link', github_link);
     data.append('staff_size', staff_size);
-    data.append('company_category_id', company_category_id);
     data.append('is_it_recruiting', is_it_recruiting);
+    data.append('website_link', website_link);
+    //data.append('company_category_id', company_category_id);
     //data.append('stack', stack);
 
     console.log(data)

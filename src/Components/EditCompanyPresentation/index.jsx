@@ -7,11 +7,13 @@ import '../Forms/CompanyForm/company_form.scss';
 export const EditCompanyPresentation = () => {
     const companyId = useSelector(state => state.user.id);
     console.log(companyId)
+    
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [github_link, setGithub_Link] = useState("");
     const [staff_size, setStaff_Size] = useState("");
     const [is_it_recruiting, setIs_It_Recruiting] = useState(false);
+    const [website_link, setWebsite_Link] = useState("");
     // const [stack, setStack] = useState("");
     // const [company_category_id, setCompany_Category_Id] = useState(0);
 
@@ -24,6 +26,7 @@ export const EditCompanyPresentation = () => {
         setGithub_Link(detail.data.github_link)
         setStaff_Size(detail.data.staff_size)
         setIs_It_Recruiting(detail.data.is_it_recruiting)
+        setWebsite_Link(detail.data.website_link)
         // setStack(detail.stack)
         // setCompany_Category_Id(detail.data.company_category_id)
 
@@ -43,8 +46,9 @@ export const EditCompanyPresentation = () => {
             description, 
             github_link, 
             staff_size, 
-            is_it_recruiting 
-            //, company_category_id, stack 
+            is_it_recruiting,
+            website_link
+            //company_category_id, stack 
             );
         Promise.resolve(response)
         history.push(`/company/dashboard`)
@@ -77,6 +81,13 @@ export const EditCompanyPresentation = () => {
                         type="text"
                         value={github_link? github_link: ""}
                         onChange={(e)=>setGithub_Link(e.target.value)}/>
+                    </label>
+                    <label>
+                        Website Link
+                        <input
+                        type="text"
+                        value={website_link? website_link: ""}
+                        onChange={(e)=>setWebsite_Link(e.target.value)}/>
                     </label>
                     <label>
                         Effectifs
