@@ -25,14 +25,6 @@ const NavTabs = () => {
   };
 
   return (
-    // <Box sx={{ width: '100%' }}>
-    //   <Tabs value={value} onChange={handleChange}>
-    //     <LinkTab label={<StackerLogo />} to="/" />
-    //     <LinkTab label="Recherche" to="/search/company" />     
-    //     <LinkTab label="Stacks" to="/stacks" />
-    //     <LinkTab label="À propos" to="/About" />     
-    //   </Tabs>
-    // </Box>
     <Box sx={{ width: '100%' }}>
       <Tabs value={value} onChange={handleChange}>
         <LinkTab label={<StackerLogo />} to="/" />
