@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import CompanyInfoManager from '../../Services/RailsApi/CompanyInfoManager';
 import { useHistory } from "react-router";
 import { useSelector } from 'react-redux';
+import '../Forms/CompanyForm/company_form.scss';
 
 export const EditCompanyPresentation = () => {
     const companyId = useSelector(state => state.user.id);
@@ -10,9 +11,10 @@ export const EditCompanyPresentation = () => {
     const [description, setDescription] = useState("");
     const [github_link, setGithub_Link] = useState("");
     const [staff_size, setStaff_Size] = useState("");
-    const [company_category_id, setCompany_Category_Id] = useState("");
-    const [is_it_recruiting, setIs_It_Recruiting] = useState("");
-    //const [stack, setStack] = useState("");
+    const [is_it_recruiting, setIs_It_Recruiting] = useState(false);
+    // const [stack, setStack] = useState("");
+    // const [company_category_id, setCompany_Category_Id] = useState(0);
+
 
     const getCompanyDetail = async() => {
         const detail = await CompanyInfoManager.getDetails(companyId)
@@ -21,9 +23,10 @@ export const EditCompanyPresentation = () => {
         setDescription(detail.data.description)
         setGithub_Link(detail.data.github_link)
         setStaff_Size(detail.data.staff_size)
-        setCompany_Category_Id(detail.data.company_category_id)
         setIs_It_Recruiting(detail.data.is_it_recruiting)
         // setStack(detail.stack)
+        // setCompany_Category_Id(detail.data.company_category_id)
+
     }
 
     useEffect (() => {
@@ -40,9 +43,8 @@ export const EditCompanyPresentation = () => {
             description, 
             github_link, 
             staff_size, 
-            company_category_id, 
             is_it_recruiting 
-            //,stack
+            //, company_category_id, stack 
             );
         Promise.resolve(response)
         history.push(`/company/dashboard`)
@@ -51,7 +53,7 @@ export const EditCompanyPresentation = () => {
     return (
         <div>
             <h3>Modifier la présentation</h3>
-            <div>
+            <div className="form__container--company">
                 <form>
                     <label>
                         Nom
@@ -65,31 +67,41 @@ export const EditCompanyPresentation = () => {
                         Description
                         <input
                         type="text"
-                        value={description? description : ""}/>
+                        value={description? description : ""}
+                        onChange={(e)=>setDescription(e.target.value)}
+                        />
                     </label>
                     <label>
                         Lien GitHub
                         <input
                         type="text"
-                        value={github_link? github_link : ""}/>
+                        value={github_link? github_link: ""}
+                        onChange={(e)=>setGithub_Link(e.target.value)}/>
                     </label>
                     <label>
                         Effectifs
                         <input
                         type="text"
-                        value={staff_size? staff_size : ""}/>
+                        value={staff_size? staff_size : ""}
+                        onChange={(e)=>setStaff_Size(e.target.value)}/>
                     </label>
-                    <label>
+                    {/* <label>
                         Catégorie
                         <input
-                        type="text"
-                        value={company_category_id? company_category_id : ""}/>
-                    </label>
+                        type="number"
+                        value={company_category_id? company_category_id : 0 }
+                        onChange={(e)=>setCompany_Category_Id(e.target.value)}
+                        />
+                    </label> */}
                     <label>
                         Recrutement
                         <input
-                        type="text"
-                        value={is_it_recruiting? is_it_recruiting : ""}/>
+                        type="checkbox"
+                        value={is_it_recruiting? is_it_recruiting : ""}
+                        onChange={()=>setIs_It_Recruiting(!is_it_recruiting)}
+                        //checked= {is_it_recruiting? "checked" : ""}
+                        />
+                        {console.log(is_it_recruiting)}
                     </label>
                     {/* <label>
                         Stacks

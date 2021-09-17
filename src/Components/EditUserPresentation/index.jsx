@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import UserInfoManager from '../../Services/RailsApi/UserInfoManager';
 import { useHistory } from "react-router";
 import { useSelector } from 'react-redux';
+import '../Forms/CompanyForm/company_form.scss';
+
 
 export const EditUserPresentation = () => {
     const userId = useSelector(state => state.user.id);
@@ -36,7 +38,7 @@ export const EditUserPresentation = () => {
     return (
         <div>
             <h3>Modifier ma présentation</h3>
-            <div>
+            <div className="form__container--company">
                 <form>
                     <label>
                         Prénom
