@@ -14,20 +14,10 @@ const WhiteStyleChip = withStyles({
 })(Chip);
 
 const ChipsArray = ({data}) => {
-  const [chipData, setChipData] = useState([
-    { key: uuidv4(), label: 'Symphony' },
-    { key: uuidv4(), label: 'JavaScript' },
-    { key: uuidv4(), label: 'Php' },
-    { key: uuidv4(), label: 'PostgreSQL' },
-    { key: uuidv4(), label: 'Docker' },
-    { key: uuidv4(), label: 'React.js' },
-    { key: uuidv4(), label: 'Vue.js' },
-    { key: uuidv4(), label: 'Python' },
-  ]);
   
  useEffect(() => {
     let stacksList = []
-    chipData.map((data)=>
+    data.chipData.map((data)=>
       stacksList.push(data.label)
     ) 
     stacksList = stacksList.join(",")
@@ -35,14 +25,14 @@ const ChipsArray = ({data}) => {
  });
   
   const handleDelete = (chipToDelete) => () => {
-    setChipData((chips) => chips.filter((chip) => chip.key !== chipToDelete.key));
+    data.setChipData((chips) => chips.filter((chip) => chip.key !== chipToDelete.key));
   };
 
   return (
     <div className="container__filter--group">
-      <InputStacks value={{chipData, setChipData}}/>
+      <InputStacks value={{data}}/>
       <ul className="container__chips">
-        {chipData.map((data) => {
+        {data.chipData.map((data) => {
           return (
             <li key={data.key} className="chip--item">
               <WhiteStyleChip

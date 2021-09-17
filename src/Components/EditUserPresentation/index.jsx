@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import UserInfoManager from '../../Services/RailsApi/UserInfoManager';
 import { useHistory } from "react-router";
 import { useSelector } from 'react-redux';
@@ -13,7 +13,12 @@ export const EditUserPresentation = () => {
     const [last_name, setLast_Name] = useState("");
     const [description, setDescription] = useState("");
     const [github_link, setGithub_Link] = useState("");
-    const [userStacks, setUserStacks] = useState("");
+    const [userStacks, setUserStacks] = useState([]);
+    const [stacks, setStacks] = useState([])
+    const [chipData, setChipData] = useState([
+        
+      ]);
+      
     const getUserDetail = async() => {
         const detail = await UserInfoManager.getDetails(userId)
         console.log(detail)
@@ -21,13 +26,32 @@ export const EditUserPresentation = () => {
         setLast_Name(detail.data.last_name)
         setDescription(detail.data.description)
         setGithub_Link(detail.data.github_link)
-        setUserStacks(detail.data.user_stacks)
+        setUserStacks(detail.data.stacks)
+        //console.log(detail.data.stacks)
     }
-
+    let stackNames = new Set()
+    const getStackNames = () => {
+        
+        userStacks.map((stack)=>
+        stackNames.add(stack.name)
+        )
+        
+        stackNames= Array.from(stackNames)
+        
+        console.log(stackNames)
+    }
+    
     useEffect (() => {
-        getUserDetail()
-    }, []);
 
+        getUserDetail()
+    
+    }, []);
+    
+    //useEffect (() => {
+//
+    //    getStackNames()
+    //    
+    //}, [getUserDetail]); 
     const history = useHistory();
 
     const updateUserDetails = async (e) => {
@@ -37,30 +61,47 @@ export const EditUserPresentation = () => {
         history.push(`/user/dashboard`)
     };
 
-    const [stacks, setStacks] = useState([])
     
-    const addUserStack = async (stack) => {
-    //TODO: faire le map ici plutôt
-    const response = await UserStackManager.addUserStack(stack);
+    
+
+    const mapUserStacksAndAdd = (stacks) => {
+        stacks.map((stack)=>{
+            const  addUserStack = async(stack) => {
+                const response = await UserStackManager.addUserStack(stack)
+            }
+                addUserStack(stack)
+            }
+        
+        )
+        
     }
+    
     useEffect(() => {
+        getStackNames()
         
         //TODO: map d'une array avec les stacks à ajouter
         // si la stack existe déjà => on ne fait rien
         // si la stack n'existe pas => on addUserstack
-
-        addUserStack("Python")
-        //let url = [API_URL+ 'users_stack']
+        console.log(stacks)
+        //stacks? stacks.map((stack)=>
+        //stackNames.add(stack)
+        //):null;
+        let newStack = []
+        if (stacks.length !== 0)(newStack = stacks.split(","))
+        newStack.map((stack)=>
+        stackNames.push(stack)
+        )
         
-        //if (stacks)(urlParameters.push(`stack=${stacks}`))
-        //
-        //urlParameters = urlParameters.join("&")
-        //console.log(urlParameters)
-        //setUrl(urlParameters)
-    
-      }, [userStacks]);
+        console.log(userStacks)
+        console.log("HEY")
+        console.log(newStack)
+        console.log(stackNames)
+        mapUserStacksAndAdd(stackNames)
+        //setChipData([{uuid:23, label:"hey"}]) 
+        //TODO: mettre à jour le chip sous ce format
+      }, [stackNames]);
 
-
+      
     return (
         <div>
             <h3>Modifier ma présentation</h3>
@@ -101,7 +142,7 @@ export const EditUserPresentation = () => {
                     <button onClick={updateUserDetails}>sauvegarder</button>
                 </form>
                 <div style={{backgroundColor: "blue"}}>
-                    <ChipsArray data={{setStacks}}/>
+                    <ChipsArray data={{setStacks, chipData, setChipData}}/>
                     
                 </div>
                 
