@@ -80,7 +80,9 @@ const Header = ({ user }) => {
                 <Settings />
               </Link>
               <UserAvatar />
-              
+              <a href="">
+                <Button color="inherit" onClick={logout}>Déconnection</Button>
+              </a>
             </div>
           ) : (
             <div className={classes.grid_column_auto}>
