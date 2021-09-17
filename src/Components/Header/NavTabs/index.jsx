@@ -5,18 +5,6 @@ import Tabs from '@mui/material/Tabs';
 import StackerLogo from './StackerLogo';
 import Tab from '@mui/material/Tab';
 
-function LinkTab(props) {
-  return (
-    <Tab
-      component={Link}
-      onClick={(event) => {
-        event.preventDefault();
-      }}
-      {...props}
-    />
-  );
-}
-
 const NavTabs = () => {
   const [value, setValue] = useState(0);
 
@@ -27,10 +15,26 @@ const NavTabs = () => {
   return (
     <Box sx={{ width: '100%' }}>
       <Tabs value={value} onChange={handleChange}>
-        <LinkTab label={<StackerLogo />} to="/" />
-        <LinkTab label="Recherche" to="/search/company" />     
-        <LinkTab label="Stacks" to="/stacks" />
-        <LinkTab label="À propos" to="/About" />     
+        <Tab 
+          label={<StackerLogo />}
+          to="/"
+          component={Link}
+        />
+        <Tab 
+          label="Recherche"
+          to="/search/company"
+          component={Link}
+        />     
+        <Tab
+          label="Stacks"
+          to="/stacks"
+          component={Link}
+        />
+        <Tab
+          label="À propos"
+          to="/About"
+          component={Link}
+        />     
       </Tabs>
     </Box>
   );

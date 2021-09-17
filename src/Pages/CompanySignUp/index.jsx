@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import SignUpForm from "../../Components/Forms/SignUpForm";
-import CompaniesAPIManager from "../../Services/RailsApi/UsersFetch";
+import CompaniesAPIManager from "../../Services/RailsApi/CompaniesFetch";
 import { useHistory } from "react-router";
 import { useDispatch } from "react-redux";
 import { Link } from 'react-router-dom';
@@ -16,7 +16,7 @@ const CompanySignUp = ({user}) => {
       e.preventDefault();
       const response = await CompaniesAPIManager.register(email, password);
       response.status === 200? history.push("/"): window.alert("couac!");
-      response.status === 200? dispatch(RegisterUserLoginStatus(response.data.user_id,"company")):dispatch(RegisterUserLogoutStatus());
+      response.status === 200? dispatch(RegisterUserLoginStatus(response.data.company_id,"company")):dispatch(RegisterUserLogoutStatus());
       user.setIsLogged(true)
     };
 

@@ -1,0 +1,20 @@
+@import '../../Styles/variables.scss';
+
+.container__preview--company {
+  border: 2px solid $medium-grey;
+  aspect-ratio: 16/9;
+  padding: $padding;
+  border-radius: $medium-radius;
+}
+
+#previewCompany--FavoriteBorder {
+  stroke: $warning;
+}
+
+#Light--FavoriteFill {
+  fill: $warning;
+}
+
+#previewCompany--FavoriteFill {
+  stroke: $warning;
+}
