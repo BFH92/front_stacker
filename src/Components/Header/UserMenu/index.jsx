@@ -25,7 +25,7 @@ const UserMenu = ({ logout }) => {
     <React.Fragment>
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
         <IconButton onClick={handleClick} size="small">
-          <UserAvatar sx={{ width: 30, height: 30 }}>M</UserAvatar>
+          <UserAvatar sx={{ width: 30, height: 30 }} />
         </IconButton>
       </Box>
       <Menu

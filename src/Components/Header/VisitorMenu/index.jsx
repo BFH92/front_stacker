@@ -64,7 +64,7 @@ const UserMenu = () => {
             <DarkStrokeSignUp fontSize="small" />
           </ListItemIcon>
           <Link to="/user/sign-up">
-            S'inscire
+            S'inscrire
           </Link>
         </MenuItem>
         <MenuItem>
