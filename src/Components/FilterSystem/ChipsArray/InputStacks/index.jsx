@@ -9,14 +9,13 @@ import { API_URL } from "../../../../Config/API_URL";
 
 const InputStacks = ({value}) => {
   const {data} = StacksFetch(API_URL +'stacks');
-  console.log(data)
 
   const [inputData, setInputData] = useState("");
   const [stacks, setStacks] = useState(""); //add new state for the autocomplete
 
   let labels = new Set()
 
-  value.data.chipData.map((element)=>
+  value.chipData.map((element)=>
     labels.add(element.label)
   )
 
@@ -29,7 +28,7 @@ const InputStacks = ({value}) => {
     labels.map((label)=>
     StackList.push({ key: uuidv4(), label: label})
     )
-    value.data.setChipData(StackList)
+    value.setChipData(StackList)
     setInputData("")
     }
   };

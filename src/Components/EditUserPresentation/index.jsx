@@ -15,9 +15,7 @@ export const EditUserPresentation = () => {
     const [github_link, setGithub_Link] = useState("");
     const [userStacks, setUserStacks] = useState([]);
     const [stacks, setStacks] = useState([])
-    const [chipData, setChipData] = useState([
-        
-      ]);
+
       
     const getUserDetail = async() => {
         const detail = await UserInfoManager.getDetails(userId)
@@ -97,6 +95,7 @@ export const EditUserPresentation = () => {
         console.log(newStack)
         console.log(stackNames)
         mapUserStacksAndAdd(stackNames)
+        
         //setChipData([{uuid:23, label:"hey"}]) 
         //TODO: mettre à jour le chip sous ce format
       }, [stackNames]);
@@ -142,7 +141,7 @@ export const EditUserPresentation = () => {
                     <button onClick={updateUserDetails}>sauvegarder</button>
                 </form>
                 <div style={{backgroundColor: "blue"}}>
-                    <ChipsArray data={{setStacks, chipData, setChipData}}/>
+                    <ChipsArray value={{ setStacks}}/>
                     
                 </div>
                 

@@ -32,7 +32,7 @@ const FilterSystem = () => {
     <div className="container__filter--system">
       <div className="container--top">
         <div className="grid__filter--groups">
-          <ChipsArray data={{setStacks}}/>
+          <ChipsArray value={{setStacks}}/>
           <RadioButtonsGroup companies={{staffSize,setStaffSize}}/>
           {/* <SimpleSlider /> */}
         </div>
