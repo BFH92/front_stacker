@@ -1,7 +1,6 @@
 //import  v4 as uuidv4 } from 'uuid';
 
-
-export const stacksList =  [
+export const stacksList = [
   "Java",
   "Php",
   "MongoDB",
@@ -11,5 +10,5 @@ export const stacksList =  [
   "Symphony",
   "CSS3",
   "Docker",
-  "JavaScript"
+  "JavaScript",
 ];
