@@ -9,7 +9,7 @@ import ThemeSwitch from './ThemeSwitch';
 import { createStyles, makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import Nav from './NavTabs';
+import NavTabs from './NavTabs';
 import UserMenu from "./UserMenu";
 import VisitorMenu from './VisitorMenu';
 import { useHistory } from "react-router";
@@ -65,7 +65,7 @@ const Header = ({ user }) => {
   return (
     <AppBar position="static" className={classes.root}>
       <Toolbar>
-        <Nav />
+        <NavTabs />
         <div className={classes.grid_column_auto}>        
           <ThemeSwitch />
           {isLogged ? (

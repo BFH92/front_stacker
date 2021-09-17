@@ -5,7 +5,6 @@ import Tabs from '@mui/material/Tabs';
 import StackerLogo from './StackerLogo';
 import Tab from '@mui/material/Tab';
 
-
 function LinkTab(props) {
   return (
     <Tab
@@ -26,11 +25,19 @@ const NavTabs = () => {
   };
 
   return (
+    // <Box sx={{ width: '100%' }}>
+    //   <Tabs value={value} onChange={handleChange}>
+    //     <LinkTab label={<StackerLogo />} to="/" />
+    //     <LinkTab label="Recherche" to="/search/company" />     
+    //     <LinkTab label="Stacks" to="/stacks" />
+    //     <LinkTab label="À propos" to="/About" />     
+    //   </Tabs>
+    // </Box>
     <Box sx={{ width: '100%' }}>
       <Tabs value={value} onChange={handleChange}>
-        <LinkTab label={<StackerLogo />} to="/"/>
+        <LinkTab label={<StackerLogo />} to="/" />
         <LinkTab label="Recherche" to="/search/company" />     
-        <LinkTab label="Stacks" to="/stacks"/>
+        <LinkTab label="Stacks" to="/stacks" />
         <LinkTab label="À propos" to="/About" />     
       </Tabs>
     </Box>

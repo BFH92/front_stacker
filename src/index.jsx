@@ -77,7 +77,7 @@ const App = () => {
       <PersistGate loading={null} persistor={persistor}>
       <Router>        
         <div className="container__all">
-          <Header user={{isLogged, setIsLogged}} />
+          <Route path="/" render={() => <Header user={{isLogged, setIsLogged}} />} />            
           
           <main className="container__main">
             <Switch>
