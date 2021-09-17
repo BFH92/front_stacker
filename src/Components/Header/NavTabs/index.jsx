@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import StackerLogo from './StackerLogo';
-import BasicLink from './BasicLink';
 import Tab from '@mui/material/Tab';
 
 
@@ -30,9 +29,9 @@ const NavTabs = () => {
     <Box sx={{ width: '100%' }}>
       <Tabs value={value} onChange={handleChange}>
         <LinkTab label={<StackerLogo />} to="/"/>
-        <LinkTab label={<BasicLink label="Recherche" to="/search/company"/>} to="/search/company" />     
-        <LinkTab label={<BasicLink label="Stacks" to="/stacks" />} to="/stacks"/>
-        <LinkTab label={<BasicLink label="About" to="/about" />} to="/About" />     
+        <LinkTab label="Recherche" to="/search/company" />     
+        <LinkTab label="Stacks" to="/stacks"/>
+        <LinkTab label="À propos" to="/About" />     
       </Tabs>
     </Box>
   );

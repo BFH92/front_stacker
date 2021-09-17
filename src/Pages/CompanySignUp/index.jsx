@@ -5,7 +5,6 @@ import { useHistory } from "react-router";
 import { useDispatch } from "react-redux";
 import { Link } from 'react-router-dom';
 import { RegisterUserLoginStatus, RegisterUserLogoutStatus } from "../../Store";
-import Header from "../../Components/Header";
 
 
 const CompanySignUp = ({user}) => {
@@ -24,7 +23,6 @@ const CompanySignUp = ({user}) => {
   return (
     <>
       <div>
-        <Header />
         <h1>Créer espace entreprise</h1>
         <SignUpForm user={{ email, setEmail, password, setPassword, SignUp }} />
       </div>

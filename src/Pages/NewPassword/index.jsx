@@ -43,8 +43,8 @@ const NewPassword = ({user}) => {
     };
     return(
     <div>
-    <SettingsHeader/>
-    <NewPasswordForm user={{password, setPassword, resetPassword,email, setEmail}}/>
+      <SettingsHeader/>
+      <NewPasswordForm user={{password, setPassword, resetPassword,email, setEmail}}/>
     </div>
   );
 }

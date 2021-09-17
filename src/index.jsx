@@ -6,7 +6,7 @@ import './Styles/reset.scss';
 import './Styles/variables.scss';
 import './Styles/main.scss';
 
-// import Header from './Components/Header'; À importer dans les autres components
+import Header from './Components/Header';
 import Home from './Pages/Home';
 import About from './Pages/About';
 import Stacks from './Pages/Stacks';
@@ -78,7 +78,7 @@ const App = () => {
       <PersistGate loading={null} persistor={persistor}>
       <Router>        
         <div className="container__all">
-          <AsideNavbar user={{isLogged, setIsLogged}}/>
+          <Header user={{isLogged, setIsLogged}}/>
           
           <main className="container__main">
             <Switch>

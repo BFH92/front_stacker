@@ -4,7 +4,7 @@
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr;
 }
 
 .container__main {
@@ -18,7 +18,6 @@
   color: $black;
   font-size: $big-font-size / 2;
   font-weight: bold;
-
 }
 
 .card {
