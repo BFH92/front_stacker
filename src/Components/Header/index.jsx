@@ -4,15 +4,14 @@ import { useDispatch, useSelector} from "react-redux";
 import { Link } from "react-router-dom";
 import Settings from "../../Assets/Svg/Header/Settings";
 import Notifications from '../../Assets/Svg/Header/Notifications';
-import UserAvatar from './UserAvatar';
 import Badge from '@material-ui/core/Badge';
 import ThemeSwitch from './ThemeSwitch';
 import { createStyles, makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import Button from "@material-ui/core/Button";
 import Nav from './NavTabs';
-
+import UserMenu from "./UserMenu";
+import VisitorMenu from './VisitorMenu';
 import { useHistory } from "react-router";
 import UsersAPIManager from "../../Services/RailsApi/UsersFetch";
 import { RegisterUserLogoutStatus } from "../../Store";
@@ -79,16 +78,10 @@ const Header = ({ user }) => {
               <Link to="/user/settings">
                 <Settings />
               </Link>
-              <UserAvatar />
-              <a href="">
-                <Button color="inherit" onClick={logout}>Déconnection</Button>
-              </a>
+              <UserMenu logout={logout}/>
             </div>
           ) : (
-            <div className={classes.grid_column_auto}>
-              <Button color="inherit">Connection</Button>
-              <Button color="inherit">Inscription</Button>
-            </div>
+            <VisitorMenu />
           )}
         </div>
       </Toolbar>

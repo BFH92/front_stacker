@@ -37,20 +37,18 @@ const StyledBadge = withStyles(() => ({
 const UserAvatar = () => {
 
   return (    
-    <Link to="/user/dashboard">
-      <StyledBadge
-        overlap="circular"
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'right',
-        }}
-        variant="dot"
-      >
-        <Avatar>
-          A
-        </Avatar>
-      </StyledBadge>      
-    </Link>
+    <StyledBadge
+      overlap="circular"
+      anchorOrigin={{
+        vertical: 'bottom',
+        horizontal: 'right',
+      }}
+      variant="dot"
+    >
+      <Avatar>
+        A
+      </Avatar>
+    </StyledBadge>      
   );
 };
 
