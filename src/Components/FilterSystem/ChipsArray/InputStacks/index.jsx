@@ -35,6 +35,7 @@ const InputStacks = ({value}) => {
   const handleInputStacks = (e) => {
     setInputData(e.target.value);
   }
+  
   let labels = new Set()
 
   value.data.chipData.map((element)=>
