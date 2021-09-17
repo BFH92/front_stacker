@@ -14,16 +14,7 @@ const WhiteStyleChip = withStyles({
 })(Chip);
 
 const ChipsArray = ({companies}) => {
-  const [chipData, setChipData] = useState([
-    { key: uuidv4(), label: 'Symphony' },
-    { key: uuidv4(), label: 'JavaScript' },
-    { key: uuidv4(), label: 'Php' },
-    { key: uuidv4(), label: 'PostgreSQL' },
-    { key: uuidv4(), label: 'Docker' },
-    { key: uuidv4(), label: 'React.js' },
-    { key: uuidv4(), label: 'Vue.js' },
-    { key: uuidv4(), label: 'Python' },
-  ]);
+  const [chipData, setChipData] = useState([]);
   
  useEffect(() => {
     let stacksList = []
