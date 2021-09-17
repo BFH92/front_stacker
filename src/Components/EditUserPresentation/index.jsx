@@ -47,7 +47,7 @@ export const EditUserPresentation = () => {
                         />
                     </label>
                     <label>
-                        Nom de famille
+                        Nom
                         <input
                         type="text"
                         value={last_name? last_name : ""}
@@ -63,7 +63,7 @@ export const EditUserPresentation = () => {
                         />
                     </label>
                     <label>
-                        GitHub Link
+                        Lien GitHub
                         <input
                         type="text"
                         value={github_link? github_link : ""}
