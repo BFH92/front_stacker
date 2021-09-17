@@ -4,7 +4,7 @@ import { useHistory } from "react-router";
 import { useSelector } from 'react-redux';
 
 export const EditCompanyPresentation = () => {
-    const companyId = useSelector(state => state.company.id);
+    const companyId = useSelector(state => state.user.id);
     console.log(companyId)
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
@@ -57,7 +57,9 @@ export const EditCompanyPresentation = () => {
                         Nom
                         <input
                         type="text"
-                        value={name? name : ""}/>
+                        value={name? name : ""}
+                        onChange={(e)=>setName(e.target.value)}
+                        />
                     </label>
                     <label>
                         Description
