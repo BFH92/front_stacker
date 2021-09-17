@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import SignUpForm from "../../Components/Forms/SignUpForm";
-import CompaniesAPIManager from "../../Services/RailsApi/UsersFetch";
+import CompaniesAPIManager from "../../Services/RailsApi/CompaniesFetch";
 import { useHistory } from "react-router";
 import { useDispatch } from "react-redux";
 import { Link } from 'react-router-dom';
