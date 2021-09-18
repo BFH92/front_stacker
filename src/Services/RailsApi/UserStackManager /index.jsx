@@ -26,11 +26,10 @@ export default class UserStackManager {
         Authorization: `Bearer ${Cookies.get("API_Authentication_token")}`,
       },
     };
+    console.log(authorizedConfig)
 
-    let data = {}
     const response = await API.get(
       viewer === "company"?`/specific_company_stack_id?stack=${stack_name}`:`/specific_user_stack_id?stack=${stack_name}`,
-      data,
       authorizedConfig
     );
     return response;
@@ -46,12 +45,9 @@ export default class UserStackManager {
     const userStackInfo = await UserStackManager.getStackId(stack_name, viewer)
     const StackId = userStackInfo.data.id
     
-  
-
-  
     let data = {}
     const response = await API.delete(
-      viewer === "company" ?`/companies_stack/${StackId}`:`/users_stack/${StackId}`,
+      viewer === "company"?`/companies_stack/${StackId}`:`/users_stack/${StackId}`,
       data,
       authorizedConfig
     );

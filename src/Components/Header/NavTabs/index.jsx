@@ -19,21 +19,25 @@ const NavTabs = () => {
           label={<StackerLogo />}
           to="/"
           component={Link}
+          style={{color: "red"}}
         />
         <Tab 
           label="Recherche"
           to="/search/company"
           component={Link}
+          style={{color: "red"}}
         />     
         <Tab
           label="Stacks"
           to="/stacks"
           component={Link}
+          style={{color: "red"}}
         />
         <Tab
           label="À propos"
           to="/About"
           component={Link}
+          style={{color: "red"}}
         />     
       </Tabs>
     </Box>

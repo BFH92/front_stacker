@@ -19,7 +19,7 @@ import { Link } from "react-router-dom";
     e.preventDefault();
     const response = await CompaniesAPIManager.login(email, password);
     history.push("/")
-    response.status === 200? dispatch(RegisterUserLoginStatus(response.data.user_id,"company")):dispatch(RegisterUserLogoutStatus());
+    response.status === 200? dispatch(RegisterUserLoginStatus(response.data.company_id,"company")):dispatch(RegisterUserLogoutStatus());
     user.setIsLogged(true);
 
   };
