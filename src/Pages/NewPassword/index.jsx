@@ -1,6 +1,5 @@
 import React,{useState} from 'react';
 import NewPasswordForm from '../../Components/Forms/NewPasswordForm';
-import SettingsHeader from '../../Components/SettingsHeader';
 import UsersAPIManager from '../../Services/RailsApi/UsersFetch';
 import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
@@ -43,8 +42,7 @@ const NewPassword = ({user}) => {
     };
     return(
     <div>
-    <SettingsHeader/>
-    <NewPasswordForm user={{password, setPassword, resetPassword,email, setEmail}}/>
+      <NewPasswordForm user={{password, setPassword, resetPassword,email, setEmail}}/>
     </div>
   );
 }

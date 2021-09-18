@@ -41,10 +41,10 @@ export default class CompaniesAPIManager {
       config
     );
 
-    let token = await response.headers.authorization;
+    //let token = await response.headers.authorization;
     console.log(response);
 
-    token ? registerToken(token) : Cookies.set("isLogged?", "false");
+  //  token ? registerToken(token) : Cookies.set("isLogged?", "false");
     this.login(email, password);
     return response;
   }

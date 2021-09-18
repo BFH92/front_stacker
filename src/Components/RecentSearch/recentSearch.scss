@@ -4,11 +4,7 @@
   display: grid;
   grid-template-rows: auto 1fr;
   grid-gap: $padding * 2;
-
-  .container__all--items {
-    overflow-y: scroll;
-  }
-
+  
   .all--items {
     display: grid;
     grid-gap: $padding;
