@@ -5,6 +5,8 @@ import { useSelector } from 'react-redux';
 import { API_URL } from "../../Config/API_URL";
 import ChipsArray from "../FilterSystem/ChipsArray";
 import UserStackManager from "../../Services/RailsApi/UserStackManager ";
+import '../Forms/CompanyForm/company_form.scss';
+
 
 export const EditUserPresentation = () => {
     const userId = useSelector(state => state.user.id);
@@ -104,7 +106,7 @@ export const EditUserPresentation = () => {
     return (
         <div>
             <h3>Modifier ma présentation</h3>
-            <div>
+            <div className="form__container--company">
                 <form>
                     <label>
                         Prénom
@@ -115,7 +117,7 @@ export const EditUserPresentation = () => {
                         />
                     </label>
                     <label>
-                        Nom de famille
+                        Nom
                         <input
                         type="text"
                         value={last_name? last_name : ""}
@@ -131,7 +133,7 @@ export const EditUserPresentation = () => {
                         />
                     </label>
                     <label>
-                        GitHub Link
+                        Lien GitHub
                         <input
                         type="text"
                         value={github_link? github_link : ""}

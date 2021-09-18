@@ -1,10 +1,8 @@
 import React from 'react';
-import SettingsHeader from '../../SettingsHeader';
 import './get_password_form.scss';
 const GetPasswordForm = ({user}) => {
   return (
       <>
-      <SettingsHeader/>
       <div className="form__container--getpassword">
         <form className="form">
           <div className="input__container">
