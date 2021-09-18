@@ -18,7 +18,16 @@ const PreviewCompany = ({company}) => {
           <p> {company.staff_size} employé</p>
           <br />
         </div>
-        <div className="price"><h4>Lien de l'entreprise</h4><p>{company.website_link}</p></div>
+        <div className="price">
+          <h4>Lien de l'entreprise</h4>
+          <p>{company.website_link}</p>
+        </div>
+        <div className="price">
+          <h4>Stacks</h4>
+          <p>{company.stacks.map((stack)=>
+            <div>{stack.name}</div>
+          )}</p>
+        </div>
       </div>
     </div>
   );

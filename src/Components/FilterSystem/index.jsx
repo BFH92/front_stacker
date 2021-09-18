@@ -11,6 +11,7 @@ import { UserStacksContext } from '../../Context/UserStacksContext';
 const FilterSystem = () => {
   //TODO: use context pour set L'url
   const {setUrl}= useContext(FilterContext);
+  const {url}= useContext(FilterContext);
   //const {filterStacks}= useContext(FilterContext);
   
   const [staffSize, setStaffSize] = useState("")
@@ -22,12 +23,12 @@ const FilterSystem = () => {
     let urlParameters = [API_URL+ 'companies?']
     if (staffSize)(urlParameters.push(`staff_size=${staffSize}`))
     if (filterStacks)(urlParameters.push(`stack=${filterStacks}`))
-    
+  
     urlParameters = urlParameters.join("&")
     console.log(urlParameters)
     setUrl(urlParameters)
 
-  }, [filterStacks, staffSize, setUrl]);
+  }, [filterStacks, staffSize]);
   const addUserStackAuthorization = false
   return (
     <UserStacksContext.Provider value={{chipData , setChipData, addUserStackAuthorization, filterStacks, setFilterStacks}}>

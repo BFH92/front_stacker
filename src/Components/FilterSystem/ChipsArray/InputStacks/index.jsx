@@ -25,6 +25,7 @@ const  viewerLoggedAs = useSelector(state => state.user.logged_as)
     stackNames.add(element.label)
   )
 
+
   const addInputStacks = (e) => {
     e.preventDefault();
     if (inputData) {
