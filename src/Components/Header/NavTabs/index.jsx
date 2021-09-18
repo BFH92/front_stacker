@@ -15,26 +15,29 @@ const NavTabs = () => {
   return (
     <Box sx={{ width: '100%' }}>
       <Tabs value={value} onChange={handleChange}>
-        <Tab 
-          label={<StackerLogo />}
-          to="/"
-          component={Link}
-        />
-        <Tab 
-          label="Recherche"
-          to="/search/company"
-          component={Link}
-        />     
-        <Tab
-          label="Stacks"
-          to="/stacks"
-          component={Link}
-        />
-        <Tab
-          label="À propos"
-          to="/About"
-          component={Link}
-        />     
+          <Tab 
+            label={<StackerLogo />}
+            to="/"
+            component={Link}
+          />
+          <Tab 
+            label="Recherche"
+            to="/search/company"
+            component={Link}
+            style={{color: "white"}}
+          /> 
+          <Tab
+            label="Stacks"
+            to="/stacks"
+            component={Link}
+            style={{color: "white"}}
+          />
+          <Tab
+            label="À propos"
+            to="/About"
+            component={Link}
+            style={{color: "white"}}
+          />  
       </Tabs>
     </Box>
   );
