@@ -9,41 +9,55 @@ export default class UserStackManager {
   static async addUserStack(stack_name) {
     const authorizedConfig = {
       headers: {
-        Accept:'application/json',
         Authorization: `Bearer ${Cookies.get("API_Authentication_token")}`,
       },
     };
-    let data = new FormData();
-    data.append('stack', stack_name);
-  
+    let data = {}
     const response = await API.post(
-      `/users_stack/`,
+      `/users_stack?stack=${stack_name}`,
       data,
       authorizedConfig
     );
     return response;
   };
-
-  static async updateDetails(id, first_name, last_name, description, github_link){
+  static async getStackId(stack_name) {
     const authorizedConfig = {
-        headers: {
-          Accept:'application/json',
-          Authorization: `Bearer ${Cookies.get("API_Authentication_token")}`,
-        },
+      headers: {
+        Authorization: `Bearer ${Cookies.get("API_Authentication_token")}`,
+      },
     };
-    let data = new FormData();
-    data.append('first_name', first_name);
-    data.append('last_name', last_name);
-    data.append('description', description);
-    data.append('github_link', github_link);
 
-    console.log(data)
-    const response = await API.put(
-        `/users/${id}`,
-        data,
-        authorizedConfig
+    let data = {}
+    const response = await API.get(
+      `/specific_user_stack_id?stack=${stack_name}`,
+      authorizedConfig
     );
     return response;
-  }
+  };
+
+  static async deleteUserStack(stack_name) {
+    const authorizedConfig = {
+      headers: {
+        Authorization: `Bearer ${Cookies.get("API_Authentication_token")}`,
+      },
+    };
+
+    const userStackInfo = await UserStackManager.getStackId(stack_name)
+    const userStackId = userStackInfo.data.id
+    console.log(userStackInfo)
+    console.log(userStackId)
+  
+  
+
+  
+    let data = {}
+    const response = await API.delete(
+      `/users_stack/${userStackId}`,
+      data,
+      authorizedConfig
+    );
+
+    return response;
+  };
 
 }

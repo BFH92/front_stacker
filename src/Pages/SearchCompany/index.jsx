@@ -9,9 +9,9 @@ import FilterSystem from '../../Components/FilterSystem';
 const SearchCompany = () => {
 
   const[url, setUrl] = useState(API_URL + 'companies');
-
+  const [filterStacks, setFilterStacks] = useState("")
   return (
-    <FilterContext.Provider value={{url , setUrl}}>
+    <FilterContext.Provider value={{url , setUrl, filterStacks, setFilterStacks}}>
     <div className="container__search--companies">
       <FilterSystem />
       <div className="container--right">

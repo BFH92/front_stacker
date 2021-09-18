@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Chip from '@material-ui/core/Chip';
 import { withStyles } from '@material-ui/core/styles';
 import { v4 as uuidv4 } from 'uuid';
@@ -6,7 +6,9 @@ import InputStacks from './InputStacks';
 import './chipsArray.scss';
 import Exemple from '../../../Assets/Svg/Stacks/Exemple';
 // import DeleteStack from '../../../Assets/Svg/UI/DeleteStack' Icon personnalisé pour la suppression d'un stack
-
+import { UserStacksContext } from '../../../Context/UserStacksContext';
+import UserStackManager from '../../../Services/RailsApi/UserStackManager ';
+import { FilterContext } from '../../../Context/FilterContext';
 const WhiteStyleChip = withStyles({
   root: {
     backgroundColor:'rgb(246, 247, 254)'
@@ -14,26 +16,20 @@ const WhiteStyleChip = withStyles({
 })(Chip);
 
 const ChipsArray = ({value}) => {
-  const [chipData, setChipData] = useState([
-    
-  ]);
+  const {chipData} = useContext(UserStacksContext)
+  const {setChipData} = useContext(UserStacksContext)
+  const {addUserStackAuthorization} = useContext(UserStacksContext)
   
- useEffect(() => {
-    let stacksList = []
-    chipData.map((data)=>
-      stacksList.push(data.label)
-    ) 
-    stacksList = stacksList.join(",")
-    value.setStacks(stacksList)
- },[]);
-  
+
   const handleDelete = (chipToDelete) => () => {
     setChipData((chips) => chips.filter((chip) => chip.key !== chipToDelete.key));
+    console.log(chipToDelete.label)
+    if (addUserStackAuthorization)(UserStackManager.deleteUserStack(chipToDelete.label))
   };
-
+  
   return (
     <div className="container__filter--group">
-      <InputStacks value={{chipData, setChipData}}/>
+      <InputStacks/>
       <ul className="container__chips">
         {chipData.map((data) => {
           return (

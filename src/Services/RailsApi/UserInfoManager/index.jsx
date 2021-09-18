@@ -29,10 +29,10 @@ export default class UserInfoManager {
         },
     };
     let data = new FormData();
-    data.append('first_name', first_name);
-    data.append('last_name', last_name);
-    data.append('description', description);
-    data.append('github_link', github_link);
+    first_name !== null ? data.append('first_name', first_name): data.append('first_name', "")
+    first_name !== null ? data.append('last_name', last_name): data.append('first_name', "");
+    first_name !== null ? data.append('description', description): data.append('first_name', "")
+    first_name !== null ? data.append('github_link', github_link): data.append('first_name', "")
 
     console.log(data)
     const response = await API.put(

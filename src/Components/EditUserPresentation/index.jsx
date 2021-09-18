@@ -6,8 +6,9 @@ import { API_URL } from "../../Config/API_URL";
 import ChipsArray from "../FilterSystem/ChipsArray";
 import UserStackManager from "../../Services/RailsApi/UserStackManager ";
 import '../Forms/CompanyForm/company_form.scss';
-
-
+import { stacksList } from "../../Config/Top";
+import { v4 as uuidv4 } from "uuid";
+import { UserStacksContext } from "../../Context/UserStacksContext";
 export const EditUserPresentation = () => {
     const userId = useSelector(state => state.user.id);
     console.log(userId)
@@ -26,32 +27,45 @@ export const EditUserPresentation = () => {
         setLast_Name(detail.data.last_name)
         setDescription(detail.data.description)
         setGithub_Link(detail.data.github_link)
-        setUserStacks(detail.data.stacks)
+        //setUserStacks(detail.data.stacks)
         //console.log(detail.data.stacks)
+        getUserStacks(detail.data.user_stacks)
     }
-    let stackNames = new Set()
-    const getStackNames = () => {
-        
-        userStacks.map((stack)=>
-        stackNames.add(stack.name)
-        )
-        
-        stackNames= Array.from(stackNames)
-        
-        console.log(stackNames)
+    
+    const getUserStacks = (list) => {
+        let stacksList = new Set()
+        list.map((userStack)=>{
+        console.log("turn")
+        stacksList.add(userStack.name)
+    })
+        stacksList = Array.from(stacksList);
+    
+        addExistingStacks(stacksList)
+        console.log(stacksList)
+        console.log(stacks)
+        console.log(userStacks)
     }
     
     useEffect (() => {
 
         getUserDetail()
-    
+        
     }, []);
+
+    const [chipData, setChipData] = useState([]);
     
-    //useEffect (() => {
-//
-    //    getStackNames()
-    //    
-    //}, [getUserDetail]); 
+  const addExistingStacks =(list)=> {
+
+    let StackList =[] 
+    list.map((stack)=>{
+    StackList.push({ key: uuidv4(), label: stack})
+    
+    })
+    setChipData(StackList)
+  }
+ 
+ 
+
     const history = useHistory();
 
     const updateUserDetails = async (e) => {
@@ -61,49 +75,10 @@ export const EditUserPresentation = () => {
         history.push(`/user/dashboard`)
     };
 
-    
-    
-
-    const mapUserStacksAndAdd = (stacks) => {
-        stacks.map((stack)=>{
-            const  addUserStack = async(stack) => {
-                const response = await UserStackManager.addUserStack(stack)
-            }
-                addUserStack(stack)
-            }
-        
-        )
-        
-    }
-    
-    useEffect(() => {
-        getStackNames()
-        
-        //TODO: map d'une array avec les stacks à ajouter
-        // si la stack existe déjà => on ne fait rien
-        // si la stack n'existe pas => on addUserstack
-        console.log(stacks)
-        //stacks? stacks.map((stack)=>
-        //stackNames.add(stack)
-        //):null;
-        let newStack = []
-        if (stacks.length !== 0)(newStack = stacks.split(","))
-        newStack.map((stack)=>
-        stackNames.push(stack)
-        )
-        
-        console.log(userStacks)
-        console.log("HEY")
-        console.log(newStack)
-        console.log(stackNames)
-        mapUserStacksAndAdd(stackNames)
-        
-        //setChipData([{uuid:23, label:"hey"}]) 
-        //TODO: mettre à jour le chip sous ce format
-      }, [stackNames]);
-
+    const addUserStackAuthorization = true
       
     return (
+        <UserStacksContext.Provider value={{chipData , setChipData, addUserStackAuthorization}}>
         <div>
             <h3>Modifier ma présentation</h3>
             <div className="form__container--company">
@@ -112,7 +87,7 @@ export const EditUserPresentation = () => {
                         Prénom
                         <input
                         type="text"
-                        value={first_name? first_name : ""}
+                        value={first_name != null ? first_name : ""}
                         onChange={(e)=>setFirst_Name(e.target.value)}
                         />
                     </label>
@@ -142,13 +117,14 @@ export const EditUserPresentation = () => {
                     </label>
                     <button onClick={updateUserDetails}>sauvegarder</button>
                 </form>
-                <div style={{backgroundColor: "blue"}}>
-                    <ChipsArray value={{ setStacks}}/>
+                <div>
+                    <ChipsArray value={{ stacks, setStacks, chipData, setChipData}}/>
                     
                 </div>
                 
             </div>
         </div>
+        </UserStacksContext.Provider>
     );
 
 };
