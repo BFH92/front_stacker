@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import TextField from "@material-ui/core/TextField";
 import { v4 as uuidv4 } from "uuid";
 import Autocomplete from "@mui/material/Autocomplete";
-import { stacksList } from "../../../../Config/Top";
+import { STACKLIST } from "../../../../Config/Stack_list";
 import UserStackManager from "../../../../Services/RailsApi/UserStackManager ";
 import { UserStacksContext } from "../../../../Context/UserStacksContext";
 import { useSelector } from "react-redux";
@@ -56,7 +56,7 @@ const  viewerLoggedAs = useSelector(state => state.user.logged_as)
           setStacks(newInputValue);
         }}
         id="controllable-states-demo"
-        options={stacksList}
+        options={STACKLIST}
         sx={{ width: 250 }}
         renderInput={(params) => (
           <TextField {...params} label="Liste des Stack" />
