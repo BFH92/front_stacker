@@ -5,26 +5,25 @@ import { v4 as uuidv4 } from 'uuid';
 import InputStacks from './InputStacks';
 import './chipsArray.scss';
 import Exemple from '../../../Assets/Svg/Stacks/Exemple';
-// import DeleteStack from '../../../Assets/Svg/UI/DeleteStack' Icon personnalisé pour la suppression d'un stack
 import { UserStacksContext } from '../../../Context/UserStacksContext';
 import UserStackManager from '../../../Services/RailsApi/UserStackManager ';
-import { FilterContext } from '../../../Context/FilterContext';
+import { useSelector } from 'react-redux';
 const WhiteStyleChip = withStyles({
   root: {
     backgroundColor:'rgb(246, 247, 254)'
   }
 })(Chip);
 
-const ChipsArray = ({value}) => {
+const ChipsArray = () => {
   const {chipData} = useContext(UserStacksContext)
   const {setChipData} = useContext(UserStacksContext)
-  const {addUserStackAuthorization} = useContext(UserStacksContext)
+  const viewerLoggedAs = useSelector(state => state.user.logged_as)
   
 
   const handleDelete = (chipToDelete) => () => {
     setChipData((chips) => chips.filter((chip) => chip.key !== chipToDelete.key));
     console.log(chipToDelete.label)
-    if (addUserStackAuthorization)(UserStackManager.deleteUserStack(chipToDelete.label))
+    if (viewerLoggedAs !== "visitor")(UserStackManager.deleteUserStack(chipToDelete.label,viewerLoggedAs))
   };
   
   return (

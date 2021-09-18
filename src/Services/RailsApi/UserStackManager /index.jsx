@@ -6,7 +6,7 @@ const API = axios.create({ baseURL: API_URL });
 
 
 export default class UserStackManager {
-  static async addUserStack(stack_name) {
+  static async addUserStack(stack_name, viewer) {
     const authorizedConfig = {
       headers: {
         Authorization: `Bearer ${Cookies.get("API_Authentication_token")}`,
@@ -14,13 +14,13 @@ export default class UserStackManager {
     };
     let data = {}
     const response = await API.post(
-      `/users_stack?stack=${stack_name}`,
+      viewer === "company"?`/companies_stack?stack=${stack_name}`:`/users_stack?stack=${stack_name}`,
       data,
       authorizedConfig
     );
     return response;
   };
-  static async getStackId(stack_name) {
+  static async getStackId(stack_name, viewer) {
     const authorizedConfig = {
       headers: {
         Authorization: `Bearer ${Cookies.get("API_Authentication_token")}`,
@@ -29,30 +29,29 @@ export default class UserStackManager {
 
     let data = {}
     const response = await API.get(
-      `/specific_user_stack_id?stack=${stack_name}`,
+      viewer === "company"?`/specific_company_stack_id?stack=${stack_name}`:`/specific_user_stack_id?stack=${stack_name}`,
+      data,
       authorizedConfig
     );
     return response;
   };
 
-  static async deleteUserStack(stack_name) {
+  static async deleteUserStack(stack_name, viewer) {
     const authorizedConfig = {
       headers: {
         Authorization: `Bearer ${Cookies.get("API_Authentication_token")}`,
       },
     };
 
-    const userStackInfo = await UserStackManager.getStackId(stack_name)
-    const userStackId = userStackInfo.data.id
-    console.log(userStackInfo)
-    console.log(userStackId)
-  
+    const userStackInfo = await UserStackManager.getStackId(stack_name, viewer)
+    const StackId = userStackInfo.data.id
+    
   
 
   
     let data = {}
     const response = await API.delete(
-      `/users_stack/${userStackId}`,
+      viewer === "company" ?`/companies_stack/${StackId}`:`/users_stack/${StackId}`,
       data,
       authorizedConfig
     );

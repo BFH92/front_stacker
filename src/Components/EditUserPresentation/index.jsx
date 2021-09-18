@@ -1,12 +1,9 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import UserInfoManager from '../../Services/RailsApi/UserInfoManager';
 import { useHistory } from "react-router";
 import { useSelector } from 'react-redux';
-import { API_URL } from "../../Config/API_URL";
 import ChipsArray from "../FilterSystem/ChipsArray";
-import UserStackManager from "../../Services/RailsApi/UserStackManager ";
 import '../Forms/CompanyForm/company_form.scss';
-import { stacksList } from "../../Config/Top";
 import { v4 as uuidv4 } from "uuid";
 import { UserStacksContext } from "../../Context/UserStacksContext";
 export const EditUserPresentation = () => {
@@ -27,23 +24,16 @@ export const EditUserPresentation = () => {
         setLast_Name(detail.data.last_name)
         setDescription(detail.data.description)
         setGithub_Link(detail.data.github_link)
-        //setUserStacks(detail.data.stacks)
-        //console.log(detail.data.stacks)
         getUserStacks(detail.data.user_stacks)
     }
     
     const getUserStacks = (list) => {
         let stacksList = new Set()
         list.map((userStack)=>{
-        console.log("turn")
         stacksList.add(userStack.name)
     })
         stacksList = Array.from(stacksList);
-    
         addExistingStacks(stacksList)
-        console.log(stacksList)
-        console.log(stacks)
-        console.log(userStacks)
     }
     
     useEffect (() => {
@@ -117,10 +107,7 @@ export const EditUserPresentation = () => {
                     </label>
                     <button onClick={updateUserDetails}>sauvegarder</button>
                 </form>
-                <div>
                     <ChipsArray value={{ stacks, setStacks, chipData, setChipData}}/>
-                    
-                </div>
                 
             </div>
         </div>
