@@ -5,7 +5,6 @@ import { useHistory } from "react-router";
 import { useDispatch} from "react-redux";
 import { RegisterUserLoginStatus, RegisterUserLogoutStatus } from "../../Store";
 import { Link } from "react-router-dom";
-import Header from "../../Components/Header";
 
 const UserSignIn = ({ user }) => {
   const [email, setEmail] = useState("");
@@ -26,7 +25,6 @@ const UserSignIn = ({ user }) => {
   return (
     <>
       <div>
-        <Header />
       <h1>Espace utilisateur</h1>
         <SignInForm user={{ email, setEmail, password, setPassword, login }} />
       </div>
