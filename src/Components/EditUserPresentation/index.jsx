@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import UserInfoManager from '../../Services/RailsApi/UserInfoManager';
 import { useHistory } from "react-router";
 import { useSelector } from 'react-redux';
+import ChipsArray from "../FilterSystem/ChipsArray";
 import '../Forms/CompanyForm/company_form.scss';
-
-
+import { v4 as uuidv4 } from "uuid";
+import { UserStacksContext } from "../../Context/UserStacksContext";
 export const EditUserPresentation = () => {
     const userId = useSelector(state => state.user.id);
     console.log(userId)
@@ -12,7 +13,10 @@ export const EditUserPresentation = () => {
     const [last_name, setLast_Name] = useState("");
     const [description, setDescription] = useState("");
     const [github_link, setGithub_Link] = useState("");
+    const [userStacks, setUserStacks] = useState([]);
+    const [stacks, setStacks] = useState([])
 
+      
     const getUserDetail = async() => {
         const detail = await UserInfoManager.getDetails(userId)
         console.log(detail)
@@ -20,11 +24,37 @@ export const EditUserPresentation = () => {
         setLast_Name(detail.data.last_name)
         setDescription(detail.data.description)
         setGithub_Link(detail.data.github_link)
+        getUserStacks(detail.data.user_stacks)
     }
-
+    
+    const getUserStacks = (list) => {
+        let stacksList = new Set()
+        list.map((userStack)=>{
+        stacksList.add(userStack.name)
+    })
+        stacksList = Array.from(stacksList);
+        addExistingStacks(stacksList)
+    }
+    
     useEffect (() => {
+
         getUserDetail()
+        
     }, []);
+
+    const [chipData, setChipData] = useState([]);
+    
+  const addExistingStacks =(list)=> {
+
+    let StackList =[] 
+    list.map((stack)=>{
+    StackList.push({ key: uuidv4(), label: stack})
+    
+    })
+    setChipData(StackList)
+  }
+ 
+ 
 
     const history = useHistory();
 
@@ -35,7 +65,10 @@ export const EditUserPresentation = () => {
         history.push(`/user/dashboard`)
     };
 
+    const addUserStackAuthorization = true
+      
     return (
+        <UserStacksContext.Provider value={{chipData , setChipData, addUserStackAuthorization}}>
         <div>
             <h3>Modifier ma présentation</h3>
             <div className="form__container--company">
@@ -44,7 +77,7 @@ export const EditUserPresentation = () => {
                         Prénom
                         <input
                         type="text"
-                        value={first_name? first_name : ""}
+                        value={first_name != null ? first_name : ""}
                         onChange={(e)=>setFirst_Name(e.target.value)}
                         />
                     </label>
@@ -74,8 +107,11 @@ export const EditUserPresentation = () => {
                     </label>
                     <button onClick={updateUserDetails}>sauvegarder</button>
                 </form>
+                    <ChipsArray value={{ stacks, setStacks, chipData, setChipData}}/>
+                
             </div>
         </div>
+        </UserStacksContext.Provider>
     );
 
 };

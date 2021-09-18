@@ -3,6 +3,9 @@ import CompanyInfoManager from '../../Services/RailsApi/CompanyInfoManager';
 import { useHistory } from "react-router";
 import { useSelector } from 'react-redux';
 import '../Forms/CompanyForm/company_form.scss';
+import { UserStacksContext } from "../../Context/UserStacksContext";
+import ChipsArray from "../FilterSystem/ChipsArray";
+import { v4 as uuidv4 } from 'uuid';
 
 export const EditCompanyPresentation = () => {
     const companyId = useSelector(state => state.user.id);
@@ -14,7 +17,9 @@ export const EditCompanyPresentation = () => {
     const [staff_size, setStaff_Size] = useState("");
     const [is_it_recruiting, setIs_It_Recruiting] = useState(false);
     const [website_link, setWebsite_Link] = useState("");
-    // const [stack, setStack] = useState("");
+    const [chipData, setChipData] = useState([]);
+
+    const [stacks, setStacks] = useState("");
     // const [company_category_id, setCompany_Category_Id] = useState(0);
 
 
@@ -27,7 +32,9 @@ export const EditCompanyPresentation = () => {
         setStaff_Size(detail.data.staff_size)
         setIs_It_Recruiting(detail.data.is_it_recruiting)
         setWebsite_Link(detail.data.website_link)
-        // setStack(detail.stack)
+
+        getUserStacks(detail.data.company_stacks)
+        //setStack(detail.stack)
         // setCompany_Category_Id(detail.data.company_category_id)
 
     }
@@ -35,6 +42,26 @@ export const EditCompanyPresentation = () => {
     useEffect (() => {
         getCompanyDetail()
     }, []);
+
+    const getUserStacks = (list) => {
+        let stacksList = new Set()
+        list.map((userStack)=>{
+        stacksList.add(userStack.name)
+    })
+        stacksList = Array.from(stacksList);
+        addExistingStacks(stacksList)
+    }
+    const addExistingStacks =(list)=> {
+
+        let StackList =[] 
+        list.map((stack)=>{
+        StackList.push({ key: uuidv4(), label: stack})
+        
+        })
+        setChipData(StackList)
+      }
+     
+     
 
     const history = useHistory();
 
@@ -55,6 +82,8 @@ export const EditCompanyPresentation = () => {
     };
 
     return (
+        <UserStacksContext.Provider value={{chipData , setChipData}}>
+
         <div>
             <h3>Modifier la présentation</h3>
             <div className="form__container--company">
@@ -121,9 +150,16 @@ export const EditCompanyPresentation = () => {
                         value={stack? stack : ""}/>
                     </label> */}
                     <button onClick={updateCompanyDetails}>sauvegarder</button>
+
                 </form>
+                <div>
+                <ChipsArray/>
+
+                </div>
+
             </div>
         </div>
+        </UserStacksContext.Provider>
     )
 
 }

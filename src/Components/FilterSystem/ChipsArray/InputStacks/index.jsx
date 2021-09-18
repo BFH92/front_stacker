@@ -1,59 +1,47 @@
-import React, { useEffect, useState } from "react";
-import { withStyles } from "@material-ui/core/styles";
+import React, { useEffect, useState, useContext } from "react";
 import TextField from "@material-ui/core/TextField";
 import { v4 as uuidv4 } from "uuid";
 import Autocomplete from "@mui/material/Autocomplete";
 import { stacksList } from "../../../../Config/Top";
-import { StacksFetch } from "../../../../Services/RailsApi/StacksFetch";
-import { API_URL } from "../../../../Config/API_URL";
+import UserStackManager from "../../../../Services/RailsApi/UserStackManager ";
+import { UserStacksContext } from "../../../../Context/UserStacksContext";
+import { useSelector } from "react-redux";
 
-// const CustomNegativeInput = withStyles({
-//   root: {
-//     "& .MuiInputBase-root": {
-//       color: "rgb(255, 255, 255)",
-//     },
-//     "& label.Mui-focused": {
-//       color: "rgb(255, 255, 255)",
-//     },
-//     "& .MuiInput-underline:after": {
-//       borderBottomColor: "rgb(255, 255, 255)",
-//     },
-//     "& .MuiOutlinedInput-root": {
-//       "& fieldset": {
-//         border: "2px solid rgb(255, 255, 255)",
-//       },
-//       "&:hover fieldset": {
-//         borderColor: "rgb(255, 255, 255)",
-//       },
-//       "&.Mui-focused fieldset": {
-//         borderColor: "rgb(255, 255, 255)",
-//       },
-//     },
-//   },
-// })(TextField);
 
-const InputStacks = ({ value }) => {
-  const { data } = StacksFetch(API_URL + "stacks");
-  console.log(data);
+const InputStacks = () => {
+const {setFilterStacks} = useContext(UserStacksContext);
+const {chipData} = useContext(UserStacksContext)
+const {setChipData} = useContext(UserStacksContext)
+const  viewerLoggedAs = useSelector(state => state.user.logged_as)
+
+
 
   const [inputData, setInputData] = useState("");
   const [stacks, setStacks] = useState(""); //add new state for the autocomplete
 
-  let labels = new Set();
-  value.chipData.map((element) => labels.add(element.label));
+  let stackNames = new Set()
+
+  chipData.map((element)=>
+    stackNames.add(element.label)
+  )
 
   const addInputStacks = (e) => {
     e.preventDefault();
     if (inputData) {
-      labels.add(inputData);
-      labels = Array.from(labels);
-      let StackList = [];
-      labels.map((label) => StackList.push({ key: uuidv4(), label: label }));
-
-      value.setChipData(StackList);
-      setInputData("");
+      stackNames.add(inputData)
+      stackNames = Array.from(stackNames)
+      let StackList =[] 
+      stackNames.map((stackName)=>{
+      StackList.push({ key: uuidv4(), label: stackName})
+      if (viewerLoggedAs !== "visitor")(UserStackManager.addUserStack(stackName,viewerLoggedAs))
+      if(setFilterStacks)(setFilterStacks(stackNames))
+      })
+      setChipData(StackList)
+      setInputData("")
     }
-  };
+  } 
+  useEffect(() => {
+  }, [inputData]);
 
   return (
     <form noValidate onSubmit={addInputStacks}>
@@ -73,17 +61,6 @@ const InputStacks = ({ value }) => {
           <TextField {...params} label="Liste des Stack" />
         )}
       />
-      {/* <CustomNegativeInput
-        label="Recherche par stacks"
-        variant="outlined"
-        id="custom-css-outlined-input"
-        InputLabelProps={{
-          style: { color: '#fff' }, 
-        }}
-        value={inputData}
-        autoComplete="off"
-        onChange={handleInputStacks}
-      />  */}
     </form>
   );
 };

@@ -45,7 +45,7 @@ export default class UsersAPIManager {
       config
     );
 
-    let token = await response.headers.authorization;
+    //let token = await response.headers.authorization;
     console.log(response);
 
     //token ? registerToken(token) : Cookies.set("isLogged?", "false");
