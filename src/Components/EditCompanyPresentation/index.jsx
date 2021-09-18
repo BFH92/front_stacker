@@ -154,7 +154,6 @@ export const EditCompanyPresentation = () => {
                 </form>
                 <div>
                 <ChipsArray/>
-
                 </div>
 
             </div>

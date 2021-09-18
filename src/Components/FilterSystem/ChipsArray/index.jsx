@@ -18,14 +18,25 @@ const ChipsArray = () => {
   const {chipData} = useContext(UserStacksContext)
   const {setChipData} = useContext(UserStacksContext)
   const viewerLoggedAs = useSelector(state => state.user.logged_as)
-  
+  const {setFilterStacks} = useContext(UserStacksContext);
 
   const handleDelete = (chipToDelete) => () => {
     setChipData((chips) => chips.filter((chip) => chip.key !== chipToDelete.key));
-    console.log(chipToDelete.label)
+   
     if (viewerLoggedAs !== "visitor")(UserStackManager.deleteUserStack(chipToDelete.label,viewerLoggedAs))
+
   };
   
+useEffect(() => {
+  let stackNames = new Set()
+  chipData.map((element)=>{
+  console.log(element)
+  stackNames.add(element.label)
+  })
+  stackNames= Array.from(stackNames)
+  if(setFilterStacks)(setFilterStacks(stackNames))
+  if(stackNames.length === 0)(setFilterStacks(""))
+}, [chipData]);
   return (
     <div className="container__filter--group">
       <InputStacks/>

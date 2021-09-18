@@ -107,7 +107,10 @@ export const EditUserPresentation = () => {
                     </label>
                     <button onClick={updateUserDetails}>sauvegarder</button>
                 </form>
+                <div>
                     <ChipsArray value={{ stacks, setStacks, chipData, setChipData}}/>
+                </div>
+                
                 
             </div>
         </div>
