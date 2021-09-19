@@ -13,7 +13,7 @@ const {setFilterStacks} = useContext(UserStacksContext);
 const {chipData} = useContext(UserStacksContext)
 const {setChipData} = useContext(UserStacksContext)
 const  viewerLoggedAs = useSelector(state => state.user.logged_as)
-
+const {addUserStackAuthorization} = useContext(UserStacksContext)
 
 
   const [inputData, setInputData] = useState("");
@@ -34,7 +34,7 @@ const  viewerLoggedAs = useSelector(state => state.user.logged_as)
       let StackList =[] 
       stackNames.map((stackName)=>{
       StackList.push({ key: uuidv4(), label: stackName})
-      if (viewerLoggedAs !== "visitor")(UserStackManager.addUserStack(stackName,viewerLoggedAs))
+      if (addUserStackAuthorization && viewerLoggedAs !== "visitor")(UserStackManager.addUserStack(stackName,viewerLoggedAs))
       if(setFilterStacks)(setFilterStacks(stackNames))
       })
       setChipData(StackList)
