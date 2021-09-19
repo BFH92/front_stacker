@@ -13,9 +13,9 @@ import NavTabs from './NavTabs';
 import UserMenu from "./UserMenu";
 import VisitorMenu from './VisitorMenu';
 import { useHistory } from "react-router";
-import UsersAPIManager from "../../Services/RailsApi/UsersFetch";
+import UsersAuthManager from "../../Services/RailsApi/UsersFetch/UsersAuthManager";
 import { RegisterUserLogoutStatus } from "../../Store";
-import CompaniesAPIManager from "../../Services/RailsApi/CompaniesFetch";
+import CompaniesAuthManager from "../../Services/RailsApi/CompaniesFetch/CompaniesAuthManager";
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -52,7 +52,7 @@ const Header = ({ user }) => {
     e.preventDefault();
     let response;
     dispatch(RegisterUserLogoutStatus());
-    logged_as === "company" ? response = await CompaniesAPIManager.logout() : response = await UsersAPIManager.logout();
+    logged_as === "company" ? response = await CompaniesAuthManager.logout() : response = await UsersAuthManager.logout();
   
     user.setIsLogged(false);
     console.log(response);

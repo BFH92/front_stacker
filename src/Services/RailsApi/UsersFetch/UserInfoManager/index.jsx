@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_URL } from "../../../Config/API_URL";
+import { API_URL } from "../../../../Config/API_URL";
 import Cookies from "js-cookie";
 
 const API = axios.create({ baseURL: API_URL });

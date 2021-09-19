@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import UserInfoManager from '../../../Services/RailsApi/UserInfoManager';
+
+import UserInfoManager from "../../../Services/RailsApi/UsersFetch/UserInfoManager";
 import { useHistory } from "react-router";
 import { useSelector } from 'react-redux';
 import ChipsArray from "../../FilterSystem/ChipsArray";

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import SignUpForm from "../../Components/Forms/SignUpForm";
-import UsersAPIManager from "../../Services/RailsApi/UsersFetch";
+import UsersAuthManager from "../../Services/RailsApi/UsersFetch/UsersAuthManager";
 import { useHistory } from "react-router";
 import { useDispatch } from "react-redux";
 import { RegisterUserLoginStatus, RegisterUserLogoutStatus } from "../../Store";
@@ -14,7 +14,7 @@ const UserSignUp = ({user}) => {
 
   const SignUp = async (e) => {
     e.preventDefault();
-    const response = await UsersAPIManager.register(email, password);
+    const response = await UsersAuthManager.register(email, password);
     history.push("/");
     console.log(response.data.user_id);
     response.status === 200

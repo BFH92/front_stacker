@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import SignInForm from "../../Components/Forms/SignInForm";
-import CompaniesAPIManager from "../../Services/RailsApi/CompaniesFetch";
-import { useHistory } from "react-router";
+import CompaniesAuthManager from "../../Services/RailsApi/CompaniesFetch/CompaniesAuthManager";
 import { useDispatch } from "react-redux";
 import { RegisterUserLoginStatus, RegisterUserLogoutStatus } from "../../Store";
 import { Link } from "react-router-dom";
-
+import { useHistory } from "react-router";
 
   const CompanySignIn = ({user}) => {
 
@@ -17,7 +16,7 @@ import { Link } from "react-router-dom";
 
   const login = async (e) => {
     e.preventDefault();
-    const response = await CompaniesAPIManager.login(email, password);
+    const response = await CompaniesAuthManager.login(email, password);
     history.push("/")
     response.status === 200? dispatch(RegisterUserLoginStatus(response.data.company_id,"company")):dispatch(RegisterUserLogoutStatus());
     user.setIsLogged(true);

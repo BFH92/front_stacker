@@ -1,7 +1,8 @@
-import { API_URL } from "../../../Config/API_URL";
+import { API_URL } from "../../../../Config/API_URL";
 import axios from "axios";
-import { registerToken } from "../../../Helpers/API_Helper/RegisterToken";
+import { registerToken } from "../../../../Helpers/API_Helper/RegisterToken";
 import Cookies from "js-cookie";
+
 const API = axios.create({ baseURL: API_URL });
 
 const config = {
@@ -10,10 +11,10 @@ const config = {
   },
 };
 
-export default class UsersAPIManager {
+export default class CompaniesAuthManager {
   static async sendPasswordInstructions(email) {
     const response = await API.post(
-      "/user/forgotten_password",
+      "/company/forgotten_password",
       {
         "email":email,
       },
@@ -23,7 +24,7 @@ export default class UsersAPIManager {
   }
   static async resetPassword(password,email,reset_token) {
     const response = await API.post(
-      "/user/reset_password",
+      "/company/reset_password",
       {
         "email":email,
         "token":reset_token,
@@ -31,38 +32,30 @@ export default class UsersAPIManager {
       },
       config
     );
-
-    let token = await response.headers.authorization;
-    console.log(response);
-
-    token ? registerToken(token) : Cookies.set("isLogged?", "false");
-    return response;
+    return response
   }
   static async register(email, password) {
     const response = await API.post(
-      "/users",
-      { user: { email, password } },
+      "/companies",
+      { company: { email, password } },
       config
     );
 
     //let token = await response.headers.authorization;
     console.log(response);
 
-    //token ? registerToken(token) : Cookies.set("isLogged?", "false");
+  //  token ? registerToken(token) : Cookies.set("isLogged?", "false");
     this.login(email, password);
     return response;
   }
   static async logout() {
-    const cookie = Cookies.get("API_Authentication_token")
-    console.log(cookie);
-    const authorizedConfig =  {
+    const authorizedConfig = {
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${cookie}`,
+        Authorization: `Bearer ${Cookies.get("API_Authentication_token")}`,
       },
     };
-  
-    const response = await API.delete("/users/sign_out", authorizedConfig);
+    const response = await API.delete("/companies/sign_out", authorizedConfig);
     console.log(response);
     Cookies.remove("API_Authentication_token");
     return response;
@@ -70,8 +63,8 @@ export default class UsersAPIManager {
 
   static async login(email, password) {
     const response = await API.post(
-      "/users/sign_in",
-      { user: { email, password } },
+      "/companies/sign_in",
+      { company: { email, password } },
       config
     );
 
