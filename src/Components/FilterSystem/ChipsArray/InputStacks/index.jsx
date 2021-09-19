@@ -34,7 +34,7 @@ const {addUserStackAuthorization} = useContext(UserStacksContext)
       let StackList =[] 
       stackNames.map((stackName)=>{
       StackList.push({ key: uuidv4(), label: stackName})
-      if (addUserStackAuthorization && viewerLoggedAs !== "visitor")(ViewerStackManager.addViewerrStack(stackName,viewerLoggedAs))
+      if (addUserStackAuthorization && viewerLoggedAs !== "visitor")(ViewerStackManager.addViewerStack(stackName,viewerLoggedAs))
       if(setFilterStacks)(setFilterStacks(stackNames))
       })
       setChipData(StackList)
