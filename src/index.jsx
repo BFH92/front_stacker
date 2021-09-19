@@ -92,7 +92,7 @@ const App = () => {
               <PrivateRoute exact path="/user/settings" component={Settings} identity={"user"} />
               
               <Route path="/user/settings/new-password" render={() => <NewPassword user={{setIsLogged,identity:"user"}}/>} />
-              <Route path="/user/settings/get-password" render={() => <GetPassword identity={"company"}/>} />
+              <Route path="/user/settings/get-password" render={() => <GetPassword identity={"user"}/>} />
 
               <Route path="/search/company" render={() => <SearchCompany />} />
               <Route exact path="/company" render={() => <Company key={uuidv4()} />} />

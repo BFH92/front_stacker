@@ -48,7 +48,7 @@ const Header = ({ user }) => {
 
   const logout = async (e) => {
   
-    e.preventDefault();
+    //e.preventDefault();
     let response;
     dispatch(RegisterUserLogoutStatus());
     logged_as === "company" ? response = await CompaniesAPIManager.logout() : response = await UsersAPIManager.logout();

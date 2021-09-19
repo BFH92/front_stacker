@@ -13,7 +13,7 @@ const UserSignUp = ({user}) => {
   const dispatch = useDispatch();
 
   const SignUp = async (e) => {
-    e.preventDefault();
+    //e.preventDefault();
     const response = await UsersAPIManager.register(email, password);
     history.push("/");
     console.log(response.data.user_id);
@@ -23,6 +23,7 @@ const UserSignUp = ({user}) => {
       user.setIsLogged(true)
     return response;
   };
+
   return (
     <>
       <div>
