@@ -142,7 +142,6 @@ export const EditCompanyForm
                         onChange={()=>setIs_It_Recruiting(!is_it_recruiting)}
                         //checked= {is_it_recruiting? "checked" : ""}
                         />
-                        {console.log(is_it_recruiting)}
                     </label>
                     {/* <label>
                         Stacks

@@ -6,7 +6,7 @@ const CompanyPreview = ({company}) => {
 
   return(
     <div className="container__preview--company">
-      <AddToFavorite />
+    
       <div className="content--text">
         <div className="adress">
           <h3>{company.name}</h3>
@@ -28,6 +28,7 @@ const CompanyPreview = ({company}) => {
             <div>{stack.name}</div>
           )}</p>
         </div>
+        <AddToFavorite />
       </div>
     </div>
   );
