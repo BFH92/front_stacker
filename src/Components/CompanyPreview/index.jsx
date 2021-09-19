@@ -15,7 +15,7 @@ const CompanyPreview = ({company}) => {
           <p>{company.description}</p>
           <br />
           <h4>Taille de l'entreprise</h4>
-          <p> {company.staff_size} employé</p>
+          <p> Equipe Tech : {company.staff_size} personnes</p>
           <br />
         </div>
         <div className="price">

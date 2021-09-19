@@ -3,7 +3,7 @@ import TextField from "@material-ui/core/TextField";
 import { v4 as uuidv4 } from "uuid";
 import Autocomplete from "@mui/material/Autocomplete";
 import { STACKLIST } from "../../../../Config/Stack_list";
-import UserStackManager from "../../../../Services/RailsApi/ViewerStackManager ";
+import ViewerStackManager from "../../../../Services/RailsApi/ViewerStackManager ";
 import { UserStacksContext } from "../../../../Context/UserStacksContext";
 import { useSelector } from "react-redux";
 
@@ -13,7 +13,7 @@ const {setFilterStacks} = useContext(UserStacksContext);
 const {chipData} = useContext(UserStacksContext)
 const {setChipData} = useContext(UserStacksContext)
 const  viewerLoggedAs = useSelector(state => state.user.logged_as)
-
+const {addUserStackAuthorization} = useContext(UserStacksContext)
 
 
   const [inputData, setInputData] = useState("");
@@ -34,7 +34,7 @@ const  viewerLoggedAs = useSelector(state => state.user.logged_as)
       let StackList =[] 
       stackNames.map((stackName)=>{
       StackList.push({ key: uuidv4(), label: stackName})
-      if (viewerLoggedAs !== "visitor")(UserStackManager.addUserStack(stackName,viewerLoggedAs))
+      if (addUserStackAuthorization && viewerLoggedAs !== "visitor")(ViewerStackManager.addViewerStack(stackName,viewerLoggedAs))
       if(setFilterStacks)(setFilterStacks(stackNames))
       })
       setChipData(StackList)
