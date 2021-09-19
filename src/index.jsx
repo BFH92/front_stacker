@@ -81,7 +81,7 @@ const App = () => {
           
           <main className="container__main">
             <Switch>
-              <Route path="/" exact render={() => <Home/>} />
+              <Route path="/" exact render={() => <SearchCompany/>} />
               <Route path="/about" render={() => <About />} />
               <Route path="/stacks" render={() => <Stacks />} />
 
