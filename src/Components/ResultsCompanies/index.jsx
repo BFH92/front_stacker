@@ -4,7 +4,7 @@ import HeaderResultsCompanies from '../ResultsCompanies/HeaderResultsCompanies';
 import PreviewCompany from '../PreviewCompany';
 import ProgressBar from '../Loaders/ProgressBar';
 import ProgressCircle from '../Loaders/ProgressCircle';
-import { CompaniesList } from '../../Services/RailsApi/CompaniesFetch/CompaniesDetails'
+import { CompaniesList} from '../../Services/RailsApi/CompaniesFetch/CompaniesDetailsManager'
 import { FilterContext } from '../../Context/FilterContext';
 
 const ResultsCompanies = () => {
