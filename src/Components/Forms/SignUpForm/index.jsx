@@ -1,8 +1,21 @@
 import React from "react";
 //styles
-import './sign_up_form.scss';
+import "./sign_up_form.scss";
+import { useForm } from "react-hook-form";
+import { ErrorMessage } from '@hookform/error-message';
 
 const SignUpForm = ({ user }) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      email: user.email,
+      password: user.password,
+    },
+  });
+
   return (
     <>
       <div className="form__container--signup">
@@ -12,20 +25,33 @@ const SignUpForm = ({ user }) => {
               Email
               <input
                 type="text"
-                value={user.email}
+                {...register("email", {
+                  required: true,
+                  pattern: /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g,
+                })}
                 onChange={(e) => user.setEmail(e.target.value)}
               />
             </label>
+            <ErrorMessage
+              errors={errors}
+              name="email"
+              render={() => <p><strong>Email valide requis</strong></p>}
+            />
             <label>
               Mot de passe
               <input
                 type="password"
-                value={user.password}
+                {...register("password", { required: true, minLength: 5 })}
                 onChange={(e) => user.setPassword(e.target.value)}
               />
             </label>
+            <ErrorMessage
+              errors={errors}
+              name="password"
+              render={() => <p><strong>Mot de passe trop court</strong></p>}
+            />
           </div>
-          <button type="submit" onClick={user.SignUp}>
+          <button type="submit" onClick={handleSubmit(user.SignUp)}>
             S'inscrire
           </button>
         </form>
