@@ -9,7 +9,6 @@ import { FilterContext } from '../../Context/FilterContext';
 
 const ResultsCompanies = () => {
   const {url} = useContext(FilterContext)
-
   const {data} = CompaniesList(url);
   const [company, setCompany] = useState([])
 
@@ -19,7 +18,7 @@ const ResultsCompanies = () => {
 
   return (
     <div className="results__main--grid">
-         <HeaderCompaniesResults />
+         <HeaderCompaniesResults company={company}/>
     {/*<ProgressBar />
       <ProgressCircle /> */}
       <div className="results--all">
