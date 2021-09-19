@@ -20,6 +20,7 @@ const ChipsArray = () => {
   const viewerLoggedAs = useSelector(state => state.user.logged_as)
   const {setFilterStacks} = useContext(UserStacksContext);
   const {addUserStackAuthorization} = useContext(UserStacksContext)
+  
   const handleDelete = (chipToDelete) => () => {
     setChipData((chips) => chips.filter((chip) => chip.key !== chipToDelete.key));
    
