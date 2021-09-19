@@ -5,13 +5,11 @@ import AddToFavorite from '../../CTAs/AddToFavorite';
 const StackPreview = ({stack}) => {
 
   return(
-    <div className="container__preview--company">
-      <div className="content--text">
-        <div className="adress">
+
+      <div>
           <p>{stack.name}</p>
-        </div>
       </div>
-    </div>
+
   );
 };
 
