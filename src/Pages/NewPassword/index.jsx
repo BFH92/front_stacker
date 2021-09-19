@@ -17,7 +17,7 @@ const NewPassword = ({user}) => {
     const history = useHistory()
     const dispatch = useDispatch()
     const resetPassword = async (e) => {
-      e.preventDefault();
+      //e.preventDefault();
       let response;
       switch (user.identity){
         case ("company"):

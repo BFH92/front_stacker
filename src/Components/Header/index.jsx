@@ -49,7 +49,7 @@ const Header = ({ user }) => {
 
   const logout = async (e) => {
   
-    e.preventDefault();
+    //e.preventDefault();
     let response;
     dispatch(RegisterUserLogoutStatus());
     logged_as === "company" ? response = await CompaniesAuthManager.logout() : response = await UsersAuthManager.logout();

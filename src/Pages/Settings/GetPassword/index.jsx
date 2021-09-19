@@ -7,7 +7,7 @@ const GetPassword = (user) => {
   const [email, setEmail] = useState("")
   console.log(user.identity)
   const sendPasswordInstructions = async (e) => {
-    e.preventDefault();
+    //e.preventDefault();
     let response;
     
     switch (user.identity){

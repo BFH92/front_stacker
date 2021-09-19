@@ -19,7 +19,7 @@ const NewPasswordForm = ({user}) => {
         <form className="form">
           <div className="input__container">
         <label>
-          email
+          Email
             <input
               type="text"
               value={user.email}
@@ -29,7 +29,7 @@ const NewPasswordForm = ({user}) => {
           <label>
           Mot de passe
             <input
-              type="text"
+              type="password"
               value={user.password}
               onChange={(e) => user.setPassword(e.target.value)}
             />
