@@ -1,12 +1,12 @@
 import React from 'react';
-import './previewCompany.scss';
+import './company_preview.scss';
 import AddToFavorite from '../CTAs/AddToFavorite';
 
-const PreviewCompany = ({company}) => {
+const CompanyPreview = ({company}) => {
 
   return(
     <div className="container__preview--company">
-      <AddToFavorite />
+    
       <div className="content--text">
         <div className="adress">
           <h3>{company.name}</h3>
@@ -28,9 +28,10 @@ const PreviewCompany = ({company}) => {
             <div>{stack.name}</div>
           )}</p>
         </div>
+        <AddToFavorite />
       </div>
     </div>
   );
 };
 
-export default PreviewCompany;
+export default CompanyPreview;

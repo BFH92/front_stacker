@@ -1,29 +1,19 @@
-import { useEffect, useState } from "react";
+import axios from "axios";
+import { API_URL } from "../../../Config/API_URL";
 
-export const StacksFetch = (URL) => {
-  const [data, setData] = useState(null);
+const API = axios.create({ baseURL: API_URL });
 
-  useEffect(() => {
-    const getStacks = async () => {
-      try {
-        const res = await fetch(URL, {
-          method: "GET",
-          headers: {
-            "Content-Type": " application/json",
-          },
-        });
+export default class StacksManager {
+  static async getAllStacks() {
+    const config = {
+      headers: {
+        Accept:'application/json'
+    }};
 
-        console.log(res);
-        if (res.status === 200) {
-          const data = await res.json();
-          setData(data);
-          console.log(data);
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    getStacks();
-  }, [URL]);
-  return { data };
-};
+    const response = await API.get(
+      `/stacks`,
+      config
+    );
+    return response;
+  };
+}
