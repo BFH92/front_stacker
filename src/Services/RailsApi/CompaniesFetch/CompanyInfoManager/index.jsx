@@ -1,11 +1,11 @@
 import axios from "axios";
-import { API_URL } from "../../../Config/API_URL";
+import { API_URL } from "../../../../Config/API_URL";
 import Cookies from "js-cookie";
 
 const API = axios.create({ baseURL: API_URL });
 
 
-export default class UserInfoManager {
+export default class CompanyInfoManager {
   static async getDetails(id) {
     const authorizedConfig = {
       headers: {
@@ -15,13 +15,23 @@ export default class UserInfoManager {
     };
 
     const response = await API.get(
-      `/users/${id}`,
+      `/companies/${id}`,
       authorizedConfig
     );
     return response;
   };
 
-  static async updateDetails(id, first_name, last_name, description, github_link){
+  static async updateDetails(
+    id, 
+    name, 
+    description, 
+    github_link, 
+    staff_size, 
+    is_it_recruiting,
+    website_link
+    //company_category_id, 
+    //, stack
+    ){
     const authorizedConfig = {
         headers: {
           Accept:'application/json',
@@ -29,14 +39,18 @@ export default class UserInfoManager {
         },
     };
     let data = new FormData();
-    data.append('first_name', first_name);
-    data.append('last_name', last_name);
+    data.append('name', name);
     data.append('description', description);
     data.append('github_link', github_link);
+    data.append('staff_size', staff_size);
+    data.append('is_it_recruiting', is_it_recruiting);
+    data.append('website_link', website_link);
+    //data.append('company_category_id', company_category_id);
+    //data.append('stack', stack);
 
     console.log(data)
     const response = await API.put(
-        `/users/${id}`,
+        `/companies/${id}`,
         data,
         authorizedConfig
     );

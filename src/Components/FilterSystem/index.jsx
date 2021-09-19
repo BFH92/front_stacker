@@ -7,32 +7,36 @@ import NegativeRightIconButton from '../CTAs/NegativeRightIconButton';
 import Save from '../../Assets/Svg/UI/Save';
 import { FilterContext } from '../../Context/FilterContext';
 import { API_URL } from '../../Config/API_URL';
+import { UserStacksContext } from '../../Context/UserStacksContext';
 const FilterSystem = () => {
   //TODO: use context pour set L'url
   const {setUrl}= useContext(FilterContext);
+  const {url}= useContext(FilterContext);
+  //const {filterStacks}= useContext(FilterContext);
   
-  const [stacks, setStacks] = useState([])
   const [staffSize, setStaffSize] = useState("")
+  const [chipData, setChipData] = useState([]);
 
-
-  
+  const [filterStacks, setFilterStacks] = useState("")
  
   useEffect(() => {
     let urlParameters = [API_URL+ 'companies?']
     if (staffSize)(urlParameters.push(`staff_size=${staffSize}`))
-    if (stacks)(urlParameters.push(`stack=${stacks}`))
-    
+    if (filterStacks)(urlParameters.push(`stack=${filterStacks}`))
+  
     urlParameters = urlParameters.join("&")
     console.log(urlParameters)
     setUrl(urlParameters)
 
-  }, [stacks, staffSize, setUrl]);
-
+  }, [filterStacks, staffSize]);
+  const addUserStackAuthorization = false
   return (
+    <UserStacksContext.Provider value={{chipData , setChipData, addUserStackAuthorization, filterStacks, setFilterStacks}}>
+
     <div className="container__filter--system">
       <div className="container--top">
         <div className="grid__filter--groups">
-          <ChipsArray companies={{setStacks}}/>
+          <ChipsArray/>
           <RadioButtonsGroup companies={{staffSize,setStaffSize}}/>
           {/* <SimpleSlider /> */}
         </div>
@@ -43,6 +47,7 @@ const FilterSystem = () => {
         </div>
       </div>
     </div>    
+    </UserStacksContext.Provider>
   );
 };
 

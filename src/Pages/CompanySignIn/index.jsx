@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import SignInForm from "../../Components/Forms/SignInForm";
-import CompaniesAPIManager from "../../Services/RailsApi/CompaniesFetch";
-import { useHistory } from "react-router";
+import CompaniesAuthManager from "../../Services/RailsApi/CompaniesFetch/CompaniesAuthManager";
 import { useDispatch } from "react-redux";
 import { RegisterUserLoginStatus, RegisterUserLogoutStatus } from "../../Store";
 import { Link } from "react-router-dom";
-
+import { useHistory } from "react-router";
 
   const CompanySignIn = ({user}) => {
 
@@ -17,9 +16,9 @@ import { Link } from "react-router-dom";
 
   const login = async (e) => {
     e.preventDefault();
-    const response = await CompaniesAPIManager.login(email, password);
+    const response = await CompaniesAuthManager.login(email, password);
     history.push("/")
-    response.status === 200? dispatch(RegisterUserLoginStatus(response.data.user_id,"company")):dispatch(RegisterUserLogoutStatus());
+    response.status === 200? dispatch(RegisterUserLoginStatus(response.data.company_id,"company")):dispatch(RegisterUserLogoutStatus());
     user.setIsLogged(true);
 
   };
@@ -36,7 +35,7 @@ import { Link } from "react-router-dom";
         <h3>Mot de passe oublié</h3>
       </Link>
       <Link to="/user/sign-in">
-        <h3>Se connecter en tant qu'utilisateur</h3>
+        <h3>Se connecter en tant que développeur</h3>
       </Link>
     </>
   );

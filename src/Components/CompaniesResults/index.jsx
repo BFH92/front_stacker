@@ -1,16 +1,14 @@
 import React, {useState, useEffect, useContext} from 'react';
-import './resultsCompanies.scss';
-import HeaderResultsCompanies from '../ResultsCompanies/HeaderResultsCompanies';
-import PreviewCompany from '../PreviewCompany';
+import './companies_results.scss';
+import HeaderCompaniesResults from './HeaderResultsCompanies';
+import CompanyPreview from '../CompanyPreview';
 import ProgressBar from '../Loaders/ProgressBar';
 import ProgressCircle from '../Loaders/ProgressCircle';
-import { CompaniesList } from '../../Services/RailsApi/CompaniesFetch/CompaniesDetails'
+import { CompaniesList} from '../../Services/RailsApi/CompaniesFetch/CompaniesDetailsManager'
 import { FilterContext } from '../../Context/FilterContext';
 
 const ResultsCompanies = () => {
-  //TODO: use Context here pour l'url
   const {url} = useContext(FilterContext)
-
   const {data} = CompaniesList(url);
   const [company, setCompany] = useState([])
 
@@ -20,15 +18,15 @@ const ResultsCompanies = () => {
 
   return (
     <div className="results__main--grid">
-      <HeaderResultsCompanies />
-      {/* <ProgressBar />
+         <HeaderCompaniesResults company={company}/>
+    {/*<ProgressBar />
       <ProgressCircle /> */}
       <div className="results--all">
         <div className="all--items">
           <ul>
             {company && company.map((company)=> (
               <li key={company.id}>
-                <PreviewCompany company={company}/>
+                <CompanyPreview company={company}/>
               </li>
             ))}
           </ul>

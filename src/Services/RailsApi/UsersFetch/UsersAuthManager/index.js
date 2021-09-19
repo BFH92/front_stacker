@@ -1,6 +1,6 @@
-import { API_URL } from "../../../Config/API_URL";
+import { API_URL } from "../../../../Config/API_URL";
 import axios from "axios";
-import { registerToken } from "../../../Helpers/API_Helper/RegisterToken";
+import { registerToken } from "../../../../Helpers/API_Helper/RegisterToken";
 import Cookies from "js-cookie";
 const API = axios.create({ baseURL: API_URL });
 
@@ -10,7 +10,7 @@ const config = {
   },
 };
 
-export default class UsersAPIManager {
+export default class UsersAuthManager {
   static async sendPasswordInstructions(email) {
     const response = await API.post(
       "/user/forgotten_password",
@@ -45,7 +45,7 @@ export default class UsersAPIManager {
       config
     );
 
-    let token = await response.headers.authorization;
+    //let token = await response.headers.authorization;
     console.log(response);
 
     //token ? registerToken(token) : Cookies.set("isLogged?", "false");

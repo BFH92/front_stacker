@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import GetPasswordForm from '../../../Components/Forms/GetPasswordForm';
-import UsersAPIManager from '../../../Services/RailsApi/UsersFetch';
-import CompaniesAPIManager from '../../../Services/RailsApi/CompaniesFetch';
+import CompaniesAuthManager from '../../../Services/RailsApi/CompaniesFetch/CompaniesAuthManager';
+import UsersAuthManager from '../../../Services/RailsApi/UsersFetch/UsersAuthManager';
 
 const GetPassword = (user) => {
   const [email, setEmail] = useState("")
@@ -12,10 +12,10 @@ const GetPassword = (user) => {
     
     switch (user.identity){
     case ("company"):
-      response = await CompaniesAPIManager.sendPasswordInstructions(email);
+      response = await CompaniesAuthManager.sendPasswordInstructions(email);
       break;
     case ("user"):
-      response = await UsersAPIManager.sendPasswordInstructions(email);
+      response = await UsersAuthManager.sendPasswordInstructions(email);
     break;
     default:
     console.log("hey")
