@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
-import CompanyInfoManager from '../../Services/RailsApi/CompanyInfoManager';
+import CompanyInfoManager from '../../../Services/RailsApi/CompanyInfoManager';
 import { useHistory } from "react-router";
 import { useSelector } from 'react-redux';
-import '../Forms/CompanyForm/company_form.scss';
-import { UserStacksContext } from "../../Context/UserStacksContext";
-import ChipsArray from "../FilterSystem/ChipsArray";
+import './edit_company_form.scss';
+import { UserStacksContext } from "../../../Context/UserStacksContext";
+import ChipsArray from "../../FilterSystem/ChipsArray";
 import { v4 as uuidv4 } from 'uuid';
 
-export const EditCompanyPresentation = () => {
+export const EditCompanyForm
+ = () => {
     const companyId = useSelector(state => state.user.id);
     console.log(companyId)
     

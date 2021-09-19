@@ -38,6 +38,7 @@ const useStyles = makeStyles(() =>
 
 const Header = ({ user }) => {
   const isLogged = useSelector((state) => state.user.isLogged);
+  const loggedAs = useSelector((state) => state.user.logged_as);
   const classes = useStyles();
 
   const history = useHistory();
@@ -75,9 +76,13 @@ const Header = ({ user }) => {
                   <Notifications />
                 </Badge>
               </Link>
-              <Link to="/user/settings">
+              {loggedAs === "user" ?
+              <Link to="user/settings">
                 <Settings />
-              </Link>
+              </Link> :
+              <Link to="company/settings">
+              <Settings />
+            </Link>}
               <UserMenu logout={logout}/>
             </div>
           ) : (

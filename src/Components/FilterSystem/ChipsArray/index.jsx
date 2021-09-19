@@ -35,7 +35,7 @@ useEffect(() => {
   })
   stackNames= Array.from(stackNames)
   if(setFilterStacks)(setFilterStacks(stackNames))
-  if(stackNames.length === 0)(setFilterStacks(""))
+  if(setFilterStacks && stackNames.length === 0)(setFilterStacks(""))
 }, [chipData]);
   return (
     <div className="container__filter--group">
