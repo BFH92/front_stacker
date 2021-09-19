@@ -1,6 +1,6 @@
 import React from 'react';
 import './previewRecentSearch.scss';
-import ChipsArray from '../../ResultsCompanies/CompanyPreview/ChipsArray';
+import ChipsArray from '../../CompaniesResults/CompanyPreview/ChipsArray';
 import LeftSimpleArrow from '../../../Assets/Svg/UI/LeftSimpleArrow'
 
 const PreviewRecentSearch = () => {

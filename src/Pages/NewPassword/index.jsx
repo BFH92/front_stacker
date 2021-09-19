@@ -1,11 +1,11 @@
 import React,{useState} from 'react';
 import NewPasswordForm from '../../Components/Forms/NewPasswordForm';
-import UsersAPIManager from '../../Services/RailsApi/UsersFetch';
+import UsersAuthManager from '../../Services/RailsApi/UsersFetch/UsersAuthManager';
 import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { RegisterUserLoginStatus, RegisterUserLogoutStatus } from '../../Store';
 import {useLocation} from "react-router-dom";
-import CompaniesAPIManager from '../../Services/RailsApi/CompaniesFetch';
+import CompaniesAuthManager from '../../Services/RailsApi/CompaniesFetch/CompaniesAuthManager';
 
 const NewPassword = ({user}) => {
     const [password, setPassword] = useState("")
@@ -22,14 +22,14 @@ const NewPassword = ({user}) => {
       switch (user.identity){
         case ("company"):
           console.log("fetch company")
-          response = await CompaniesAPIManager.resetPassword(password,email,reset_token);
-          response = await CompaniesAPIManager.login(email, password);
+          response = await CompaniesAuthManager.resetPassword(password,email,reset_token);
+          response = await CompaniesAuthManager.login(email, password);
           response.status === 200? dispatch(RegisterUserLoginStatus(response.data.user_id,"company")):dispatch(RegisterUserLogoutStatus());
           break;
         case ("user"):
           console.log("user")
-          response = await UsersAPIManager.resetPassword(password,email,reset_token);
-          response = await UsersAPIManager.login(email, password);
+          response = await UsersAuthManager.resetPassword(password,email,reset_token);
+          response = await UsersAuthManager.login(email, password);
           response.status === 200? dispatch(RegisterUserLoginStatus(response.data.user_id,"user")):dispatch(RegisterUserLogoutStatus());
         break;
         default:

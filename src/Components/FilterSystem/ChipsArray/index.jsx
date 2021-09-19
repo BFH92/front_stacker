@@ -6,7 +6,7 @@ import InputStacks from './InputStacks';
 import './chipsArray.scss';
 import Exemple from '../../../Assets/Svg/Stacks/Exemple';
 import { UserStacksContext } from '../../../Context/UserStacksContext';
-import UserStackManager from '../../../Services/RailsApi/UserStackManager ';
+import UserStackManager from '../../../Services/RailsApi/ViewerStackManager ';
 import { useSelector } from 'react-redux';
 const WhiteStyleChip = withStyles({
   root: {
@@ -35,7 +35,7 @@ useEffect(() => {
   })
   stackNames= Array.from(stackNames)
   if(setFilterStacks)(setFilterStacks(stackNames))
-  if(stackNames.length === 0)(setFilterStacks(""))
+  if(setFilterStacks && stackNames.length === 0)(setFilterStacks(""))
 }, [chipData]);
   return (
     <div className="container__filter--group">

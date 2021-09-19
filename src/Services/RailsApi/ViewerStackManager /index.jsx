@@ -5,8 +5,8 @@ import Cookies from "js-cookie";
 const API = axios.create({ baseURL: API_URL });
 
 
-export default class UserStackManager {
-  static async addUserStack(stack_name, viewer) {
+export default class ViewerStackManager {
+  static async addViewerStack(stack_name, viewer) {
     const authorizedConfig = {
       headers: {
         Authorization: `Bearer ${Cookies.get("API_Authentication_token")}`,
@@ -35,14 +35,14 @@ export default class UserStackManager {
     return response;
   };
 
-  static async deleteUserStack(stack_name, viewer) {
+  static async deleteViewerStack(stack_name, viewer) {
     const authorizedConfig = {
       headers: {
         Authorization: `Bearer ${Cookies.get("API_Authentication_token")}`,
       },
     };
 
-    const userStackInfo = await UserStackManager.getStackId(stack_name, viewer)
+    const userStackInfo = await ViewerStackManager.getStackId(stack_name, viewer)
     const StackId = userStackInfo.data.id
     
     let data = {}

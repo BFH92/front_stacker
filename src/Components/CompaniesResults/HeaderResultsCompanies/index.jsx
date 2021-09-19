@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './headerResultsCompanies.scss';
 
-const HeaderResultsCompanies = () => {
+const HeaderCompaniesResults = () => {
   const [howManyResults, setHowManyResults] = useState(9);
 
   return (
@@ -9,11 +9,11 @@ const HeaderResultsCompanies = () => {
       <div className="container--left">
         <h1>{howManyResults} Résultats</h1>        
       </div>
-      <div className="container__filter--right">
+        {/*<div className="container__filter--right">
         <p>Sort by Date</p>
-      </div>
+      </div>*/}
     </header>
   );
 };
 
-export default HeaderResultsCompanies;
+export default HeaderCompaniesResults;

@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
-import UserInfoManager from '../../Services/RailsApi/UserInfoManager';
+
+import UserInfoManager from "../../../Services/RailsApi/UsersFetch/UserInfoManager";
 import { useHistory } from "react-router";
 import { useSelector } from 'react-redux';
-import ChipsArray from "../FilterSystem/ChipsArray";
-import '../Forms/CompanyForm/company_form.scss';
+import ChipsArray from "../../FilterSystem/ChipsArray";
+import './edit_user_form.scss';
 import { v4 as uuidv4 } from "uuid";
-import { UserStacksContext } from "../../Context/UserStacksContext";
-export const EditUserPresentation = () => {
+import { UserStacksContext } from "../../../Context/UserStacksContext";
+
+export const EditUserForm = () => {
     const userId = useSelector(state => state.user.id);
     console.log(userId)
     const [first_name, setFirst_Name] = useState("");

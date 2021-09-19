@@ -13,9 +13,9 @@ import NavTabs from './NavTabs';
 import UserMenu from "./UserMenu";
 import VisitorMenu from './VisitorMenu';
 import { useHistory } from "react-router";
-import UsersAPIManager from "../../Services/RailsApi/UsersFetch";
+import UsersAuthManager from "../../Services/RailsApi/UsersFetch/UsersAuthManager";
 import { RegisterUserLogoutStatus } from "../../Store";
-import CompaniesAPIManager from "../../Services/RailsApi/CompaniesFetch";
+import CompaniesAuthManager from "../../Services/RailsApi/CompaniesFetch/CompaniesAuthManager";
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -38,6 +38,7 @@ const useStyles = makeStyles(() =>
 
 const Header = ({ user }) => {
   const isLogged = useSelector((state) => state.user.isLogged);
+  const loggedAs = useSelector((state) => state.user.logged_as);
   const classes = useStyles();
 
   const history = useHistory();
@@ -51,7 +52,7 @@ const Header = ({ user }) => {
     e.preventDefault();
     let response;
     dispatch(RegisterUserLogoutStatus());
-    logged_as === "company" ? response = await CompaniesAPIManager.logout() : response = await UsersAPIManager.logout();
+    logged_as === "company" ? response = await CompaniesAuthManager.logout() : response = await UsersAuthManager.logout();
   
     user.setIsLogged(false);
     console.log(response);
@@ -75,9 +76,13 @@ const Header = ({ user }) => {
                   <Notifications />
                 </Badge>
               </Link>
-              <Link to="/user/settings">
+              {loggedAs === "user" ?
+              <Link to="user/settings">
                 <Settings />
-              </Link>
+              </Link> :
+              <Link to="company/settings">
+              <Settings />
+            </Link>}
               <UserMenu logout={logout}/>
             </div>
           ) : (
