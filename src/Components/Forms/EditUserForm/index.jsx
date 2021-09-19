@@ -173,7 +173,11 @@ export const EditUserForm = () => {
           />
           <button onClick={handleSubmit(updateUserDetails)}>Sauvegarder</button>
         </form>
+        <div>
+        <ChipsArray/>
+        </div>
       </div>
+     
     </div>
     </UserStacksContext.Provider>
   );

@@ -205,10 +205,11 @@ const updateCompanyDetails = async (e) => {
             Sauvegarder
           </button>
         </form>
-      </div>
-      <div>
+        <div>
             <ChipsArray/>
         </div>
+      </div>
+      
     </div>
     </UserStacksContext.Provider>
   );
