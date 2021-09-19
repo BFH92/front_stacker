@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import CompanyInfoManager from '../../../Services/RailsApi/CompaniesFetch/CompanyInfoManager';
+import CompanyInfoManager from "../../../Services/RailsApi/CompaniesFetch/CompanyInfoManager";
 import { useHistory } from "react-router";
 import { useSelector } from 'react-redux';
 import './edit_company_form.scss';

@@ -11,8 +11,11 @@ import DarkStrokeLogout from '../../../Assets/Svg/Logout/StrokeLogout/DarkStroke
 import DarkStrokeAccount from '../../../Assets/Svg/Account/StrokeAccount/DarkStrokeAccount';
 import DarkStrokeNotification from '../../../Assets/Svg/Notification/StrokeNotification/DarkStrokeNotification';
 import DarkStrokeSetting from '../../../Assets/Svg/Setting/StrokeSetting/DarkStrokeSetting';
+import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux';
 
 const UserMenu = ({ logout }) => {
+  const logged_as = useSelector(state=> state.user.logged_as)
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -62,31 +65,40 @@ const UserMenu = ({ logout }) => {
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
-        <MenuItem>
-          <ListItemIcon>
-            <DarkStrokeDashboard fontSize="small" />
-          </ListItemIcon>
-          Mon dashboard
-        </MenuItem>
-        <MenuItem>
+        {logged_as ===  "user"?
+        <MenuItem to="/user/dashboard" component={Link}>
+        
           <ListItemIcon>
             <DarkStrokeAccount fontSize="small" />
-          </ListItemIcon>
+          </ListItemIcon>  
           Mon compte
-        </MenuItem>
+        </MenuItem> :
+        <MenuItem to="/company/dashboard" component={Link}>
+        <ListItemIcon>
+          <DarkStrokeAccount fontSize="small" />
+        </ListItemIcon>  
+        Mon compte
+      </MenuItem> }
         <Divider />
-        <MenuItem>
+        <MenuItem to="/notifications" component={Link}>
           <ListItemIcon>
             <DarkStrokeNotification fontSize="small" />
           </ListItemIcon>
           Notifications
         </MenuItem>
-        <MenuItem>
+        {logged_as ===  "user"?
+        <MenuItem to="/user/settings" component={Link}>
           <ListItemIcon>
             <DarkStrokeSetting fontSize="small" />
           </ListItemIcon>
           Réglages
-        </MenuItem>
+        </MenuItem>:
+        <MenuItem to="/company/settings" component={Link}>
+        <ListItemIcon>
+          <DarkStrokeSetting fontSize="small" />
+        </ListItemIcon>
+        Réglages
+      </MenuItem>}
         <MenuItem onClick={logout}>
           <ListItemIcon>
             <DarkStrokeLogout fontSize="small" />

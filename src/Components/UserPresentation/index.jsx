@@ -1,6 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
-import { EditUserPresentation } from '../EditUserPresentation';
+import { EditUserForm } from '../Forms/EditUserForm';
 
 const UserPresentation = () => {
     return (
@@ -9,7 +8,7 @@ const UserPresentation = () => {
             <div className="presentation--all">
                 <div className="all--items">
                     <ul>
-                        <EditUserPresentation />
+                        <EditUserForm />
                     </ul>
                 </div>
             </div>

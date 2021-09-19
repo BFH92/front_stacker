@@ -29,8 +29,14 @@ const UserSignUp = ({user}) => {
       <h1>Créer espace utilisateur</h1>
         <SignUpForm user={{ email, setEmail, password, setPassword, SignUp }} />
       </div>
-      <Link to="/user/sign-in">
-        <h3>Déjà un compte ? Se connecter</h3>
+      <Link to="/user/sign-up">
+        <h3>Pas de compte ? S'inscrire</h3>
+      </Link>
+      <Link to="/user/settings/get-password">
+        <h3>Mot de passe oublié</h3>
+      </Link>
+      <Link to="/company/sign-in">
+        <h3>Vous êtes une entreprise ? espace entreprise</h3>
       </Link>
     </>
   );

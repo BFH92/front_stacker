@@ -1,7 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { EditCompanyPresentation } from '../EditCompanyPresentation';
-
+import { EditCompanyForm } from '../Forms/EditCompanyForm';
 const CompanyPresentation = () => {
     return (
         <div className="presentation__main--grid">
@@ -9,7 +8,7 @@ const CompanyPresentation = () => {
             <div className="presentation--all">
                 <div className="all--items">
                     <ul>
-                        <EditCompanyPresentation />
+                        <EditCompanyForm/>
                     </ul>
                 </div>
             </div>

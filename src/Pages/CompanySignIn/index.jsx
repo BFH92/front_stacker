@@ -35,7 +35,7 @@ import { useHistory } from "react-router";
         <h3>Mot de passe oublié</h3>
       </Link>
       <Link to="/user/sign-in">
-        <h3>Se connecter en tant qu'utilisateur</h3>
+        <h3>Se connecter en tant que développeur</h3>
       </Link>
     </>
   );
