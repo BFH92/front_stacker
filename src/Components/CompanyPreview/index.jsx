@@ -1,8 +1,8 @@
 import React from 'react';
-import './previewCompany.scss';
+import './company_preview.scss';
 import AddToFavorite from '../CTAs/AddToFavorite';
 
-const PreviewCompany = ({company}) => {
+const CompanyPreview = ({company}) => {
 
   return(
     <div className="container__preview--company">
@@ -33,4 +33,4 @@ const PreviewCompany = ({company}) => {
   );
 };
 
-export default PreviewCompany;
+export default CompanyPreview;

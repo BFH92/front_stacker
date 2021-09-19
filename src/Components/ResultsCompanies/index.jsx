@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useContext} from 'react';
 import './resultsCompanies.scss';
 import HeaderResultsCompanies from '../ResultsCompanies/HeaderResultsCompanies';
-import PreviewCompany from '../PreviewCompany';
+import PreviewCompany from '../CompanyPreview';
 import ProgressBar from '../Loaders/ProgressBar';
 import ProgressCircle from '../Loaders/ProgressCircle';
 import { CompaniesList} from '../../Services/RailsApi/CompaniesFetch/CompaniesDetailsManager'

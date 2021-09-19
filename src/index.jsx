@@ -85,7 +85,7 @@ const App = () => {
               <Route path="/about" render={() => <About />} />
               <Route path="/stacks" render={() => <Stacks />} />
 
-              <PrivateRoute path="/user/dashboard" render={() => <UserDashboard key={uuidv4()} />} />
+              <PrivateRoute path="/user/dashboard" component={UserDashboard} key={uuidv4()} />
               <Route path="/user/sign-in" render={() => <UserSignIn user={{setIsLogged}}/>}/>
               <Route path="/user/sign-up" render={() => <UserSignUp user={{setIsLogged}}/>}/>
               <Route path="/user/notifications" render={() => <Notifications />} />
