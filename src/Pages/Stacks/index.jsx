@@ -1,14 +1,18 @@
 import React from 'react';
-import StackResults from '../../Components/StacksResults';
-
+// import StackResults from '../../Components/StacksResults';
+import Typography from '@mui/material/Typography';
+import StacksTable from '../../Components/StacksTable';
 
 const Stacks = () => {
 
   return (
-    <div className="">
-      <div className="container__title-pane">Stacks</div>
-      <StackResults/>
-    </div>
+    <>
+      <Typography variant="h1" component="h1">
+        Nos Stacks
+      </Typography>
+      {/* <StackResults /> */}
+      <StacksTable />
+    </>
   );
 };
 

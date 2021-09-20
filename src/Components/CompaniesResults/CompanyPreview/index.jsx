@@ -11,7 +11,7 @@ import Link from '@mui/material/Link';
 const CompanyPreview = ({ company }) => {
 
   return (
-    <Card>
+    <Card elevation={2}>
       <CardHeader
         avatar={
           <CompanyPreviewAvatar companyName={company.name}/>
