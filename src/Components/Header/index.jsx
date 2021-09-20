@@ -33,6 +33,11 @@ const useStyles = makeStyles(() =>
       gridAutoFlow: "column",
       placeItems: "center",
       gridGap: 10,
+    },
+    grid_column_no_gap: {
+      display: "grid",
+      gridAutoFlow: "column",
+      placeItems: "center",
     }
   })
 );
@@ -71,16 +76,16 @@ const Header = ({ user }) => {
         <div className={classes.grid_column_auto}>        
           <ThemeSwitch />
           {isLogged ? (
-            <div className={classes.grid_column_auto}>
+            <div className={classes.grid_column_no_gap}>
               <NotificationDrawer />
               {loggedAs === "user" ?
-              (<Link to="/user/settings">
+              (
                 <UserSettingsDrawer />
-              </Link>)
+              )
               :
-              (<Link to="company/settings">
+              (
                 <CompanySettingsDrawer />
-              </Link>)
+              )
               }
               <UserMenu logout={logout}/>
             </div>
