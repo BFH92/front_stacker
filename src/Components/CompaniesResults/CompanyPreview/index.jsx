@@ -24,7 +24,7 @@ const CompanyPreview = ({ company }) => {
       </CardContent>
       <CardActions disableSpacing>
         <Link href={company.website_link} target="_blank" underline="hover" rel="noreferrer">
-          {'Site internet'}
+          Site internet
         </Link>
         <AddToFavorite />
       </CardActions>
