@@ -77,7 +77,7 @@ const Header = ({ user }) => {
                 </Badge>
               </Link>
               {loggedAs === "user" ?
-              <Link to="user/settings">
+              <Link to="/user/settings">
                 <Settings />
               </Link> :
               <Link to="company/settings">

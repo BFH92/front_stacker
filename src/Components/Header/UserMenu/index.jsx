@@ -80,7 +80,7 @@ const UserMenu = ({ logout }) => {
         Mon compte
       </MenuItem> }
         <Divider />
-        <MenuItem to="/notifications" component={Link}>
+        <MenuItem to="/user/notifications" component={Link}>
           <ListItemIcon>
             <DarkStrokeNotification fontSize="small" />
           </ListItemIcon>
