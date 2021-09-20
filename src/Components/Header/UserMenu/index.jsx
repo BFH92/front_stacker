@@ -8,9 +8,9 @@ import IconButton from '@mui/material/IconButton';
 import UserAvatar from './UserAvatar';
 import DarkStrokeDashboard from '../../../Assets/Svg/Dashboard/StrokeDashboard/DarkStrokeDashboard';
 import DarkStrokeLogout from '../../../Assets/Svg/Logout/StrokeLogout/DarkStrokeLogout';
-import DarkStrokeAccount from '../../../Assets/Svg/Account/StrokeAccount/DarkStrokeAccount';
-import DarkStrokeNotification from '../../../Assets/Svg/Notification/StrokeNotification/DarkStrokeNotification';
-import DarkStrokeSetting from '../../../Assets/Svg/Setting/StrokeSetting/DarkStrokeSetting';
+// import DarkStrokeAccount from '../../../Assets/Svg/Account/StrokeAccount/DarkStrokeAccount';
+// import DarkStrokeNotification from '../../../Assets/Svg/Notification/StrokeNotification/DarkStrokeNotification';
+// import DarkStrokeSetting from '../../../Assets/Svg/Setting/StrokeSetting/DarkStrokeSetting';
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux';
 
@@ -65,40 +65,43 @@ const UserMenu = ({ logout }) => {
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
-        {logged_as ===  "user"?
-        <MenuItem to="/user/dashboard" component={Link}>
-        
+        {logged_as ===  "user" ?
+        (<MenuItem to="/user/dashboard" component={Link}>        
           <ListItemIcon>
-            <DarkStrokeAccount fontSize="small" />
+            <DarkStrokeDashboard fontSize="small" />
           </ListItemIcon>  
-          Mon compte
-        </MenuItem> :
-        <MenuItem to="/company/dashboard" component={Link}>
-        <ListItemIcon>
-          <DarkStrokeAccount fontSize="small" />
-        </ListItemIcon>  
-        Mon compte
-      </MenuItem> }
+          Mon dashboard
+        </MenuItem> )
+        :
+        (<MenuItem to="/company/dashboard" component={Link}>
+          <ListItemIcon>
+            <DarkStrokeDashboard fontSize="small" />
+          </ListItemIcon>  
+        Dashboard entreprise
+        </MenuItem>)
+        }
         <Divider />
-        <MenuItem to="/user/notifications" component={Link}>
+        {/* <MenuItem to="/user/notifications" component={Link}>
           <ListItemIcon>
             <DarkStrokeNotification fontSize="small" />
           </ListItemIcon>
           Notifications
         </MenuItem>
-        {logged_as ===  "user"?
-        <MenuItem to="/user/settings" component={Link}>
+        {logged_as ===  "user" ?
+        (<MenuItem to="/user/settings" component={Link}>
           <ListItemIcon>
             <DarkStrokeSetting fontSize="small" />
           </ListItemIcon>
           Réglages
-        </MenuItem>:
-        <MenuItem to="/company/settings" component={Link}>
+        </MenuItem>)
+        :
+        (<MenuItem to="/company/settings" component={Link}>
         <ListItemIcon>
           <DarkStrokeSetting fontSize="small" />
         </ListItemIcon>
         Réglages
-      </MenuItem>}
+        </MenuItem>)
+        } */}
         <MenuItem onClick={logout}>
           <ListItemIcon>
             <DarkStrokeLogout fontSize="small" />

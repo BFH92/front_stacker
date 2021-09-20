@@ -2,9 +2,6 @@ import React, { useEffect } from "react";
 import './header.scss';
 import { useDispatch, useSelector} from "react-redux";
 import { Link } from "react-router-dom";
-import Settings from "../../Assets/Svg/Header/Settings";
-import Notifications from '../../Assets/Svg/Header/Notifications';
-import Badge from '@material-ui/core/Badge';
 import ThemeSwitch from './ThemeSwitch';
 import { createStyles, makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -16,6 +13,9 @@ import { useHistory } from "react-router";
 import UsersAuthManager from "../../Services/RailsApi/UsersFetch/UsersAuthManager";
 import { RegisterUserLogoutStatus } from "../../Store";
 import CompaniesAuthManager from "../../Services/RailsApi/CompaniesFetch/CompaniesAuthManager";
+import NotificationDrawer from '../../Components/Header/NotificationDrawer';
+import UserSettingsDrawer from '../../Components/Header/UserSettingsDrawer';
+import CompanySettingsDrawer from '../../Components/Header/CompanySettingsDrawer';
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -32,7 +32,7 @@ const useStyles = makeStyles(() =>
       display: "grid",
       gridAutoFlow: "column",
       placeItems: "center",
-      gridGap: 20,
+      gridGap: 10,
     }
   })
 );
@@ -72,18 +72,16 @@ const Header = ({ user }) => {
           <ThemeSwitch />
           {isLogged ? (
             <div className={classes.grid_column_auto}>
-              <Link to="/user/notifications">
-                <Badge color="secondary" variant="dot">
-                  <Notifications />
-                </Badge>
-              </Link>
+              <NotificationDrawer />
               {loggedAs === "user" ?
-              <Link to="/user/settings">
-                <Settings />
-              </Link> :
-              <Link to="company/settings">
-              <Settings />
-            </Link>}
+              (<Link to="/user/settings">
+                <UserSettingsDrawer />
+              </Link>)
+              :
+              (<Link to="company/settings">
+                <CompanySettingsDrawer />
+              </Link>)
+              }
               <UserMenu logout={logout}/>
             </div>
           ) : (
