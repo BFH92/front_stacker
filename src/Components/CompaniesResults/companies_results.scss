@@ -11,3 +11,8 @@
     grid-gap: $padding;
   }
 }
+
+.container__progress--circle {
+  display: grid;
+  place-items: center;
+}

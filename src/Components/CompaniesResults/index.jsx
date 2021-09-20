@@ -3,7 +3,7 @@ import './companies_results.scss';
 import HeaderCompaniesResults from './HeaderResultsCompanies';
 import CompanyPreview from './CompanyPreview';
 // import ProgressBar from '../Loaders/ProgressBar';
-// import ProgressCircle from '../Loaders/ProgressCircle';
+import ProgressCircle from '../Loaders/ProgressCircle';
 import { CompaniesList} from '../../Services/RailsApi/CompaniesFetch/CompaniesDetailsManager';
 import { FilterContext } from '../../Context/FilterContext';
 
@@ -17,20 +17,26 @@ const ResultsCompanies = () => {
   }, [data]);
 
   return (
-    <div className="results__main--grid">
-         <HeaderCompaniesResults company={company}/>
-    {/*<ProgressBar />
-      <ProgressCircle /> */}
-      <div className="results--all">
-        <ul className="all--items">
-          {company && company.map((company) => (
-            <li key={company.id} className="item">
-              <CompanyPreview company={company}/>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
+    <>
+      {company ? (
+        <div className="results__main--grid">        
+          <HeaderCompaniesResults company={company}/>
+          <div className="results--all">
+            <ul className="all--items">
+              {company && company.map((company) => (
+                <li key={company.id} className="item">
+                  <CompanyPreview company={company}/>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ) : (
+        <div className="container__progress--circle">
+          <ProgressCircle />
+        </div>
+      )}
+    </>
   );
 };
 

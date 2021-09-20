@@ -19,7 +19,6 @@ const ChipsArray = () => {
 
   return (
     <div className="container__filter--group">
-      <div className="tags__title">Stacks:</div>
       <ul className="container__chips">
         {chipData.map((data) => {
           return (
