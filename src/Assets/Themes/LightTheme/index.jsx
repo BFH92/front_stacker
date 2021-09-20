@@ -9,6 +9,12 @@ const LightTheme = createTheme({
       main: 'rgb(76, 175, 80)',
     }
   },
+  // typography: {
+  //   h1: {
+  //     fontWeight: 800,
+  //     fontSize: "600px"
+  //   }
+  // }
 });
 
 export default LightTheme

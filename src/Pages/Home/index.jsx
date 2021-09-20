@@ -35,13 +35,13 @@ const Home = () => {
               }}
             />
           </Typography>
-          <Typography variant="body1">
+          <Typography variant="body1" sx={{ mt: 2 }}>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos
             blanditiis tenetur unde suscipit, quam beatae rerum inventore
             consectetur, neque doloribus, cupiditate numquam dignissimos laborum
             fugiat deleniti? Eum quasi quidem quibusdam.
           </Typography>
-          <Button variant="outlined" color="error" size="large">
+          <Button variant="outlined" color="inherit" size="large" sx={{ mt: 5 }}>
             Découvrir Stacker
           </Button>
         </div>

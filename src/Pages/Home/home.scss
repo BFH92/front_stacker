@@ -3,7 +3,7 @@
 .container__home {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 4fr 3fr;
   background-color: $purple;
   min-height: 100%;
   overflow: hidden;
@@ -24,7 +24,7 @@
 
     .content--svg{
       width: 60%;
-      transform: translateX(10%);
+      transform: translateX(11%);
     }
 
     .mask--color{
