@@ -37,6 +37,12 @@ const NavTabs = () => {
             to="/About"
             component={Link}
             style={{color: "white"}}
+          />
+          <Tab
+            label="Espace Entreprise"
+            to="/company/dashboard"
+            component={Link}
+            style={{color: "white"}}
           />  
       </Tabs>
     </Box>
