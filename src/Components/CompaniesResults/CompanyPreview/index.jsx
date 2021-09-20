@@ -6,30 +6,29 @@ import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
-import Button from '@mui/material/Button';
-
+import Link from '@mui/material/Link';
 
 const CompanyPreview = ({ company }) => {
 
   return (
-      <Card>
-        <CardHeader
-          avatar={
-            <CompanyPreviewAvatar />
-          }
-          title={company.name}
-          subheader="Effectif Tech: {company.staff_size} personnes"
-        />
-        <CardContent>
-          <ChipsArray />
-        </CardContent>
-        <CardActions disableSpacing>
-          <Button size="small" color="primary">
-            Site internet
-          </Button>
-          <AddToFavorite />
-        </CardActions>
-      </Card>
+    <Card>
+      <CardHeader
+        avatar={
+          <CompanyPreviewAvatar companyName={company.name}/>
+        }
+        title={company.name}
+        subheader={`Effectif Tech: ${company.staff_size}`}
+      />
+      <CardContent>
+        <ChipsArray companyStacks={company.stacks}/>
+      </CardContent>
+      <CardActions disableSpacing>
+        <Link href={company.website_link} target="_blank" underline="hover" rel="noreferrer">
+          {'Site internet'}
+        </Link>
+        <AddToFavorite />
+      </CardActions>
+    </Card>
   );
 };
 
