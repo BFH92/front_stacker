@@ -51,7 +51,7 @@ const SignInForm = ({ user }) => {
               render={() => <p><strong>Mot de passe requis</strong></p>}
             />
           </div>
-          <button type="submit" onClick={handleSubmit(user.login)}>
+          <button type="submit" onClick={()=>handleSubmit(user.login)}>
             Se Connecter
           </button>
         </form>
