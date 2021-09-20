@@ -10,10 +10,10 @@ const CustomizedCompanyPreviewAvatar = withStyles({
   }
 })(Avatar);
 
-const CompanyPreviewAvatar = () => {
+const CompanyPreviewAvatar = (props) => {
 
   return (
-    <CustomizedCompanyPreviewAvatar>T</CustomizedCompanyPreviewAvatar>
+    <CustomizedCompanyPreviewAvatar>{props.companyName}</CustomizedCompanyPreviewAvatar>
   );
 };
 
