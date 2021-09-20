@@ -4,4 +4,10 @@
   display: grid;
   grid-template-rows: auto 1fr;
   grid-gap: $padding * 2;
+
+  .all--items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: $padding;
+  }
 }

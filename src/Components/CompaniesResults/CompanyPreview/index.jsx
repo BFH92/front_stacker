@@ -1,27 +1,22 @@
 import React from 'react';
-import './companyPreview.scss';
-import AddToFavorite from '../../CTAs/AddToFavorite';
-import ChipsArray from './ChipsArray';
-import CompanyPreviewAvatar from './Avatar';
+// import AddToFavorite from '../../CTAs/AddToFavorite';
+// import ChipsArray from './ChipsArray';
+// import CompanyPreviewAvatar from './Avatar';
 
-const CompanyPreview = () => {
+const CompanyPreview = (company) => {
 
   return(
     <div className="container__company--preview">
-      <div className="top--informations">
-        <CompanyPreviewAvatar />
-        <div className="text--informations">
-          <h3>TheHackingProject</h3>
-          <small>SARL</small>
-        </div>
-      </div>
+      <h3>{company.name}</h3>
+      <p>{company.description}</p>
+      <p> Effectif Tech: {company.staff_size} personnes</p>
+      <p>{company.website_link}</p>
+      {company.stacks && company.stacks.map((stack)=>
+        <div>{stack.name}</div>
+      )}
+      {/* <CompanyPreviewAvatar />
       <ChipsArray />
-      <div className="container__effectif">
-        <div className="tags__title">
-          Effectifs: 49+
-        </div>
-      </div>
-      <AddToFavorite />
+      <AddToFavorite /> */}
     </div>
   );
 };

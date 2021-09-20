@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Chip from '@material-ui/core/Chip';
 import { withStyles } from '@material-ui/core/styles';
 import { v4 as uuidv4 } from 'uuid';
-import './chipsArray.scss';
 import Exemple from '../../../../Assets/Svg/Stacks/Exemple';
 
 const OutlinedPurpleStyleChip = withStyles({
