@@ -20,7 +20,8 @@ import CompaniesAuthManager from "../../Services/RailsApi/CompaniesFetch/Compani
 const useStyles = makeStyles(() =>
   createStyles({
     root: {
-      flexGrow: 1
+      flexGrow: 1,
+      zIndex: 999
     },
     logo: {
       flexGrow: 1,
