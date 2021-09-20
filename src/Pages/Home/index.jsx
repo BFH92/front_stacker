@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import lottie from "lottie-web";
+import lottie from 'lottie-web';
 //styles
 import "./home.scss";
 //materialUI
