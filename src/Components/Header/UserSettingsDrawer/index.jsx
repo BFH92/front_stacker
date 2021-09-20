@@ -6,6 +6,7 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import ListItem from '@mui/material/ListItem';
+import Divider from '@mui/material/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import Settings from '../../../Assets/Svg/Header/Settings';
 import IconTest from '../../../Assets/Svg/Login/StrokeLogin/DarkStrokeLogin';
@@ -36,6 +37,7 @@ const UserSettingsDrawer = () => {
           </ListItemAvatar>
           <ListItemText primary="Photos" secondary="Jan 9, 2014" />
         </ListItem>
+        <Divider />
         <ListItem>
           <ListItemAvatar>
             <Avatar>
@@ -44,6 +46,7 @@ const UserSettingsDrawer = () => {
           </ListItemAvatar>
           <ListItemText primary="Work" secondary="Jan 7, 2014" />
         </ListItem>
+        <Divider />
         <ListItem>
           <ListItemAvatar>
             <Avatar>

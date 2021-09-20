@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import './header.scss';
 import { useDispatch, useSelector} from "react-redux";
-import { Link } from "react-router-dom";
 import ThemeSwitch from './ThemeSwitch';
 import { createStyles, makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
