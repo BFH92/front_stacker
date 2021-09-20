@@ -1,0 +1,40 @@
+@import "../../Styles/variables.scss";
+
+.container__home {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: $padding *2;
+  background-color: $purple;
+  min-height: 100%;
+  overflow: hidden;
+
+  .container__home--right {
+    display: grid;
+    place-items: center;
+    z-index: 888;
+
+    .content--svg{
+      width: 70%;
+    }
+  }
+
+  .container__home--left {
+    color: $white;
+    display: grid;
+    place-items: center;
+    max-width: 800px;
+  }
+
+  .mask--color{
+    position: absolute;
+    height: 200vh;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background-color: $light-grey;
+    bottom: 0;
+    right: 0;
+    transform: translate(50%, 40%);
+    box-shadow: 0px 0px 20px 5px $black-opacity25
+  }
+}
