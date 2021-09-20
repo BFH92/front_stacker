@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import './headerResultsCompanies.scss';
 
 const HeaderCompaniesResults = ({company}) => {
   const [resultsMetrics, setResultsMetrics] = useState("");
   useEffect(() => {
   if (company !== null) (setResultsMetrics(company.length))
   }, [company]);
+
   return (
     <header className="container__header__results--companies">
-      <div className="container--left">
+      {/* <div className="container--left"> */}
         <h1> {resultsMetrics} Résultats</h1>        
-      </div>
+      {/* </div> */}
         {/*<div className="container__filter--right">
         <p>Sort by Date</p>
       </div>*/}

@@ -8,7 +8,6 @@
   .container--right {
     position: relative;
     display: grid;
-    grid-template-rows: auto 1fr;
     overflow-y: scroll;
   }
 }

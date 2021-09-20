@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Chip from '@material-ui/core/Chip';
 import { withStyles } from '@material-ui/core/styles';
 import { v4 as uuidv4 } from 'uuid';
-import './chipsArray.scss';
 import Exemple from '../../../../Assets/Svg/Stacks/Exemple';
 
 const OutlinedPurpleStyleChip = withStyles({
@@ -20,7 +19,6 @@ const ChipsArray = () => {
 
   return (
     <div className="container__filter--group">
-      <div className="tags__title">Stacks:</div>
       <ul className="container__chips">
         {chipData.map((data) => {
           return (
