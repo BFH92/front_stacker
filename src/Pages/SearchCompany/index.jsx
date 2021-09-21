@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './searchCompagny.scss';
 import { FilterContext } from '../../Context/FilterContext';
-import RecentSearch from '../../Components/RecentSearch';
+import SavedSearch from '../../Components/SavedSearch';
 import CompaniesResults from '../../Components/CompaniesResults';
 import { API_URL } from '../../Config/API_URL';
 import FilterSystem from '../../Components/FilterSystem';
@@ -17,7 +17,7 @@ const SearchCompany = () => {
       <div className="container--right">
         <div className="container__results--all">
           <CompaniesResults/>
-          <RecentSearch />
+          <SavedSearch />
         </div>
       </div>
     </div>

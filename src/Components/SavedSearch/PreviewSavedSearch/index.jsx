@@ -1,9 +1,8 @@
 import React from 'react';
-import './previewRecentSearch.scss';
 import ChipsArray from '../../CompaniesResults/CompanyPreview/ChipsArray';
 import LeftSimpleArrow from '../../../Assets/Svg/UI/LeftSimpleArrow'
 
-const PreviewRecentSearch = () => {
+const PreviewSavedSearch = () => {
 
   return (
     <li className="recent--search--item">
@@ -22,4 +21,4 @@ const PreviewRecentSearch = () => {
   );
 };
 
-export default PreviewRecentSearch;
+export default PreviewSavedSearch;
