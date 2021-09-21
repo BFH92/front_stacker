@@ -201,7 +201,7 @@ const updateCompanyDetails = async (e) => {
               onChange={() => setIsItRecruiting(!isItRecruiting)}
             />
           </label>
-          <button onClick={()=>handleSubmit(updateCompanyDetails)}>
+          <button onClick={handleSubmit(updateCompanyDetails)}>
             Sauvegarder
           </button>
         </form>
