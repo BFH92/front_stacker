@@ -4,14 +4,15 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import './accordion.scss'
+import "./accordion.scss";
+
 export const Accordions = ({ stacks }) => {
   const [expanded, setExpanded] = React.useState(false);
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
-
+  console.log(stacks)
   return (
     <div>
       <Accordion
@@ -23,11 +24,11 @@ export const Accordions = ({ stacks }) => {
           aria-controls="panel1bh-content"
           id="panel1bh-header"
         >
-          <Typography sx={{ width: "33%", flexShrink: 0 }}>
+          <Typography sx={{ width: "50%", flexShrink: 0 }}>
             Backend Frameworks & Languages
           </Typography>
           <Typography sx={{ color: "text.secondary" }}>
-            Total:{" "}
+            Total:
             {stacks.filter((stack) => stack.stack_category_id === 1).length}
           </Typography>
         </AccordionSummary>
@@ -42,10 +43,7 @@ export const Accordions = ({ stacks }) => {
                       <li key={stack.id}>
                         <div className="container__stack">
                           <div className="name">
-                            <p>{stack.name}</p>
-                          </div>
-                          <div className="category">
-                            <p>{stack.stack_category}</p>
+                            <h2>{stack.name}</h2>
                           </div>
                         </div>
                       </li>
@@ -65,16 +63,33 @@ export const Accordions = ({ stacks }) => {
           aria-controls="panel2bh-content"
           id="panel2bh-header"
         >
-          <Typography sx={{ width: "33%", flexShrink: 0 }}>Users</Typography>
+          <Typography sx={{ width: "50%", flexShrink: 0 }}>
+            Frontend Frameworks & Languages
+          </Typography>
           <Typography sx={{ color: "text.secondary" }}>
-            You are currently not an owner
+            Total:
+            {stacks.filter((stack) => stack.stack_category_id === 2).length}
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            Donec placerat, lectus sed mattis semper, neque lectus feugiat
-            lectus, varius pulvinar diam eros in elit. Pellentesque convallis
-            laoreet laoreet.
+            {
+              <ul>
+                <div>
+                  {stacks
+                    .filter((stack) => stack.stack_category_id === 2)
+                    .map((stack) => (
+                      <li key={stack.id}>
+                        <div className="container__stack">
+                          <div className="name">
+                            <h2>{stack.name}</h2>
+                          </div>
+                        </div>
+                      </li>
+                    ))}
+                </div>
+              </ul>
+            }
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -87,17 +102,31 @@ export const Accordions = ({ stacks }) => {
           aria-controls="panel3bh-content"
           id="panel3bh-header"
         >
-          <Typography sx={{ width: "33%", flexShrink: 0 }}>
-            Advanced settings
-          </Typography>
+          <Typography sx={{ width: "50%", flexShrink: 0 }}>DevOps</Typography>
           <Typography sx={{ color: "text.secondary" }}>
-            Filtering has been entirely disabled for whole web server
+            Total:
+            {stacks.filter((stack) => stack.stack_category_id === 3).length}
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            Nunc vitae orci ultricies, auctor nunc in, volutpat nisl. Integer
-            sit amet egestas eros, vitae egestas augue. Duis vel est augue.
+            {
+              <ul>
+                <div>
+                  {stacks
+                    .filter((stack) => stack.stack_category_id === 3)
+                    .map((stack) => (
+                      <li key={stack.id}>
+                        <div className="container__stack">
+                          <div className="name">
+                            <h2>{stack.name}</h2>
+                          </div>
+                        </div>
+                      </li>
+                    ))}
+                </div>
+              </ul>
+            }
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -107,17 +136,182 @@ export const Accordions = ({ stacks }) => {
       >
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel4bh-content"
-          id="panel4bh-header"
+          aria-controls="panel1bh-content"
+          id="panel1bh-header"
         >
-          <Typography sx={{ width: "33%", flexShrink: 0 }}>
-            Personal data
+          <Typography sx={{ width: "50%", flexShrink: 0 }}>Data</Typography>
+          <Typography sx={{ color: "text.secondary" }}>
+            Total:
+            {stacks.filter((stack) => stack.stack_category_id === 4).length}
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            Nunc vitae orci ultricies, auctor nunc in, volutpat nisl. Integer
-            sit amet egestas eros, vitae egestas augue. Duis vel est augue.
+            {
+              <ul>
+                <div>
+                  {stacks
+                    .filter((stack) => stack.stack_category_id === 4)
+                    .map((stack) => (
+                      <li key={stack.id}>
+                        <div className="container__stack">
+                          <div className="name">
+                            <h2>{stack.name}</h2>
+                          </div>
+                        </div>
+                      </li>
+                    ))}
+                </div>
+              </ul>
+            }
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
+      <Accordion
+        expanded={expanded === "panel5"}
+        onChange={handleChange("panel5")}
+      >
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1bh-content"
+          id="panel1bh-header"
+        >
+          <Typography sx={{ width: "50%", flexShrink: 0 }}>Mobile</Typography>
+          <Typography sx={{ color: "text.secondary" }}>
+            Total:
+            {stacks.filter((stack) => stack.stack_category_id === 5).length}
+          </Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+            {
+              <ul>
+                <div>
+                  {stacks
+                    .filter((stack) => stack.stack_category_id === 5)
+                    .map((stack) => (
+                      <li key={stack.id}>
+                        <div className="container__stack">
+                          <div className="name">
+                            <h2>{stack.name}</h2>
+                          </div>
+                        </div>
+                      </li>
+                    ))}
+                </div>
+              </ul>
+            }
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
+      <Accordion
+        expanded={expanded === "panel6"}
+        onChange={handleChange("panel6")}
+      >
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1bh-content"
+          id="panel1bh-header"
+        >
+          <Typography sx={{ width: "50%", flexShrink: 0 }}>Project Management</Typography>
+          <Typography sx={{ color: "text.secondary" }}>
+            Total:
+            {stacks.filter((stack) => stack.stack_category_id === 6).length}
+          </Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+            {
+              <ul>
+                <div>
+                  {stacks
+                    .filter((stack) => stack.stack_category_id === 6)
+                    .map((stack) => (
+                      <li key={stack.id}>
+                        <div className="container__stack">
+                          <div className="name">
+                            <h2>{stack.name}</h2>
+                          </div>
+                        </div>
+                      </li>
+                    ))}
+                </div>
+              </ul>
+            }
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
+      <Accordion
+        expanded={expanded === "panel7"}
+        onChange={handleChange("panel7")}
+      >
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1bh-content"
+          id="panel1bh-header"
+        >
+          <Typography sx={{ width: "50%", flexShrink: 0 }}>IDE</Typography>
+          <Typography sx={{ color: "text.secondary" }}>
+            Total:
+            {stacks.filter((stack) => stack.stack_category_id === 7).length}
+          </Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+            {
+              <ul>
+                <div>
+                  {stacks
+                    .filter((stack) => stack.stack_category_id === 7)
+                    .map((stack) => (
+                      <li key={stack.id}>
+                        <div className="container__stack">
+                          <div className="name">
+                            <h2>{stack.name}</h2>
+                          </div>
+                        </div>
+                      </li>
+                    ))}
+                </div>
+              </ul>
+            }
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
+      <Accordion
+        expanded={expanded === "panel8"}
+        onChange={handleChange("panel8")}
+      >
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1bh-content"
+          id="panel1bh-header"
+        >
+          <Typography sx={{ width: "50%", flexShrink: 0 }}>NoCode</Typography>
+          <Typography sx={{ color: "text.secondary" }}>
+            Total:
+            {stacks.filter((stack) => stack.stack_category_id === 8).length}
+          </Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+            {
+              <ul>
+                <div>
+                  {stacks
+                    .filter((stack) => stack.stack_category_id === 8)
+                    .map((stack) => (
+                      <li key={stack.id}>
+                        <div className="container__stack">
+                          <div className="name">
+                            <h2>{stack.name}</h2>
+                          </div>
+                        </div>
+                      </li>
+                    ))}
+                </div>
+              </ul>
+            }
           </Typography>
         </AccordionDetails>
       </Accordion>
