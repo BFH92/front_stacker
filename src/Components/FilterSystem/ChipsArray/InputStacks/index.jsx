@@ -7,7 +7,6 @@ import ViewerStackManager from "../../../../Services/RailsApi/ViewerStackManager
 import { UserStacksContext } from "../../../../Context/UserStacksContext";
 import { useSelector } from "react-redux";
 
-
 const InputStacks = () => {
   const {setFilterStacks} = useContext(UserStacksContext);
   const {chipData} = useContext(UserStacksContext);
@@ -57,7 +56,13 @@ const InputStacks = () => {
         options={STACKLIST}
         sx={{ width: 250 }}
         renderInput={(params) => (
-          <TextField {...params} label="Liste des Stacks" />
+          <TextField
+            {...params}
+            focused 
+            label="Liste des Stacks"
+            variant="outlined"
+            color="secondary"
+          />
         )}
       />
     </form>
