@@ -6,10 +6,12 @@ import CompanyPreview from './CompanyPreview';
 import ProgressCircle from '../Loaders/ProgressCircle';
 import { CompaniesList} from '../../Services/RailsApi/CompaniesFetch/CompaniesDetailsManager';
 import { FilterContext } from '../../Context/FilterContext';
+import { FavoriteContext } from '../../Context/FavoriteContext';
 
 const ResultsCompanies = () => {
   const {url} = useContext(FilterContext);
   const {data} = CompaniesList(url);
+  console.log(data)
   const [company, setCompany] = useState([]);
 
   useEffect(() => {
@@ -18,6 +20,7 @@ const ResultsCompanies = () => {
 
   return (
     <>
+  
       {company ? (
         <div className="results__main--grid">        
           <HeaderCompaniesResults company={company}/>
@@ -36,6 +39,7 @@ const ResultsCompanies = () => {
           <ProgressCircle />
         </div>
       )}
+  
     </>
   );
 };

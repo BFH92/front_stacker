@@ -3,8 +3,6 @@ import { API_URL } from "../../../Config/API_URL";
 import Cookies from "js-cookie";
 
 const API = axios.create({ baseURL: API_URL });
-
-
 export default class FavoritesManager {
   static async createFavorite(id) {
     const authorizedConfig = {
@@ -18,7 +16,6 @@ export default class FavoritesManager {
       data,
       authorizedConfig
     );
-    console.log(response)
     return response;
   };
 
@@ -28,14 +25,10 @@ export default class FavoritesManager {
         Authorization: `Bearer ${Cookies.get("API_Authentication_token")}`,
       },
     };
-    console.log(authorizedConfig)
-
     const response = await API.get(
       `/favorite_id?company_id=${company_id}`,
       authorizedConfig
     );
-    console.log(response)
-    console.log("==")
     return response;
   };
 
@@ -45,12 +38,8 @@ export default class FavoritesManager {
         Authorization: `Bearer ${Cookies.get("API_Authentication_token")}`,
       },
     };
-
     const FavoritesInfo = await FavoritesManager.getId(company_id)
-    console.log(FavoritesInfo)
     const FavoriteId = FavoritesInfo.data.id
-
-
     const response = await API.delete(
       `/favorites_companies/${FavoriteId}`,
       authorizedConfig
