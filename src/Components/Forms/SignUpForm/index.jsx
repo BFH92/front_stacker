@@ -23,7 +23,6 @@ const SignUpForm = ({ user }) => {
   return (
 
     <div className="form__container--signup">
-
       <TextField
         theme={theme}
         color="primary"
@@ -41,7 +40,6 @@ const SignUpForm = ({ user }) => {
         name="email"
         render={() => <p><strong>Email valide requis</strong></p>}
       />
-
       <TextField
         theme={theme}
         color="primary"
@@ -57,7 +55,6 @@ const SignUpForm = ({ user }) => {
         name="password"
         render={() => <p><strong>Mot de passe trop court</strong></p>}
       />
-
       <UIButton
         color="primary"
         size="small"
@@ -66,7 +63,6 @@ const SignUpForm = ({ user }) => {
         type="submit"
         onClick={handleSubmit(user.SignUp)}
       />
-      
     </div>
   );
 };
