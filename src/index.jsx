@@ -11,7 +11,6 @@ import Home from './Pages/Home';
 import About from './Pages/About';
 import Stacks from './Pages/Stacks';
 import SearchCompany from './Pages/SearchCompany';
-import Company from './Pages/Company';
 import UserDashboard from './Pages/UserDashboard';
 import CompanyDashboard from './Pages/CompanyDashboard';
 import Notifications from './Pages/Notifications';
