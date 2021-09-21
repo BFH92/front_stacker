@@ -1,60 +1,50 @@
 import React from "react";
 //styles 
-import './sign_in_form.scss';
+//import './sign_in_form.scss';
 //formvalidation
-import { useForm } from "react-hook-form";
-import { ErrorMessage } from '@hookform/error-message';
+import { useTheme } from "@mui/material";
+import TextField from "@mui/material/TextField";
+import UIButton from "../../UIButton";
 
 const SignInForm = ({ user }) => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    defaultValues: {
-      email: user.email,
-      password: user.password,
-    },
-  });
+  const theme = useTheme();
   return (
     <>
       <div className="form__container--signin">
-        <form className="form">
-          <div className="input__container">
-            <label>
-              Email
-              <input
-                type="text"
-                {...register("email", {
-                  required: true,
-                  pattern: /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g,
-                })}
-                onChange={(e) => user.setEmail(e.target.value)}
-              />
-            </label>
-            <ErrorMessage
-              errors={errors}
-              name="email"
-              render={() => <p><strong>Email valide requis</strong></p>}
-            />
-            <label>
-              Mot de passe
-              <input
-                type="password"
-                {...register("password", { required: true })}
-                onChange={(e) => user.setPassword(e.target.value)}
-              />
-            </label>
-            <ErrorMessage
-              errors={errors}
-              name="password"
-              render={() => <p><strong>Mot de passe requis</strong></p>}
-            />
-          </div>
-          <button type="submit" onClick={handleSubmit(user.login)}>
-            Se Connecter
-          </button>
-        </form>
+      <form onSubmit={user.SignUp}>
+        <TextField
+          theme={theme}
+          color="primary"
+          label="Email"
+          variant="outlined"
+          required
+          helperText="Renseigner votre email"
+          size="small"
+          defaultValue={user.email}
+          onChange={(e) => user.setEmail(e.target.value)}
+        />
+
+        <TextField
+          theme={theme}
+          color="primary"
+          label="Mot de passe"
+          variant="outlined"
+          required
+          helperText="Renseigner votre mot de passe"
+          size="small"
+          type="password"
+          defaultValue={user.password}
+          onChange={(e) => user.setPassword(e.target.value)}
+        />
+
+        <UIButton
+          color="primary"
+          size="small"
+          variant="contained"
+          content="Se connecter"
+          type="submit"
+        />
+      </form>
       </div>
     </>
   );

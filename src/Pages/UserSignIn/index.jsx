@@ -13,7 +13,7 @@ const UserSignIn = ({ user }) => {
   const dispatch = useDispatch();
 
   const login = async (e) => {
-  
+    e.preventDefault();
     const response = await UsersAuthManager.login(email, password);
     history.push("/");
     response.status === 200

@@ -11,6 +11,8 @@ const UIButton = (props) => {
       variant={props.variant}
       size={props.size}
       color={props.color}
+      type={props.type}
+      
     >
       {props.content}
     </Button>
