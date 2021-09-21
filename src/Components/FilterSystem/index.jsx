@@ -4,7 +4,7 @@ import ChipsArray from './ChipsArray';
 import RadioButtonsGroup from './RadioGroup';
 // import SimpleSlider from './SimpleSlider';
 import UIButton from '../../Components/UIButton';
-import Save from '../../Assets/Svg/UI/Save';
+import Divider from '@material-ui/core/Divider';
 import { FilterContext } from '../../Context/FilterContext';
 import { API_URL } from '../../Config/API_URL';
 import { UserStacksContext } from '../../Context/UserStacksContext';
@@ -39,7 +39,9 @@ const FilterSystem = () => {
         <div className="container--top">
           <div className="grid__filter--groups">
             <ChipsArray/>
+            <Divider />
             <RadioButtonsGroup companies={{filter:"Effectifs",state:staffSize, setState:setStaffSize, value:staffSizeValues }}/>
+            <Divider />
             <RadioButtonsGroup companies={{filter:"Type d'entreprise",state:categories, setState:setCategories, value:categoriesValues }}/>
             {/* <SimpleSlider /> */}
           </div>

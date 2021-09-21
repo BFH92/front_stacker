@@ -21,7 +21,7 @@ const CompanyPreview = ({ company }) => {
         title={company.name}
         subheader={company.company_category_id}
       />
-      <Divider />
+      <Divider light/>
       <Card sx={{ p: 2 }}>
         <Typography variant="body2" sx={{ pb: 2 }} color="text.secondary">
           {`Effectif Tech: ${company.staff_size}`}

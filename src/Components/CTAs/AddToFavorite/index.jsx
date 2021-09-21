@@ -3,7 +3,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import FavoriteBorder from '../../../Assets/Svg/UI/Favorite/FavoriteBorder';
 import FavoriteFill from '../../../Assets/Svg/UI/Favorite/FavoriteFill';
-import './addToFavorite.scss';
+import './addToFavorite.scss'
 
 const AddToFavorite = () => {
   const [isFavorite, setIsFavorite] = useState(false);
@@ -14,6 +14,7 @@ const AddToFavorite = () => {
 
   return (   
     <FormControlLabel
+      className="label__no--margin"
       control={<Checkbox icon={<FavoriteBorder />} checkedIcon={<FavoriteFill />} />}
       checked={isFavorite}
       onChange={handleChange}
