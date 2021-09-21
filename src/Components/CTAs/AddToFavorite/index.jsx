@@ -10,24 +10,22 @@ import { FavoriteContext } from '../../../Context/FavoriteContext';
 const AddToFavorite = ({company}) => {
   
   const [isFavorite, setIsFavorite] = useState(false);
-
+  
   useEffect(() => {
     getFavoriteStatus(company.id)
-  }, []);
+  }, []);    
 
   const getFavoriteStatus = async(company_id) =>{
     const response = await FavoritesManager.getId(company_id)
     if (response.data!==null)(setIsFavorite(true))
   }
 
-
-    const SetFavorite = () => {
-      if(isFavorite)(FavoritesManager.deleteFavorite(company.id))
-      else(FavoritesManager.createFavorite(company.id))
-      setIsFavorite(!isFavorite)
-    };
+  const SetFavorite = () => {
+    if(isFavorite)(FavoritesManager.deleteFavorite(company.id))
+    else(FavoritesManager.createFavorite(company.id))
+    setIsFavorite(!isFavorite)
+  };
   
-    
   return (   
     <FormControlLabel
       control={<Checkbox icon={<FavoriteBorder/>} checkedIcon={<FavoriteFill/>} />}

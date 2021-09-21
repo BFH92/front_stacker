@@ -10,10 +10,8 @@ import { API_URL } from '../../Config/API_URL';
 import { UserStacksContext } from '../../Context/UserStacksContext';
 
 const FilterSystem = () => {
-  //TODO: use context pour set L'url
   const {setUrl}= useContext(FilterContext);
   const {url}= useContext(FilterContext);
-  //const {filterStacks}= useContext(FilterContext);
   
   const [staffSize, setStaffSize] = useState("")
   const [staffSizeValues, setStaffSizeValues] = useState([{name:"0-9",slug:"0-9"},{name:"10-49",slug:"10-49"},{name:"50-249",slug:"50-249"},{name:"250+",slug:"250more"}])

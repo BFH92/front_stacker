@@ -11,7 +11,6 @@ import { FavoriteContext } from '../../Context/FavoriteContext';
 const ResultsCompanies = () => {
   const {url} = useContext(FilterContext);
   const {data} = CompaniesList(url);
-  console.log(data)
   const [company, setCompany] = useState([]);
 
   useEffect(() => {

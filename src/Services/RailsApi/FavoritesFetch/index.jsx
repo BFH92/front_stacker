@@ -32,6 +32,19 @@ export default class FavoritesManager {
     return response;
   };
 
+  static async getCompaniesByUser() {
+    const authorizedConfig = {
+      headers: {
+        Authorization: `Bearer ${Cookies.get("API_Authentication_token")}`,
+      },
+    };
+    const response = await API.get(
+      `/favorites_by_user?`,
+      authorizedConfig
+    );
+    return response;
+  };
+
   static async deleteFavorite(company_id) {
     const authorizedConfig = {
       headers: {

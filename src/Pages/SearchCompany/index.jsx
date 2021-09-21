@@ -8,7 +8,7 @@ import FilterSystem from '../../Components/FilterSystem';
 
 const SearchCompany = () => {
 
-  const[url, setUrl] = useState(API_URL + 'companies');
+  const[url, setUrl] = useState(API_URL + 'companies?');
   
   return (
     <FilterContext.Provider value={{url , setUrl}}>

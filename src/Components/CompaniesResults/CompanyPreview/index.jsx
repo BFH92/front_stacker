@@ -9,8 +9,10 @@ import CardActions from "@mui/material/CardActions";
 import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
+import { useSelector } from "react-redux";
 
 const CompanyPreview = ({ company }) => {
+  const isLogged = useSelector(state => state.user.isLogged)
   return (
     <Card elevation={3}>
       <CardHeader
@@ -37,7 +39,9 @@ const CompanyPreview = ({ company }) => {
         >
           Site internet
         </Link>
-        <AddToFavorite company={{id:company.id}}/>
+        {isLogged ? 
+        <AddToFavorite company={{id:company.id, setIsFavorite:company.setIsFavorite, isFavorite:company.isFavorite}}/>
+        :""}
       </CardActions>
     </Card>
   );
