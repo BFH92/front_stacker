@@ -42,7 +42,7 @@ const GetPasswordForm = ({ user }) => {
               )}
             />
           </div>
-          <button onClick={()=>handleSubmit(user.sendPasswordInstructions)}>
+          <button onClick={handleSubmit(user.sendPasswordInstructions)}>
             Changer de mot de passe
           </button>
         </form>

@@ -51,7 +51,7 @@ const SignUpForm = ({ user }) => {
               render={() => <p><strong>Mot de passe trop court</strong></p>}
             />
           </div>
-          <button type="submit" onClick={()=>handleSubmit(user.SignUp)}>
+          <button type="submit" onClick={handleSubmit(user.SignUp)}>
             S'inscrire
           </button>
         </form>

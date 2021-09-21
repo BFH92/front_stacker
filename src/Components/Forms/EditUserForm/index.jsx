@@ -171,7 +171,7 @@ export const EditUserForm = () => {
               </p>
             )}
           />
-          <button onClick={()=>handleSubmit(updateUserDetails)}>Sauvegarder</button>
+          <button onClick={handleSubmit(updateUserDetails)}>Sauvegarder</button>
         </form>
         <div>
         <ChipsArray/>
