@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import FavoritesManager from '../../Services/RailsApi/FavoritesFetch';
 import CompanyPreview from '../CompaniesResults/CompanyPreview';
 
@@ -9,6 +9,7 @@ const FavoritesCompanies = () => {
   useEffect(() => {
     getFavoriteCompanies()
   }, []);
+
   const getFavoriteCompanies = async() => {
     const response = await FavoritesManager.getCompaniesByUser()
     console.log(response)
