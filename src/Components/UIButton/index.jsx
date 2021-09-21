@@ -6,7 +6,14 @@ const UIButton = (props) => {
   const theme = useTheme();
 
   return (
-    <Button theme={theme} variant={props.variant} size={props.size}>{props.content}</Button>
+    <Button
+      theme={theme}
+      variant={props.variant}
+      size={props.size}
+      color={props.color}
+    >
+      {props.content}
+    </Button>
   );
 };
 

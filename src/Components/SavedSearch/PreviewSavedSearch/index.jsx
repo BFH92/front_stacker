@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ChipsArray from '../../CompaniesResults/CompanyPreview/ChipsArray';
+// import ChipsArray from '../../CompaniesResults/CompanyPreview/ChipsArray';
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -45,6 +45,7 @@ const PreviewSavedSearch = () => {
             content={"Appliquer"}
             variant={"outlined"}
             size={"small"}
+            color={"primary"}
           />
           <ExpandMore
             expand={expanded}
