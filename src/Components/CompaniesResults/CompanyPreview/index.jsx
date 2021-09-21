@@ -19,9 +19,9 @@ const CompanyPreview = ({ company }) => {
   const isLogged = useSelector(state => state.user.isLogged);
   
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
-  const handleClickVariant = (variant) => () => {
+  const handleClickVariant = (message, variant) => () => {
     // variant could be success, error, warning, info, or default
-    enqueueSnackbar('This is a success message!', { variant });
+    enqueueSnackbar(message, { variant });
   };
 
   return (
@@ -64,7 +64,7 @@ const CompanyPreview = ({ company }) => {
               size="small"
               color="primary"
               content={company.website_link}
-              onClick={handleClickVariant('success')}
+              onClick={handleClickVariant('top','warning')}
             />
           </CardActions>
         </React.Fragment>       
