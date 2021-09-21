@@ -8,5 +8,12 @@
   .all--items {
     display: grid;
     grid-gap: $padding;
+
+    .recent--search--item {
+      .card--header {
+        display: grid;
+        grid-template-columns: 1fr auto;
+      }
+    }
   }
 }

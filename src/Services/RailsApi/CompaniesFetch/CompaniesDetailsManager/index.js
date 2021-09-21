@@ -12,15 +12,11 @@ export const CompaniesList = (URL) => {
           method: "GET",
           headers: {
             "Content-Type": " application/json",
-            //Authorization: `Bearer ${token}`
           },
         });
-
-        console.log(res);
         if (res.status === 200) {
           const data = await res.json();
           setData(data);
-          console.log(data);
         }
       } catch (error) {
         console.error(error);

@@ -1,7 +1,8 @@
 import React,{useState, useEffect} from 'react';
 import StacksManager from '../../Services/RailsApi/StacksFetch';
-import StackPreview from './StackPreview';
-
+// import StackPreview from './StackPreview';
+import { TablePreview } from './Tablepreview';
+import { Accordions } from '../../Components/StacksResults/Accordion'
 const StackResults = () => {
   const [stacks, setStacks] = useState([])
   const [backendStacks, setBackendStacks]= useState([])
@@ -38,73 +39,9 @@ const StackResults = () => {
   return (
 
         <div className="results--all">
+          {/* <TablePreview stacks={stacks}/> */}
+          <Accordions stacks={stacks}/>
         <div className="all--items">
-          <ul>
-            <div>
-            <h2>Backend Frameworks & Languages</h2>
-            {backendStacks && backendStacks.map((stack) => (
-              <li key={stack.id}>
-              <StackPreview stack={stack}/>
-            </li>
-            ))}
-            </div>
-            <div>
-            <h2> FrontEnd Frameworks & Languages</h2>
-            {frontendStacks && frontendStacks.map((stack) => (
-              <li key={stack.id}>
-              <StackPreview stack={stack}/>
-            </li>
-            ))}
-            </div>
-            <div>
-            <h2> DevOps</h2>
-            {devopsStacks && devopsStacks.map((stack) => (
-              <li key={stack.id}>
-              <StackPreview stack={stack}/>
-            </li>
-            ))}
-            </div>
-            <div>
-            <h2>Data</h2>
-            {dataStacks && dataStacks.map((stack) => (
-              <li key={stack.id}>
-              <StackPreview stack={stack}/>
-            </li>
-            ))}
-            </div>
-            <div>
-            <h2>Mobile</h2>
-            {mobileStacks && mobileStacks.map((stack) => (
-              <li key={stack.id}>
-              <StackPreview stack={stack}/>
-            </li>
-            ))}
-            </div>
-            <div>
-            <h2>Project Management</h2>
-            {projectStacks && projectStacks.map((stack) => (
-              <li key={stack.id}>
-              <StackPreview stack={stack}/>
-            </li>
-            ))}
-            </div>
-            <div>
-            <h2>IDE</h2>
-            {ideStacks && ideStacks.map((stack) => (
-              <li key={stack.id}>
-              <StackPreview stack={stack}/>
-            </li>
-            ))}
-            </div>
-            <div>
-            <h2>NoCode</h2>
-            {noCodeStacks && noCodeStacks.map((stack) => (
-              <li key={stack.id}>
-              <StackPreview stack={stack}/>
-            </li>
-            ))}
-            </div>
-          </ul>
         </div>
       </div>
 

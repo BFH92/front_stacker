@@ -10,7 +10,7 @@ export default class UserInfoManager {
     const authorizedConfig = {
       headers: {
         Accept:'application/json',
-        Authorization: `Bearer ${Cookies.get("token")}`,
+        Authorization: `Bearer ${Cookies.get("API_Authentication_token")}`,
       },
     };
 
@@ -25,7 +25,7 @@ export default class UserInfoManager {
     const authorizedConfig = {
         headers: {
           Accept:'application/json',
-          Authorization: `Bearer ${Cookies.get("token")}`,
+          Authorization: `Bearer ${Cookies.get("API_Authentication_token")}`,
         },
     };
     let data = new FormData();

@@ -1,7 +1,6 @@
 import React from 'react';
 import StackResults from '../../Components/StacksResults';
 
-
 const Stacks = () => {
 
   return (
