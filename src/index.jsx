@@ -33,6 +33,9 @@ import { ThemeProvider } from "@material-ui/core";
 import LightTheme from "./Assets/Themes/LightTheme";
 import DarkTheme from "./Assets/Themes/DarkTheme";
 
+// NOTISTACK
+import { SnackbarProvider } from 'notistack';
+
 const App = () => {
   const [darkMode, setDarkMode] = useState(false);
   const [isLogged, setIsLogged] = useState("");
@@ -72,41 +75,42 @@ const App = () => {
 
   return (
     <ThemeProvider theme={darkMode ? DarkTheme : LightTheme}>
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <Router>        
-            <div className="container__all">
-              <Route path="/" render={() => <Header user={{isLogged, setIsLogged}} />} />            
-              
-              <main className="container__main">
-                <Switch>
-                  <Route path="/" exact render={() => <Home/>} />
-                  <Route path="/about" render={() => <About />} />
-                  <Route path="/stacks" render={() => <Stacks />} />
+      <SnackbarProvider maxSnack={3}>
+        <Provider store={store}>
+          <PersistGate loading={null} persistor={persistor}>
+            <Router>        
+              <div className="container__all">
+                <Route path="/" render={() => <Header user={{isLogged, setIsLogged}} />} />            
+                
+                <main className="container__main">
+                  <Switch>
+                    <Route path="/" exact render={() => <Home/>} />
+                    <Route path="/about" render={() => <About />} />
+                    <Route path="/stacks" render={() => <Stacks />} />
 
-                  <PrivateRoute path="/user/dashboard" component={UserDashboard} key={uuidv4()} />
-                  <Route path="/user/sign-in" render={() => <UserSignIn user={{setIsLogged}}/>}/>
-                  <Route path="/user/sign-up" render={() => <UserSignUp user={{setIsLogged}}/>}/>
-                  <Route path="/user/notifications" render={() => <Notifications />} />
-                  <PrivateRoute exact path="user/settings" component={Settings} identity={"user"} />
-                  
-                  <Route path="/user/settings/new-password" render={() => <NewPassword user={{setIsLogged,identity:"user"}}/>} />
-                  <Route path="/user/settings/get-password" render={() => <GetPassword identity={"user"}/>} />
+                    <PrivateRoute path="/user/dashboard" component={UserDashboard} key={uuidv4()} />
+                    <Route path="/user/sign-in" render={() => <UserSignIn user={{setIsLogged}}/>}/>
+                    <Route path="/user/sign-up" render={() => <UserSignUp user={{setIsLogged}}/>}/>
+                    <Route path="/user/notifications" render={() => <Notifications />} />
+                    <PrivateRoute exact path="user/settings" component={Settings} identity={"user"} />
+                    
+                    <Route path="/user/settings/new-password" render={() => <NewPassword user={{setIsLogged,identity:"user"}}/>} />
+                    <Route path="/user/settings/get-password" render={() => <GetPassword identity={"user"}/>} />
 
-                  <Route path="/search/company" render={() => <SearchCompany />} />
-                  <CompanyRoute path="/company/dashboard" component= {CompanyDashboard} key={uuidv4()} />
-                  <Route path="/company/sign-in" render={() => <CompanySignIn user={{setIsLogged}}/>}/>
-                  <Route path="/company/sign-up" render={() => <CompanySignUp user={{setIsLogged}}/>}/>
-                  <Route path="/company/settings/new-password" render={() => <NewPassword user={{setIsLogged, identity:"company"}}/>} />
-                  <Route path="/company/settings/get-password" render={() => <GetPassword identity={"company"}/>} />
-                  <PrivateRoute exact path="/company/settings" component={Settings} identity={"company"} />            
-                </Switch>
-              </main>
-              
-            </div>
-          </Router>
-        </PersistGate>
-      </Provider>
+                    <Route path="/search/company" render={() => <SearchCompany />} />
+                    <CompanyRoute path="/company/dashboard" component= {CompanyDashboard} key={uuidv4()} />
+                    <Route path="/company/sign-in" render={() => <CompanySignIn user={{setIsLogged}}/>}/>
+                    <Route path="/company/sign-up" render={() => <CompanySignUp user={{setIsLogged}}/>}/>
+                    <Route path="/company/settings/new-password" render={() => <NewPassword user={{setIsLogged, identity:"company"}}/>} />
+                    <Route path="/company/settings/get-password" render={() => <GetPassword identity={"company"}/>} />
+                    <PrivateRoute exact path="/company/settings" component={Settings} identity={"company"} />            
+                  </Switch>
+                </main>
+              </div>
+            </Router>
+          </PersistGate>
+        </Provider>
+      </SnackbarProvider>
     </ThemeProvider>
   );
 };
