@@ -4,11 +4,12 @@ import lottie from "lottie-web";
 import "./home.scss";
 //materialUI
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
 //Typewriter
 import Typewriter from "typewriter-effect";
 import { Paper } from "@material-ui/core";
+import UIButton from "../../Components/UIButton";
+import { ThemeProvider } from "@emotion/react";
 
 const Home = () => {
   const container = useRef(null);
@@ -35,15 +36,18 @@ const Home = () => {
               }}
             />
           </Typography>
-          <Typography variant="body1" sx={{ mt: 3 }}>
+          <Typography variant="body1" sx={{ mt: 3, mb: 5 }}>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos
             blanditiis tenetur unde suscipit, quam beatae rerum inventore
             consectetur, neque doloribus, cupiditate numquam dignissimos laborum
             fugiat deleniti? Eum quasi quidem quibusdam.
           </Typography>
-          <Button variant="outlined" color="inherit" size="large" sx={{ mt: 5 }}>
-            Découvrir Stacker
-          </Button>
+          <UIButton
+            color="inherit"
+            size="large"
+            variant="outlined"
+            content="découvrir stacker.io"
+          />
         </div>
       </div>
       <div className="container__home--right">
