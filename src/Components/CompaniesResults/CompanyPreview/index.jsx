@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import AddToFavorite from '../../CTAs/AddToFavorite';
 import ChipsArray from './ChipsArray';
 import CompanyPreviewAvatar from './Avatar';
@@ -9,7 +9,7 @@ import CardActions from '@mui/material/CardActions';
 import Link from '@mui/material/Link';
 
 const CompanyPreview = ({ company }) => {
-
+console.log(company.id)
   return (
     <Card>
       <CardHeader
@@ -26,7 +26,7 @@ const CompanyPreview = ({ company }) => {
         <Link href={company.website_link} target="_blank" underline="hover" rel="noreferrer">
           Site internet
         </Link>
-        <AddToFavorite />
+        <AddToFavorite company={company.id}/>
       </CardActions>
     </Card>
   );
