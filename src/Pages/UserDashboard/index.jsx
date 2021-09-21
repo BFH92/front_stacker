@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import './userDashboard.scss';
-import RecentSearch from '../../Components/RecentSearch';
+import SavedSearch from '../../Components/SavedSearch';
 import UserPresentation from '../../Components/UserPresentation';
 import { FilterContext } from '../../Context/FilterContext';
 
@@ -10,7 +10,7 @@ const UserDashboard = () => {
       <div className="container__title-pane">Mon Dashboard</div>
         <div className="container__results--all">
           <UserPresentation />
-          <RecentSearch />
+          <SavedSearch />
         </div>
     </div>
   );

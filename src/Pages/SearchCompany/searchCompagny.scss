@@ -6,7 +6,6 @@
   grid-template-columns: 300px 1fr;
 
   .container--right {
-    position: relative;
     display: grid;
     overflow-y: scroll;
   }
@@ -18,4 +17,9 @@
   grid-template-columns: 1fr 300px;
   grid-gap: $padding * 2;
   padding: $padding * 2;
+  
+  .all--items {
+    position: sticky;
+    top: $padding * 2;
+  }
 }

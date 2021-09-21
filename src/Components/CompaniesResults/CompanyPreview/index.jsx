@@ -7,23 +7,36 @@ import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import Link from '@mui/material/Link';
+import Typography from '@mui/material/Typography';
+import Divider from '@mui/material/Divider';
 
 const CompanyPreview = ({ company }) => {
 console.log(company.id)
   return (
-    <Card>
-      <CardHeader
+    <Card elevation={3}>
+      <CardHeader sx={{ p: 2 }}
         avatar={
           <CompanyPreviewAvatar companyName={company.name}/>
         }
         title={company.name}
-        subheader={`Effectif Tech: ${company.staff_size}`}
+        subheader={company.company_category_id}
       />
-      <CardContent>
+      <Divider />
+      <CardContent sx={{ p: 2 }}>
+        <Typography variant="body2" sx={{ pb: 2 }}>
+          {`Effectif Tech: ${company.staff_size}`}
+        </Typography>
         <ChipsArray companyStacks={company.stacks}/>
       </CardContent>
-      <CardActions disableSpacing>
-        <Link href={company.website_link} target="_blank" underline="hover" rel="noreferrer">
+      <CardActions sx={{ px: 2, pt: 0, pb: 1 }}>
+        <Link
+          href={company.website_link}
+          target="_blank"
+          underline="none"
+          rel="noreferrer"
+          color="primary"
+          sx={{ flexGrow: 1 }}
+        >
           Site internet
         </Link>
         <AddToFavorite company={company.id}/>

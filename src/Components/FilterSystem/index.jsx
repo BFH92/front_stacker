@@ -8,6 +8,7 @@ import Save from '../../Assets/Svg/UI/Save';
 import { FilterContext } from '../../Context/FilterContext';
 import { API_URL } from '../../Config/API_URL';
 import { UserStacksContext } from '../../Context/UserStacksContext';
+
 const FilterSystem = () => {
   //TODO: use context pour set L'url
   const {setUrl}= useContext(FilterContext);
@@ -34,22 +35,21 @@ const FilterSystem = () => {
   const addUserStackAuthorization = false
   return (
     <UserStacksContext.Provider value={{chipData , setChipData, addUserStackAuthorization, filterStacks, setFilterStacks}}>
-
-    <div className="container__filter--system">
-      <div className="container--top">
-        <div className="grid__filter--groups">
-          <ChipsArray/>
-          <RadioButtonsGroup companies={{filter:"Effectifs",state:staffSize, setState:setStaffSize, value:staffSizeValues }}/>
-          <RadioButtonsGroup companies={{filter:"Type d'entreprise",state:categories, setState:setCategories, value:categoriesValues }}/>
-          {/* <SimpleSlider /> */}
+      <div className="container__filter--system">
+        <div className="container--top">
+          <div className="grid__filter--groups">
+            <ChipsArray/>
+            <RadioButtonsGroup companies={{filter:"Effectifs",state:staffSize, setState:setStaffSize, value:staffSizeValues }}/>
+            <RadioButtonsGroup companies={{filter:"Type d'entreprise",state:categories, setState:setCategories, value:categoriesValues }}/>
+            {/* <SimpleSlider /> */}
+          </div>
         </div>
-      </div>
-      <div className="container--bottom">
-        <div className="container__cta">
-          <NegativeRightIconButton name={"Enregistrer"} svg={<Save />}/>
+        <div className="container--bottom">
+          <div className="container__cta">
+            <NegativeRightIconButton name={"Enregistrer"} svg={<Save />}/>
+          </div>
         </div>
-      </div>
-    </div>    
+      </div>    
     </UserStacksContext.Provider>
   );
 };
