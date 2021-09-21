@@ -43,7 +43,7 @@ const PreviewSavedSearch = () => {
         <CardActions disableSpacing sx={{ pl: 2, pt: 0}}>
           <UIButton
             content={"Appliquer"}
-            variant={"outlined"}
+            variant={"contained"}
             size={"small"}
             color={"primary"}
           />
