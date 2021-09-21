@@ -5,7 +5,7 @@ import { ErrorMessage } from '@hookform/error-message';
 import { useTheme } from "@mui/material";
 import TextField from '@mui/material/TextField';
 import UIButton from "../../UIButton";
-
+import Button from '@mui/material/Button';
 const SignUpForm = ({ user }) => {
   const theme= useTheme();
 
@@ -15,14 +15,16 @@ const SignUpForm = ({ user }) => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      email: user.email,
-      password: user.password,
+      email: "",
+      password: "",
     },
   });
+
 
   return (
 
     <div className="form__container--signup">
+      <form>
       <TextField
         theme={theme}
         color="primary"
@@ -55,14 +57,15 @@ const SignUpForm = ({ user }) => {
         name="password"
         render={() => <p><strong>Mot de passe trop court</strong></p>}
       />
+
       <UIButton
         color="primary"
         size="small"
         variant="contained"
         content="s'inscrire"
-        type="submit"
         onClick={handleSubmit(user.SignUp)}
       />
+      </form>
     </div>
   );
 };
