@@ -75,7 +75,13 @@ const App = () => {
 
   return (
     <ThemeProvider theme={darkMode ? DarkTheme : LightTheme}>
-      <SnackbarProvider maxSnack={3}>
+      <SnackbarProvider
+        maxSnack={3}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'right',
+        }}
+      >
         <Provider store={store}>
           <PersistGate loading={null} persistor={persistor}>
             <Router>        
