@@ -51,7 +51,7 @@ const SettingsDrawer = () => {
             }
           />
         </ListItem>
-        <Divider variant="inset" component="li" />
+        <Divider component="li" />
         <ListItem alignItems="flex-start">
           <ListItemAvatar>
             <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
@@ -73,7 +73,7 @@ const SettingsDrawer = () => {
             }
           />
         </ListItem>
-        <Divider variant="inset" component="li" />
+        <Divider component="li" />
         <ListItem alignItems="flex-start">
           <ListItemAvatar>
             <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />

@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import './header.scss';
 import { useDispatch, useSelector} from "react-redux";
-import { Link } from "react-router-dom";
 import ThemeSwitch from './ThemeSwitch';
 import { createStyles, makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -33,6 +32,11 @@ const useStyles = makeStyles(() =>
       gridAutoFlow: "column",
       placeItems: "center",
       gridGap: 10,
+    },
+    grid_column_no_gap: {
+      display: "grid",
+      gridAutoFlow: "column",
+      placeItems: "center",
     }
   })
 );
@@ -71,16 +75,16 @@ const Header = ({ user }) => {
         <div className={classes.grid_column_auto}>        
           <ThemeSwitch />
           {isLogged ? (
-            <div className={classes.grid_column_auto}>
+            <div className={classes.grid_column_no_gap}>
               <NotificationDrawer />
               {loggedAs === "user" ?
-              (<Link to="/user/settings">
+              (
                 <UserSettingsDrawer />
-              </Link>)
+              )
               :
-              (<Link to="company/settings">
+              (
                 <CompanySettingsDrawer />
-              </Link>)
+              )
               }
               <UserMenu logout={logout}/>
             </div>

@@ -9,6 +9,7 @@ import ListItem from '@mui/material/ListItem';
 import IconButton from '@material-ui/core/IconButton';
 import Settings from '../../../Assets/Svg/Header/Settings';
 import IconTest from '../../../Assets/Svg/Login/StrokeLogin/DarkStrokeLogin';
+import Divider from '@mui/material/Divider';
 
 const CompanySettingsDrawer = () => {
   const [state, setState] = useState(false);
@@ -36,6 +37,7 @@ const CompanySettingsDrawer = () => {
           </ListItemAvatar>
           <ListItemText primary="Photos" secondary="Jan 9, 2014" />
         </ListItem>
+        <Divider />
         <ListItem>
           <ListItemAvatar>
             <Avatar>
@@ -44,6 +46,7 @@ const CompanySettingsDrawer = () => {
           </ListItemAvatar>
           <ListItemText primary="Work" secondary="Jan 7, 2014" />
         </ListItem>
+        <Divider />
         <ListItem>
           <ListItemAvatar>
             <Avatar>

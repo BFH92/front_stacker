@@ -1,7 +1,6 @@
 import React from 'react';
-import Header from '../../Components/Header';
 import CompanyPresentation from '../../Components/CompanyPresentation';
-import RecentSearch from '../../Components/RecentSearch';
+import SavedSearch from '../../Components/SavedSearch';
 
 const CompanyDashboard = () => {
 
@@ -10,7 +9,7 @@ const CompanyDashboard = () => {
       <div className="container__title-pane">Company Dashboard</div>
         <div className="container__results--all">
         <CompanyPresentation />
-        <RecentSearch />
+        <SavedSearch />
         </div>
     </div>
   );

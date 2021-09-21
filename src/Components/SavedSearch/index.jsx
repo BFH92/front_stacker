@@ -1,6 +1,6 @@
 import React from 'react';
-import './recentSearch.scss';
-import PreviewRecentSearch from './PreviewRecentSearch';
+import './savedSearch.scss';
+import PreviewSavedSearch from './PreviewSavedSearch';
 
 const RecentSearch = () => {
 
@@ -9,9 +9,9 @@ const RecentSearch = () => {
       <h2>Recherches enregistrées</h2>
       <div className="container__all--items">
         <ul className="all--items">
-          <PreviewRecentSearch />
-          <PreviewRecentSearch />
-          <PreviewRecentSearch />
+          <PreviewSavedSearch />
+          <PreviewSavedSearch />
+          <PreviewSavedSearch />
         </ul>
       </div>
     </div>
