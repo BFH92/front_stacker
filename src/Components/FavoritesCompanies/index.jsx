@@ -8,7 +8,7 @@ const FavoritesCompanies = () => {
 
   useEffect(() => {
     getFavoriteCompanies()
-  }, []);
+  }, [companies]);
   const getFavoriteCompanies = async() => {
     const response = await FavoritesManager.getCompaniesByUser()
     console.log(response)
