@@ -9,8 +9,10 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import PrimaryDownArrow from '../../../Assets/Svg/Arrow/DownArrow/PrimaryDownArrow';
 import UIButton from '../../../Components/UIButton';
+import { useSnackbar } from 'notistack';
 
 const ExpandMore = styled((props) => {
+
   const { expand, ...other } = props;
   return <IconButton {...other} />;
 })(({ theme, expand }) => ({
@@ -26,6 +28,12 @@ const PreviewSavedSearch = () => {
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
+  };
+
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  const handleClickVariant = (message, variant) => () => {
+    // variant could be success, error, warning, info, or default
+    enqueueSnackbar(message, { variant });
   };
 
   return (
@@ -46,6 +54,7 @@ const PreviewSavedSearch = () => {
             variant={"contained"}
             size={"small"}
             color={"primary"}
+            onClick={handleClickVariant('Filtres mis à jour.','success')}
           />
           <ExpandMore
             expand={expanded}

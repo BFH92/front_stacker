@@ -13,16 +13,8 @@ import { useSelector } from "react-redux";
 import UIButton from '../../UIButton';
 import SendEmailLight from "../../../Assets/Svg/SendEmail/SendEmailLight";
 
-import { useSnackbar } from 'notistack';
-
 const CompanyPreview = ({ company }) => {
   const isLogged = useSelector(state => state.user.isLogged);
-  
-  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
-  const handleClickVariant = (message, variant) => () => {
-    // variant could be success, error, warning, info, or default
-    enqueueSnackbar(message, { variant });
-  };
 
   return (
     <Card variant="outlined">
@@ -64,7 +56,6 @@ const CompanyPreview = ({ company }) => {
               size="small"
               color="primary"
               content={company.website_link}
-              onClick={handleClickVariant('top','warning')}
             />
           </CardActions>
         </React.Fragment>       
