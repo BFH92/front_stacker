@@ -32,6 +32,16 @@ const CompanyPreview = ({ company }) => {
               {`Effectif Tech: ${company.staff_size}`}
             </Typography>
             <ChipsArray companyStacks={company.stacks}/>
+            <Typography variant="body2" sx={{ pb: 2 }} color="text.secondary">
+              {company.description}
+            </Typography>
+            {company.is_it_recruiting ? (
+              <Typography variant="body2" display="block" color="warning.main">
+                {`Cette entreprise recrute!`}
+              </Typography>
+            ) : (
+              null
+            )}
           </CardContent>
         </React.Fragment>       
       ) : (
