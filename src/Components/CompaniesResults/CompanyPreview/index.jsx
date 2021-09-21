@@ -13,7 +13,7 @@ import Divider from '@mui/material/Divider';
 const CompanyPreview = ({ company }) => {
 
   return (
-    <Card elevation={3}>
+    <Card variant="outlined">
       <CardHeader sx={{ p: 2 }}
         avatar={
           <CompanyPreviewAvatar companyName={company.name}/>
