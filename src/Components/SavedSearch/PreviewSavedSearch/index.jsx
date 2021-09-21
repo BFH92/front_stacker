@@ -57,10 +57,10 @@ const PreviewSavedSearch = () => {
           </ExpandMore>
         </CardActions>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
-          <Card sx={{ p: 2, pt: 0.75}}>
+          <CardContent sx={{ p: 2, pt: 0.75}}>
             <Typography color="text.secondary" variant="body2">Effectif Tech: $variable</Typography>
             <Typography color="text.secondary" variant="body2">Type d'entreprise: $variable</Typography>
-          </Card>
+          </CardContent>
         </Collapse>
       </Card>
     </li>

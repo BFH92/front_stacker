@@ -10,9 +10,9 @@ const HeaderCompaniesResults = ({company}) => {
   return (
     <header className="container__header__results--companies">
       {/* <div className="container--left"> */}
-        <Typography variant="h3">
+        <Typography variant="h3" color="primary">
           {resultsMetrics} résultats
-        </Typography>      
+        </Typography>
       {/* </div> */}
         {/*<div className="container__filter--right">
         <p>Sort by Date</p>

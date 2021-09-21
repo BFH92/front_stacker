@@ -11,7 +11,7 @@ import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import { useSelector } from "react-redux";
 import UIButton from '../../UIButton';
-import SendEmailLight from "../../../Assets/Svg/SendEmail/SendEmailStroke";
+import SendEmailLight from "../../../Assets/Svg/SendEmail/SendEmailLight";
 
 const CompanyPreview = ({ company }) => {
   const isLogged = useSelector(state => state.user.isLogged);

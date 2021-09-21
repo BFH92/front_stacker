@@ -95,7 +95,6 @@ const App = () => {
                   <Route path="/user/settings/get-password" render={() => <GetPassword identity={"user"}/>} />
 
                   <Route path="/search/company" render={() => <SearchCompany />} />
-                  <Route exact path="/company" render={() => <Company key={uuidv4()} />} />
                   <CompanyRoute path="/company/dashboard" component= {CompanyDashboard} key={uuidv4()} />
                   <Route path="/company/sign-in" render={() => <CompanySignIn user={{setIsLogged}}/>}/>
                   <Route path="/company/sign-up" render={() => <CompanySignUp user={{setIsLogged}}/>}/>
