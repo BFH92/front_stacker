@@ -1,11 +1,12 @@
 import React from "react";
+import { useForm } from "react-hook-form";
 //styles
 import "./sign_in_form.scss";
-//formvalidation
-import { useForm } from "react-hook-form";
+//Components
+import UIButton from "../../UIButton";
+//MaterialUI
 import { useTheme } from "@mui/material";
 import TextField from "@mui/material/TextField";
-import UIButton from "../../UIButton";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 
@@ -36,11 +37,10 @@ const SignInForm = ({ user }) => {
         >
           <div className="container__email--login">
             <TextField
-              sx={{ mb: 2.5 }}
-              focused
+              sx={{ mb: 4, mt:4 }}
               theme={theme}
               color="primary"
-              label="Email"
+              label="E-mail"
               variant="outlined"
               {...register("email", {
                 required: "Email requis",
@@ -58,8 +58,7 @@ const SignInForm = ({ user }) => {
           </div>
           <div className="container__password--login">
             <TextField
-              sx={{ mb: 2.5 }}
-              focused
+              sx={{ mb: 4 }}
               theme={theme}
               color="primary"
               label="Mot de passe"
