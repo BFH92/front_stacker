@@ -58,7 +58,7 @@ const UserSignIn = ({ user }) => {
           Mot de passe oublié
         </Link>
         <Link to="/company/sign-in">
-          Vous êtes une entreprise ? espace entreprise
+          Vous êtes une entreprise ? Espace entreprise
         </Link>
       </div>
       </div>
