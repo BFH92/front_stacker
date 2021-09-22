@@ -13,6 +13,8 @@ const UIButton = (props) => {
       color={props.color}
       type={props.type}
       onClick={props.onClick}
+      href={props.href}
+      target={props.target}
     >
       {props.content}
     </Button>

@@ -60,13 +60,15 @@ const CompanyPreview = ({ company }) => {
           </CardContent>
           <Divider light/>
           <CardActions>
-            <IconButton aria-label="send email" href={company.website_link} target="_blank">
+            <IconButton aria-label="send email" href={`mailto:${company.email}`}>
               <SendEmailLight />
             </IconButton>
             <UIButton
               size="small"
               color="primary"
               content={company.website_link}
+              href={company.website_link}
+              target="_blank"
             />
           </CardActions>
         </React.Fragment>       
