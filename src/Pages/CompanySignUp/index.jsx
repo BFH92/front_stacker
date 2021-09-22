@@ -16,13 +16,12 @@ const CompanySignUp = ({user}) => {
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
     const SignUp = async (e) => {
-      //e.preventDefault();
       try {
       const response = await CompaniesAuthManager.register(email, password);
       let variant = 'success'
       let message = `Bienvenue sur Stacker, il nous faut encore quelques informations de votre part avant d'être référencé !`
       enqueueSnackbar(message, { variant });
-      dispatch(RegisterUserLoginStatus(response.data.user_id, "company"))
+      dispatch(RegisterUserLoginStatus(response.data.company_id, "company"))
       user.setIsLogged(true)
       history.push("/company/dashboard");
       

@@ -22,7 +22,7 @@ import { useSnackbar } from 'notistack';
       let variant = 'success'
       let message = `Bienvenue sur Stacker !`
       enqueueSnackbar(message, { variant });
-      dispatch(RegisterUserLoginStatus(response.data.user_id, "company"))
+      dispatch(RegisterUserLoginStatus(response.data.company_id, "company"))
       user.setIsLogged(true)
       history.push("/company/dashboard");
       
