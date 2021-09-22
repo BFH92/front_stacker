@@ -14,7 +14,7 @@ const AddToFavorite = ({ company, snackbarDelete, snackbarAdd }) => {
   
   useEffect(() => {
     getFavoriteStatus(company.id)
-  }, []);    
+  }, []);
 
   const getFavoriteStatus = async(company_id) =>{
     const response = await FavoritesManager.getId(company_id)

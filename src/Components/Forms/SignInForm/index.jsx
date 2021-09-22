@@ -1,11 +1,13 @@
 import React from "react";
 //styles
-import './sign_in_form.scss';
+import "./sign_in_form.scss";
 //formvalidation
 import { useForm } from "react-hook-form";
 import { useTheme } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import UIButton from "../../UIButton";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
 
 const SignInForm = ({ user }) => {
   const theme = useTheme();
@@ -20,10 +22,12 @@ const SignInForm = ({ user }) => {
       password: user.password,
     },
   });
+
   return (
-    <>
-      <div className="form__container--login">
+    <Card variant="outlined">
+      <CardContent>
         <form
+          className="container--form"
           onSubmit={handleSubmit(user.login)}
           onClick={() => {
             setValue("email", user.email);
@@ -32,6 +36,8 @@ const SignInForm = ({ user }) => {
         >
           <div className="container__email--login">
             <TextField
+              sx={{ mb: 2.5 }}
+              focused
               theme={theme}
               color="primary"
               label="Email"
@@ -52,6 +58,8 @@ const SignInForm = ({ user }) => {
           </div>
           <div className="container__password--login">
             <TextField
+              sx={{ mb: 2.5 }}
+              focused
               theme={theme}
               color="primary"
               label="Mot de passe"
@@ -66,16 +74,18 @@ const SignInForm = ({ user }) => {
             />
             {errors.password && <p>{errors.password.message}</p>}
           </div>
-          <UIButton
-            color="primary"
-            size="small"
-            variant="contained"
-            content="Se connecter"
-            type="submit"
-          />
+          <div className="container--cta">
+            <UIButton
+              color="primary"
+              size="small"
+              variant="contained"
+              content="Se connecter"
+              type="submit"
+            />
+          </div>
         </form>
-      </div>
-    </>
+      </CardContent>
+    </Card>
   );
 };
 
