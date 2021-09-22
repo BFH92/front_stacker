@@ -7,7 +7,6 @@ import './chipsArray.scss';
 import { UserStacksContext } from '../../../Context/UserStacksContext';
 import ViewerStackManager from '../../../Services/RailsApi/ViewerStackManager ';
 import { useSelector } from 'react-redux';
-// import Exemple from '../../../Assets/Svg/Stacks/Exemple';
 
 const WhiteStyleChip = withStyles({
   root: {
@@ -24,9 +23,7 @@ const ChipsArray = () => {
   
   const handleDelete = (chipToDelete) => () => {
     setChipData((chips) => chips.filter((chip) => chip.key !== chipToDelete.key));
-   
     if (addUserStackAuthorization && viewerLoggedAs !== "visitor")(ViewerStackManager.deleteViewerStack(chipToDelete.label,viewerLoggedAs))
-
   };
   
   useEffect(() => {

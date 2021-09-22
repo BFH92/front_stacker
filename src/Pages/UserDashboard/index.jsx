@@ -12,7 +12,6 @@ const UserDashboard = () => {
         <div className="container__results--all">
           <UserPresentation/>
           <FavoritesCompanies/>
-          <SavedSearch />
         </div>
     </div>
   );

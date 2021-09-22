@@ -13,6 +13,8 @@ const SearchCompany = () => {
   const [staffSize, setStaffSize] = useState("")
   const [categories, setCategories] = useState("")
   const [filterStacks, setFilterStacks] = useState("")
+  const [saveListener, setSaveListener] = useState(0)
+
 
   useEffect(() => {
     let urlParameters = [API_URL+ 'companies?']
@@ -20,18 +22,17 @@ const SearchCompany = () => {
     if (filterStacks)(urlParameters.push(`stack=${filterStacks}`))
     if (categories)(urlParameters.push(`categories=${categories}`))
     urlParameters = urlParameters.join("&")
-    console.log(urlParameters)
     setUrl(urlParameters)
 
   }, [filterStacks, staffSize, categories]);
   return (
-    <FilterContext.Provider value={{url , setUrl, chipData, setChipData,staffSize, setStaffSize, categories, setCategories,filterStacks, setFilterStacks}}>
+    <FilterContext.Provider value={{url, setUrl, chipData, setChipData,staffSize, setStaffSize, categories, setCategories,filterStacks, setFilterStacks,saveListener, setSaveListener}}>
     <div className="container__search--companies">
       <FilterSystem />
       <div className="container--right">
         <div className="container__results--all">
           <CompaniesResults/>
-          <SavedSearch />
+          <SavedSearch/>
         </div>
       </div>
     </div>
