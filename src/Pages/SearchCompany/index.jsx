@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './searchCompagny.scss';
+import './searchCompany.scss';
 import { FilterContext } from '../../Context/FilterContext';
 import SavedSearch from '../../Components/SavedSearch';
 import CompaniesResults from '../../Components/CompaniesResults';

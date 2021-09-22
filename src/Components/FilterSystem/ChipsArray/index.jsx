@@ -7,7 +7,6 @@ import './chipsArray.scss';
 import { UserStacksContext } from '../../../Context/UserStacksContext';
 import ViewerStackManager from '../../../Services/RailsApi/ViewerStackManager ';
 import { useSelector } from 'react-redux';
-// import Exemple from '../../../Assets/Svg/Stacks/Exemple';
 
 const WhiteStyleChip = withStyles({
   root: {
@@ -51,8 +50,6 @@ const ChipsArray = () => {
                 size="small"
                 label={data.label}
                 onDelete={handleDelete(data)}
-                // icon={<Exemple />}
-                // deleteIcon={<DeleteStack />}  Icon personnalisé pour la suppression d'un stack
               />
             </li>
           );
