@@ -15,7 +15,6 @@ const UserSignIn = ({ user }) => {
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   const login = async () => {
-    
     try {
       const response = await UsersAuthManager.login(email, password);
       let variant = 'success'

@@ -35,6 +35,7 @@ import { useSnackbar } from 'notistack';
       history.push("/company/sign-in");
       }
     }
+  
   return (
     <>
       <div>

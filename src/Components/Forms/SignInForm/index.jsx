@@ -1,14 +1,18 @@
 import React from "react";
-//styles 
+//styles
 import './sign_in_form.scss';
 //formvalidation
 import { useForm } from "react-hook-form";
-import { ErrorMessage } from '@hookform/error-message';
+import { useTheme } from "@mui/material";
+import TextField from "@mui/material/TextField";
+import UIButton from "../../UIButton";
 
 const SignInForm = ({ user }) => {
+  const theme = useTheme();
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -18,42 +22,57 @@ const SignInForm = ({ user }) => {
   });
   return (
     <>
-      <div className="form__container--signin">
-        <form className="form">
-          <div className="input__container">
-            <label>
-              Email
-              <input
-                type="text"
-                {...register("email", {
-                  required: true,
-                  pattern: /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g,
-                })}
-                onChange={(e) => user.setEmail(e.target.value)}
-              />
-            </label>
-            <ErrorMessage
-              errors={errors}
-              name="email"
-              render={() => <p><strong>Email valide requis</strong></p>}
+      <div className="form__container--login">
+        <form
+          onSubmit={handleSubmit(user.login)}
+          onClick={() => {
+            setValue("email", user.email);
+            setValue("password", user.password);
+          }}
+        >
+          <div className="container__email--login">
+            <TextField
+              theme={theme}
+              color="primary"
+              label="Email"
+              variant="outlined"
+              {...register("email", {
+                required: "Email requis",
+                pattern: {
+                  value:
+                    /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g,
+                  message: "Format invalide",
+                },
+              })}
+              size="small"
+              defaultValue={user.email}
+              onChange={(e) => user.setEmail(e.target.value)}
             />
-            <label>
-              Mot de passe
-              <input
-                type="password"
-                {...register("password", { required: true })}
-                onChange={(e) => user.setPassword(e.target.value)}
-              />
-            </label>
-            <ErrorMessage
-              errors={errors}
-              name="password"
-              render={() => <p><strong>Mot de passe requis</strong></p>}
-            />
+            {errors.email && <p>{errors.email.message}</p>}
           </div>
-          <button type="submit" onClick={handleSubmit(user.login)}>
-            Se Connecter
-          </button>
+          <div className="container__password--login">
+            <TextField
+              theme={theme}
+              color="primary"
+              label="Mot de passe"
+              variant="outlined"
+              {...register("password", {
+                required: "Mot de passe requis",
+              })}
+              size="small"
+              type="password"
+              defaultValue={user.password}
+              onChange={(e) => user.setPassword(e.target.value)}
+            />
+            {errors.password && <p>{errors.password.message}</p>}
+          </div>
+          <UIButton
+            color="primary"
+            size="small"
+            variant="contained"
+            content="Se connecter"
+            type="submit"
+          />
         </form>
       </div>
     </>
