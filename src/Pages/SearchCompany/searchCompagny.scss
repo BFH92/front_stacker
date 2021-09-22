@@ -20,10 +20,16 @@
 
 .container__results--all {
   height: 100%;
-  display: grid;
-  grid-template-columns: 1fr 300px;
+  display: grid;  
   grid-gap: $padding * 2;
   padding: $padding * 2;
+
+  @include tablet-xs {    
+    grid-auto-flow: row;
+  }
+  @include desktop-sm {    
+    grid-template-columns: 1fr 300px;
+  }
   
   .all--items {
     position: sticky;
