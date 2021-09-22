@@ -81,6 +81,10 @@ const App = () => {
           vertical: 'bottom',
           horizontal: 'right',
         }}
+        autoHideDuration={1750}
+        disableWindowBlurListener={true}
+        hideIconVariant
+        preventDuplicate
       >
         <Provider store={store}>
           <PersistGate loading={null} persistor={persistor}>

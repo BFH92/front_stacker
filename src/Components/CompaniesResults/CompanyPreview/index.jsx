@@ -10,11 +10,18 @@ import IconButton from '@mui/material/IconButton';
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import { useSelector } from "react-redux";
+import { useSnackbar } from 'notistack';
 import UIButton from '../../UIButton';
 import SendEmailLight from "../../../Assets/Svg/SendEmail/SendEmailLight";
 
 const CompanyPreview = ({ company }) => {
   const isLogged = useSelector(state => state.user.isLogged);
+
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  const handleClickVariant = (message, variant) => () => {
+    // variant could be success, error, warning, info, or default
+    enqueueSnackbar(message, { variant });
+  };
 
   return (
     <Card variant="outlined">
@@ -25,7 +32,11 @@ const CompanyPreview = ({ company }) => {
             <CompanyPreviewAvatar companyName={company.name}/>
           }
           action={
-            <AddToFavorite company={{id:company.id, setIsFavorite:company.setIsFavorite, isFavorite:company.isFavorite}}/>
+            <AddToFavorite
+              company={{id:company.id, setIsFavorite:company.setIsFavorite, isFavorite:company.isFavorite}}
+              snackbarAdd={(handleClickVariant(`${company.name} a bien été ajouté au favoris.`,'success'))} 
+              snackbarDelete={(handleClickVariant(`${company.name} a bien été retiré des favoris.`,'success'))} 
+            />
           }
           title={company.name}
           subheader={company.company_category_id}
