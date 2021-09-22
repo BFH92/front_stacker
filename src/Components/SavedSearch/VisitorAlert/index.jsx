@@ -23,7 +23,7 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-const PreviewSavedSearch = () => {
+const VisitorAlert = () => {
   const [expanded, setExpanded] = useState(false);
 
   const handleExpandClick = () => {
@@ -37,24 +37,19 @@ const PreviewSavedSearch = () => {
   };
 
   return (
-    <li className="recent--search--item">
+    <div className="recent--search--item">
       <Card variant="outlined">
         <CardContent className="card--header">
           <Typography variant="body2" color="text.secondary">
-            21 Septembre 2021
+            Il faut t'inscrire ou te connecter pour pouvoir profiter des recherches enregistrées.
           </Typography>
-          <Typography variant="body2" color="text.secondary">
-            8:32
-          </Typography>
-          {/* <ChipsArray /> AJOUTER LES PROPS */}
         </CardContent>
         <CardActions disableSpacing sx={{ pl: 2, pt: 0}}>
           <UIButton
-            content={"Appliquer"}
+            content={"s'inscrire"}
             variant={"contained"}
             size={"small"}
             color={"primary"}
-            onClick={handleClickVariant('Filtres mis à jour.','success')}
           />
           <ExpandMore
             expand={expanded}
@@ -67,13 +62,13 @@ const PreviewSavedSearch = () => {
         </CardActions>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent sx={{ p: 2, pt: 0.75}}>
-            <Typography color="text.secondary" variant="body2">Effectif Tech: $variable</Typography>
-            <Typography color="text.secondary" variant="body2">Type d'entreprise: $variable</Typography>
+            <Typography color="text.secondary" variant="body2">Avantages à s'inscrire:<br/></Typography>
+            <Typography color="text.secondary" variant="body2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vitae accusantium numquam, asperiores expedita dolore omnis autem laborum! Necessitatibus beatae eius sit, laborum reprehenderit, quo corrupti, fugiat nihil soluta omnis facilis.</Typography>
           </CardContent>
         </Collapse>
       </Card>
-    </li>
+    </div>
   );
 };
 
-export default PreviewSavedSearch;
+export default VisitorAlert;

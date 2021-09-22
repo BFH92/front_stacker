@@ -1,10 +1,14 @@
 import React from "react";
-import "./get_password_form.scss";
+//import "./get_password_form.scss";
 //formvalidation
 import { useForm } from "react-hook-form";
-import { ErrorMessage } from "@hookform/error-message";
+import UIButton from "../../UIButton";
+import TextField from "@mui/material/TextField";
+import { useTheme } from "@mui/material";
 
 const GetPasswordForm = ({ user }) => {
+  const theme = useTheme();
+
   const {
     register,
     handleSubmit,
@@ -18,33 +22,34 @@ const GetPasswordForm = ({ user }) => {
   return (
     <>
       <div className="form__container--getpassword">
-        <form className="form">
+        <form onClick={handleSubmit(user.sendPasswordInstructions)}>
           <div className="input__container">
-            <label>
-              email
-              <input
-                type="text"
-                {...register("email", {
-                  required: true,
-                  pattern:
+            <TextField
+              theme={theme}
+              color="primary"
+              label="Email"
+              variant="outlined"
+              {...register("email", {
+                required: "Email requis",
+                pattern: {
+                  value:
                     /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g,
-                })}
-                onChange={(e) => user.setEmail(e.target.value)}
-              />
-            </label>
-            <ErrorMessage
-              errors={errors}
-              name="email"
-              render={() => (
-                <p>
-                  <strong>Email valide requis</strong>
-                </p>
-              )}
+                  message: "Format invalide",
+                },
+              })}
+              size="small"
+              defaultValue={user.email}
+              onChange={(e) => user.setEmail(e.target.value)}
             />
+            {errors.email && <p>{errors.email.message}</p>}
           </div>
-          <button onClick={handleSubmit(user.sendPasswordInstructions)}>
-            Changer de mot de passe
-          </button>
+          <UIButton
+            color="primary"
+            size="large"
+            variant="contained"
+            content="Changer Mot de passe"
+            type="submit"
+          />
         </form>
       </div>
     </>

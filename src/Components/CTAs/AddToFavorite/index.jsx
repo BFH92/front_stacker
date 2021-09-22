@@ -8,7 +8,7 @@ import FavoritesManager from '../../../Services/RailsApi/FavoritesFetch';
 import { FavoriteContext } from '../../../Context/FavoriteContext';
 
 
-const AddToFavorite = ({company}) => {
+const AddToFavorite = ({ company, snackbarDelete, snackbarAdd }) => {
   
   const [isFavorite, setIsFavorite] = useState(false);
   
@@ -27,13 +27,26 @@ const AddToFavorite = ({company}) => {
     setIsFavorite(!isFavorite)
   };
   
-  return (   
-    <FormControlLabel
-      className="label__no--margin"
-      control={<Checkbox icon={<FavoriteBorder />} checkedIcon={<FavoriteFill />} />}
-      checked={isFavorite}
-      onChange={SetFavorite}
-    />
+  return (
+    <>
+      {isFavorite ? (
+        <FormControlLabel
+          className="label__no--margin"
+          control={<Checkbox icon={<FavoriteBorder />} checkedIcon={<FavoriteFill />} />}
+          checked={isFavorite}
+          onChange={SetFavorite}
+          onClick={snackbarDelete}
+        />
+      ) : (
+        <FormControlLabel
+          className="label__no--margin"
+          control={<Checkbox icon={<FavoriteBorder />} checkedIcon={<FavoriteFill />} />}
+          checked={isFavorite}
+          onChange={SetFavorite}
+          onClick={snackbarAdd}
+        />
+      )}
+    </>
   );
 };
 

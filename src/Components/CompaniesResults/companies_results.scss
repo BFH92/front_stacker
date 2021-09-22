@@ -1,14 +1,37 @@
 @import '../../Styles/variables.scss';
+@import '../../Styles/mixins.scss';
 
 .results__main--grid {
   display: grid;
   grid-template-rows: auto 1fr;
-  grid-gap: $padding * 2;
+  grid-gap: $padding * 2;  
+
+  @include desktop-sm {    
+    grid-area: 1 / 1 / 2 / 2;
+  }
 
   .all--items {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
     grid-gap: $padding;
+
+    @include phone {    
+      grid-template-columns: 1fr;
+    }
+    @include tablet-xs {    
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include tablet-ls {    
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @include desktop-sm {    
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include desktop {    
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @include desktop-lg {    
+      grid-template-columns: repeat(4, 1fr);
+    }
   }
 }
 

@@ -48,7 +48,7 @@ const NavTabs = () => {
           />
           <Tab 
             label="Recherche"
-            to="/search/company"
+            to="/search"
             component={Link}
             style={{
               marginLeft: 20,
