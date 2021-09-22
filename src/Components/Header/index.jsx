@@ -15,6 +15,7 @@ import CompaniesAuthManager from "../../Services/RailsApi/CompaniesFetch/Compani
 import NotificationDrawer from '../../Components/Header/NotificationDrawer';
 import UserSettingsDrawer from '../../Components/Header/UserSettingsDrawer';
 import CompanySettingsDrawer from '../../Components/Header/CompanySettingsDrawer';
+import { useSnackbar } from 'notistack';
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -45,6 +46,7 @@ const Header = ({ user }) => {
   const isLogged = useSelector((state) => state.user.isLogged);
   const loggedAs = useSelector((state) => state.user.logged_as);
   const classes = useStyles();
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -53,14 +55,13 @@ const Header = ({ user }) => {
   logged_as = useSelector(state=> state.user.logged_as)
 
   const logout = async (e) => {
-  
-    //e.preventDefault();
     let response;
     dispatch(RegisterUserLogoutStatus());
     logged_as === "company" ? response = await CompaniesAuthManager.logout() : response = await UsersAuthManager.logout();
-  
+    let variant = 'success'
+    let message = `Vous avez été déconnecté avec succès`
+    enqueueSnackbar(message, { variant });
     user.setIsLogged(false);
-    console.log(response);
     history.push("/");
   };
 
