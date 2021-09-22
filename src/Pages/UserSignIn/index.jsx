@@ -15,9 +15,7 @@ const UserSignIn = ({ user }) => {
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   const login = async () => {
-  
-    //const response = await UsersAuthManager.login(email, password);
-  
+    
     try {
       const response = await UsersAuthManager.login(email, password);
       let variant = 'success'
@@ -38,7 +36,7 @@ const UserSignIn = ({ user }) => {
       dispatch(RegisterUserLogoutStatus());
       history.push("/user/sign-in");
       }
-    }
+  }
 
   return (
     <>
