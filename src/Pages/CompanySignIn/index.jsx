@@ -15,7 +15,7 @@ import { useHistory } from "react-router";
 
 
   const login = async (e) => {
-    e.preventDefault();
+    //e.preventDefault();
     const response = await CompaniesAuthManager.login(email, password);
     history.push("/")
     response.status === 200? dispatch(RegisterUserLoginStatus(response.data.company_id,"company")):dispatch(RegisterUserLogoutStatus());

@@ -13,7 +13,7 @@ const CompanySignUp = ({user}) => {
   const history = useHistory()
   const dispatch = useDispatch()
   const SignUp = async (e) => {
-      e.preventDefault();
+      //e.preventDefault();
       const response = await CompaniesAuthManager.register(email, password);
       response.status === 200? history.push("/"): window.alert("couac!");
       response.status === 200? dispatch(RegisterUserLoginStatus(response.data.company_id,"company")):dispatch(RegisterUserLogoutStatus());
