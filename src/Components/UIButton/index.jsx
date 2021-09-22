@@ -12,6 +12,7 @@ const UIButton = (props) => {
       size={props.size}
       color={props.color}
       type={props.type}
+      onClick={props.onClick}
     >
       {props.content}
     </Button>

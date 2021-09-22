@@ -81,7 +81,7 @@ const App = () => {
           vertical: 'bottom',
           horizontal: 'right',
         }}
-        autoHideDuration={1750}
+        autoHideDuration={2000}
         disableWindowBlurListener={true}
         hideIconVariant
         preventDuplicate
