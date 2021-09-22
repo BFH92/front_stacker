@@ -23,9 +23,7 @@ const ChipsArray = () => {
   
   const handleDelete = (chipToDelete) => () => {
     setChipData((chips) => chips.filter((chip) => chip.key !== chipToDelete.key));
-   
     if (addUserStackAuthorization && viewerLoggedAs !== "visitor")(ViewerStackManager.deleteViewerStack(chipToDelete.label,viewerLoggedAs))
-
   };
   
   useEffect(() => {

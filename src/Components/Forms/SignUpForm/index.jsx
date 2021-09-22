@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./sign_up_form.scss";
 import { useTheme } from "@mui/material";
 import TextField from "@mui/material/TextField";
