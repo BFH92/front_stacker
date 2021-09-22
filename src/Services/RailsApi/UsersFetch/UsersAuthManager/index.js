@@ -2,6 +2,8 @@ import { API_URL } from "../../../../Config/API_URL";
 import axios from "axios";
 import { registerToken } from "../../../../Helpers/API_Helper/RegisterToken";
 import Cookies from "js-cookie";
+import { useSnackbar } from 'notistack';
+
 const API = axios.create({ baseURL: API_URL });
 
 const config = {
@@ -11,6 +13,7 @@ const config = {
 };
 
 export default class UsersAuthManager {
+  
   static async sendPasswordInstructions(email) {
     const response = await API.post(
       "/user/forgotten_password",
@@ -31,7 +34,6 @@ export default class UsersAuthManager {
       },
       config
     );
-
     let token = await response.headers.authorization;
     console.log(response);
 
@@ -44,12 +46,7 @@ export default class UsersAuthManager {
       { user: { email, password } },
       config
     );
-
-    //let token = await response.headers.authorization;
-    console.log(response);
-
-    //token ? registerToken(token) : Cookies.set("isLogged?", "false");
-    this.login(email, password);
+    if (response.status === 200) (this.login(email, password))
     return response;
   }
   static async logout() {
@@ -61,23 +58,23 @@ export default class UsersAuthManager {
         "Authorization": `Bearer ${cookie}`,
       },
     };
-  
     const response = await API.delete("/users/sign_out", authorizedConfig);
     console.log(response);
     Cookies.remove("API_Authentication_token");
     return response;
   }
-
   static async login(email, password) {
+    
     const response = await API.post(
       "/users/sign_in",
       { user: { email, password } },
       config
     );
+    
+      let token = await response.headers.authorization;
+      token ? registerToken(token) : Cookies.get("API_Authentication_token");
 
-    let token = await response.headers.authorization;
-    console.log(response);
-    token ? registerToken(token) : Cookies.get("API_Authentication_token");
+    
     return response;
   }
 }

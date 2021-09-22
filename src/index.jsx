@@ -81,6 +81,10 @@ const App = () => {
           vertical: 'bottom',
           horizontal: 'right',
         }}
+        autoHideDuration={1750}
+        disableWindowBlurListener={true}
+        hideIconVariant
+        preventDuplicate
       >
         <Provider store={store}>
           <PersistGate loading={null} persistor={persistor}>
@@ -103,7 +107,7 @@ const App = () => {
                     <Route path="/user/settings/new-password" render={() => <NewPassword user={{setIsLogged,identity:"user"}}/>} />
                     <Route path="/user/settings/get-password" render={() => <GetPassword identity={"user"}/>} />
 
-                    <Route path="/search/company" render={() => <SearchCompany />} />
+                    <Route path="/search" render={() => <SearchCompany />} />
                     <CompanyRoute path="/company/dashboard" component= {CompanyDashboard} key={uuidv4()} />
                     <Route path="/company/sign-in" render={() => <CompanySignIn user={{setIsLogged}}/>}/>
                     <Route path="/company/sign-up" render={() => <CompanySignUp user={{setIsLogged}}/>}/>

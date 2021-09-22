@@ -1,4 +1,5 @@
 @import '../../Styles/variables.scss';
+@import '../../Styles/mixins.scss';
 
 .container__filter--system {
   display: grid;
@@ -6,12 +7,16 @@
   grid-gap: $padding * 2;
   padding: $padding * 2;
   color: $white !important;
-  background-color: $blue;
-  overflow-y: scroll;
+  background-color: $blue;  
+
+  @include desktop-sm {    
+    overflow-y: scroll;
+  }
 }
 
 .container__filter--group {
   display: grid !important;
+  grid-template-rows: auto 1fr !important;
   grid-gap: $padding;
 }
 
@@ -24,13 +29,25 @@
 .grid__filter--groups {
   display: grid !important;
   grid-gap: $padding * 2 !important;
+  
+  @include phone {    
+    grid-template-columns: 1fr;
+  }
+  @include tablet-xs {    
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include tablet-pt {    
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @include tablet-ls {    
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @include desktop-sm {    
+    grid-template-columns: auto;
+  }
 }
 
 .title__filter {
   display: grid;
   align-items: center;
-}
-
-#Arrow--Down-Circle {
-  stroke: $white;
 }

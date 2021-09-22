@@ -1,13 +1,34 @@
 @import '../../Styles/variables.scss';
+@import '../../Styles/mixins.scss';
 
 .container__recent--search {
   display: grid;
   grid-template-rows: auto 1fr;
   grid-gap: $padding * 2;
   
+  @include desktop-sm {    
+    grid-area: 1 / 2 / 2 / 3;
+  }
+  
   .all--items {
     display: grid;
     grid-gap: $padding;
+
+    @include phone {    
+      grid-template-columns: 1fr;
+    }
+    @include tablet-xs {    
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include tablet-pt {    
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @include tablet-ls {    
+      grid-template-columns: repeat(4, 1fr);
+    }
+    @include desktop-sm {    
+      grid-template-columns: 1fr;
+    }
 
     .recent--search--item {
       .card--header {

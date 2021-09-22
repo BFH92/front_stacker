@@ -8,7 +8,7 @@ const HeaderCompaniesResults = ({company}) => {
   }, [company]);
 
   return (
-    <header className="container__header__results--companies">
+    <div className="container__header__results--companies">
       {/* <div className="container--left"> */}
         <Typography variant="h3" color="primary">
           {resultsMetrics} résultats
@@ -17,7 +17,7 @@ const HeaderCompaniesResults = ({company}) => {
         {/*<div className="container__filter--right">
         <p>Sort by Date</p>
       </div>*/}
-    </header>
+    </div>
   );
 };
 
