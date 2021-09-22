@@ -41,6 +41,7 @@ const PreviewSavedSearch = ({data}) => {
   const {setStaffSize} = useContext(FilterContext);
   const {setCategories} = useContext(FilterContext);
   const {setFilterStacks} = useContext(FilterContext);
+  const {setChipData} = useContext(FilterContext);
   
   const deleteSearchCard = (data_id) => async() => {
     // variant could be success, error, warning, info, or default
@@ -67,10 +68,17 @@ const PreviewSavedSearch = ({data}) => {
     })
     stacksList = Array.from(stacksList)
     setFilterStacks(stacksList)
-    //setFilterStacks()
+    preSetChipData(stacksList)
+    
   };  
 
-
+  const preSetChipData = (list) => {
+    let normalizedList =[] 
+    list.map((stack)=>{
+      normalizedList.push({ key: uuidv4(), label: stack})
+    })
+    setChipData(normalizedList)
+  }
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
