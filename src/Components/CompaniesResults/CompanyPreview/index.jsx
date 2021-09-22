@@ -77,7 +77,7 @@ const CompanyPreview = ({ company }) => {
             <CompanyPreviewAvatar companyName={company.name}/>
           }
           title={company.name}
-          subheader={company.company_category_id}
+          subheader={company.category_name}
           />
           <Divider light/>
           <CardContent sx={{ p: 2 }}>

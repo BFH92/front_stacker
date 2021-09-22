@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { RegisterUserLoginStatus, RegisterUserLogoutStatus } from "../../Store";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router";
+import { useSnackbar } from 'notistack';
 
   const CompanySignIn = ({user}) => {
 
@@ -12,16 +13,28 @@ import { useHistory } from "react-router";
   const [password, setPassword] = useState("");
   const history = useHistory();
   const dispatch = useDispatch();
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
 
-  const login = async (e) => {
-    e.preventDefault();
-    const response = await CompaniesAuthManager.login(email, password);
-    history.push("/")
-    response.status === 200? dispatch(RegisterUserLoginStatus(response.data.company_id,"company")):dispatch(RegisterUserLogoutStatus());
-    user.setIsLogged(true);
-
-  };
+  const login = async () => {
+    try {
+      const response = await CompaniesAuthManager.login(email, password);
+      let variant = 'success'
+      let message = `Bienvenue sur Stacker !`
+      enqueueSnackbar(message, { variant });
+      dispatch(RegisterUserLoginStatus(response.data.company_id, "company"))
+      user.setIsLogged(true)
+      history.push("/company/dashboard");
+      
+    } catch (error) {
+      let variant = 'error'
+      let message = `Nous rencontrons une erreur lors de votre connection -> ${error}`
+      if (String(error).includes("401"))(message = `La combinaison Email/mot de passe est incorrecte, réessayez`)
+      enqueueSnackbar(message, { variant });
+      dispatch(RegisterUserLogoutStatus());
+      history.push("/company/sign-in");
+      }
+    }
   return (
     <>
       <div>
