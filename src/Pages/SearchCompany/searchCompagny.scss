@@ -1,9 +1,16 @@
 @import '../../Styles/variables.scss';
+@import '../../Styles/mixins.scss';
 
 .container__search--companies {
   height: 100%;
   display: grid;
-  grid-template-columns: 300px 1fr;
+
+  @include tablet-pt {    
+    grid-template-rows: auto 1fr;
+  }
+  @include desktop-sm {    
+    grid-template-columns: 300px 1fr;
+  }
 
   .container--right {
     display: grid;

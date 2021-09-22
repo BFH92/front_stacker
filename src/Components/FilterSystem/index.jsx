@@ -48,13 +48,12 @@ const FilterSystem = () => {
         <div className="container--top">
           <div className="grid__filter--groups">
             <ChipsArray/>
-            <Divider />
-            <RadioButtonsGroup companies={{filter:"Effectifs",state:staffSize, setState:setStaffSize, value:staffSizeValues }}/>
-            <Divider />
+            <RadioButtonsGroup companies={{filter:"Effectifs",state:staffSize, setState:setStaffSize, value:staffSizeValues }}/>            
             <RadioButtonsGroup companies={{filter:"Type d'entreprise",state:categories, setState:setCategories, value:categoriesValues }}/>
             {/* <SimpleSlider /> */}
           </div>
         </div>
+        <Divider />
         <div className="container--bottom">
           <div className="container__cta">
             {isLogged ? (

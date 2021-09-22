@@ -13,20 +13,14 @@
     @include phone {    
       grid-template-columns: repeat(1, 1fr);
     }
-    @include tablet-pt {    
-      grid-template-columns: repeat(1, 1fr);
-    }
     @include tablet-ls {    
-      grid-template-columns: repeat(1, 1fr);
-    }
-    @include desktop-sm {    
-      grid-template-columns: repeat(1, 1fr);
+      grid-template-columns: repeat(2, 1fr);
     }
     @include desktop {    
-      grid-template-columns: repeat(1, 1fr);
+      grid-template-columns: repeat(3, 1fr);
     }
     @include desktop-lg {    
-      grid-template-columns: repeat(1, 1fr);
+      grid-template-columns: repeat(4, 1fr);
     }
   }
 }
