@@ -18,8 +18,7 @@ const ResultsCompanies = () => {
   }, [data]);
 
   return (
-    <>
-  
+    <>  
       {company ? (
         <div className="results__main--grid">        
           <HeaderCompaniesResults company={company}/>
@@ -38,7 +37,6 @@ const ResultsCompanies = () => {
           <ProgressCircle />
         </div>
       )}
-  
     </>
   );
 };
