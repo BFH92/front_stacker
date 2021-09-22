@@ -4,11 +4,12 @@ import SavedSearch from '../../Components/SavedSearch';
 import UserPresentation from '../../Components/UserPresentation';
 import { FilterContext } from '../../Context/FilterContext';
 import FavoritesCompanies from '../../Components/FavoritesCompanies';
+import { Typography } from '@material-ui/core';
 
 const UserDashboard = () => {
   return (
     <div className="">
-      <div className="container__title-pane">Mon Dashboard</div>
+      <Typography className="container__title-pane" variant="h3" color="primary">Mon Dashboard</Typography>
         <div className="container__results--all">
           <UserPresentation/>
           <FavoritesCompanies/>

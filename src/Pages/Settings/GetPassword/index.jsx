@@ -30,7 +30,7 @@ const GetPassword = (user) => {
   return (
     <div className="container__form--bg">
       <div className="container__form--all">
-        <Typography className="title--form" variant="h3" color="primary">
+        <Typography className="title--form" variant="h3" color="secondary">
           Réinitialiser mot de passe
         </Typography>
         <GetPasswordForm user={{email, setEmail, sendPasswordInstructions}}/>

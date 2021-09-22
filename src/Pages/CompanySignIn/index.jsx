@@ -41,7 +41,7 @@ const CompanySignIn = ({ user }) => {
   return (
     <div className="company-container__form--bg">
       <div className="container__form--all">
-        <Typography className="title--form" variant="h3" color="primary">
+        <Typography className="title--form" variant="h3" color="white">
           Espace de Connexion Entreprise
         </Typography>
         <SignInForm user={{ email, setEmail, password, setPassword, login }} />

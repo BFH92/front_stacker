@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import { useForm } from "react-hook-form";
 //Styles
-  //import './edit_company_form.scss';
+import './edit_company_form.scss';
 //Service
 import CompanyInfoManager from "../../../Services/RailsApi/CompaniesFetch/CompanyInfoManager";
 //components
@@ -13,7 +13,7 @@ import ChipsArray from "../../FilterSystem/ChipsArray";
 //MaterialUI
 import { useTheme } from "@mui/material";
 import TextField from "@mui/material/TextField";
-import { Select } from "@material-ui/core";
+import { Card, CardContent, Select } from "@material-ui/core";
 import { MenuItem } from "@mui/material";
 import UIButton from "../../UIButton";
 import InputLabel from "@mui/material/InputLabel";
@@ -105,10 +105,10 @@ export const EditCompanyForm = () => {
 
   return (
     <UserStacksContext.Provider value={{ chipData, setChipData }}>
-      <div>
-        <h3>Modifier la présentation</h3>
-        <div className="form__container--company">
+      <Card>
+        <CardContent>
           <form
+            className="edit-form__container--company"
             onClick={() => {
               setValue("name", name);
               setValue("description", description);
@@ -121,6 +121,7 @@ export const EditCompanyForm = () => {
           >
             <TextField
               theme={theme}
+              sx={{ mt: 3 }}
               color="primary"
               label="Nom"
               variant="outlined"
@@ -134,6 +135,7 @@ export const EditCompanyForm = () => {
             {errors.name && <p>{errors.name.message}</p>}
             <TextField
               theme={theme}
+              sx={{ mt: 3 }}
               color="primary"
               label="Description"
               multiline
@@ -151,6 +153,7 @@ export const EditCompanyForm = () => {
             {errors.description && <p>{errors.description.message}</p>}
             <TextField
               theme={theme}
+              sx={{ mt: 3 }}
               color="primary"
               label="Lien Github"
               variant="outlined"
@@ -164,6 +167,7 @@ export const EditCompanyForm = () => {
             {errors.githubLink && <p>{errors.githubLink.message}</p>}
             <TextField
               theme={theme}
+              sx={{ mt: 3 }}
               color="primary"
               label="Site Internet"
               variant="outlined"
@@ -183,6 +187,7 @@ export const EditCompanyForm = () => {
             <InputLabel id="Effectif">Effectif</InputLabel>
             <Select
               theme={theme}
+              sx={{ mt: 3 }}
               labelId="Effectif"
               color="primary"
               label="Effectif"
@@ -190,7 +195,7 @@ export const EditCompanyForm = () => {
               {...register("staffSize", {
                 required: "Effectif requis",
               })}
-              size="small"
+              size="large"
               value={staffSize ? staffSize : ""}
               onChange={(e) => setStaffSize(e.target.value)}
             >
@@ -207,19 +212,21 @@ export const EditCompanyForm = () => {
               inputProps={{ "aria-label": "En Recrutement?" }}
             />
             {errors.isItRecruiting && <p>{errors.isItRecruiting.message}</p>}
-            <UIButton
-              color="primary"
-              size="small"
-              variant="contained"
-              content="Sauvegarder"
-              type="submit"
-            />
+            <div className="container--cta">
+              <UIButton
+                color="primary"
+                size="small"
+                variant="contained"
+                content="Sauvegarder"
+                type="submit"
+              />
+            </div>
           </form>
-          <div>
+          <div className="container--chips">
             <ChipsArray />
           </div>
-        </div>
-      </div>
+        </CardContent>
+      </Card>
     </UserStacksContext.Provider>
   );
 };
