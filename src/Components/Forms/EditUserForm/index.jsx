@@ -23,8 +23,10 @@ export const EditUserForm = () => {
     const {
         register,
         handleSubmit,
+        setValue,
         formState: { errors },
       } = useForm({
+        mode: 'onTouched',
         defaultValues: {
           firstname: firstName,
           lastname: lastName,
@@ -92,86 +94,64 @@ export const EditUserForm = () => {
     <div>
       <h3>Modifier ma présentation</h3>
       <div className="form__container--company">
-        <form>
+        <form onSubmit={handleSubmit(updateUserDetails)}>
           <label>
             Prénom
             <input
               type="text"
               value={firstName ? firstName : ""}
-              {...register("firstname", { required: true })}
+              {...register("firstname", { required: "Renseigner votre prénom" })}
               onChange={(e) => setFirstName(e.target.value)}
             />
           </label>
-          <ErrorMessage
-            errors={errors}
-            name="firstname"
-            render={() => (
-              <p>
-                <strong>Prénom requis</strong>
-              </p>
-            )}
-          />
+          {errors.firstname && <p>{errors.firstname.message}</p>}
 
           <label>
             Nom
             <input
               type="text"
               value={lastName ? lastName : ""}
-              {...register("lastname", { required: true })}
+              {...register("lastname", { required: "Renseignez votre nom" })}
               onChange={(e) => setLastName(e.target.value)}
             />
           </label>
-          <ErrorMessage
-            errors={errors}
-            name="lastname"
-            render={() => (
-              <p>
-                <strong>Nom requis</strong>
-              </p>
-            )}
-          />
+          {errors.lastname && <p>{errors.lastname.message}</p>}
           <label>
             Description
             <input
               type="text"
               value={description ? description : ""}
               {...register("description", {
-                    required: true,
-                    minLength: 20 })}
+                    required: "Renseignez description",
+                    minLength: {value: 10, message: "Trop court"} })}
               onChange={(e) => setDescription(e.target.value)}
             />
           </label>
-          <ErrorMessage
-            errors={errors}
-            name="description"
-            render={() => (
-              <p>
-                <strong>Description trop courte</strong>
-              </p>
-            )}
-          />
+          {errors.description && <p>{errors.description.message}</p>}
           <label>
             Lien GitHub
             <input
               type="text"
               value={githubLink ? githubLink : ""}
               {...register("githubLink", {
-                required: true,
-                pattern: /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/ig,
+                required: "lien github requis",
               })}
               onChange={(e) => setGithubLink(e.target.value)}
             />
           </label>
-          <ErrorMessage
-            errors={errors}
-            name="githubLink"
-            render={() => (
-              <p>
-                <strong>Format de lien non valide</strong>
-              </p>
-            )}
-          />
-          <button onClick={handleSubmit(updateUserDetails)}>Sauvegarder</button>
+          {errors.githubLink && <p>{errors.githubLink.message}</p>}
+      <button
+        type="button"
+        onClick={() => {
+          setValue("firstname", firstName);
+          setValue("lastname", lastName);
+          setValue("description", description);
+          setValue("githubLink", githubLink);
+        }}
+      >
+        Confirmer
+      </button>
+          <button type= "submit">Sauvegarder</button>
         </form>
         <div>
         <ChipsArray/>

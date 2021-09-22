@@ -2,41 +2,57 @@ import React from "react";
 //styles 
 //import './sign_in_form.scss';
 //formvalidation
+import { useForm } from "react-hook-form";
 import { useTheme } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import UIButton from "../../UIButton";
 
 const SignInForm = ({ user }) => {
   const theme = useTheme();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      email: user.email,
+      password: user.password,
+    },
+  });
   return (
     <>
       <div className="form__container--signin">
-      <form onSubmit={user.SignUp}>
+      <form onSubmit={handleSubmit(user.login)}>
         <TextField
           theme={theme}
           color="primary"
           label="Email"
           variant="outlined"
-          required
-          helperText="Renseigner votre email"
+          {...register("email", {
+            required: "Email requis",
+            pattern: {value: /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g, message: "Format invalide"}
+          })}
           size="small"
           defaultValue={user.email}
           onChange={(e) => user.setEmail(e.target.value)}
         />
+        {errors.email && <p>{errors.email.message}</p>}
+
 
         <TextField
           theme={theme}
           color="primary"
           label="Mot de passe"
           variant="outlined"
-          required
-          helperText="Renseigner votre mot de passe"
+          {...register("password", {
+            required: "Mot de passe requis",
+          })}
           size="small"
           type="password"
           defaultValue={user.password}
           onChange={(e) => user.setPassword(e.target.value)}
         />
-
+        {errors.password && <p>{errors.password.message}</p>}
         <UIButton
           color="primary"
           size="small"
