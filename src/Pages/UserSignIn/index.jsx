@@ -5,21 +5,33 @@ import { useHistory } from "react-router";
 import { useDispatch} from "react-redux";
 import { RegisterUserLoginStatus, RegisterUserLogoutStatus } from "../../Store";
 import { Link } from "react-router-dom";
+import { useSnackbar } from 'notistack';
 
 const UserSignIn = ({ user }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const history = useHistory();
   const dispatch = useDispatch();
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
-  const login = async (e) => {
+  const login = async (email, password) => {
   
     const response = await UsersAuthManager.login(email, password);
-    history.push("/");
-    response.status === 200
-      ? dispatch(RegisterUserLoginStatus(response.data.user_id, "user"))
-      : dispatch(RegisterUserLogoutStatus());
-    user.setIsLogged(true);
+  
+    if (response.status === 200){
+      let variant = 'success'
+      let message = `Bienvenue sur Stacker ${email} !`
+      enqueueSnackbar(message, { variant });
+      dispatch(RegisterUserLoginStatus(response.data.user_id, "user"))
+      user.setIsLogged(true);
+      history.push("/search");
+    }else{
+      let variant = 'error'
+      let message = "oups, il y a eu un couac"
+      enqueueSnackbar(message, { variant });
+      dispatch(RegisterUserLogoutStatus());
+    }
+    
   };
 
   return (
