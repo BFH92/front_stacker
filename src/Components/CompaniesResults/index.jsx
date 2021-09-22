@@ -2,11 +2,9 @@ import React, {useState, useEffect, useContext} from 'react';
 import './companies_results.scss';
 import HeaderCompaniesResults from './HeaderResultsCompanies';
 import CompanyPreview from './CompanyPreview';
-// import ProgressBar from '../Loaders/ProgressBar';
 import ProgressCircle from '../Loaders/ProgressCircle';
 import { CompaniesList} from '../../Services/RailsApi/CompaniesFetch/CompaniesDetailsManager';
 import { FilterContext } from '../../Context/FilterContext';
-import { FavoriteContext } from '../../Context/FavoriteContext';
 
 const ResultsCompanies = () => {
   const {url} = useContext(FilterContext);

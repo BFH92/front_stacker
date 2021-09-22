@@ -2,7 +2,6 @@ import React,{useState,useEffect, useContext} from 'react';
 import './filterSystem.scss';
 import ChipsArray from './ChipsArray';
 import RadioButtonsGroup from './RadioGroup';
-// import SimpleSlider from './SimpleSlider';
 import UIButton from '../../Components/UIButton';
 import Divider from '@material-ui/core/Divider';
 import { FilterContext } from '../../Context/FilterContext';
@@ -26,7 +25,6 @@ const FilterSystem = () => {
 
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   const handleClickVariant = (message, variant) => () => {
-    // variant could be success, error, warning, info, or default
     enqueueSnackbar(message, { variant });
   };
 
@@ -50,7 +48,6 @@ const FilterSystem = () => {
             <ChipsArray/>
             <RadioButtonsGroup companies={{filter:"Effectifs",state:staffSize, setState:setStaffSize, value:staffSizeValues }}/>            
             <RadioButtonsGroup companies={{filter:"Type d'entreprise",state:categories, setState:setCategories, value:categoriesValues }}/>
-            {/* <SimpleSlider /> */}
           </div>
         </div>
         <Divider />

@@ -1,8 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './userDashboard.scss';
 import SavedSearch from '../../Components/SavedSearch';
 import UserPresentation from '../../Components/UserPresentation';
-import { FilterContext } from '../../Context/FilterContext';
 import FavoritesCompanies from '../../Components/FavoritesCompanies';
 
 const UserDashboard = () => {
