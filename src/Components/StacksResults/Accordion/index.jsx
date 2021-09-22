@@ -44,6 +44,7 @@ export const Accordions = ({ stacks }) => {
                         <div className="container__stack">
                           <div className="name">
                             <h2>{stack.name}</h2>
+                            <h5>Entreprises qui utilisent {stack.name} : {stack.companies_count}</h5>
                           </div>
                         </div>
                       </li>

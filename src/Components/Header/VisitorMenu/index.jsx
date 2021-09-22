@@ -25,6 +25,7 @@ const UserMenu = () => {
           onClick={handleClick}
           variant="outlined"
           color="inherit"
+          size="small"
         >
           Bienvenue
         </Button>

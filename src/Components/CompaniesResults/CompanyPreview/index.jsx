@@ -5,12 +5,23 @@ import CompanyPreviewAvatar from "./Avatar";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardContent from "@mui/material/CardContent";
+import CardActions from '@mui/material/CardActions';
+import IconButton from '@mui/material/IconButton';
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import { useSelector } from "react-redux";
+import { useSnackbar } from 'notistack';
+import UIButton from '../../UIButton';
+import SendEmailLight from "../../../Assets/Svg/SendEmail/SendEmailLight";
 
 const CompanyPreview = ({ company }) => {
   const isLogged = useSelector(state => state.user.isLogged);
+
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  const handleClickVariant = (message, variant) => () => {
+    // variant could be success, error, warning, info, or default
+    enqueueSnackbar(message, { variant });
+  };
 
   return (
     <Card variant="outlined">
@@ -21,18 +32,43 @@ const CompanyPreview = ({ company }) => {
             <CompanyPreviewAvatar companyName={company.name}/>
           }
           action={
-            <AddToFavorite company={{id:company.id, setIsFavorite:company.setIsFavorite, isFavorite:company.isFavorite}}/>
+            <AddToFavorite
+              company={{id:company.id, setIsFavorite:company.setIsFavorite, isFavorite:company.isFavorite}}
+              snackbarAdd={(handleClickVariant(`${company.name} a bien été ajouté au favoris.`,'success'))} 
+              snackbarDelete={(handleClickVariant(`${company.name} a bien été retiré des favoris.`,'success'))} 
+            />
           }
           title={company.name}
           subheader={company.company_category_id}
           />
           <Divider light/>
-          <CardContent sx={{ p: 2 }}>
+          <CardContent sx={{ p: 2 }} >
             <Typography variant="body2" sx={{ pb: 2 }} color="text.secondary">
               {`Effectif Tech: ${company.staff_size}`}
             </Typography>
             <ChipsArray companyStacks={company.stacks}/>
+            <Typography variant="body2" sx={{ py: 1.5, pb: 0 }} color="text.secondary">
+              {company.description}
+            </Typography>
+            {company.is_it_recruiting ? (
+              <Typography variant="overline" sx={{ pt: 1, pb: 0 }} display="block" color="warning.main">
+                {`En recrutement!`}
+              </Typography>
+            ) : (
+              null
+            )}
           </CardContent>
+          <Divider light/>
+          <CardActions>
+            <IconButton aria-label="send email" href={company.website_link} target="_blank">
+              <SendEmailLight />
+            </IconButton>
+            <UIButton
+              size="small"
+              color="primary"
+              content={company.website_link}
+            />
+          </CardActions>
         </React.Fragment>       
       ) : (
         <React.Fragment>
@@ -41,7 +77,7 @@ const CompanyPreview = ({ company }) => {
             <CompanyPreviewAvatar companyName={company.name}/>
           }
           title={company.name}
-          subheader={company.company_category_id}
+          subheader={company.category_name}
           />
           <Divider light/>
           <CardContent sx={{ p: 2 }}>

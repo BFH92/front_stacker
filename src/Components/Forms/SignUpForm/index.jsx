@@ -4,7 +4,6 @@ import { useTheme } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import UIButton from "../../UIButton";
 import { useForm } from "react-hook-form";
-
 const SignUpForm = ({ user }) => {
   const theme = useTheme();
   const {
@@ -14,10 +13,11 @@ const SignUpForm = ({ user }) => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      email: user.email,
-      password: user.password,
+      email: "",
+      password: "",
     },
   });
+
 
   return (
     <div className="form__container--signup">
@@ -71,6 +71,7 @@ const SignUpForm = ({ user }) => {
           content="S'inscrire"
           type="submit"
         />
+
       </form>
     </div>
   );

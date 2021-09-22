@@ -1,4 +1,16 @@
 @import '../../Styles/variables.scss';
+@import '../../Styles/mixins.scss';
+
+header {
+  @include phone  {
+    position: sticky !important;
+    top: 0 !important;
+  }
+  @include tablet-xs  {
+    position: sticky !important;
+    top: 0 !important;
+  }
+}
 
 #header--Notifications,
 #header--Settings,

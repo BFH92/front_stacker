@@ -12,7 +12,6 @@ const UIButton = (props) => {
       size={props.size}
       color={props.color}
       type={props.type}
-      
     >
       {props.content}
     </Button>

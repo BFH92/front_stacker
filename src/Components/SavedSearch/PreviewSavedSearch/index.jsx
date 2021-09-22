@@ -9,8 +9,10 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import PrimaryDownArrow from '../../../Assets/Svg/Arrow/DownArrow/PrimaryDownArrow';
 import UIButton from '../../../Components/UIButton';
+import { useSnackbar } from 'notistack';
 
 const ExpandMore = styled((props) => {
+
   const { expand, ...other } = props;
   return <IconButton {...other} />;
 })(({ theme, expand }) => ({
@@ -28,6 +30,12 @@ const PreviewSavedSearch = () => {
     setExpanded(!expanded);
   };
 
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  const handleClickVariant = (message, variant) => () => {
+    // variant could be success, error, warning, info, or default
+    enqueueSnackbar(message, { variant });
+  };
+
   return (
     <li className="recent--search--item">
       <Card variant="outlined">
@@ -43,9 +51,10 @@ const PreviewSavedSearch = () => {
         <CardActions disableSpacing sx={{ pl: 2, pt: 0}}>
           <UIButton
             content={"Appliquer"}
-            variant={"outlined"}
+            variant={"contained"}
             size={"small"}
             color={"primary"}
+            onClick={handleClickVariant('Filtres mis à jour.','success')}
           />
           <ExpandMore
             expand={expanded}
@@ -57,10 +66,10 @@ const PreviewSavedSearch = () => {
           </ExpandMore>
         </CardActions>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
-          <Card sx={{ p: 2, pt: 0.75}}>
+          <CardContent sx={{ p: 2, pt: 0.75}}>
             <Typography color="text.secondary" variant="body2">Effectif Tech: $variable</Typography>
             <Typography color="text.secondary" variant="body2">Type d'entreprise: $variable</Typography>
-          </Card>
+          </CardContent>
         </Collapse>
       </Card>
     </li>

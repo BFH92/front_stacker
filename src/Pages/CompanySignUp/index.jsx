@@ -5,6 +5,7 @@ import { useHistory } from "react-router";
 import { useDispatch } from "react-redux";
 import { Link } from 'react-router-dom';
 import { RegisterUserLoginStatus, RegisterUserLogoutStatus } from "../../Store";
+import { useSnackbar } from 'notistack';
 
 
 const CompanySignUp = ({user}) => {
@@ -12,14 +13,26 @@ const CompanySignUp = ({user}) => {
   const [password, setPassword] = useState("")
   const history = useHistory()
   const dispatch = useDispatch()
-  const SignUp = async (e) => {
-      //e.preventDefault();
-      const response = await CompaniesAuthManager.register(email, password);
-      response.status === 200? history.push("/"): window.alert("couac!");
-      response.status === 200? dispatch(RegisterUserLoginStatus(response.data.company_id,"company")):dispatch(RegisterUserLogoutStatus());
-      user.setIsLogged(true)
-    };
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
+    const SignUp = async (e) => {
+      try {
+      const response = await CompaniesAuthManager.register(email, password);
+      let variant = 'success'
+      let message = `Bienvenue sur Stacker, il nous faut encore quelques informations de votre part avant d'être référencé !`
+      enqueueSnackbar(message, { variant });
+      dispatch(RegisterUserLoginStatus(response.data.company_id, "company"))
+      user.setIsLogged(true)
+      history.push("/company/dashboard");
+      
+    } catch (error) {
+      let variant = 'error'
+      let message = `Nous rencontrons une erreur pendant votre inscription, veuillez réessayer -> ${error}`
+      enqueueSnackbar(message, { variant });
+      dispatch(RegisterUserLogoutStatus());
+      history.push("/company/sign-up");
+      }
+    }
   return (
     <>
       <div>
