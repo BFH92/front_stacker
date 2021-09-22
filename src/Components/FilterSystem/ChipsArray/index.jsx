@@ -48,8 +48,6 @@ const ChipsArray = () => {
                 size="small"
                 label={data.label}
                 onDelete={handleDelete(data)}
-                // icon={<Exemple />}
-                // deleteIcon={<DeleteStack />}  Icon personnalisé pour la suppression d'un stack
               />
             </li>
           );

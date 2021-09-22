@@ -1,5 +1,4 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
 import { EditCompanyForm } from '../Forms/EditCompanyForm';
 const CompanyPresentation = () => {
     return (

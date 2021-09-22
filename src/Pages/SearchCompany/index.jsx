@@ -31,8 +31,8 @@ const SearchCompany = () => {
       <FilterSystem />
       <div className="container--right">
         <div className="container__results--all">
+          <SavedSearch />
           <CompaniesResults/>
-          <SavedSearch/>
         </div>
       </div>
     </div>

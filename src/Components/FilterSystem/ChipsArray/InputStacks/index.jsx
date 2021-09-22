@@ -56,7 +56,13 @@ const InputStacks = () => {
         options={STACKLIST}
         sx={{ width: 250 }}
         renderInput={(params) => (
-          <TextField {...params} label="Liste des Stacks" />
+          <TextField
+            {...params}
+            focused 
+            label="Liste des Stacks"
+            variant="outlined"
+            color="secondary"
+          />
         )}
       />
     </form>

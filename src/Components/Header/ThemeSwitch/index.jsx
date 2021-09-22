@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { styled } from '@mui/material/styles';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -56,16 +56,16 @@ const IOSSwitch = styled((props) => (
 }));
 
 const ThemeSwitch = () => {
-  const [state, setState] = useState(true);
+  const [darkMode, setDarkMode] = React.useState(localStorage.getItem('darkMode') === false);
 
   const handleChange = () => {
-    setState(!state)
+    setDarkMode(!darkMode)
   };
 
   return (
     <FormGroup>
       <FormControlLabel
-        control={<IOSSwitch sx={{ m: -2 }} checked={state} onChange={handleChange} />}
+        control={<IOSSwitch sx={{ m: -2 }} checked={darkMode} onChange={handleChange} />}
         label=""
       />
     </FormGroup>
