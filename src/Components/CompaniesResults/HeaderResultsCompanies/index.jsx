@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Typography from '@material-ui/core/Typography';
 
 const HeaderCompaniesResults = ({company}) => {
   const [resultsMetrics, setResultsMetrics] = useState("");
@@ -7,14 +8,16 @@ const HeaderCompaniesResults = ({company}) => {
   }, [company]);
 
   return (
-    <header className="container__header__results--companies">
+    <div className="container__header__results--companies">
       {/* <div className="container--left"> */}
-        <h1> {resultsMetrics} Résultats</h1>        
+        <Typography variant="h3" color="primary">
+          {resultsMetrics} résultats
+        </Typography>
       {/* </div> */}
         {/*<div className="container__filter--right">
         <p>Sort by Date</p>
       </div>*/}
-    </header>
+    </div>
   );
 };
 

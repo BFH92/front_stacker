@@ -3,12 +3,21 @@ import { createTheme} from "@material-ui/core";
 const LightTheme = createTheme({
   palette: {
     primary: {
-      main: 'rgb(92, 30, 226)'
+      main: 'rgb(92, 30, 226)',
     },
     success: {
-      main: 'rgb(76, 175, 80)'
+      main: 'rgb(76, 175, 80)',
     }
   },
+  typography: {
+    h1: {
+      fontWeight: 800,
+      fontSize: "600px"
+    },
+    overline : {
+      letterSpacing: 0
+    }
+  }
 });
 
-export default LightTheme
+export default LightTheme;

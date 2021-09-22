@@ -5,25 +5,35 @@ import { useHistory } from "react-router";
 import { useDispatch } from "react-redux";
 import { RegisterUserLoginStatus, RegisterUserLogoutStatus } from "../../Store";
 import { Link } from "react-router-dom";
+import { useSnackbar } from 'notistack';
 
 const UserSignUp = ({user}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const history = useHistory();
   const dispatch = useDispatch();
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   const SignUp = async (e) => {
     //e.preventDefault();
+    try {
     const response = await UsersAuthManager.register(email, password);
-    history.push("/");
-    console.log(response.data.user_id);
-    response.status === 200
-      ? dispatch(RegisterUserLoginStatus(response.data.user_id, "user"))
-      : dispatch(RegisterUserLogoutStatus());
-      user.setIsLogged(true)
-    return response;
-  };
-
+    let variant = 'success'
+    let message = `Bienvenue sur Stacker ${email} !`
+    enqueueSnackbar(message, { variant });
+    dispatch(RegisterUserLoginStatus(response.data.user_id, "user"))
+    user.setIsLogged(true)
+    history.push("/search");
+    
+  } catch (error) {
+    let variant = 'error'
+    let message = `Oups, il y a un couac! -> ${error}`
+    enqueueSnackbar(message, { variant });
+    dispatch(RegisterUserLogoutStatus());
+    history.push("/user/sign-up");
+    }
+  }
+  
   return (
     <>
       <div>

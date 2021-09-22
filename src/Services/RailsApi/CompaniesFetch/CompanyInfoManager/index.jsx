@@ -10,7 +10,7 @@ export default class CompanyInfoManager {
     const authorizedConfig = {
       headers: {
         Accept:'application/json',
-        Authorization: `Bearer ${Cookies.get("token")}`,
+        Authorization: `Bearer ${Cookies.get("API_Authentication_token")}`,
       },
     };
 
@@ -35,7 +35,7 @@ export default class CompanyInfoManager {
     const authorizedConfig = {
         headers: {
           Accept:'application/json',
-          Authorization: `Bearer ${Cookies.get("token")}`,
+          Authorization: `Bearer ${Cookies.get("API_Authentication_token")}`,
         },
     };
     let data = new FormData();

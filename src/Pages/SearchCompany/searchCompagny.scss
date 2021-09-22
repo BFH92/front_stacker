@@ -1,12 +1,19 @@
 @import '../../Styles/variables.scss';
+@import '../../Styles/mixins.scss';
 
 .container__search--companies {
   height: 100%;
   display: grid;
-  grid-template-columns: 300px 1fr;
+
+  @include tablet-pt {    
+    grid-template-rows: auto 1fr;
+  }
+  @include desktop-sm {    
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: none;
+  }
 
   .container--right {
-    position: relative;
     display: grid;
     overflow-y: scroll;
   }
@@ -14,8 +21,19 @@
 
 .container__results--all {
   height: 100%;
-  display: grid;
-  grid-template-columns: 1fr 300px;
+  display: grid;  
   grid-gap: $padding * 2;
   padding: $padding * 2;
+
+  @include tablet-xs {    
+    grid-auto-flow: row;
+  }
+  @include desktop-sm {    
+    grid-template-columns: 1fr 300px;
+  }
+  
+  .all--items {
+    position: sticky;
+    top: $padding * 2;
+  }
 }

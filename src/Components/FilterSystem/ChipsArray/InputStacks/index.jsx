@@ -7,41 +7,38 @@ import ViewerStackManager from "../../../../Services/RailsApi/ViewerStackManager
 import { UserStacksContext } from "../../../../Context/UserStacksContext";
 import { useSelector } from "react-redux";
 
-
 const InputStacks = () => {
-const {setFilterStacks} = useContext(UserStacksContext);
-const {chipData} = useContext(UserStacksContext)
-const {setChipData} = useContext(UserStacksContext)
-const  viewerLoggedAs = useSelector(state => state.user.logged_as)
-const {addUserStackAuthorization} = useContext(UserStacksContext)
-
-
+  const {setFilterStacks} = useContext(UserStacksContext);
+  const {chipData} = useContext(UserStacksContext);
+  const {setChipData} = useContext(UserStacksContext);
+  const  viewerLoggedAs = useSelector(state => state.user.logged_as);
+  const {addUserStackAuthorization} = useContext(UserStacksContext);
   const [inputData, setInputData] = useState("");
   const [stacks, setStacks] = useState(""); //add new state for the autocomplete
 
-  let stackNames = new Set()
+  let stackNames = new Set();
 
   chipData.map((element)=>
     stackNames.add(element.label)
-  )
-
+  );
 
   const addInputStacks = (e) => {
     e.preventDefault();
+      setInputData("")
+      setStacks("")
+  } 
+  useEffect(() => {
     if (inputData) {
       stackNames.add(inputData)
       stackNames = Array.from(stackNames)
-      let StackList =[] 
-      stackNames.map((stackName)=>{
+      let StackList = []
+      stackNames.map((stackName) => {
       StackList.push({ key: uuidv4(), label: stackName})
       if (addUserStackAuthorization && viewerLoggedAs !== "visitor")(ViewerStackManager.addViewerStack(stackName,viewerLoggedAs))
       if(setFilterStacks)(setFilterStacks(stackNames))
       })
       setChipData(StackList)
-      setInputData("")
     }
-  } 
-  useEffect(() => {
   }, [inputData]);
 
   return (
@@ -59,7 +56,13 @@ const {addUserStackAuthorization} = useContext(UserStacksContext)
         options={STACKLIST}
         sx={{ width: 250 }}
         renderInput={(params) => (
-          <TextField {...params} label="Liste des Stack" />
+          <TextField
+            {...params}
+            focused 
+            label="Liste des Stacks"
+            variant="outlined"
+            color="secondary"
+          />
         )}
       />
     </form>

@@ -3,7 +3,6 @@ import Box from '@mui/material/Box';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
-import IconButton from '@mui/material/IconButton';
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
 import DarkStrokeLogin from '../../../Assets/Svg/Login/StrokeLogin/DarkStrokeLogin';
@@ -18,12 +17,18 @@ const UserMenu = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
   return (
     <React.Fragment>
-      <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-        <IconButton onClick={handleClick} size="small">
-          <Button>Bienvenue</Button>
-        </IconButton>
+      <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center', ml: 1 }}>
+        <Button
+          onClick={handleClick}
+          variant="outlined"
+          color="inherit"
+          size="small"
+        >
+          Bienvenue
+        </Button>
       </Box>
       <Menu
         anchorEl={anchorEl}

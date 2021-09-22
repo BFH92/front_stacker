@@ -1,10 +1,6 @@
 import React, { useEffect } from "react";
 import './header.scss';
 import { useDispatch, useSelector} from "react-redux";
-import { Link } from "react-router-dom";
-import Settings from "../../Assets/Svg/Header/Settings";
-import Notifications from '../../Assets/Svg/Header/Notifications';
-import Badge from '@material-ui/core/Badge';
 import ThemeSwitch from './ThemeSwitch';
 import { createStyles, makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -16,11 +12,16 @@ import { useHistory } from "react-router";
 import UsersAuthManager from "../../Services/RailsApi/UsersFetch/UsersAuthManager";
 import { RegisterUserLogoutStatus } from "../../Store";
 import CompaniesAuthManager from "../../Services/RailsApi/CompaniesFetch/CompaniesAuthManager";
+import NotificationDrawer from '../../Components/Header/NotificationDrawer';
+import UserSettingsDrawer from '../../Components/Header/UserSettingsDrawer';
+import CompanySettingsDrawer from '../../Components/Header/CompanySettingsDrawer';
+import { useSnackbar } from 'notistack';
 
 const useStyles = makeStyles(() =>
   createStyles({
     root: {
-      flexGrow: 1
+      flexGrow: 1,
+      zIndex: 999
     },
     logo: {
       flexGrow: 1,
@@ -31,7 +32,12 @@ const useStyles = makeStyles(() =>
       display: "grid",
       gridAutoFlow: "column",
       placeItems: "center",
-      gridGap: 20,
+      gridGap: 10,
+    },
+    grid_column_no_gap: {
+      display: "grid",
+      gridAutoFlow: "column",
+      placeItems: "center",
     }
   })
 );
@@ -40,6 +46,7 @@ const Header = ({ user }) => {
   const isLogged = useSelector((state) => state.user.isLogged);
   const loggedAs = useSelector((state) => state.user.logged_as);
   const classes = useStyles();
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -48,14 +55,13 @@ const Header = ({ user }) => {
   logged_as = useSelector(state=> state.user.logged_as)
 
   const logout = async (e) => {
-  
-    //e.preventDefault();
     let response;
     dispatch(RegisterUserLogoutStatus());
     logged_as === "company" ? response = await CompaniesAuthManager.logout() : response = await UsersAuthManager.logout();
-  
+    let variant = 'success'
+    let message = `Vous avez été déconnecté avec succès`
+    enqueueSnackbar(message, { variant });
     user.setIsLogged(false);
-    console.log(response);
     history.push("/");
   };
 
@@ -70,19 +76,17 @@ const Header = ({ user }) => {
         <div className={classes.grid_column_auto}>        
           <ThemeSwitch />
           {isLogged ? (
-            <div className={classes.grid_column_auto}>
-              <Link to="/user/notifications">
-                <Badge color="secondary" variant="dot">
-                  <Notifications />
-                </Badge>
-              </Link>
+            <div className={classes.grid_column_no_gap}>
+              <NotificationDrawer />
               {loggedAs === "user" ?
-              <Link to="/user/settings">
-                <Settings />
-              </Link> :
-              <Link to="company/settings">
-              <Settings />
-            </Link>}
+              (
+                <UserSettingsDrawer />
+              )
+              :
+              (
+                <CompanySettingsDrawer />
+              )
+              }
               <UserMenu logout={logout}/>
             </div>
           ) : (

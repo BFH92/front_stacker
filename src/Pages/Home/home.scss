@@ -1,0 +1,52 @@
+@import "../../Styles/variables.scss";
+
+.container__home {
+  position: relative;
+  display: grid;
+  grid-template-columns: 4fr 3fr;
+  background-color: $purple;
+  min-height: 100%;
+  overflow: hidden;
+
+  .container__home--left {
+    color: $white;
+    display: grid;
+    place-items: center;
+    max-width: 800px;
+    padding: $padding * 2;
+  }
+
+  .container__home--right {
+    position: relative;
+    display: grid;
+    place-items: center;
+    z-index: 888;
+
+    .content--svg{
+      width: 60%;
+      transform: translateX(11%);
+    }
+
+    .mask--color{
+      position: absolute;
+      width: 175%;
+      aspect-ratio: 1/1;
+      border-radius: 50%;
+      left: 0;
+      background-color: $light-grey;
+    }
+  }
+
+  .container__infos--bottom {
+    position: absolute;
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: $padding * 2;
+    bottom: $padding * 2;
+    left: $padding * 2;
+
+    & * {
+      color: $white !important;
+    }
+  }
+}
