@@ -10,26 +10,22 @@ import { API_URL } from '../../Config/API_URL';
 import { UserStacksContext } from '../../Context/UserStacksContext';
 
 const FilterSystem = () => {
-  const {setUrl}= useContext(FilterContext);
-  const {url}= useContext(FilterContext);
   
-  const [staffSize, setStaffSize] = useState("")
+  const {chipData}= useContext(FilterContext);
+  const {setChipData}= useContext(FilterContext);
+  const {staffSize}= useContext(FilterContext);
+  const {setStaffSize}= useContext(FilterContext);
+  const {categories}= useContext(FilterContext);
+  const {setCategories}= useContext(FilterContext);
+  const {filterStacks}= useContext(FilterContext);
+  const {setFilterStacks}= useContext(FilterContext);
+
+  
   const [staffSizeValues, setStaffSizeValues] = useState([{name:"0-9",slug:"0-9"},{name:"10-49",slug:"10-49"},{name:"50-249",slug:"50-249"},{name:"250+",slug:"250more"}])
-  const [chipData, setChipData] = useState([]);
-  const [categories, setCategories] = useState("")
+  //const [chipData, setChipData] = useState([]);
   const [categoriesValues, setCategoriesValues] = useState([{name:"Startup",slug:"1"},{name:"Entreprise conventionnelle",slug:"2"},{name:"SSII",slug:"3"},{name:"Agence web",slug:"4"},{name:"Grosse entreprise Tech", slug:"5"}]) //map un fetch des compnay_categories
-  const [filterStacks, setFilterStacks] = useState("")
 
-  useEffect(() => {
-    let urlParameters = [API_URL+ 'companies?']
-    if (staffSize)(urlParameters.push(`staff_size=${staffSize}`))
-    if (filterStacks)(urlParameters.push(`stack=${filterStacks}`))
-    if (categories)(urlParameters.push(`categories=${categories}`))
-    urlParameters = urlParameters.join("&")
-    console.log(urlParameters)
-    setUrl(urlParameters)
 
-  }, [filterStacks, staffSize, categories]);
   const addUserStackAuthorization = false
   return (
     <UserStacksContext.Provider value={{chipData , setChipData, addUserStackAuthorization, filterStacks, setFilterStacks}}>

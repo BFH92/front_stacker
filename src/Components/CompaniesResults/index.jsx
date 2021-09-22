@@ -19,7 +19,7 @@ const ResultsCompanies = () => {
 
   return (
     <>
-  
+
       {company ? (
         <div className="results__main--grid">        
           <HeaderCompaniesResults company={company}/>
