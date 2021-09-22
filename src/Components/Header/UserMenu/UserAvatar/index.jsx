@@ -1,14 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Badge from '@material-ui/core/Badge';
 import Avatar from '@material-ui/core/Avatar';
-import { withStyles, Theme } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 
 const StyledBadge = withStyles(() => ({
   badge: {
     backgroundColor: 'rgb(76, 175, 80)',
     color: 'rgb(76, 175, 80)',
-    // boxShadow: `0 0 0 2px rgb(246, 247, 254)`,
     boxShadow: `0 0 0 2px rgb(92, 30, 226)`,
     '&::after': {
       position: 'absolute',

@@ -9,7 +9,6 @@ import Link from "@mui/material/Link";
 import Typewriter from "typewriter-effect";
 import { Paper } from "@material-ui/core";
 import UIButton from "../../Components/UIButton";
-import { ThemeProvider } from "@emotion/react";
 
 const Home = () => {
   const container = useRef(null);

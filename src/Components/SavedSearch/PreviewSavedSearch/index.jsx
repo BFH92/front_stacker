@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import ChipsArray from '../../CompaniesResults/CompanyPreview/ChipsArray';
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -32,7 +31,6 @@ const PreviewSavedSearch = () => {
 
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   const handleClickVariant = (message, variant) => () => {
-    // variant could be success, error, warning, info, or default
     enqueueSnackbar(message, { variant });
   };
 
@@ -46,7 +44,6 @@ const PreviewSavedSearch = () => {
           <Typography variant="body2" color="text.secondary">
             8:32
           </Typography>
-          {/* <ChipsArray /> AJOUTER LES PROPS */}
         </CardContent>
         <CardActions disableSpacing sx={{ pl: 2, pt: 0}}>
           <UIButton

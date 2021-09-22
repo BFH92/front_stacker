@@ -8,9 +8,6 @@ import IconButton from '@mui/material/IconButton';
 import UserAvatar from './UserAvatar';
 import DarkStrokeDashboard from '../../../Assets/Svg/Dashboard/StrokeDashboard/DarkStrokeDashboard';
 import DarkStrokeLogout from '../../../Assets/Svg/Logout/StrokeLogout/DarkStrokeLogout';
-// import DarkStrokeAccount from '../../../Assets/Svg/Account/StrokeAccount/DarkStrokeAccount';
-// import DarkStrokeNotification from '../../../Assets/Svg/Notification/StrokeNotification/DarkStrokeNotification';
-// import DarkStrokeSetting from '../../../Assets/Svg/Setting/StrokeSetting/DarkStrokeSetting';
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux';
 

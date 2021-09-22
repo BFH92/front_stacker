@@ -6,7 +6,6 @@ import { v4 as uuidv4 } from "uuid";
 //Components
 import UserInfoManager from "../../../Services/RailsApi/UsersFetch/UserInfoManager";
 import ChipsArray from "../../FilterSystem/ChipsArray";
-//import './edit_user_form.scss';
 import { UserStacksContext } from "../../../Context/UserStacksContext";
 //MaterialUI
 import { useTheme } from "@mui/material";
@@ -20,8 +19,6 @@ export const EditUserForm = () => {
   const [lastName, setLastName] = useState("");
   const [description, setDescription] = useState("");
   const [githubLink, setGithubLink] = useState("");
-  const [userStacks, setUserStacks] = useState([]);
-  const [stacks, setStacks] = useState([]);
   const theme = useTheme();
 
   const {
@@ -76,7 +73,6 @@ export const EditUserForm = () => {
   const addUserStackAuthorization = true;
 
   const updateUserDetails = async (e) => {
-    //e.preventDefault();
     const response = await UserInfoManager.updateDetails(
       userId,
       firstName,
