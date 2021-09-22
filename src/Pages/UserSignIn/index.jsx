@@ -14,25 +14,31 @@ const UserSignIn = ({ user }) => {
   const dispatch = useDispatch();
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
-  const login = async (email, password) => {
+  const login = async () => {
   
-    const response = await UsersAuthManager.login(email, password);
+    //const response = await UsersAuthManager.login(email, password);
   
-    if (response.status === 200){
+    try {
+      const response = await UsersAuthManager.login(email, password);
       let variant = 'success'
       let message = `Bienvenue sur Stacker ${email} !`
       enqueueSnackbar(message, { variant });
       dispatch(RegisterUserLoginStatus(response.data.user_id, "user"))
-      user.setIsLogged(true);
+      user.setIsLogged(true)
       history.push("/search");
-    }else{
+      
+    } catch (error) {
       let variant = 'error'
-      let message = "oups, il y a eu un couac"
-      enqueueSnackbar(message, { variant });
-      dispatch(RegisterUserLogoutStatus());
-    }
+      let message = `Oups, il y a un couac! -> ${error}`
     
-  };
+      if (String(error).includes("401"))(message = `Diantre ! Ton email ou ton mot de passe n'est pas le bon !`)
+    
+      enqueueSnackbar(message, { variant });
+      
+      dispatch(RegisterUserLogoutStatus());
+      history.push("/user/sign-in");
+      }
+    }
 
   return (
     <>

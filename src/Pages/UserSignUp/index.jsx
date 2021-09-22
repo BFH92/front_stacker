@@ -18,29 +18,22 @@ const UserSignUp = ({user}) => {
     //e.preventDefault();
     try {
     const response = await UsersAuthManager.register(email, password);
-    //TODO: solution 
-    if (response.status === 200){
     let variant = 'success'
     let message = `Bienvenue sur Stacker ${email} !`
     enqueueSnackbar(message, { variant });
+    dispatch(RegisterUserLoginStatus(response.data.user_id, "user"))
+    user.setIsLogged(true)
     history.push("/search");
-    }else{
+    
+  } catch (error) {
     let variant = 'error'
-    let message = "oups, il y a eu un couac"
+    let message = `Oups, il y a un couac! -> ${error}`
     enqueueSnackbar(message, { variant });
+    dispatch(RegisterUserLogoutStatus());
     history.push("/user/sign-up");
     }
-    //solution
-    console.log(response.data.user_id);
-    response.status === 200
-      ? dispatch(RegisterUserLoginStatus(response.data.user_id, "user"))
-      : dispatch(RegisterUserLogoutStatus());
-      user.setIsLogged(true)
-    return response;
-  } catch (error) {
-    console.error(error);
   }
-  };
+  
   return (
     <>
       <div>
