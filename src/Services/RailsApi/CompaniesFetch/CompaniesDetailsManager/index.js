@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
-import Cookies from "js-cookie";
 
 export const CompaniesList = (URL) => {
   const [data, setData] = useState(null);
-  //const token = Cookies.get('token')
 
   useEffect(() => {
     const fetchCompanies = async () => {
