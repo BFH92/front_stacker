@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 import './Styles/reset.scss';
 import './Styles/variables.scss';
 import './Styles/main.scss';
+import './Styles/MUIcancel.scss';
 
 import Header from './Components/Header';
 import Home from './Pages/Home';

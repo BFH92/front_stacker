@@ -46,16 +46,22 @@ const CompanyPreview = ({ company }) => {
             <Typography variant="body2" sx={{ pb: 2 }} color="text.secondary">
               {`Effectif Tech: ${company.staff_size}`}
             </Typography>
-            <ChipsArray companyStacks={company.stacks}/>
-            <Typography variant="body2" sx={{ py: 1.5, pb: 0 }} color="text.secondary">
-              {company.description}
-            </Typography>
+            <ChipsArray companyStacks={company.stacks} />
             {company.is_it_recruiting ? (
-              <Typography variant="overline" sx={{ pt: 1, pb: 0 }} display="block" color="warning.main">
-                {`En recrutement!`}
-              </Typography>
+              <>
+                <Typography variant="body2" sx={{ pt: 1.25, pb: 1.75 }} color="text.secondary">
+                  {company.description}
+                </Typography>
+                <Typography variant="overline" sx={{ pt: 1, pb: 0 }} display="block" color="warning.main">
+                  {`En recrutement!`}
+                </Typography>
+              </>
             ) : (
-              null
+              <>
+                <Typography variant="body2" sx={{ pt: 1.25 }} color="text.secondary">
+                  {company.description}
+                </Typography>
+              </>
             )}
           </CardContent>
           <Divider light/>

@@ -16,7 +16,6 @@ const ChipsArray = (props) => {
   })(Chip);
 
   return (
-    <div className="container__filter--group">
       <ul className="container__chips">
         {props.companyStacks && props.companyStacks.map((data) => {
           return (
@@ -31,7 +30,6 @@ const ChipsArray = (props) => {
           );
         })}
       </ul>
-    </div>
   );
 };
 
