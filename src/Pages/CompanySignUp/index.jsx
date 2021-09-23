@@ -11,7 +11,7 @@ import SignUpForm from "../../Components/Forms/SignUpForm";
 import { RegisterUserLoginStatus, RegisterUserLogoutStatus } from "../../Store";
 //MaterialUI&notistack
 import { useSnackbar } from 'notistack';
-import Typography from "@mui/material/Typography";
+import CustomTypography from "../../Components/CustomTypography";
 
 
 const CompanySignUp = ({user}) => {
@@ -42,9 +42,13 @@ const CompanySignUp = ({user}) => {
   return (
     <div className="company-container__form--bg">
       <div className="container__form--all">
-        <Typography className="title--form" variant="h3" color="white">
-          Inscription Entreprise
-        </Typography>
+        <CustomTypography
+          className={"title--form"}
+          color="white"
+          variant="h3"
+          component="h1"
+          content="Inscription Entreprise"
+        />
         <SignUpForm user={{ email, setEmail, password, setPassword, SignUp }} />
         <div className="container__links--all">
           <Link to="/company/sign-in">Déjà un compte ? Se Connecter</Link>
