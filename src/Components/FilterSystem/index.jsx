@@ -2,7 +2,7 @@ import React,{useState,useEffect, useContext} from 'react';
 import './filterSystem.scss';
 import ChipsArray from './ChipsArray';
 import RadioButtonsGroup from './RadioGroup';
-import UIButton from '../CustomUIButton';
+import UIButton from '../UIButton';
 import Divider from '@material-ui/core/Divider';
 import { FilterContext } from '../../Context/FilterContext';
 import { UserStacksContext } from '../../Context/UserStacksContext';

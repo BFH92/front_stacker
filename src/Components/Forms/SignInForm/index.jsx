@@ -5,7 +5,7 @@ import "./sign_in_form.scss";
 import { useForm } from "react-hook-form";
 import { useTheme } from "@mui/material";
 import TextField from "@mui/material/TextField";
-import UIButton from "../../CustomUIButton";
+import UIButton from "../../UIButton";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CustomTextField from "../../CustomTextField";
