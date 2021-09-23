@@ -29,10 +29,11 @@ const GetPasswordForm = ({ user }) => {
           <div className="input__container">
             <TextField
               theme={theme}
-              sx={{ mb: 4 }}
+              focused
+              sx={{ mb: 2.5, mt: 1 }}
               color="primary"
               label="E-mail"
-              helperText="E-mail de Réinitialisation"
+              // helperText="E-mail de Réinitialisation"
               variant="outlined"
               {...register("email", {
                 required: "Email requis",
@@ -42,7 +43,7 @@ const GetPasswordForm = ({ user }) => {
                   message: "Format invalide",
                 },
               })}
-              size="small"
+              size="large"
               defaultValue={user.email}
               onChange={(e) => user.setEmail(e.target.value)}
             />
@@ -51,9 +52,9 @@ const GetPasswordForm = ({ user }) => {
           <div className="container--cta">
             <UIButton
               color="primary"
-              size="large"
+              size="small"
               variant="contained"
-              content="Changer Mot de passe"
+              content="envoyer"
               type="submit"
             />
           </div>

@@ -50,7 +50,7 @@ const VisitorAlert = () => {
             theme={theme}
             component={Link}
             to="/user/sign-up"
-            variant="contained"
+            variant="outlined"
             size="small"
             color="primary"
           >
