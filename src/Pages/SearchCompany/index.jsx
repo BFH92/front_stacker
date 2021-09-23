@@ -15,12 +15,13 @@ const SearchCompany = () => {
   const [saveListener, setSaveListener] = useState(0);
 
   useEffect(() => {
-    let urlParameters = [API_URL+ 'companies?'];
-    if (staffSize)(urlParameters.push(`staff_size=${staffSize}`));
-    if (filterStacks)(urlParameters.push(`stack=${filterStacks}`));
-    if (categories)(urlParameters.push(`categories=${categories}`));
-    urlParameters = urlParameters.join("&");
-    setUrl(urlParameters);
+
+    let urlParameters = ['/companies?']
+    if (staffSize)(urlParameters.push(`staff_size=${staffSize}`))
+    if (filterStacks)(urlParameters.push(`stack=${filterStacks}`))
+    if (categories)(urlParameters.push(`categories=${categories}`))
+    urlParameters = urlParameters.join("&")
+    setUrl(urlParameters)
   }, [filterStacks, staffSize, categories]);
   
   return (

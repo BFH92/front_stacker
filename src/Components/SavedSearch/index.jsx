@@ -14,7 +14,7 @@ const RecentSearch = () => {
   const [savedSearches, setSavedSearches] = useState("")
 
   useEffect(() => {
-    getSavedSearches()
+    if (isLogged)(getSavedSearches())
     //fetch api pour avoir les saved_Search de l'user en cours
     
   }, [saveListener]);
