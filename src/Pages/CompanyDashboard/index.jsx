@@ -9,7 +9,6 @@ const CompanyDashboard = () => {
       <div className="container__title-pane">Company Dashboard</div>
         <div className="container__results--all">
         <CompanyPresentation />
-        <SavedSearch />
         </div>
     </div>
   );

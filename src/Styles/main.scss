@@ -5,6 +5,8 @@
   position: relative;
   display: grid;
   grid-template-rows: auto 1fr;
+  height: 100%;
+  overflow-y: scroll;
 
   @include desktop-sm  {
     width: 100%;
@@ -14,6 +16,7 @@
 
 .container__main {
   background-color: $light-grey;
+  height: 100%;
 
   @include desktop-sm  {
     overflow-y: scroll;
