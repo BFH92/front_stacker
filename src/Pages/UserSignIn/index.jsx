@@ -7,7 +7,7 @@ import { RegisterUserLoginStatus, RegisterUserLogoutStatus } from "../../Store";
 import { Link } from "react-router-dom";
 import { useSnackbar } from 'notistack';
 import './userSignIn.scss';
-import Typography from "@mui/material/Typography";
+import CustomTypography from "../../Components/CustomTypography";
 
 const UserSignIn = ({ user }) => {
   const [email, setEmail] = useState("");
@@ -42,13 +42,13 @@ const UserSignIn = ({ user }) => {
   return (
     <div className="container__form--bg">
       <div className="container__form--all">
-      <Typography
-        className="title--form"
-        variant="h3"
+      <CustomTypography
+        className={"title--form"}
         color="primary"
-      >
-        Espace utilisateur
-      </Typography>
+        variant="h3"
+        component="h1"
+        content="Espace utilisateur"
+      />
       <SignInForm user={{ email, setEmail, password, setPassword, login }} />
       <div className="container__links--all">        
         <Link to="/user/sign-up">

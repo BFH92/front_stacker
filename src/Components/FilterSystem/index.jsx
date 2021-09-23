@@ -2,7 +2,7 @@ import React,{useState,useEffect, useContext} from 'react';
 import './filterSystem.scss';
 import ChipsArray from './ChipsArray';
 import RadioButtonsGroup from './RadioGroup';
-import UIButton from '../../Components/UIButton';
+import UIButton from '../CustomUIButton';
 import Divider from '@material-ui/core/Divider';
 import { FilterContext } from '../../Context/FilterContext';
 import { UserStacksContext } from '../../Context/UserStacksContext';
@@ -33,19 +33,19 @@ const FilterSystem = () => {
     try{
       const response = await SavedSearchesManager.saveSearch(filterStacks,staffSize,categories)
       let variant = 'success'
-      let message = `Recherche sauvegardée !`
+      let message = `Recherche sauvegardée!`
       setSaveListener(saveListener+1)
       enqueueSnackbar(message, { variant });
     }catch(error){
-      let variant = 'info'
+      let variant = 'warning'
       let message = `Nous rencontrons une erreur la sauvegarde -> ${error}`
-      if (String(error).includes("401"))(message = `Vous devez vous connecter pour sauvegarder votre recherche`)
+      if (String(error).includes("401"))(message = `Vous devez vous connecter pour sauvegarder votre recherche.`)
       enqueueSnackbar(message, { variant });
     }
   }
   
   const [staffSizeValues, setStaffSizeValues] = useState([{name:"0-9",slug:"0-9"},{name:"10-49",slug:"10-49"},{name:"50-249",slug:"50-249"},{name:"250+",slug:"250more"}])
-  const [categoriesValues, setCategoriesValues] = useState([{name:"Startup",slug:"1"},{name:"Entreprise conventionnelle",slug:"2"},{name:"SSII",slug:"3"},{name:"Agence web",slug:"4"},{name:"Grosse entreprise Tech", slug:"5"}]) //map un fetch des compnay_categories
+  const [categoriesValues, setCategoriesValues] = useState([{name:"Startup",slug:"1"},{name:"Entreprise conventionnelle",slug:"2"},{name:"SSII",slug:"3"},{name:"Agence web",slug:"4"},{name:"Grosse entreprise Tech", slug:"5"}]) //map un fetch des company_categories
 
 
   const addUserStackAuthorization = false

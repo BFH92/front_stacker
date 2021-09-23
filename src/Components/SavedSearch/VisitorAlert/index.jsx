@@ -6,9 +6,11 @@ import CardActions from '@mui/material/CardActions';
 import Collapse from '@mui/material/Collapse';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 import PrimaryDownArrow from '../../../Assets/Svg/Arrow/DownArrow/PrimaryDownArrow';
-import UIButton from '../../../Components/UIButton';
 import { useSnackbar } from 'notistack';
+import { Link } from 'react-router-dom';
+import { useTheme } from '@material-ui/core';
 
 const ExpandMore = styled((props) => {
 
@@ -23,6 +25,7 @@ const ExpandMore = styled((props) => {
 }));
 
 const VisitorAlert = () => {
+  const theme = useTheme();
   const [expanded, setExpanded] = useState(false);
 
   const handleExpandClick = () => {
@@ -43,12 +46,16 @@ const VisitorAlert = () => {
           </Typography>
         </CardContent>
         <CardActions disableSpacing sx={{ pl: 2, pt: 0}}>
-          <UIButton
-            content={"s'inscrire"}
-            variant={"contained"}
-            size={"small"}
-            color={"primary"}
-          />
+          <Button
+            theme={theme}
+            component={Link}
+            to="/user/sign-up"
+            variant="outlined"
+            size="small"
+            color="primary"
+          >
+            s'inscrire
+          </Button>
           <ExpandMore
             expand={expanded}
             onClick={handleExpandClick}

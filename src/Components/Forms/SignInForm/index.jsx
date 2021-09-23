@@ -5,9 +5,10 @@ import "./sign_in_form.scss";
 import { useForm } from "react-hook-form";
 import { useTheme } from "@mui/material";
 import TextField from "@mui/material/TextField";
-import UIButton from "../../UIButton";
+import UIButton from "../../CustomUIButton";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
+import CustomTextField from "../../CustomTextField";
 
 const SignInForm = ({ user }) => {
   const theme = useTheme();
@@ -37,29 +38,27 @@ const SignInForm = ({ user }) => {
           <div className="container__email--login">
             <TextField
               sx={{ mb: 2.5 }}
-              focused
-              theme={theme}
               color="primary"
-              label="Email"
               variant="outlined"
-              {...register("email", {
-                required: "Email requis",
-                pattern: {
-                  value:
-                    /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g,
-                  message: "Format invalide",
-                },
-              })}
-              size="small"
+              label="Email"
               defaultValue={user.email}
               onChange={(e) => user.setEmail(e.target.value)}
+              validate={
+                {...register("email", {
+                  required: "Email requis",
+                  pattern: {
+                    value:
+                      /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g,
+                    message: "Format invalide",
+                  },
+                })}
+              }
             />
             {errors.email && <p>{errors.email.message}</p>}
           </div>
           <div className="container__password--login">
             <TextField
               sx={{ mb: 2.5 }}
-              focused
               theme={theme}
               color="primary"
               label="Mot de passe"
@@ -67,7 +66,6 @@ const SignInForm = ({ user }) => {
               {...register("password", {
                 required: "Mot de passe requis",
               })}
-              size="small"
               type="password"
               defaultValue={user.password}
               onChange={(e) => user.setPassword(e.target.value)}
