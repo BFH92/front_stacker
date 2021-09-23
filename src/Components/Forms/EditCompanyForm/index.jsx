@@ -82,11 +82,10 @@ export const EditCompanyForm = () => {
     let companyStackList = [];
     list.map((stack) => {
       companyStackList.push({ key: uuidv4(), label: stack });
-      console.log(list);
     });
     setChipData(companyStackList);
   };
-  console.log(chipData);
+  
   const updateCompanyDetails = async () => {
     let variant = "success";
     let message = `Vos données ont été mises a jour !`;

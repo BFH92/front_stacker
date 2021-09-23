@@ -24,8 +24,6 @@ const ResultsCompanies = () => {
       )
     }
     let array_list = Array.from(list)
-    console.log(response)
-    console.log(array_list)
     setCompaniesList(array_list)
     
 
@@ -34,7 +32,7 @@ const ResultsCompanies = () => {
     companiesList.map((company)=>
       list.add(company)
     )
-    console.log(ListIndex)
+    
   
     getShortList(ListIndex+1)
     setShortListIndex(ListIndex+1)
@@ -45,7 +43,6 @@ const ResultsCompanies = () => {
   useEffect(()=>{
     list = new Set()
     setShortListIndex(0)
-    console.log("hey")
     setCompaniesList([])
     getShortList(0)
     
