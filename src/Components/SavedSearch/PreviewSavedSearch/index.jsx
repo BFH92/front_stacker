@@ -16,6 +16,7 @@ import SavedSearchesManager from "../../../Services/RailsApi/SavedSearchesFetch"
 import { useSnackbar } from "notistack";
 import { FilterContext } from "../../../Context/FilterContext";
 import { useTheme } from '@material-ui/core';
+import Moment from 'react-moment';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -63,6 +64,8 @@ const PreviewSavedSearch = ({ data }) => {
     }
   };
 
+  console.log(data)
+
   const applySearch = () => () => {
     // variant could be success, error, warning, info, or default
     setStaffSize(data.staff_size);
@@ -99,7 +102,7 @@ const PreviewSavedSearch = ({ data }) => {
       <Card variant="outlined">
         <CardContent className="card--header">
           <Typography variant="body2" color="text.secondary">
-            8:32 - 21 Septembre 2021 
+            <Moment date={data.created_at} fromNow/>
           </Typography>
         </CardContent>
         <CardContent className="container__chips" sx={{ px: 2, py: 0}}>
