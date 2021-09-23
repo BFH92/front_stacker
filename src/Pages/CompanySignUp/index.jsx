@@ -1,11 +1,17 @@
 import React, { useState } from "react";
-import SignUpForm from "../../Components/Forms/SignUpForm";
-import CompaniesAuthManager from "../../Services/RailsApi/CompaniesFetch/CompaniesAuthManager";
 import { useHistory } from "react-router";
 import { useDispatch } from "react-redux";
 import { Link } from 'react-router-dom';
+//Styles
+import "./companySignUp.scss";
+//Services
+import CompaniesAuthManager from "../../Services/RailsApi/CompaniesFetch/CompaniesAuthManager";
+//Components
+import SignUpForm from "../../Components/Forms/SignUpForm";
 import { RegisterUserLoginStatus, RegisterUserLogoutStatus } from "../../Store";
+//MaterialUI&notistack
 import { useSnackbar } from 'notistack';
+import CustomTypography from "../../Components/CustomTypography";
 
 
 const CompanySignUp = ({user}) => {
@@ -34,21 +40,25 @@ const CompanySignUp = ({user}) => {
       }
     }
   return (
-    <>
-      <div>
-        <h1>Créer espace entreprise</h1>
+    <div className="company-container__form--bg">
+      <div className="container__form--all">
+        <CustomTypography
+          className={"title--form"}
+          color="white"
+          variant="h3"
+          component="h1"
+          content="Inscription Entreprise"
+        />
         <SignUpForm user={{ email, setEmail, password, setPassword, SignUp }} />
+        <div className="container__links--all">
+          <Link to="/company/sign-in">Déjà un compte ? Se Connecter</Link>
+          <Link to="/user/settings/get-password">Mot de passe oublié</Link>
+          <Link to="/user/sign-in">
+          Se connecter en tant que développeur
+          </Link>
+        </div>
       </div>
-      <Link to="/company/sign-in">
-        <h3>Déjà un compte ? Se Connecter</h3>
-      </Link>
-      <Link to="/company/settings/get-password">
-        <h3>Mot de passe oublié</h3>
-      </Link>
-      <Link to="/user/sign-in">
-        <h3>Créer un espace utilisateur</h3>
-      </Link>
-    </>
+    </div>
   );
 };
 

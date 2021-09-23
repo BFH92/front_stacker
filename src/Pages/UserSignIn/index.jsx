@@ -1,8 +1,8 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import SignInForm from "../../Components/Forms/SignInForm";
 import UsersAuthManager from "../../Services/RailsApi/UsersFetch/UsersAuthManager";
 import { useHistory } from "react-router";
-import { useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import { RegisterUserLoginStatus, RegisterUserLogoutStatus } from "../../Store";
 import { Link } from "react-router-dom";
 import { useSnackbar } from 'notistack';
@@ -19,25 +19,25 @@ const UserSignIn = ({ user }) => {
   const login = async () => {
     try {
       const response = await UsersAuthManager.login(email, password);
-      let variant = 'success'
-      let message = `Bienvenue sur Stacker ${email} !`
+      let variant = "success";
+      let message = `Bienvenue sur Stacker ${email} !`;
       enqueueSnackbar(message, { variant });
-      dispatch(RegisterUserLoginStatus(response.data.user_id, "user"))
-      user.setIsLogged(true)
+      dispatch(RegisterUserLoginStatus(response.data.user_id, "user"));
+      user.setIsLogged(true);
       history.push("/search");
-      
     } catch (error) {
-      let variant = 'error'
-      let message = `Oups, il y a un couac! -> ${error}`
-    
-      if (String(error).includes("401"))(message = `Diantre ! Ton email ou ton mot de passe n'est pas le bon !`)
-    
+      let variant = "error";
+      let message = `Oups, il y a un couac! -> ${error}`;
+
+      if (String(error).includes("401"))
+        message = `Diantre ! Ton email ou ton mot de passe n'est pas le bon !`;
+
       enqueueSnackbar(message, { variant });
-      
+
       dispatch(RegisterUserLogoutStatus());
       history.push("/user/sign-in");
-      }
-  }
+    }
+  };
 
   return (
     <div className="container__form--bg">
@@ -47,7 +47,7 @@ const UserSignIn = ({ user }) => {
         color="primary"
         variant="h3"
         component="h1"
-        content="Espace utilisateur"
+        content="Connexion"
       />
       <SignInForm user={{ email, setEmail, password, setPassword, login }} />
       <div className="container__links--all">        
