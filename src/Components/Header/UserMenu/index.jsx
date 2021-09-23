@@ -8,7 +8,7 @@ import IconButton from '@mui/material/IconButton';
 import UserAvatar from './UserAvatar';
 import DarkStrokeDashboard from '../../../Assets/Svg/Dashboard/StrokeDashboard/DarkStrokeDashboard';
 import DarkStrokeLogout from '../../../Assets/Svg/Logout/StrokeLogout/DarkStrokeLogout';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 const UserMenu = ({ logout }) => {
@@ -63,19 +63,19 @@ const UserMenu = ({ logout }) => {
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
         {logged_as ===  "user" ?
-        (<MenuItem to="/user/dashboard" component={Link}>        
-          <ListItemIcon>
-            <DarkStrokeDashboard fontSize="small" />
-          </ListItemIcon>  
-          Mon dashboard
-        </MenuItem> )
+          (<MenuItem to="/user/dashboard" component={Link}>        
+            <ListItemIcon>
+              <DarkStrokeDashboard fontSize="small" />
+            </ListItemIcon>  
+            Mon dashboard
+          </MenuItem> )
         :
-        (<MenuItem to="/company/dashboard" component={Link}>
-          <ListItemIcon>
-            <DarkStrokeDashboard fontSize="small" />
-          </ListItemIcon>  
-        Dashboard entreprise
-        </MenuItem>)
+          (<MenuItem to="/company/dashboard" component={Link}>
+            <ListItemIcon>
+              <DarkStrokeDashboard fontSize="small" />
+            </ListItemIcon>  
+            Dashboard entreprise
+          </MenuItem>)
         }
         <Divider />
         {/* <MenuItem to="/user/notifications" component={Link}>
