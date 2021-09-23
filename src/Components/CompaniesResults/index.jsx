@@ -7,6 +7,7 @@ import { CompaniesList} from '../../Services/RailsApi/CompaniesFetch/CompaniesDe
 import { FilterContext } from '../../Context/FilterContext';
 import CompanyInfoManager from '../../Services/RailsApi/CompaniesFetch/CompanyInfoManager';
 import { List } from '@material-ui/core';
+import UIButton from '../UIButton';
 
 const ResultsCompanies = () => {
   const {url} = useContext(FilterContext);
@@ -57,7 +58,7 @@ const ResultsCompanies = () => {
     <>
       {companiesList ? (
         <div className="results__main--grid">        
-          <HeaderCompaniesResults company={companiesList}/>
+          {/* <HeaderCompaniesResults company={companiesList}/> */}
           <div className="results--all">
             <ul className="all--items">
               {companiesList && companiesList.map((company) => (
@@ -68,7 +69,14 @@ const ResultsCompanies = () => {
             </ul>
                 
           </div>
-          <button onClick={()=>{getNextList(shortListIndex)}}> Next</button>
+          <div className="center--btn">
+            <UIButton
+              content="Plus de résultats"
+              color="primary"
+              variant="contained"
+              onClick={()=>{getNextList(shortListIndex)}}
+            />
+          </div>
         </div>
       ) : (
         <div className="container__progress--circle">

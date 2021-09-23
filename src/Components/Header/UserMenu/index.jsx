@@ -21,6 +21,7 @@ const UserMenu = ({ logout }) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  
   return (
     <React.Fragment>
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>

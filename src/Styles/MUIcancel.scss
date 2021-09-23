@@ -16,7 +16,6 @@
     color: $white !important;
   }
 }
-
 .container--form {
   .css-1kty9di-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
     color: $purple !important;
@@ -24,4 +23,11 @@
   .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
     border-color: $purple !important;
   }
+}
+.css-ptiqhd-MuiSvgIcon-root,
+.css-i4bv87-MuiSvgIcon-root {
+  fill: $white !important;
+}
+.makeStyles-grid_column_no_gap-4 {
+  grid-gap: $padding;
 }
