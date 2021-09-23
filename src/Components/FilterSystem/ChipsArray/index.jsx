@@ -1,12 +1,12 @@
 import React, { useEffect, useContext } from "react";
+import { useSelector } from "react-redux";
+import { UserStacksContext } from "../../../Context/UserStacksContext";
+import { v4 as uuidv4 } from "uuid";
+import "./chipsArray.scss";
+import InputStacks from "./InputStacks";
+import ViewerStackManager from "../../../Services/RailsApi/ViewerStackManager ";
 import Chip from "@material-ui/core/Chip";
 import { withStyles } from "@material-ui/core/styles";
-import { v4 as uuidv4 } from "uuid";
-import InputStacks from "./InputStacks";
-import "./chipsArray.scss";
-import { UserStacksContext } from "../../../Context/UserStacksContext";
-import ViewerStackManager from "../../../Services/RailsApi/ViewerStackManager ";
-import { useSelector } from "react-redux";
 
 const ChipsArray = () => {
   const { chipData } = useContext(UserStacksContext);

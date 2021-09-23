@@ -24,6 +24,9 @@ export const EditUserForm = () => {
   const [lastName, setLastName] = useState("");
   const [description, setDescription] = useState("");
   const [githubLink, setGithubLink] = useState("");
+  const [chipData, setChipData] = useState([]);
+
+  const history = useHistory();
   const theme = useTheme();
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
@@ -65,7 +68,6 @@ export const EditUserForm = () => {
     getUserDetail();
   }, []);
 
-  const [chipData, setChipData] = useState([]);
 
   const addExistingStacks = (list) => {
     let StackList = [];
@@ -75,10 +77,9 @@ export const EditUserForm = () => {
     setChipData(StackList);
   };
 
-  const history = useHistory();
   const addUserStackAuthorization = true;
-
-  const updateUserDetails = async (e) => {
+  
+  const updateUserDetails = async () => {
     let variant = "success";
     let message = `Vos données ont été mises a jour !`;
     const response = await UserInfoManager.updateDetails(
