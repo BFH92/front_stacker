@@ -24,19 +24,20 @@ const ResultsCompanies = () => {
       )
     }
     let array_list = Array.from(list)
+    console.log(response)
     console.log(array_list)
     setCompaniesList(array_list)
     
 
   }
-  const getNextList = (shortListIndex) => {
+  const getNextList = (ListIndex) => {
     companiesList.map((company)=>
       list.add(company)
     )
-    console.log(shortListIndex)
+    console.log(ListIndex)
   
-    getShortList(shortListIndex+1)
-    setShortListIndex(shortListIndex+1)
+    getShortList(ListIndex+1)
+    setShortListIndex(ListIndex+1)
   
     
   }
@@ -46,7 +47,7 @@ const ResultsCompanies = () => {
     setShortListIndex(0)
     console.log("hey")
     setCompaniesList([])
-    getShortList(shortListIndex)
+    getShortList(0)
     
   }, [url]);
 
