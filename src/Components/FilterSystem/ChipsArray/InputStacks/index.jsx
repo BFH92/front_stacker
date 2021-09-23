@@ -57,10 +57,11 @@ const InputStacks = () => {
         sx={{ width: 250 }}
         renderInput={(params) => (
           <TextField
+            focused
             {...params}
             label="Liste des Stacks"
             variant="outlined"
-            color="primary"
+            color="secondary"
           />
         )}
       />
