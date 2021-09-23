@@ -4,24 +4,24 @@ import { useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import { useForm } from "react-hook-form";
 //Styles
-import './edit_company_form.scss';
+import "./edit_company_form.scss";
 //Service
 import CompanyInfoManager from "../../../Services/RailsApi/CompaniesFetch/CompanyInfoManager";
 //components
 import { UserStacksContext } from "../../../Context/UserStacksContext";
 import ChipsArray from "../../FilterSystem/ChipsArray";
 //MaterialUI
-import { useTheme } from "@mui/material";
 import TextField from "@mui/material/TextField";
+import UIButton from "../../UIButton";
+import { useTheme } from "@mui/material";
 import { Card, CardContent, Select, Typography } from "@material-ui/core";
 import { MenuItem } from "@mui/material";
-import UIButton from "../../UIButton";
 import InputLabel from "@mui/material/InputLabel";
 import Checkbox from "@mui/material/Checkbox";
+import { useSnackbar } from "notistack";
 
 export const EditCompanyForm = () => {
   const companyId = useSelector((state) => state.user.id);
-  console.log(companyId);
 
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -29,9 +29,12 @@ export const EditCompanyForm = () => {
   const [staffSize, setStaffSize] = useState("");
   const [isItRecruiting, setIsItRecruiting] = useState(null);
   const [websiteLink, setWebsiteLink] = useState("");
+  const [companyCategoryId, setCompanyCategoryId] = useState(0);
   const [chipData, setChipData] = useState([]);
 
+  const history = useHistory();
   const theme = useTheme();
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   const {
     register,
@@ -47,43 +50,46 @@ export const EditCompanyForm = () => {
       staffSize: staffSize,
       isItRecruiting: isItRecruiting,
       websiteLink: websiteLink,
+      companyCategoryId: companyCategoryId
     },
   });
 
   const getCompanyDetail = async () => {
     const detail = await CompanyInfoManager.getDetails(companyId);
-    console.log(detail);
     setName(detail.data.name);
     setDescription(detail.data.description);
     setGithubLink(detail.data.github_link);
     setStaffSize(detail.data.staff_size);
     setIsItRecruiting(detail.data.is_it_recruiting);
     setWebsiteLink(detail.data.website_link);
+    setCompanyCategoryId(detail.data.company_category_id);
+    //getCompanyStacks(detail.data.company_stacks);
   };
 
-  useEffect(() => {
-    getCompanyDetail();
-  }, []);
-
-  const history = useHistory();
-  const getUserStacks = (list) => {
+  const getCompanyStacks = (list) => {
     let stacksList = new Set();
-    list.map((userStack) => {
-      stacksList.add(userStack.name);
+    list.map((companyStack) => {
+      stacksList.add(companyStack.name);
     });
     stacksList = Array.from(stacksList);
     addExistingStacks(stacksList);
   };
-  const addExistingStacks = (list) => {
-    let StackList = [];
-    list.map((stack) => {
-      StackList.push({ key: uuidv4(), label: stack });
-    });
-    setChipData(StackList);
-  };
+  useEffect(() => {
+    getCompanyDetail();
+  }, []);
 
+  const addExistingStacks = (list) => {
+    let companyStackList = [];
+    list.map((stack) => {
+      companyStackList.push({ key: uuidv4(), label: stack });
+    });
+    setChipData(companyStackList);
+  };
+  
   const updateCompanyDetails = async () => {
-    //e.preventDefault();
+    let variant = "success";
+    let message = `Vos données ont été mises a jour !`;
+
     const response = await CompanyInfoManager.updateDetails(
       companyId,
       name,
@@ -91,16 +97,19 @@ export const EditCompanyForm = () => {
       githubLink,
       staffSize,
       isItRecruiting,
-      websiteLink
+      websiteLink,
+      companyCategoryId,
     );
+    enqueueSnackbar(message, { variant });
     Promise.resolve(response);
     history.push(`/company/dashboard`);
-
   };
 
   return (
     <UserStacksContext.Provider value={{ chipData, setChipData }}>
-      <Typography variant="h5" color="primary">Modifier son profil</Typography>
+      <Typography variant="h5" color="primary">
+        Modifier son profil
+      </Typography>
       <Card>
         <CardContent>
           <form
@@ -112,6 +121,7 @@ export const EditCompanyForm = () => {
               setValue("websiteLink", websiteLink);
               setValue("staffSize", staffSize);
               setValue("isItRecruiting", isItRecruiting);
+              setValue("companyCategoryId", companyCategoryId);
             }}
             onSubmit={handleSubmit(updateCompanyDetails)}
           >
@@ -201,13 +211,33 @@ export const EditCompanyForm = () => {
               <MenuItem value="250+">250+</MenuItem>
             </Select>
             {errors.staffSize && <p>{errors.staffSize.message}</p>}
+            <InputLabel id="Effectif">Type</InputLabel>
+            <Select
+              theme={theme}
+              sx={{ mt: 3 }}
+              labelId="Type"
+              color="primary"
+              label="Type"
+              variant="outlined"
+              {...register("companyCategoryId", {
+                required: "Type requis",
+              })}
+              size="large"
+              value={companyCategoryId ? companyCategoryId : null}
+              onChange={(e) => setCompanyCategoryId(e.target.value)}
+            >
+              <MenuItem value={1}>startup</MenuItem>
+              <MenuItem value={2}>classic</MenuItem>
+              <MenuItem value={3}>it-services</MenuItem>
+              <MenuItem value={4}>web-agency</MenuItem>
+              <MenuItem value={5}>big-tech-agency</MenuItem>
+            </Select>
+            {errors.companyCategory && <p>{errors.companyCategory.message}</p>}
             <Checkbox
-            
-            defaultChecked={isItRecruiting ? isItRecruiting : ""}
+              defaultChecked={isItRecruiting ? isItRecruiting : ""}
               //value={isItRecruiting ? isItRecruiting : ""}
               {...register("isItRecruiting")}
               onChange={() => setIsItRecruiting(!!!isItRecruiting)}
-              
             />
             {errors.isItRecruiting && <p>{errors.isItRecruiting.message}</p>}
             <div className="container--cta">

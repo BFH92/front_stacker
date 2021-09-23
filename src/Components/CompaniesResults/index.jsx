@@ -52,7 +52,6 @@ const ResultsCompanies = () => {
     let list = new Set()
     let itemList = []
     setShortListIndex(0)
-    console.log(list )
     setCompaniesList([])
     getShortList(0, list, itemList)
     
