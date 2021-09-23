@@ -31,8 +31,6 @@ export const EditCompanyForm = () => {
   const [websiteLink, setWebsiteLink] = useState("");
   const [chipData, setChipData] = useState([]);
 
-  const [stacks, setStacks] = useState("");
-  // const [company_category_id, setCompany_Category_Id] = useState(0);
   const theme = useTheme();
 
   const {
@@ -61,8 +59,6 @@ export const EditCompanyForm = () => {
     setStaffSize(detail.data.staff_size);
     setIsItRecruiting(detail.data.is_it_recruiting);
     setWebsiteLink(detail.data.website_link);
-    // setStack(detail.stack)
-    // setCompany_Category_Id(detail.data.company_category_id)
   };
 
   useEffect(() => {
@@ -70,7 +66,6 @@ export const EditCompanyForm = () => {
   }, []);
 
   const history = useHistory();
-  //TODO: À RETROUVER
   const getUserStacks = (list) => {
     let stacksList = new Set();
     list.map((userStack) => {
@@ -87,8 +82,12 @@ export const EditCompanyForm = () => {
     setChipData(StackList);
   };
 
+<<<<<<< HEAD
   const updateCompanyDetails = async () => {
     //e.preventDefault();
+=======
+  const updateCompanyDetails = async (e) => {
+>>>>>>> develop
     const response = await CompanyInfoManager.updateDetails(
       companyId,
       name,
@@ -97,7 +96,6 @@ export const EditCompanyForm = () => {
       staffSize,
       isItRecruiting,
       websiteLink
-      //company_category_id, stack
     );
     Promise.resolve(response);
     history.push(`/company/dashboard`);

@@ -1,8 +1,7 @@
 import React,{useState, useEffect} from 'react';
 import StacksManager from '../../Services/RailsApi/StacksFetch';
-// import StackPreview from './StackPreview';
-import { TablePreview } from './Tablepreview';
-import { Accordions } from '../../Components/StacksResults/Accordion'
+import { Accordions } from '../../Components/StacksResults/Accordion';
+
 const StackResults = () => {
   const [stacks, setStacks] = useState([])
   const [backendStacks, setBackendStacks]= useState([])
@@ -21,8 +20,6 @@ const StackResults = () => {
   
   }
 
-
-
   useEffect(() => {
     getAllStacks()
   }, []);
@@ -39,7 +36,6 @@ const StackResults = () => {
   return (
 
         <div className="results--all">
-          {/* <TablePreview stacks={stacks}/> */}
           <Accordions stacks={stacks}/>
         <div className="all--items">
         </div>

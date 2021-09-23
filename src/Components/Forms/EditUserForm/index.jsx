@@ -23,8 +23,6 @@ export const EditUserForm = () => {
   const [lastName, setLastName] = useState("");
   const [description, setDescription] = useState("");
   const [githubLink, setGithubLink] = useState("");
-  const [userStacks, setUserStacks] = useState([]);
-  const [stacks, setStacks] = useState([]);
   const theme = useTheme();
 
   const {
@@ -79,7 +77,6 @@ export const EditUserForm = () => {
   const addUserStackAuthorization = true;
 
   const updateUserDetails = async (e) => {
-    //e.preventDefault();
     const response = await UserInfoManager.updateDetails(
       userId,
       firstName,

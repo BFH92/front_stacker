@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 import FavoritesManager from '../../Services/RailsApi/FavoritesFetch';
 import CompanyPreview from '../CompaniesResults/CompanyPreview';
 
