@@ -48,7 +48,7 @@ const NavTabs = () => {
               color: theme.palette.common.white
             }}
           />
-          {LoggedAs === "user"? 
+          {LoggedAs !== "company"? 
           <Tab 
             label="Recherche"
             to="/search"
