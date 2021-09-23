@@ -35,19 +35,46 @@ import LightTheme from "./Assets/Themes/LightTheme";
 import DarkTheme from "./Assets/Themes/DarkTheme";
 
 // NOTISTACK
-import { SnackbarProvider } from 'notistack';
+import { SnackbarProvider, useSnackbar } from 'notistack';
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(false);
   const [isLogged, setIsLogged] = useState("");
-  const CompanyRoute = ({ component:Component, ...rest }) => {
-    const logged_as = useSelector(state => state.user.logged_as)
-  
+
+  const UserAndVisitorRoute = ({ component:Component, ...rest }) => {
+    const LoggedAs = useSelector(state => state.user.logged_as)
+    const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+    if (LoggedAs === "company"){
+      let variant = 'warning'
+      let message = `Il faut te connecter à un compte développeur pour continuer !`
+      enqueueSnackbar(message, { variant });
+    }
     return (
       <Route
         {...rest}
         render={(props) =>
-          logged_as === "company" ? (
+          LoggedAs === "company" ?(
+            <Redirect to={{ pathname: "user/sign-in" }} />
+          ) :(
+            <Component {...props} />
+          ) 
+        }
+      />
+    );
+  };
+  const CompanyRoute = ({ component:Component, ...rest }) => {
+    const LoggedAs = useSelector(state => state.user.logged_as)
+    const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+    if (LoggedAs !== "company"){
+      let variant = 'warning'
+      let message = `Un compte entreprise est nécessaire pour continuer`
+      enqueueSnackbar(message, { variant });
+    }
+    return (
+      <Route
+        {...rest}
+        render={(props) =>
+          LoggedAs === "company" ? (
             <Component {...props} />
           ) : (
             <Redirect to={{ pathname: "./sign-in" }} />
@@ -107,7 +134,8 @@ const App = () => {
                     <Route path="/user/settings/new-password" render={() => <NewPassword user={{setIsLogged,identity:"user"}}/>} />
                     <Route path="/user/settings/get-password" render={() => <GetPassword identity={"user"}/>} />
 
-                    <Route path="/search" render={() => <SearchCompany />} />
+                    <UserAndVisitorRoute path="/search" component={SearchCompany} key={uuidv4()} />
+                    
                     <CompanyRoute path="/company/dashboard" component= {CompanyDashboard} key={uuidv4()} />
                     <Route path="/company/sign-in" render={() => <CompanySignIn user={{setIsLogged}}/>}/>
                     <Route path="/company/sign-up" render={() => <CompanySignUp user={{setIsLogged}}/>}/>
