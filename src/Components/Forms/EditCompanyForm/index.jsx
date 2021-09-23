@@ -82,12 +82,8 @@ export const EditCompanyForm = () => {
     setChipData(StackList);
   };
 
-<<<<<<< HEAD
   const updateCompanyDetails = async () => {
     //e.preventDefault();
-=======
-  const updateCompanyDetails = async (e) => {
->>>>>>> develop
     const response = await CompanyInfoManager.updateDetails(
       companyId,
       name,
