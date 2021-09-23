@@ -40,7 +40,6 @@ export default class CompaniesAuthManager {
       { company: { email, password } },
       config
     );
-    console.log(response);
     this.login(email, password);
     return response;
   }
@@ -52,7 +51,6 @@ export default class CompaniesAuthManager {
       },
     };
     const response = await API.delete("/companies/sign_out", authorizedConfig);
-    console.log(response);
     Cookies.remove("API_Authentication_token");
     return response;
   }
@@ -65,7 +63,6 @@ export default class CompaniesAuthManager {
     );
 
     let token = await response.headers.authorization;
-    console.log(response);
     token ? registerToken(token) : Cookies.get("API_Authentication_token");
     return response;
   }

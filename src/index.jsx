@@ -6,7 +6,7 @@ import './Styles/reset.scss';
 import './Styles/variables.scss';
 import './Styles/main.scss';
 import './Styles/MUIcancel.scss';
-
+//Pages&Components
 import Header from './Components/Header';
 import Home from './Pages/Home';
 import About from './Pages/About';
@@ -22,7 +22,6 @@ import CompanySignIn from "./Pages/CompanySignIn";
 import CompanySignUp from "./Pages/CompanySignUp";
 import NewPassword from "./Pages/NewPassword";
 import GetPassword from "./Pages/Settings/GetPassword";
-
 //redux
 import { Provider} from 'react-redux';
 import { store, persistor } from "./Store/store";
@@ -36,6 +35,7 @@ import DarkTheme from "./Assets/Themes/DarkTheme";
 
 // NOTISTACK
 import { SnackbarProvider, useSnackbar } from 'notistack';
+import { NotFoundPage } from "./Components/NotFoundPage";
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -86,7 +86,6 @@ const App = () => {
 
   const PrivateRoute = ({ component: Component, ...rest }) => {
     const isLogged = useSelector(state => state.user.isLogged)
-    console.log(isLogged)
     return (
       <Route
         {...rest}
@@ -141,7 +140,8 @@ const App = () => {
                     <Route path="/company/sign-up" render={() => <CompanySignUp user={{setIsLogged}}/>}/>
                     <Route path="/company/settings/new-password" render={() => <NewPassword user={{setIsLogged, identity:"company"}}/>} />
                     <Route path="/company/settings/get-password" render={() => <GetPassword identity={"company"}/>} />
-                    <PrivateRoute exact path="/company/settings" component={Settings} identity={"company"} />            
+                    <PrivateRoute exact path="/company/settings" component={Settings} identity={"company"} />
+                    <Route path="*" component={NotFoundPage}/>          
                   </Switch>
                 </main>
               </div>

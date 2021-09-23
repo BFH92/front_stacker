@@ -15,7 +15,6 @@ const StackResults = () => {
 
   const getAllStacks = async() =>{
     const response = await StacksManager.getAllStacks()
-    console.log(response)
     setStacks(response.data)
   
   }

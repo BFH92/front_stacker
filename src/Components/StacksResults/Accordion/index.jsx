@@ -12,7 +12,6 @@ export const Accordions = ({ stacks }) => {
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
-  console.log(stacks)
   return (
     <div>
       <Accordion
