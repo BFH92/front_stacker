@@ -3,7 +3,6 @@ import Chip from '@material-ui/core/Chip';
 import { withStyles } from '@material-ui/core/styles';
 import { v4 as uuidv4 } from 'uuid';
 import { useTheme } from '@material-ui/core';
-// import Exemple from '../../../../Assets/Svg/Stacks/Exemple';
 
 const ChipsArray = (props) => {
   const theme = useTheme();
@@ -24,7 +23,6 @@ const ChipsArray = (props) => {
                 size="small"
                 label={data.name}
                 variant="outlined"
-                // icon={<Exemple />}
               />
             </li>
           );

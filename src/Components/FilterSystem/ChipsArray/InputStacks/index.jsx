@@ -58,10 +58,9 @@ const InputStacks = () => {
         renderInput={(params) => (
           <TextField
             {...params}
-            focused 
             label="Liste des Stacks"
             variant="outlined"
-            color="secondary"
+            color="primary"
           />
         )}
       />
