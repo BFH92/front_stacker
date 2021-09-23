@@ -12,7 +12,6 @@ const FavoritesCompanies = () => {
 
   const getFavoriteCompanies = async() => {
     const response = await FavoritesManager.getCompaniesByUser()
-    console.log(response)
     setCompanies(response.data)
   }
   return (

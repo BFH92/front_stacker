@@ -11,17 +11,17 @@ import CompanyInfoManager from "../../../Services/RailsApi/CompaniesFetch/Compan
 import { UserStacksContext } from "../../../Context/UserStacksContext";
 import ChipsArray from "../../FilterSystem/ChipsArray";
 //MaterialUI
-import { useTheme } from "@mui/material";
 import TextField from "@mui/material/TextField";
+import UIButton from "../../UIButton";
+import { useTheme } from "@mui/material";
 import { Card, CardContent, Select, Typography } from "@material-ui/core";
 import { MenuItem } from "@mui/material";
-import UIButton from "../../UIButton";
 import InputLabel from "@mui/material/InputLabel";
 import Checkbox from "@mui/material/Checkbox";
+import { useSnackbar } from "notistack";
 
 export const EditCompanyForm = () => {
   const companyId = useSelector((state) => state.user.id);
-  console.log(companyId);
 
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -32,6 +32,7 @@ export const EditCompanyForm = () => {
   const [chipData, setChipData] = useState([]);
 
   const theme = useTheme();
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   const {
     register,
@@ -52,7 +53,6 @@ export const EditCompanyForm = () => {
 
   const getCompanyDetail = async () => {
     const detail = await CompanyInfoManager.getDetails(companyId);
-    console.log(detail);
     setName(detail.data.name);
     setDescription(detail.data.description);
     setGithubLink(detail.data.github_link);
@@ -83,7 +83,9 @@ export const EditCompanyForm = () => {
   };
 
   const updateCompanyDetails = async () => {
-    //e.preventDefault();
+    let variant = "success";
+    let message = `Vos données ont été mises a jour !`;
+
     const response = await CompanyInfoManager.updateDetails(
       companyId,
       name,
@@ -93,6 +95,7 @@ export const EditCompanyForm = () => {
       isItRecruiting,
       websiteLink
     );
+    enqueueSnackbar(message, { variant });
     Promise.resolve(response);
     history.push(`/company/dashboard`);
 

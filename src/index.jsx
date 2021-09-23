@@ -86,7 +86,6 @@ const App = () => {
 
   const PrivateRoute = ({ component: Component, ...rest }) => {
     const isLogged = useSelector(state => state.user.isLogged)
-    console.log(isLogged)
     return (
       <Route
         {...rest}

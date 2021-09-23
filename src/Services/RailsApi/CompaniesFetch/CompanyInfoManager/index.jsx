@@ -48,7 +48,7 @@ export default class CompanyInfoManager {
     //data.append('company_category_id', company_category_id);
     //data.append('stack', stack);
 
-    console.log(data)
+    
     const response = await API.put(
         `/companies/${id}`,
         data,
