@@ -41,23 +41,23 @@ const App = () => {
   const [darkMode, setDarkMode] = useState(false);
   const [isLogged, setIsLogged] = useState("");
 
-  const UserRoute = ({ component:Component, ...rest }) => {
+  const UserAndVisitorRoute = ({ component:Component, ...rest }) => {
     const LoggedAs = useSelector(state => state.user.logged_as)
     const { enqueueSnackbar, closeSnackbar } = useSnackbar();
-    if (LoggedAs !== "user"){
+    if (LoggedAs === "company"){
       let variant = 'warning'
-      let message = `Il faut te connecter à ton un compte développeur pour continuer !`
+      let message = `Il faut te connecter à un compte développeur pour continuer !`
       enqueueSnackbar(message, { variant });
     }
     return (
       <Route
         {...rest}
         render={(props) =>
-          LoggedAs === "user" ? (
-            <Component {...props} />
-          ) : (
+          LoggedAs === "company" ?(
             <Redirect to={{ pathname: "user/sign-in" }} />
-          )
+          ) :(
+            <Component {...props} />
+          ) 
         }
       />
     );
@@ -135,7 +135,7 @@ const App = () => {
                     <Route path="/user/settings/new-password" render={() => <NewPassword user={{setIsLogged,identity:"user"}}/>} />
                     <Route path="/user/settings/get-password" render={() => <GetPassword identity={"user"}/>} />
 
-                    <UserRoute path="/search" render={() => <SearchCompany />} />
+                    <UserAndVisitorRoute path="/search" component={SearchCompany} key={uuidv4()} />
                     
                     <CompanyRoute path="/company/dashboard" component= {CompanyDashboard} key={uuidv4()} />
                     <Route path="/company/sign-in" render={() => <CompanySignIn user={{setIsLogged}}/>}/>
