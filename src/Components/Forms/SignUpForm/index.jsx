@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 //styles
 import "./sign_up_form.scss";
@@ -37,7 +37,8 @@ const SignUpForm = ({ user }) => {
         >
           <div className="container__email--signup">
             <TextField
-              sx={{ mb: 4, mt:4 }}
+              focused
+              sx={{ mb: 4, mt: 1 }}
               theme={theme}
               color="primary"
               label="Email"
@@ -50,7 +51,6 @@ const SignUpForm = ({ user }) => {
                   message: "Format invalide",
                 },
               })}
-              size="small"
               defaultValue={user.email}
               onChange={(e) => user.setEmail(e.target.value)}
             />
@@ -58,7 +58,8 @@ const SignUpForm = ({ user }) => {
           </div>
           <div className="container__password--signup">
             <TextField
-              sx={{ mb: 4 }}
+              focused
+              sx={{ mb: 2.5 }}
               theme={theme}
               color="primary"
               label="Mot de passe"
@@ -66,7 +67,6 @@ const SignUpForm = ({ user }) => {
               {...register("password", {
                 required: "Mot de passe requis",
               })}
-              size="small"
               type="password"
               defaultValue={user.password}
               onChange={(e) => user.setPassword(e.target.value)}
@@ -76,7 +76,7 @@ const SignUpForm = ({ user }) => {
           <div className="container--cta">
             <UIButton
               color="primary"
-              size="large"
+              size="small"
               variant="contained"
               content="S'inscrire"
               type="submit"

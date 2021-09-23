@@ -37,28 +37,30 @@ const SignInForm = ({ user }) => {
         >
           <div className="container__email--login">
             <TextField
-              sx={{ mb: 4, mt:4 }}
-              theme={theme}
+              focused
+              sx={{ mb: 4, mt: 1 }}
               color="primary"
-              label="E-mail"
               variant="outlined"
-              {...register("email", {
-                required: "Email requis",
-                pattern: {
-                  value:
-                    /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g,
-                  message: "Format invalide",
-                },
-              })}
-              size="small"
+              label="Email"
               defaultValue={user.email}
               onChange={(e) => user.setEmail(e.target.value)}
+              validate={
+                {...register("email", {
+                  required: "Email requis",
+                  pattern: {
+                    value:
+                      /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g,
+                    message: "Format invalide",
+                  },
+                })}
+              }
             />
             {errors.email && <p>{errors.email.message}</p>}
           </div>
           <div className="container__password--login">
             <TextField
-              sx={{ mb: 4 }}
+              focused
+              sx={{ mb: 2.5 }}
               theme={theme}
               color="primary"
               label="Mot de passe"
@@ -66,7 +68,6 @@ const SignInForm = ({ user }) => {
               {...register("password", {
                 required: "Mot de passe requis",
               })}
-              size="small"
               type="password"
               defaultValue={user.password}
               onChange={(e) => user.setPassword(e.target.value)}

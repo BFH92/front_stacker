@@ -11,7 +11,7 @@ import SignUpForm from "../../Components/Forms/SignUpForm";
 import UsersAuthManager from "../../Services/RailsApi/UsersFetch/UsersAuthManager";
 import { useSnackbar } from "notistack";
 //MaterialUI
-import Typography from "@mui/material/Typography";
+import CustomTypography from "../../Components/CustomTypography";
 
 const UserSignUp = ({ user }) => {
   const [email, setEmail] = useState("");
@@ -42,9 +42,13 @@ const UserSignUp = ({ user }) => {
   return (
     <div className="container__form--bg">
       <div className="container__form--all">
-        <Typography className="title--form" variant="h3" color="secondary">
-          Inscription Utilisateur
-        </Typography>
+        <CustomTypography
+          className={"title--form"}
+          color="primary"
+          variant="h3"
+          component="h1"
+          content="Inscription"
+        />
         <SignUpForm user={{ email, setEmail, password, setPassword, SignUp }} />
         <div className="container__links--all">
           <Link to="/user/sign-in">Déjà un compte? Se Connecter</Link>

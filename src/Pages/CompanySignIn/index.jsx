@@ -9,7 +9,7 @@ import CompaniesAuthManager from "../../Services/RailsApi/CompaniesFetch/Compani
 import SignInForm from "../../Components/Forms/SignInForm";
 //MaterialUI
 import { useSnackbar } from "notistack";
-import Typography from "@mui/material/Typography";
+import CustomTypography from "../../Components/CustomTypography";
 
 const CompanySignIn = ({ user }) => {
   const [email, setEmail] = useState("");
@@ -41,9 +41,13 @@ const CompanySignIn = ({ user }) => {
   return (
     <div className="company-container__form--bg">
       <div className="container__form--all">
-        <Typography className="title--form" variant="h3" color="white">
-          Espace de Connexion Entreprise
-        </Typography>
+      <CustomTypography
+          className={"title--form"}
+          color="white"
+          variant="h3"
+          component="h1"
+          content="Connexion Entreprise"
+        />
         <SignInForm user={{ email, setEmail, password, setPassword, login }} />
         <div className="container__links--all">
           <Link to="/company/sign-up">Pas de compte ? S'inscrire</Link>

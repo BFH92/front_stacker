@@ -109,7 +109,7 @@ const App = () => {
           vertical: 'bottom',
           horizontal: 'right',
         }}
-        autoHideDuration={2000}
+        autoHideDuration={2500}
         disableWindowBlurListener={true}
         hideIconVariant
         preventDuplicate
@@ -118,8 +118,7 @@ const App = () => {
           <PersistGate loading={null} persistor={persistor}>
             <Router>        
               <div className="container__all">
-                <Route path="/" render={() => <Header user={{isLogged, setIsLogged}} />} />            
-                
+                <Route path="/" render={() => <Header user={{isLogged, setIsLogged}} />} />
                 <main className="container__main">
                   <Switch>
                     <Route path="/" exact render={() => <Home/>} />

@@ -5,9 +5,9 @@ import { useHistory } from "react-router";
 import { useDispatch } from "react-redux";
 import { RegisterUserLoginStatus, RegisterUserLogoutStatus } from "../../Store";
 import { Link } from "react-router-dom";
-import { useSnackbar } from "notistack";
-import "./userSignIn.scss";
-import Typography from "@mui/material/Typography";
+import { useSnackbar } from 'notistack';
+import './userSignIn.scss';
+import CustomTypography from "../../Components/CustomTypography";
 
 const UserSignIn = ({ user }) => {
   const [email, setEmail] = useState("");
@@ -42,17 +42,25 @@ const UserSignIn = ({ user }) => {
   return (
     <div className="container__form--bg">
       <div className="container__form--all">
-        <Typography className="title--form" variant="h3" color="secondary">
-          Espace de Connexion
-        </Typography>
-        <SignInForm user={{ email, setEmail, password, setPassword, login }} />
-        <div className="container__links--all">
-          <Link to="/user/sign-up">Pas de compte ? S'inscrire</Link>
-          <Link to="/user/settings/get-password">Mot de passe oublié</Link>
-          <Link to="/company/sign-in">
-            Vous êtes une entreprise ? Espace entreprise
-          </Link>
-        </div>
+      <CustomTypography
+        className={"title--form"}
+        color="primary"
+        variant="h3"
+        component="h1"
+        content="Connexion"
+      />
+      <SignInForm user={{ email, setEmail, password, setPassword, login }} />
+      <div className="container__links--all">        
+        <Link to="/user/sign-up">
+          Pas de compte ? S'inscrire
+        </Link>
+        <Link to="/user/settings/get-password">
+          Mot de passe oublié
+        </Link>
+        <Link to="/company/sign-in">
+          Vous êtes une entreprise ? Espace entreprise
+        </Link>
+      </div>
       </div>
     </div>
   );
