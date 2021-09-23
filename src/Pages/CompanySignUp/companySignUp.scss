@@ -1,10 +1,11 @@
 @import "../../Styles/variables.scss";
 
-.container__form--bg {
+.company-container__form--bg {
   display: grid;
   place-items: center;
   height: 100%;
-
+  background: $purple;
+  
   .container__form--all {
     display: grid;
     grid-template-rows: auto 1fr auto;
@@ -18,6 +19,11 @@
 
     .container__links--all {
       display: grid;
+      a{
+        color: white;
+        text-decoration: none;
+
+      }
       place-items: center;
       grid-gap: $padding;
       padding: $padding * 2;

@@ -6,6 +6,7 @@ import StackerLogo from './StackerLogo';
 import Tab from '@mui/material/Tab';
 import { useTheme } from '@material-ui/core';
 import { styled } from '@mui/material/styles';
+import { useSelector } from 'react-redux';
 
 const StyledTabs = styled((props) => (
   <Tabs
@@ -27,6 +28,7 @@ const StyledTabs = styled((props) => (
 const NavTabs = () => {
   const theme = useTheme();
   const [value, setValue] = useState(0);
+  const LoggedAs = useSelector(state=> state.user.logged_as)
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -46,6 +48,7 @@ const NavTabs = () => {
               color: theme.palette.common.white
             }}
           />
+          {LoggedAs !== "company"? 
           <Tab 
             label="Recherche"
             to="/search"
@@ -54,7 +57,8 @@ const NavTabs = () => {
               marginLeft: 20,
               color: theme.palette.common.white
             }}
-          /> 
+          /> :""
+          }
           <Tab
             label="Stacks"
             to="/stacks"

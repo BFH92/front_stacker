@@ -1,1 +1,8 @@
 @import '../../../Styles/variables.scss';
+
+.container--form {
+  .container--cta {
+    display: grid;
+    place-items: center;
+  }
+}

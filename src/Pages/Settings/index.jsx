@@ -1,9 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 //styles
 import './settings.scss';
 //components
 
-import { Link } from 'react-router-dom';
 
 
 const Settings = () => {
