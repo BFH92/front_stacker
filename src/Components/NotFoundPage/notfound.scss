@@ -1,0 +1,13 @@
+@import '../../Styles/variables.scss';
+
+.container__notfound{
+  position: relative;
+  display: grid;
+  place-content: center;
+  min-height: 100%;
+  background: $purple;
+
+  .content--svg{
+    width: 100%;
+  }
+}

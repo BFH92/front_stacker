@@ -26,7 +26,6 @@ export default class ViewerStackManager {
         Authorization: `Bearer ${Cookies.get("API_Authentication_token")}`,
       },
     };
-    console.log(authorizedConfig)
 
     const response = await API.get(
       viewer === "company"?`/specific_company_stack_id?stack=${stack_name}`:`/specific_user_stack_id?stack=${stack_name}`,

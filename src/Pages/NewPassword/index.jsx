@@ -12,6 +12,7 @@ import CompaniesAuthManager from "../../Services/RailsApi/CompaniesFetch/Compani
 import NewPasswordForm from "../../Components/Forms/NewPasswordForm";
 //MaterialUI
 import { Typography } from "@mui/material";
+import { useSnackbar } from "notistack";
 
 const NewPassword = ({ user }) => {
   const [password, setPassword] = useState("");
@@ -21,37 +22,38 @@ const NewPassword = ({ user }) => {
   const history = useHistory();
   const search = useLocation().search;
   const reset_token = new URLSearchParams(search).get("reset_token");
-
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  
   const resetPassword = async (e) => {
-    //e.preventDefault();
     let response;
+    let variant = "success";
+    let message = `Mot de passe réinitialisé !`;
     switch (user.identity) {
       case "company":
-        console.log("fetch company");
         response = await CompaniesAuthManager.resetPassword(
           password,
           email,
           reset_token
         );
         response = await CompaniesAuthManager.login(email, password);
+        enqueueSnackbar(message, { variant });
         response.status === 200
           ? dispatch(RegisterUserLoginStatus(response.data.user_id, "company"))
           : dispatch(RegisterUserLogoutStatus());
         break;
       case "user":
-        console.log("user");
         response = await UsersAuthManager.resetPassword(
           password,
           email,
           reset_token
         );
         response = await UsersAuthManager.login(email, password);
+        enqueueSnackbar(message, { variant });
         response.status === 200
           ? dispatch(RegisterUserLoginStatus(response.data.user_id, "user"))
           : dispatch(RegisterUserLogoutStatus());
         break;
       default:
-        console.log("hey");
     }
 
     history.push("/");
