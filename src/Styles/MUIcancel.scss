@@ -1,12 +1,27 @@
+@import './variables.scss';
+
 .css-2awovp-MuiCardContent-root:last-child {
   padding-bottom: 16px !important;
 }
 .css-k5d7cp-MuiCardContent-root:last-child {
   padding-bottom: 16px !important;
 }
-
 .css-1spq9as-MuiTypography-root {
   line-height: 1 !important;
   letter-spacing: 0.04em !important;
   padding-top: 0 !important;
+}
+.container__filter--group{
+  .MuiInputBase-root {
+    color: $white !important;
+  }
+}
+
+.container--form {
+  .css-1kty9di-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+    color: $purple !important;
+  }
+  .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: $purple !important;
+  }
 }

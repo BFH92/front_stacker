@@ -8,13 +8,6 @@ import { UserStacksContext } from "../../../Context/UserStacksContext";
 import ViewerStackManager from "../../../Services/RailsApi/ViewerStackManager ";
 import { useSelector } from "react-redux";
 
-
-const WhiteStyleChip = withStyles({
-  root: {
-    backgroundColor: "rgb(246, 247, 254)",
-  },
-})(Chip);
-
 const ChipsArray = () => {
   const { chipData } = useContext(UserStacksContext);
   const { setChipData } = useContext(UserStacksContext);
@@ -48,8 +41,9 @@ const ChipsArray = () => {
         {chipData.map((data) => {
           return (
             <li key={uuidv4()} className="chip--item">
-              <WhiteStyleChip
-                size="medium"
+              <Chip
+                variant="outlined"
+                color="secondary"
                 label={data.label}
                 onDelete={handleDelete(data)}
               />

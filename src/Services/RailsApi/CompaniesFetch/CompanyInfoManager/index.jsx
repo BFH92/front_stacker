@@ -6,6 +6,12 @@ const API = axios.create({ baseURL: API_URL });
 
 
 export default class CompanyInfoManager {
+  static async getAllCompanies(url, shorListIndex) {
+    const response = await API.get(
+      `${url}&short_list=${shorListIndex}`
+    );
+    return response;
+  };
   static async getDetails(id) {
     const authorizedConfig = {
       headers: {
