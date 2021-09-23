@@ -17,7 +17,7 @@ const SearchCompany = () => {
 
 
   useEffect(() => {
-    let urlParameters = [API_URL+ 'companies?']
+    let urlParameters = ['/companies?']
     if (staffSize)(urlParameters.push(`staff_size=${staffSize}`))
     if (filterStacks)(urlParameters.push(`stack=${filterStacks}`))
     if (categories)(urlParameters.push(`categories=${categories}`))
