@@ -95,6 +95,7 @@ export const EditUserForm = () => {
     <UserStacksContext.Provider
       value={{ chipData, setChipData, addUserStackAuthorization }}
     >
+      <Typography variant="h5" color="primary">Modifier son profil</Typography>
       <Card>
         <CardContent>
           <form

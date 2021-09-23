@@ -13,7 +13,7 @@ import ChipsArray from "../../FilterSystem/ChipsArray";
 //MaterialUI
 import { useTheme } from "@mui/material";
 import TextField from "@mui/material/TextField";
-import { Card, CardContent, Select } from "@material-ui/core";
+import { Card, CardContent, Select, Typography } from "@material-ui/core";
 import { MenuItem } from "@mui/material";
 import UIButton from "../../UIButton";
 import InputLabel from "@mui/material/InputLabel";
@@ -27,7 +27,7 @@ export const EditCompanyForm = () => {
   const [description, setDescription] = useState("");
   const [githubLink, setGithubLink] = useState("");
   const [staffSize, setStaffSize] = useState("");
-  const [isItRecruiting, setIsItRecruiting] = useState("");
+  const [isItRecruiting, setIsItRecruiting] = useState(null);
   const [websiteLink, setWebsiteLink] = useState("");
   const [chipData, setChipData] = useState([]);
 
@@ -87,7 +87,7 @@ export const EditCompanyForm = () => {
     setChipData(StackList);
   };
 
-  const updateCompanyDetails = async (e) => {
+  const updateCompanyDetails = async () => {
     //e.preventDefault();
     const response = await CompanyInfoManager.updateDetails(
       companyId,
@@ -101,10 +101,12 @@ export const EditCompanyForm = () => {
     );
     Promise.resolve(response);
     history.push(`/company/dashboard`);
+
   };
 
   return (
     <UserStacksContext.Provider value={{ chipData, setChipData }}>
+      <Typography variant="h5" color="primary">Modifier son profil</Typography>
       <Card>
         <CardContent>
           <form
@@ -206,10 +208,12 @@ export const EditCompanyForm = () => {
             </Select>
             {errors.staffSize && <p>{errors.staffSize.message}</p>}
             <Checkbox
-              value={isItRecruiting ? isItRecruiting : ""}
-              {...register("isItRecruiting", { required: true })}
-              onChange={() => setIsItRecruiting("salut")}
-              inputProps={{ "aria-label": "En Recrutement?" }}
+            
+            defaultChecked={isItRecruiting ? isItRecruiting : ""}
+              //value={isItRecruiting ? isItRecruiting : ""}
+              {...register("isItRecruiting")}
+              onChange={() => setIsItRecruiting(!!!isItRecruiting)}
+              
             />
             {errors.isItRecruiting && <p>{errors.isItRecruiting.message}</p>}
             <div className="container--cta">
