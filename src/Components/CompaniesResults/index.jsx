@@ -5,6 +5,7 @@ import CompanyPreview from './CompanyPreview';
 import ProgressCircle from '../Loaders/ProgressCircle';
 import CompanyInfoManager from '../../Services/RailsApi/CompaniesFetch/CompanyInfoManager';
 import UIButton from '../UIButton';
+import CustomTypography from '../CustomTypography';
 
 const ResultsCompanies = () => {
   const {url} = useContext(FilterContext);
@@ -60,25 +61,54 @@ const ResultsCompanies = () => {
       {companiesList ? (
         <div className="results__main--grid">        
           {/* <HeaderCompaniesResults company={companiesList}/> */}
-          <div className="results--all">
-            <ul className="all--items">
-              {companiesList && companiesList.map((company) => (
-                <li key={company.id} className="item">
-                  <CompanyPreview company={company}/>
-                </li>
-              ))}
-            </ul>          
-          </div>
-          <div className="container__center--btn">
-            <div className="center--btn">
+          {companiesList.length ? (
+            <>
+              <div className="results--all">
+                <ul className="all--items">
+                  {companiesList && companiesList.map((company) => (
+                    <li key={company.id} className="item">
+                      <CompanyPreview company={company}/>
+                    </li>
+                  ))}
+                </ul>          
+              </div>
+              <div className="container__center--btn">
+                <div className="center--btn">
+                  <UIButton
+                    content="Plus de résultats"
+                    color="primary"
+                    variant="contained"
+                    onClick={()=>{getNextList(shortListIndex)}}
+                  />
+                </div>
+              </div>
+            </>
+          ) : (
+            <div className="results--all">
+              <CustomTypography
+                color="text.secondary"
+                content="Aucune entreprise enregistrée chez nous ne correspond à tes résultats."
+              />
+              <CustomTypography
+                color="text.secondary"
+                content="Tu peux sauvegarder ta recherche et repasser plus tard si tu le souhaite."
+              />
               <UIButton
-                content="Plus de résultats"
+                sx={{ mt: 2.5 }}
                 color="primary"
                 variant="contained"
-                onClick={()=>{getNextList(shortListIndex)}}
+                size="small"
+                content="enregistrer ma recherche"
               />
-            </div>
+              <CustomTypography
+                sx={{ mt: 3 }}
+                color="primary"
+                variant="overline"
+                component="div"
+                content="À Bientôt!"
+              />
           </div>
+          )}
         </div>
       ) : (
         <div className="container__progress--circle">
