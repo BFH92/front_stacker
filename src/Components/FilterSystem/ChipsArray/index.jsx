@@ -51,8 +51,6 @@ const ChipsArray = () => {
             <li key={uuidv4()} className="chip--item">
               <WhiteStyleChip
                 size="medium"
-                variant="filled"
-                color="primary"
                 label={data.label}
                 onDelete={handleDelete(data)}
               />
