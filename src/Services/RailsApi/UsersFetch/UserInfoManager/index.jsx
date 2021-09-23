@@ -34,7 +34,6 @@ export default class UserInfoManager {
     description !== null ? data.append('description', description): data.append('first_name', "")
     github_link !== null ? data.append('github_link', github_link): data.append('first_name', "")
 
-    console.log(data)
     const response = await API.put(
         `/users/${id}`,
         data,

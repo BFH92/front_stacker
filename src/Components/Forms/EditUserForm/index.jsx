@@ -15,6 +15,7 @@ import { useTheme } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import UIButton from "../../UIButton";
 import { Card, CardContent, Typography } from "@material-ui/core";
+import { useSnackbar } from "notistack";
 
 export const EditUserForm = () => {
   const userId = useSelector((state) => state.user.id);
@@ -24,6 +25,8 @@ export const EditUserForm = () => {
   const [description, setDescription] = useState("");
   const [githubLink, setGithubLink] = useState("");
   const theme = useTheme();
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+
 
   const {
     register,
@@ -42,7 +45,6 @@ export const EditUserForm = () => {
 
   const getUserDetail = async () => {
     const detail = await UserInfoManager.getDetails(userId);
-    console.log(detail);
     setFirstName(detail.data.first_name);
     setLastName(detail.data.last_name);
     setDescription(detail.data.description);
@@ -77,6 +79,8 @@ export const EditUserForm = () => {
   const addUserStackAuthorization = true;
 
   const updateUserDetails = async (e) => {
+    let variant = "success";
+    let message = `Vos données ont été mises a jour !`;
     const response = await UserInfoManager.updateDetails(
       userId,
       firstName,
@@ -84,6 +88,7 @@ export const EditUserForm = () => {
       description,
       githubLink
     );
+    enqueueSnackbar(message, { variant });
     Promise.resolve(response);
     history.push(`/user/dashboard`);
   };

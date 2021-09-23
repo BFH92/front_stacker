@@ -21,7 +21,6 @@ const RecentSearch = () => {
 
   const getSavedSearches = async() => {
     const response = await SavedSearchesManager.getSavedSearchesOfCurrentUser()
-    console.log(response)
     setSavedSearches(response.data)
   }
 

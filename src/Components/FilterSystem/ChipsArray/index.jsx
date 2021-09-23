@@ -27,7 +27,6 @@ const ChipsArray = () => {
   useEffect(() => {
     let stackNames = new Set();
     chipData.map((element) => {
-      console.log(element);
       stackNames.add(element.label);
     });
     stackNames = Array.from(stackNames);
