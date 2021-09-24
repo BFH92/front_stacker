@@ -1,25 +1,28 @@
 @import "../../../Styles/variables.scss";
 
-.edit-container--form {
+.container__presentation {
+  position: sticky;
+  top: $padding * 2;
+}
+
+.dashboard--informations {
   display: grid;
-  place-items: center;
-  margin-bottom: 20px;
-  margin-left: 200px;
-  
+  grid-gap: $padding * 4;
+}
+
+.edit--container--form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: $padding * 2;
+
+  .item--input {
+    display: grid;
+    grid-gap: $padding / 2;
+  }
+
   .container--cta {
     margin-top: 30px;
     display: grid;
     place-items: center;
-  }
-  
+  }  
 }
-
-.container--chips{
-  display: flex;
-  justify-content: center;
-  width: 20vw;
-  padding: 12px;
-  border-radius: 5px;
-  background-color: $purple;
-}
-

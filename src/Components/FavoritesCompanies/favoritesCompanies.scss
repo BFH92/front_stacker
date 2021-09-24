@@ -1,0 +1,10 @@
+@import '../../Styles/variables.scss';
+
+.container__dashboard--favorites {
+
+  .dashboard--favorites {
+    display: grid;
+    grid-gap: $padding;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
