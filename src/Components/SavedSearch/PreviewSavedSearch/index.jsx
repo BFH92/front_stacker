@@ -15,8 +15,8 @@ import Chip from "@material-ui/core/Chip";
 import SavedSearchesManager from "../../../Services/RailsApi/SavedSearchesFetch";
 import { useSnackbar } from "notistack";
 import { FilterContext } from "../../../Context/FilterContext";
-import { useTheme } from '@material-ui/core';
-import Moment from 'react-moment';
+import { useTheme } from "@material-ui/core";
+import Moment from "react-moment";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -43,8 +43,8 @@ const PreviewSavedSearch = ({ data }) => {
   const OutlinedPurpleStyleChip = withStyles({
     root: {
       borderColor: theme.palette.grey[600],
-      color: theme.palette.primary.main
-    }
+      color: theme.palette.primary.main,
+    },
   })(Chip);
 
   const deleteSearchCard = (data_id) => async () => {
@@ -63,9 +63,6 @@ const PreviewSavedSearch = ({ data }) => {
       enqueueSnackbar(message, { variant });
     }
   };
-
-  console.log(data)
-
   const applySearch = () => () => {
     // variant could be success, error, warning, info, or default
     setStaffSize(data.staff_size);
@@ -102,10 +99,10 @@ const PreviewSavedSearch = ({ data }) => {
       <Card variant="outlined">
         <CardContent className="card--header">
           <Typography variant="body2" color="text.secondary">
-            <Moment date={data.created_at} fromNow/>
+            <Moment date={data.created_at} fromNow />
           </Typography>
         </CardContent>
-        <CardContent className="container__chips" sx={{ px: 2, py: 0}}>
+        <CardContent className="container__chips" sx={{ px: 2, py: 0 }}>
           {stacks &&
             stacks.map((stack) => {
               return (
@@ -117,8 +114,7 @@ const PreviewSavedSearch = ({ data }) => {
                   />
                 </li>
               );
-            })
-          }
+            })}
         </CardContent>
         <CardActions disableSpacing sx={{ px: 2, pb: 1.5 }}>
           <>
@@ -154,18 +150,14 @@ const PreviewSavedSearch = ({ data }) => {
             {data ? (
               <>
                 <Typography color="text.secondary" variant="body2">
-                  {data.staff_size ? (
-                    `Effectif Tech: ${data.staff_size}`
-                  ) : (
-                    "Effectif Tech: Tous"
-                  )}
+                  {data.staff_size
+                    ? `Effectif Tech: ${data.staff_size}`
+                    : "Effectif Tech: Tous"}
                 </Typography>
                 <Typography color="text.secondary" variant="body2">
-                  {data.company_category ? (
-                    `Type d'entreprise: ${data.company_category}`
-                  ) : (
-                    "Type d'entreprise: Toutes"
-                  )}
+                  {data.company_category
+                    ? `Type d'entreprise: ${data.category_name}`
+                    : "Type d'entreprise: Toutes"}
                 </Typography>
               </>
             ) : (
