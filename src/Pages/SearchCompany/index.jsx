@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './searchCompany.scss';
 import { FilterContext } from '../../Context/FilterContext';
 import SavedSearch from '../../Components/SavedSearch';

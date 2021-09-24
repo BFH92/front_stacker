@@ -1,0 +1,9 @@
+@import "../../Styles/variables.scss";
+
+.container__about--right {
+    color: $white;
+    display: -ms-inline-grid;
+    place-items: center;
+    max-width: 800px;
+    padding: $padding * 2;
+};
