@@ -2,7 +2,7 @@
   <p>
     <a href="https://www.thehackingproject.org/"><img src="https://i0.wp.com/chromebooklive.com/wp-content/uploads/2018/11/the_hacking_project_logo.png?resize=620%2C171&ssl=1" width="20%" alt="thp_tlogo"/></a>
   </p>
-  This App was brought to you for our final projet at The Hacking Project Bootcamp 😃, hit the logo for more infos!
+  This App was brought to you for our final projet at The Hacking Project Bootcamp 😃, hit the logo above for more infos!
 </div>
 </br></br>
 
@@ -13,9 +13,9 @@
 # Stacker.io
 
 ## Presentation:
-Stacker.io is an open source project made to help junior developpers to reach companies by there tech languages. Our goal is to
-fill the gap between new junior devs and confirmed devs in there journey to find there first job. 
-At first, users can visit our app looking up for companies registered in our database. After that, they are free to create an account to get more informations about companies (website, github, hiring and other intels) and also target there search by providing there own stack to get more targeted results.
+Stacker.io is an open source project made to help junior developers to reach companies by thier tech languages. Our goal is to
+fill the gap between new junior devs and confirmed devs in there journey to find their first job. 
+At first, users can visit our app looking up for companies registered in our database. After that, they are free to create an account to get more informations about companies (website, github, hiring and other intel) and also target their search by providing there own stack to get more targeted results.
 
 In the future we want to build a solid platform for junior devs and companies to reach out each other...
 
