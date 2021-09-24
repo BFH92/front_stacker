@@ -47,7 +47,7 @@ const Home = () => {
               borderColor: "white"
             }}
           >
-            découvrir stacker.io
+            découvrir
           </Button>
         </div>
       </div>
