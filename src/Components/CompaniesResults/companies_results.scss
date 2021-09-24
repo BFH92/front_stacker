@@ -6,7 +6,7 @@
   grid-template-rows: auto 1fr;
   grid-gap: $padding * 2;  
 
-  @include desktop-sm {    
+  @include desktop-sm {
     grid-area: 1 / 1 / 2 / 2;
   }
 
@@ -38,4 +38,9 @@
 .container__progress--circle {
   display: grid;
   place-items: center;
+}
+
+.container__center--btn {
+  display: grid;
+  justify-content: center;
 }

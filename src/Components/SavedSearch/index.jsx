@@ -2,10 +2,10 @@ import React, {useState, useEffect, useContext} from 'react';
 import './savedSearch.scss';
 import PreviewSavedSearch from './PreviewSavedSearch';
 import VisitorAlert from './VisitorAlert';
-import Typography from '@material-ui/core/Typography';
 import SavedSearchesManager from '../../Services/RailsApi/SavedSearchesFetch';
 import { FilterContext } from '../../Context/FilterContext';
 import { useSelector } from "react-redux";
+import NoSavedSearch from './NoSavedSearch';
 
 const RecentSearch = () => {
   const isLogged = useSelector(state => state.user.isLogged);
@@ -27,18 +27,21 @@ const RecentSearch = () => {
 
   return (
     <div className="container__recent--search">
-      <Typography variant="h5" color="primary">
+      {/* <Typography variant="h5" color="primary">
         Recherches enregistrées
-      </Typography>
-      
+      </Typography>       */}
       {isLogged ? (
         <div className="container__all--items">
         <ul className="all--items">
-          {savedSearches && savedSearches.map((savedSearch)=>
-          <li key={savedSearch.id} >
-           <PreviewSavedSearch data={savedSearch}/>
-           </li>
-          ) }
+          {savedSearches.length ? (
+            savedSearches && savedSearches.map((savedSearch) =>
+              <li key={savedSearch.id} >
+                <PreviewSavedSearch data={savedSearch}/>
+              </li>
+            )
+          ) : (
+            <NoSavedSearch/>
+          )}
         </ul>
       </div>
       ) : (

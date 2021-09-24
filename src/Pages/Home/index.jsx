@@ -53,10 +53,6 @@ const Home = () => {
         <Paper elevation={10} className="mask--color"></Paper>
         <div className="content--svg" ref={container}></div>
       </div>
-      <div className="container__infos--bottom">        
-        <Link href="https://github.com/BFH92/front_stacker" target="_blank" underline="none">GitHub Frontend</Link>
-        <Link href="https://github.com/BFH92/back_stacker" target="_blank" underline="none">GitHub Backend</Link>
-      </div>
     </div>
   );
 };

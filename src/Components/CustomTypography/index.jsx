@@ -12,6 +12,7 @@ const CustomTypography = (props) => {
       component={props.component}
       color={props.color}
       className={props.className}
+      sx={props.sx}
     >
       {props.content}
     </Typography>

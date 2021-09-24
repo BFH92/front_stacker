@@ -1,18 +1,17 @@
 import React, {useState, useEffect, useContext} from 'react';
 import './companies_results.scss';
-import HeaderCompaniesResults from './HeaderResultsCompanies';
+import { FilterContext } from '../../Context/FilterContext';
 import CompanyPreview from './CompanyPreview';
 import ProgressCircle from '../Loaders/ProgressCircle';
-import { CompaniesList} from '../../Services/RailsApi/CompaniesFetch/CompaniesDetailsManager';
-import { FilterContext } from '../../Context/FilterContext';
 import CompanyInfoManager from '../../Services/RailsApi/CompaniesFetch/CompanyInfoManager';
-import { List } from '@material-ui/core';
+import UIButton from '../UIButton';
+import CustomTypography from '../CustomTypography';
 
 const ResultsCompanies = () => {
   const {url} = useContext(FilterContext);
-
-  const [companiesList, setCompaniesList] = useState([])
-  const[shortListIndex, setShortListIndex] = useState(0)
+  const [companiesList, setCompaniesList] = useState([]);
+  const[shortListIndex, setShortListIndex] = useState(0);
+  let list = new Set();
 
   const getShortList = async(shorListIndex,idsList, itemList) => {  
     const response = await CompanyInfoManager.getAllCompanies(url, shorListIndex)
@@ -57,24 +56,59 @@ const ResultsCompanies = () => {
     
   }, [url]);
 
-
-
   return (
     <>
       {companiesList ? (
         <div className="results__main--grid">        
-          <HeaderCompaniesResults company={companiesList}/>
-          <div className="results--all">
-            <ul className="all--items">
-              {companiesList && companiesList.map((company) => (
-                <li key={company.id} className="item">
-                  <CompanyPreview company={company}/>
-                </li>
-              ))}
-            </ul>
-                
+          {/* <HeaderCompaniesResults company={companiesList}/> */}
+          {companiesList.length ? (
+            <>
+              <div className="results--all">
+                <ul className="all--items">
+                  {companiesList && companiesList.map((company) => (
+                    <li key={company.id} className="item">
+                      <CompanyPreview company={company}/>
+                    </li>
+                  ))}
+                </ul>          
+              </div>
+              <div className="container__center--btn">
+                <div className="center--btn">
+                  <UIButton
+                    content="Plus de résultats"
+                    color="primary"
+                    variant="contained"
+                    onClick={()=>{getNextList(shortListIndex)}}
+                  />
+                </div>
+              </div>
+            </>
+          ) : (
+            <div className="results--all">
+              <CustomTypography
+                color="text.secondary"
+                content="Aucune entreprise enregistrée chez nous ne correspond à tes résultats."
+              />
+              <CustomTypography
+                color="text.secondary"
+                content="Tu peux sauvegarder ta recherche et repasser plus tard si tu le souhaite."
+              />
+              <UIButton
+                sx={{ mt: 2.5 }}
+                color="primary"
+                variant="contained"
+                size="small"
+                content="enregistrer ma recherche"
+              />
+              <CustomTypography
+                sx={{ mt: 3 }}
+                color="primary"
+                variant="overline"
+                component="div"
+                content="À Bientôt!"
+              />
           </div>
-          <button onClick={()=>{getNextList(shortListIndex)}}> Next</button>
+          )}
         </div>
       ) : (
         <div className="container__progress--circle">
