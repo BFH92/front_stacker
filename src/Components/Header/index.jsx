@@ -1,21 +1,21 @@
 import React, { useEffect } from "react";
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import SVGTest from '../../../Assets/Svg/BinDelete';
-import '../DesktopHeader/header.scss';
+import './header.scss';
 import { useDispatch, useSelector} from "react-redux";
+import ThemeSwitch from './ThemeSwitch';
 import { createStyles, makeStyles } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import NavTabs from './NavTabs';
+import UserMenu from "./UserMenu";
+import VisitorMenu from './VisitorMenu';
 import { useHistory } from "react-router";
-import UsersAuthManager from "../../../Services/RailsApi/UsersFetch/UsersAuthManager";
-import { RegisterUserLogoutStatus } from "../../../Store";
-import CompaniesAuthManager from "../../../Services/RailsApi/CompaniesFetch/CompaniesAuthManager";
+import UsersAuthManager from "../../Services/RailsApi/UsersFetch/UsersAuthManager";
+import { RegisterUserLogoutStatus } from "../../Store";
+import CompaniesAuthManager from "../../Services/RailsApi/CompaniesFetch/CompaniesAuthManager";
+import NotificationDrawer from '../../Components/Header/NotificationDrawer';
+import UserSettingsDrawer from '../../Components/Header/UserSettingsDrawer';
+import CompanySettingsDrawer from '../../Components/Header/CompanySettingsDrawer';
 import { useSnackbar } from 'notistack';
-import NavTabsMobile from './NavTabsMobile';
-import NotificationDrawer from '../DesktopHeader/NotificationDrawer';
-import UserMenu from '../DesktopHeader/UserMenu';
-import VisitorMenu from '../DesktopHeader/VisitorMenu';
-import BurgerMenu from "./BurgerMenu";
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -42,7 +42,7 @@ const useStyles = makeStyles(() =>
   })
 );
 
-const MobileHeader = ({ user }) => {
+const Header = ({ user }) => {
   const isLogged = useSelector((state) => state.user.isLogged);
   const loggedAs = useSelector((state) => state.user.logged_as);
   const classes = useStyles();
@@ -68,25 +68,34 @@ const MobileHeader = ({ user }) => {
   useEffect(() => {    
     return () => {};
   }, [logged_as]);
-
+  
   return (
-    <AppBar position="static" className="desktop--mobile">
+    <AppBar position="static" className={classes.root}>
       <Toolbar>
-        <NavTabsMobile />
-          <div className={classes.grid_column_auto}>
-            {isLogged ? (
-              <div className={classes.grid_column_no_gap}>
-                <NotificationDrawer />
-                <UserMenu logout={logout}/>
-              </div>
-            ) : (
-              <VisitorMenu />
-              )}
-          </div>
-        <BurgerMenu />
+        <NavTabs />
+        <div className={classes.grid_column_auto}>        
+          {/* <ThemeSwitch /> */}
+          {isLogged ? (
+            <div className={classes.grid_column_no_gap}>
+              <NotificationDrawer />
+              {/* {loggedAs === "user" ?
+              (
+                <UserSettingsDrawer />
+              )
+              :
+              (
+                <CompanySettingsDrawer />
+              )
+              } */}
+              <UserMenu logout={logout}/>
+            </div>
+          ) : (
+            <VisitorMenu />
+          )}
+        </div>
       </Toolbar>
     </AppBar>
   );
 };
 
-export default MobileHeader;
+export default Header;

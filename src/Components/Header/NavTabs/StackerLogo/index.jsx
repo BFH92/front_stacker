@@ -1,5 +1,5 @@
 import React from "react";
-import StackerLogoWhite from "../../../../../Assets/Svg/StackerLogo/StackerLogoWhite";
+import StackerLogoWhite from "../../../../Assets/Svg/StackerLogo/StackerLogoWhite";
 import { Link } from "react-router-dom";
 
 const StackerLogo = () => {

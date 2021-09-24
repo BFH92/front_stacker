@@ -7,8 +7,8 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import ListItem from '@mui/material/ListItem';
 import IconButton from '@material-ui/core/IconButton';
-import Settings from '../../../../Assets/Svg/Header/Settings';
-import IconTest from '../../../../Assets/Svg/Login/StrokeLogin/DarkStrokeLogin';
+import Settings from '../../../Assets/Svg/Header/Settings';
+import IconTest from '../../../Assets/Svg/Login/StrokeLogin/DarkStrokeLogin';
 import Divider from '@mui/material/Divider';
 
 const CompanySettingsDrawer = () => {
