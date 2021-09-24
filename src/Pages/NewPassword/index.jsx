@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useHistory } from "react-router";
-//Redux
 import { useDispatch } from "react-redux";
 import { RegisterUserLoginStatus, RegisterUserLogoutStatus } from "../../Store";
 //Styles
@@ -24,7 +23,7 @@ const NewPassword = ({ user }) => {
   const search = useLocation().search;
   const reset_token = new URLSearchParams(search).get("reset_token");
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
-
+  
   const resetPassword = async (e) => {
     let response;
     let variant = "success";

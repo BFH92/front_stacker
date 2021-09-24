@@ -63,7 +63,7 @@ export const EditCompanyForm = () => {
     setIsItRecruiting(detail.data.is_it_recruiting);
     setWebsiteLink(detail.data.website_link);
     setCompanyCategoryId(detail.data.company_category_id);
-    getCompanyStacks(detail.data.company_stacks);
+    //getCompanyStacks(detail.data.company_stacks);
   };
 
   const getCompanyStacks = (list) => {
@@ -104,10 +104,9 @@ export const EditCompanyForm = () => {
     Promise.resolve(response);
     history.push(`/company/dashboard`);
   };
-  const addUserStackAuthorization = true;
 
   return (
-    <UserStacksContext.Provider value={{ chipData, setChipData, addUserStackAuthorization }}>
+    <UserStacksContext.Provider value={{ chipData, setChipData }}>
       <Typography variant="h5" color="primary">
         Modifier son profil
       </Typography>

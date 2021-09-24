@@ -13,7 +13,6 @@ const CustomTypography = (props) => {
       color={props.color}
       className={props.className}
       sx={props.sx}
-      align={props.align}
     >
       {props.content}
     </Typography>

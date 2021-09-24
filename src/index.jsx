@@ -7,8 +7,7 @@ import './Styles/variables.scss';
 import './Styles/main.scss';
 import './Styles/MUIcancel.scss';
 //Pages&Components
-import Header from './Components/Header/DesktopHeader';
-import MobileHeader from './Components/Header/MobileHeader';
+import Header from './Components/Header';
 import Home from './Pages/Home';
 import About from './Pages/About';
 import Stacks from './Pages/Stacks';
@@ -119,7 +118,6 @@ const App = () => {
             <Router>        
               <div className="container__all">
                 <Route path="/" render={() => <Header user={{isLogged, setIsLogged}} />} />
-                <Route path="/" render={() => <MobileHeader user={{isLogged, setIsLogged}} />} />  
                 <main className="container__main">
                   <Switch>
                     <Route path="/" exact render={() => <Home/>} />
