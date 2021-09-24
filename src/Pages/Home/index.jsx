@@ -36,10 +36,7 @@ const Home = () => {
             />
           </Typography>
           <Typography variant="body1" sx={{ mt: 3, mb: 5 }}>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos
-            blanditiis tenetur unde suscipit, quam beatae rerum inventore
-            consectetur, neque doloribus, cupiditate numquam dignissimos laborum
-            fugiat deleniti? Eum quasi quidem quibusdam.
+            Le site qui référence les entreprises selon leurs stacks techniques.
           </Typography>
           <UIButton
             color="inherit"
