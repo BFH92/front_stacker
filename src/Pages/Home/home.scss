@@ -39,11 +39,11 @@
       @include tablet-xs {
         width: 40%;
       }
-      @include tablet-xs {
+      @include tablet-pt {
         width: 45%;
       }      
       @include tablet-ls {
-        width: 60%;
+        width: 70%;
         transform: translateX(11%);
       }
     }
@@ -60,17 +60,18 @@
       }
       @include tablet-xs {
         position: absolute;
-        width: 150%;
+        width: 125%;
         aspect-ratio: 1/1;
         border-radius: 50%;
-        transform: translateY(30%);
+        transform: translateY(32%);
       }
       @include tablet-ls {
         position: absolute;
-        width: 175%;
+        width: 200%;
         aspect-ratio: 1/1;
         border-radius: 50%;
         left: 0;
+        transform: translateY(0%);
       }
     }
   }
