@@ -44,6 +44,7 @@ const UserSignIn = ({ user }) => {
     <div className="container__form--bg">
       <div className="container__form--all">
       <CustomTypography
+        align="center"
         className={"title--form"}
         color="primary"
         variant="h3"

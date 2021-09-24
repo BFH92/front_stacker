@@ -48,6 +48,7 @@ const CompanySignUp = ({user}) => {
           variant="h3"
           component="h1"
           content="Inscription Entreprise"
+          align="center"
         />
         <SignUpForm user={{ email, setEmail, password, setPassword, SignUp }} />
         <div className="container__links--all">

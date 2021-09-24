@@ -47,6 +47,7 @@ const CompanySignIn = ({ user }) => {
           variant="h3"
           component="h1"
           content="Connexion Entreprise"
+          align="center"
         />
         <SignInForm user={{ email, setEmail, password, setPassword, login }} />
         <div className="container__links--all">

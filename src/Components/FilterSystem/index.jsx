@@ -66,7 +66,7 @@ const FilterSystem = () => {
             <UIButton
               variant="outlined"
               size="small"
-              content="enregistrer"
+              content="enregistrer ma recherche"
               color="inherit"
               onClick={saveSearch}
             />
