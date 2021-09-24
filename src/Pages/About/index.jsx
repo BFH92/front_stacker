@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import lottie from "lottie-web";
 //styles
 import "./about.scss";
-import Aos from "aos";
-import "aos/dist/aos.css";
 //materialUI
 import Typography from "@mui/material/Typography";
 //Typewriter
@@ -13,10 +11,6 @@ import { Paper, Button } from "@material-ui/core";
 
 const About = () => {
   const container = useRef(null);
-
-  useEffect(() => {
-    Aos.init({});
-  }, []);
 
   useEffect(() => {
     lottie.loadAnimation({
@@ -37,47 +31,55 @@ const About = () => {
             <Typewriter
               onInit={(typewriter) => {
                 typewriter
-                  .typeString("répérer")
+                  .typeString("aider : ")
                   .pauseFor(2500)
                   .start()
                   .pauseFor(200)
-                  .deleteChars(7)
-                  .typeString("découvrir")
+                  .deleteChars(8)
+                  .typeString("accompagner :")
                   .pauseFor(2500)
                   .start()
                   .pauseFor(200)
-                  .deleteChars(9)
-                  .typeString("trouver");
+                  .deleteChars(14)
+                  .typeString("faire grandir :");
               }}
             />
           </Typography>
+
+          <br></br>
+          <br></br>
+          
+          <Typography variant="h2" component="h2">
+            Les autres, dans leurs recherches.
+          </Typography>
           <Typography variant="body1" sx={{ mt: 5, mb: 5 }}>
-            Stacker.io offre de naviguer des entreprises par leur Stack pour les
-            devlopeurs freelance ou en recherche d'emploi. <br />
-            En tant que devs en fin de formation, nous voulions rendre plus
-            souple et transparent le processus pour chacun de trouver sa niche
-            selon son expertise.
+          Développeurs, freelance ou salariés, qui veulent coller à la réalité du marché,
+          ESN ou cabinets de recrutement, qui veulent en connaître le potentiel : la recherche par Stack est un outil puissant ! 
+          Une recherche combinée des entreprises selon leurs stack avec le lieu, la type d'entreprise, 
+          la taille de l'équipe technique, permet de créer un paradigme novateur et efficace! Fini la chasse aux informations,
+          Stacker réunit tout au même endroit.
+
           </Typography>
           <Typography variant="h2" component="h2">
-            Pour Devs
+            Les entreprises par un référencement unique.
           </Typography>
           <Typography variant="body1" sx={{ mt: 5, mb: 5 }}>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos
-            blanditiis tenetur unde suscipit, quam beatae rerum inventore
-            consectetur, neque doloribus, cupiditate numquam dignissimos laborum
-            fugiat deleniti? Eum quasi quidem quibusdam.
+            Recherche de talents, entretien de son image employeur, les entreprises viennent présenter leur univers technique,
+             leur stack, leurs bonnes pratiques, signalent leur recherche active de profils, 
+             auprès d'une audience Tech qualifiée.
           </Typography>
           <Typography variant="h2" component="h2">
-            Pour Entreprise
+            Un projet  produit par tous et pour tous.
           </Typography>
           <Typography variant="body1" sx={{ mt: 5, mb: 5 }}>
-            Référencez-vous sur Stacker.io et faîtes découvrir vos atouts auprès
-            de nos milliers de développeurs.
+          100% Open-source, 100% collectif, Stacker a l'ambition de référencer 
+          toutes les entreprises du Monde selon ce paradigme, pour le bien de la communauté Tech. 
+          Un service gratuit pour vous et qui le sera toujours ! 
           </Typography>
           <div className="CTA--about">
             <Button
               component={Link}
-              to="/search/company"
+              to="/search"
               size="large"
               variant="outlined"
               style={{
@@ -85,7 +87,7 @@ const About = () => {
                 borderColor: "white",
               }}
             >
-              découvrir stacker.io
+              découvrir
             </Button>
           </div>
         </div>
