@@ -39,6 +39,16 @@
     }
   }
 
+
+  .container__about--right {
+    color: $white;
+    display: grid;
+    grid-column: span 2;
+    place-items: center;
+    max-width: 800px;
+    padding: $padding * 2;
+  };
+
   .container__home--right {
     position: relative;
     display: grid;

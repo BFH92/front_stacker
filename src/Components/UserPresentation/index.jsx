@@ -1,9 +1,8 @@
 import React from "react";
 //Styles
 import './userPresentation.scss'
-//components
+//Components
 import { EditUserForm } from "../Forms/EditUserForm";
-//MaterialUI
 
 const UserPresentation = () => {
   return (
