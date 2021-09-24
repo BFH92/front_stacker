@@ -1,12 +1,21 @@
 @import "../../Styles/variables.scss";
+@import "../../Styles/mixins.scss";
 
 .container__home {
   position: relative;
-  display: grid;
-  grid-template-columns: 4fr 3fr;
+  display: grid;  
   background-color: $purple;
   min-height: 100%;
-  overflow: hidden;
+
+  @include phone {    
+    grid-template-rows: auto;
+  }
+  @include tablet-xs {    
+    grid-template-rows: auto;
+  }
+  @include tablet-ls {    
+    grid-template-columns: 4fr 3fr;
+  }
 
   .container__home--left {
     color: $white;
@@ -23,17 +32,41 @@
     z-index: 888;
 
     .content--svg{
-      width: 60%;
-      transform: translateX(11%);
+      @include phone {
+        width: 60%;
+      }
+      @include tablet-xs {
+        width: 40%;
+      }
+      @include tablet-xs {
+        width: 45%;
+      }      
+      @include tablet-ls {
+        width: 60%;
+        transform: translateX(11%);
+      }
     }
 
-    .mask--color{
-      position: absolute;
-      width: 175%;
-      aspect-ratio: 1/1;
-      border-radius: 50%;
-      left: 0;
+    .mask--color {
       background-color: $light-grey;
+
+      @include phone {
+        position: absolute;
+        width: 150%;
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+        transform: translateY(30%);
+      }
+      @include tablet-xs {
+
+      }
+      @include tablet-ls {
+        position: absolute;
+        width: 175%;
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+        left: 0;
+      }
     }
   }
 }

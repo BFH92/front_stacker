@@ -1,14 +1,13 @@
 import React, { useEffect, useRef } from "react";
+import { Link } from 'react-router-dom';
 import lottie from "lottie-web";
 //styles
 import "./home.scss";
 //materialUI
 import Typography from "@mui/material/Typography";
-import Link from "@mui/material/Link";
+import { Paper, Button } from "@material-ui/core";
 //Typewriter
 import Typewriter from "typewriter-effect";
-import { Paper } from "@material-ui/core";
-import UIButton from "../../Components/UIButton";
 
 const Home = () => {
   const container = useRef(null);
@@ -38,12 +37,18 @@ const Home = () => {
           <Typography variant="body1" sx={{ mt: 3, mb: 5 }}>
             Le site qui référence les entreprises selon leurs stacks techniques.
           </Typography>
-          <UIButton
-            color="inherit"
+          <Button
+            component={Link}
+            to="/search/company"
             size="large"
             variant="outlined"
-            content="découvrir stacker.io"
-          />
+            style={{
+              color: "white",
+              borderColor: "white"
+            }}
+          >
+            découvrir stacker.io
+          </Button>
         </div>
       </div>
       <div className="container__home--right">
