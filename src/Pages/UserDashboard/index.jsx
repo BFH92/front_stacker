@@ -4,20 +4,20 @@ import "./userDashboard.scss";
 // Components
 import UserPresentation from "../../Components/UserPresentation";
 import FavoritesCompanies from "../../Components/FavoritesCompanies";
-//Material UI
-import { Typography } from "@material-ui/core";
+import CustomTypography from '../../Components/CustomTypography';
 
 const UserDashboard = () => {
   return (
-    <div className="">
-      <Typography
-        className="container__title-pane"
-        variant="h3"
-        color="primary"
-      >
-        Mon Dashboard
-      </Typography>
-      <div className="container__results--all">
+    <div className="container__dashboard--all">
+      <header className="dashboard--header">
+        <CustomTypography
+          variant="h3"
+          color="text.primary"
+          content="Mon Dashboard"
+          align="center"
+        />
+      </header>
+      <div className="container__dashboard">
         <UserPresentation />
         <FavoritesCompanies />
       </div>
