@@ -14,8 +14,8 @@
 
 ## Presentation:
 Stacker.io is an open source project made to help junior developpers to reach companies by there tech languages. Our goal is to
-fill the gap between new junior devs and confirmed devs in there journey to find there first job. 
-At first, users can visit our app looking up for companies registered in our database. After that, they are free to create an account to get more informations about companies (website, github, hiring and other intels) and also target there search by providing there own stack to get more targeted results.
+fill the gap between new junior devs and confirmed devs in their journey to find there first job. 
+At first, users can visit our app looking up for companies registered in our database. After that, they are free to create an account to get more informations about companies (website, github, hiring and other intels) and also target their search by providing there own Stack(Language and tool) to get more targeted results.
 
 In the future we want to build a solid platform for junior devs and companies to reach out each other...
 
