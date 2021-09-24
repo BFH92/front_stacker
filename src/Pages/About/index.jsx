@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import lottie from "lottie-web";
 //styles
 import "./about.scss";
-import Aos from "aos";
-import "aos/dist/aos.css";
 //materialUI
 import Typography from "@mui/material/Typography";
 //Typewriter
@@ -13,10 +11,6 @@ import { Paper, Button } from "@material-ui/core";
 
 const About = () => {
   const container = useRef(null);
-
-  useEffect(() => {
-    Aos.init({});
-  }, []);
 
   useEffect(() => {
     lottie.loadAnimation({
