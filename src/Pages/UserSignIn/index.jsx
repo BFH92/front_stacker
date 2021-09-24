@@ -19,7 +19,7 @@ const UserSignIn = ({ user }) => {
 
   const history = useHistory();
   const dispatch = useDispatch();
-  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  const { enqueueSnackbar} = useSnackbar();
 
   const login = async () => {
     try {
@@ -53,13 +53,9 @@ const UserSignIn = ({ user }) => {
           content="Connexion"
         />
         <SignInForm user={{ email, setEmail, password, setPassword, login }} />
-        <div className="container__links--all">        
-          <Link to="/user/sign-up">
-            Pas de compte ? S'inscrire
-          </Link>
-          <Link to="/user/settings/get-password">
-            Mot de passe oublié
-          </Link>
+        <div className="container__links--all">
+          <Link to="/user/sign-up">Pas de compte ? S'inscrire</Link>
+          <Link to="/user/settings/get-password">Mot de passe oublié</Link>
           <Link to="/company/sign-in">
             Vous êtes une entreprise ? Espace entreprise
           </Link>

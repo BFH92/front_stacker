@@ -36,6 +36,7 @@ const InputStacks = () => {
       StackList.push({ key: uuidv4(), label: stackName})
       if (addUserStackAuthorization && viewerLoggedAs !== "visitor")(ViewerStackManager.addViewerStack(stackName,viewerLoggedAs))
       if(setFilterStacks)(setFilterStacks(stackNames))
+      return('')
       })
       setChipData(StackList)
     }

@@ -6,7 +6,6 @@ import "./chipsArray.scss";
 import InputStacks from "./InputStacks";
 import ViewerStackManager from "../../../Services/RailsApi/ViewerStackManager ";
 import Chip from "@material-ui/core/Chip";
-import { withStyles } from "@material-ui/core/styles";
 
 const ChipsArray = () => {
   const { chipData } = useContext(UserStacksContext);

@@ -36,6 +36,7 @@ const SearchCompany = () => {
         let message = `Recherche sauvegardée!`;
         setSaveListener(saveListener + 1);
         enqueueSnackbar(message, { variant });
+        return response
       } catch (error) {
         let variant = "warning";
         let message = `Nous rencontrons une erreur la sauvegarde -> ${error}`;

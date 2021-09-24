@@ -17,7 +17,7 @@ import SendEmailLight from "../../../Assets/Svg/SendEmail/SendEmailLight";
 const CompanyPreview = ({ company }) => {
   const isLogged = useSelector(state => state.user.isLogged);
 
-  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  const { enqueueSnackbar} = useSnackbar();
   const handleClickVariant = (message, variant) => () => {
     // variant could be success, error, warning, info, or default
     enqueueSnackbar(message, { variant });
