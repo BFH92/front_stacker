@@ -20,7 +20,6 @@ const RecentSearch = () => {
   const getSavedSearches = async () => {
     const response = await SavedSearchesManager.getSavedSearchesOfCurrentUser();
     setSavedSearches(response.data);
-    console.log(response.data);
   };
 
   return (

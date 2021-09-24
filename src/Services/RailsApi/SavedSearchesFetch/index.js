@@ -15,9 +15,6 @@ export default class SavedSearchesManager {
       `/saved_searches`,
       authorized_config
     );
-    console.log("response")
-    console.log(response.data.length)
-    console.log("response")
     return response;
   };
 
