@@ -29,6 +29,7 @@ In the future we want to build a solid platform for junior devs and companies to
 ## Environment:
 
 ### Development:
+Find our back-end repo [here](https://github.com/BFH92/back_stacker). We suggest you set it up first, then:
 
 - run this command to clone this repository on your machine: `git clone https://github.com/BFH92/front_stacker.git`
 
