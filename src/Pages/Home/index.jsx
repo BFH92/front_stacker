@@ -39,7 +39,7 @@ const Home = () => {
           </Typography>
           <Button
             component={Link}
-            to="/search/company"
+            to="/search"
             size="large"
             variant="outlined"
             style={{
@@ -47,7 +47,7 @@ const Home = () => {
               borderColor: "white"
             }}
           >
-            découvrir stacker.io
+            découvrir
           </Button>
         </div>
       </div>
