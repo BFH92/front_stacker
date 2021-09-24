@@ -21,19 +21,11 @@ const NoSavedSearch = () => {
   return (
     <div className="recent--search--item">
       <Card variant="outlined">
-        <CardContent className="card--header">
+        <CardContent className="card--header" sx={{ pb: 0 }}>
           <Typography variant="body2" color="text.secondary">
             Tu n'as pas encore enregistré de recherches.
           </Typography>
         </CardContent>
-        <CardActions sx={{ px: 2, pb: 2}}>
-          <UIButton
-            variant="contained"
-            size="small"
-            color="primary"
-            content="Enregistrer ma recherche"
-          />
-        </CardActions>
       </Card>
     </div>
   );

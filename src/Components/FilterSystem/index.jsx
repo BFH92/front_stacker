@@ -8,12 +8,7 @@ import { FilterContext } from '../../Context/FilterContext';
 import { UserStacksContext } from '../../Context/UserStacksContext';
 import { useSelector } from "react-redux";
 
-const FilterSystem = () => {
-  const {setUrl}= useContext(FilterContext);
-  const {url}= useContext(FilterContext);
-
-  const isLogged = useSelector(state => state.user.isLogged);
-  
+const FilterSystem = () => {  
   const {chipData}= useContext(FilterContext);
   const {setChipData}= useContext(FilterContext);
   const {staffSize}= useContext(FilterContext);
@@ -22,9 +17,6 @@ const FilterSystem = () => {
   const {setCategories}= useContext(FilterContext);
   const {filterStacks}= useContext(FilterContext);
   const {setFilterStacks}= useContext(FilterContext);
-  const {setSaveListener} = useContext(FilterContext);
-  const {saveListener} = useContext(FilterContext);
-  const {categoryName} = useContext(FilterContext);
   const {setCategoryName} = useContext(FilterContext);
   const{saveSearch} = useContext(FilterContext);
 
@@ -52,7 +44,7 @@ const FilterSystem = () => {
             <UIButton
               variant="outlined"
               size="small"
-              content="enregistrer"
+              content="enregistrer ma recherche"
               color="inherit"
               onClick={saveSearch}
             />
