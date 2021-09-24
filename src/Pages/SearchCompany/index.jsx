@@ -5,6 +5,8 @@ import { FilterContext } from '../../Context/FilterContext';
 import FilterSystem from '../../Components/FilterSystem';
 import CompaniesResults from '../../Components/CompaniesResults';
 import SavedSearch from '../../Components/SavedSearch';
+import SavedSearchesManager from '../../Services/RailsApi/SavedSearchesFetch';
+import { useSnackbar } from 'notistack';
 
 const SearchCompany = () => {
   const [chipData, setChipData] = useState([]);
@@ -14,6 +16,22 @@ const SearchCompany = () => {
   const [categoryName, setCategoryName] = useState("");
   const [filterStacks, setFilterStacks] = useState("");
   const [saveListener, setSaveListener] = useState(0);
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+
+  const saveSearch = async() => {
+    try{
+      const response = await SavedSearchesManager.saveSearch(filterStacks, staffSize, categories, categoryName)
+      let variant = 'success'
+      let message = `Recherche sauvegardée!`
+      setSaveListener(saveListener+1)
+      enqueueSnackbar(message, { variant });
+    }catch(error){
+      let variant = 'warning'
+      let message = `Nous rencontrons une erreur la sauvegarde -> ${error}`
+      if (String(error).includes("401"))(message = `Vous devez vous connecter pour sauvegarder votre recherche.`)
+      enqueueSnackbar(message, { variant });
+    }
+  }
 
   useEffect(() => {
 
@@ -41,7 +59,8 @@ const SearchCompany = () => {
         saveListener, 
         setSaveListener,
         categoryName,
-        setCategoryName
+        setCategoryName,
+        saveSearch
       }}
     >
     <div className="container__search--companies">
