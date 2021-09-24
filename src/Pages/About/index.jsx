@@ -56,7 +56,7 @@ const About = () => {
           Développeurs, freelance ou salariés, qui veulent coller à la réalité du marché,
           ESN ou cabinets de recrutement, qui veulent en connaître le potentiel : la recherche par Stack est un outil puissant ! 
           Une recherche combinée des entreprises selon leurs stack avec le lieu, le type d'entreprise, 
-          la taille de l'équipe technique, permet de créer un paradigme novateur et efficace! Fini la chasse aux informations,
+          la taille de l'équipe technique, permet de créer un paradigme novateur et efficace. Fini la chasse aux informations,
           Stacker réunit tout au même endroit.
 
           </Typography>
