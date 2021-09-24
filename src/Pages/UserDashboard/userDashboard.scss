@@ -1,22 +1,22 @@
 @import '../../Styles/variables.scss';
+@import '../../Styles/mixins.scss';
 
-.container__user--dashboard {
-  height: 100%;
+.container__dashboard--all {
+  position: relative;
   display: grid;
-  grid-template-columns: 300px 1fr;
-
-  .container--right {
-    position: relative;
-    display: grid;
-    grid-template-rows: auto 1fr;
-    overflow-y: scroll;
-  }
+  grid-template-rows: auto 1fr;
+  padding: $padding * 2;
+  grid-gap: $padding * 2;
 }
 
-.container__presentation--all {
-  height: 100%;
+.container__dashboard {
   display: grid;
-  grid-template-columns: 1fr 300px;
   grid-gap: $padding * 2;
-  padding: $padding * 2;
+
+  @include phone {    
+    grid-template-columns: 1fr;
+  }
+  @include desktop-sm  {    
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

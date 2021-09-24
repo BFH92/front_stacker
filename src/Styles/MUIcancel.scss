@@ -37,3 +37,29 @@
 .css-hip9hq-MuiPaper-root-MuiAppBar-root {
   background-color: $purple !important;
 }
+.css-1kty9di-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+  color: $purple !important;
+}
+.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline,
+.css-dpjnhs-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: $purple !important;
+}
+
+.dashboard--informations {
+  .MuiFormLabel-colorSecondary.Mui-focused {
+    color: $purple !important;
+  }
+  .MuiOutlinedInput-colorSecondary.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: $purple !important;
+  }
+  .css-ptiqhd-MuiSvgIcon-root, .css-i4bv87-MuiSvgIcon-root {
+    fill: $purple !important;
+  }
+  .MuiChip-outlinedSecondary {
+    border-color: $purple !important;
+    color: $purple !important;
+  }
+  .MuiChip-deleteIconOutlinedColorSecondary {
+    color: $purple !important;
+  }
+}

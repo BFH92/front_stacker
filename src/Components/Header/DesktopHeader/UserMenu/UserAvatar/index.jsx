@@ -44,7 +44,7 @@ const UserAvatar = () => {
       variant="dot"
     >
       <Avatar>
-        A
+        
       </Avatar>
     </StyledBadge>      
   );
