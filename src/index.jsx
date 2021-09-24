@@ -12,6 +12,7 @@ import "./Styles/variables.scss";
 import "./Styles/main.scss";
 import "./Styles/MUIcancel.scss";
 //Pages&Components
+
 import Header from "./Components/Header/DesktopHeader";
 import MobileHeader from "./Components/Header/MobileHeader";
 import Home from "./Pages/Home";
@@ -22,6 +23,7 @@ import UserDashboard from "./Pages/UserDashboard";
 import CompanyDashboard from "./Pages/CompanyDashboard";
 import Notifications from "./Pages/Notifications";
 import Settings from "./Pages/Settings";
+
 import UserSignIn from "./Pages/UserSignIn";
 import UserSignUp from "./Pages/UserSignUp";
 import CompanySignIn from "./Pages/CompanySignIn";
@@ -123,6 +125,7 @@ const App = () => {
           <PersistGate loading={null} persistor={persistor}>
             <Router>
               <div className="container__all">
+
                 <Route
                   path="/"
                   render={() => <Header user={{ isLogged, setIsLogged }} />}
@@ -133,6 +136,7 @@ const App = () => {
                     <MobileHeader user={{ isLogged, setIsLogged }} />
                   )}
                 />
+
                 <main className="container__main">
                   <Switch>
                     <Route path="/" exact render={() => <Home />} />

@@ -1,22 +1,18 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router";
-import { Link } from "react-router-dom";
-// Styles
-import "./userSignIn.scss";
-// Components
 import SignInForm from "../../Components/Forms/SignInForm";
-import CustomTypography from "../../Components/CustomTypography";
-// Redux
 import UsersAuthManager from "../../Services/RailsApi/UsersFetch/UsersAuthManager";
+import { useHistory } from "react-router";
 import { useDispatch } from "react-redux";
 import { RegisterUserLoginStatus, RegisterUserLogoutStatus } from "../../Store";
-// Alerts
-import { useSnackbar } from "notistack";
+import { Link } from "react-router-dom";
+import { useSnackbar } from 'notistack';
+import './userSignIn.scss';
+import CustomTypography from "../../Components/CustomTypography";
 
 const UserSignIn = ({ user }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  
   const history = useHistory();
   const dispatch = useDispatch();
   const { enqueueSnackbar} = useSnackbar();
@@ -33,9 +29,12 @@ const UserSignIn = ({ user }) => {
     } catch (error) {
       let variant = "error";
       let message = `Oups, il y a un couac! -> ${error}`;
+
       if (String(error).includes("401"))
         message = `Diantre ! Ton email ou ton mot de passe n'est pas le bon !`;
+
       enqueueSnackbar(message, { variant });
+
       dispatch(RegisterUserLogoutStatus());
       history.push("/user/sign-in");
     }
@@ -44,6 +43,7 @@ const UserSignIn = ({ user }) => {
   return (
     <div className="container__form--bg">
       <div className="container__form--all">
+
         <CustomTypography
           align="center"
           className={"title--form"}
@@ -60,6 +60,7 @@ const UserSignIn = ({ user }) => {
             Vous êtes une entreprise ? Espace entreprise
           </Link>
         </div>
+
       </div>
     </div>
   );

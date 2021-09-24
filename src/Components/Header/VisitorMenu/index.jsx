@@ -5,8 +5,8 @@ import MenuItem from '@mui/material/MenuItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
-import DarkStrokeLogin from '../../../../Assets/Svg/Login/StrokeLogin/DarkStrokeLogin';
-import DarkStrokeSignUp from '../../../../Assets/Svg/SignUp/StrokeSignUp/DarkStrokeSignUp';
+import DarkStrokeLogin from '../../../Assets/Svg/Login/StrokeLogin/DarkStrokeLogin';
+import DarkStrokeSignUp from '../../../Assets/Svg/SignUp/StrokeSignUp/DarkStrokeSignUp';
 
 const UserMenu = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);

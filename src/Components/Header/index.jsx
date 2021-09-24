@@ -60,6 +60,7 @@ const Header = ({ user }) => {
     let message = `Vous avez été déconnecté avec succès`
     enqueueSnackbar(message, { variant });
     user.setIsLogged(false);
+
   };
 
   useEffect(() => {    

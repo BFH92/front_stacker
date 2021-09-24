@@ -24,7 +24,6 @@ export default class SavedSearchesManager {
         Accept:'application/json',
         Authorization: `Bearer ${Cookies.get("API_Authentication_token")}`,
     }};
-    
     let data = new FormData();
     data.append('staff_size', staff_size);
     data.append('company_category', company_category);

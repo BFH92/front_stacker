@@ -1,25 +1,20 @@
-import React, { useState, useEffect } from "react";
-import "./searchCompany.scss";
-import { API_URL } from "../../Config/API_URL";
-import { FilterContext } from "../../Context/FilterContext";
-//Components
-import CompaniesResults from "../../Components/CompaniesResults";
-import FilterSystem from "../../Components/FilterSystem";
-// API Managers
-import SavedSearch from "../../Components/SavedSearch";
-import SavedSearchesManager from "../../Services/RailsApi/SavedSearchesFetch";
-//Alerts
-import { useSnackbar } from "notistack";
+import React, { useState, useEffect } from 'react';
+import './searchCompany.scss';
+import { API_URL } from '../../Config/API_URL';
+import { FilterContext } from '../../Context/FilterContext';
+import FilterSystem from '../../Components/FilterSystem';
+import CompaniesResults from '../../Components/CompaniesResults';
+import SavedSearch from '../../Components/SavedSearch';
 
 const SearchCompany = () => {
   const [chipData, setChipData] = useState([]);
-  const [url, setUrl] = useState(API_URL + "companies?");
+  const [url, setUrl] = useState(API_URL + 'companies?');
   const [staffSize, setStaffSize] = useState("");
   const [categories, setCategories] = useState("");
   const [categoryName, setCategoryName] = useState("");
   const [filterStacks, setFilterStacks] = useState("");
   const [saveListener, setSaveListener] = useState(0);
-  const { enqueueSnackbar } = useSnackbar();
+
 
   const saveSearch = async () => {
     const existingSearchesQuota =
@@ -50,15 +45,17 @@ const SearchCompany = () => {
       enqueueSnackbar(message, { variant });
     }
   };
-  useEffect(() => {
-    let urlParameters = ["/companies?"];
-    if (staffSize) urlParameters.push(`staff_size=${staffSize}`);
-    if (filterStacks) urlParameters.push(`stack=${filterStacks}`);
-    if (categories) urlParameters.push(`categories=${categories}`);
-    urlParameters = urlParameters.join("&");
-    setUrl(urlParameters);
-  }, [filterStacks, staffSize, categories]);
 
+  useEffect(() => {
+
+    let urlParameters = ['/companies?']
+    if (staffSize)(urlParameters.push(`staff_size=${staffSize}`))
+    if (filterStacks)(urlParameters.push(`stack=${filterStacks}`))
+    if (categories)(urlParameters.push(`categories=${categories}`))
+    urlParameters = urlParameters.join("&")
+    setUrl(urlParameters)
+  }, [filterStacks, staffSize, categories]);
+  
   return (
     <FilterContext.Provider
       value={{
@@ -72,22 +69,21 @@ const SearchCompany = () => {
         setCategories,
         filterStacks,
         setFilterStacks,
-        saveListener,
+        saveListener, 
         setSaveListener,
         categoryName,
-        setCategoryName,
-        saveSearch,
+        setCategoryName
       }}
     >
-      <div className="container__search--companies">
-        <FilterSystem />
-        <div className="container--right">
-          <div className="container__results--all">
-            <SavedSearch />
-            <CompaniesResults />
-          </div>
+    <div className="container__search--companies">
+      <FilterSystem />
+      <div className="container--right">
+        <div className="container__results--all">
+          <SavedSearch />
+          <CompaniesResults/>
         </div>
       </div>
+    </div>
     </FilterContext.Provider>
   );
 };
