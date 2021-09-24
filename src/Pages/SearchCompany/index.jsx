@@ -11,6 +11,7 @@ const SearchCompany = () => {
   const [url, setUrl] = useState(API_URL + 'companies?');
   const [staffSize, setStaffSize] = useState("");
   const [categories, setCategories] = useState("");
+  const [categoryName, setCategoryName] = useState("");
   const [filterStacks, setFilterStacks] = useState("");
   const [saveListener, setSaveListener] = useState(0);
 
@@ -38,7 +39,9 @@ const SearchCompany = () => {
         filterStacks,
         setFilterStacks,
         saveListener, 
-        setSaveListener
+        setSaveListener,
+        categoryName,
+        setCategoryName
       }}
     >
     <div className="container__search--companies">

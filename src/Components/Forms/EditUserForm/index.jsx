@@ -24,6 +24,9 @@ export const EditUserForm = () => {
   const [lastName, setLastName] = useState("");
   const [description, setDescription] = useState("");
   const [githubLink, setGithubLink] = useState("");
+  const [chipData, setChipData] = useState([]);
+
+  const history = useHistory();
   const theme = useTheme();
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
@@ -65,7 +68,6 @@ export const EditUserForm = () => {
     getUserDetail();
   }, []);
 
-  const [chipData, setChipData] = useState([]);
 
   const addExistingStacks = (list) => {
     let StackList = [];
@@ -75,10 +77,9 @@ export const EditUserForm = () => {
     setChipData(StackList);
   };
 
-  const history = useHistory();
   const addUserStackAuthorization = true;
-
-  const updateUserDetails = async (e) => {
+  
+  const updateUserDetails = async () => {
     let variant = "success";
     let message = `Vos données ont été mises a jour !`;
     const response = await UserInfoManager.updateDetails(
@@ -111,7 +112,7 @@ export const EditUserForm = () => {
           >
             <div className="edit-container--form">
               <TextField
-                theme={theme}
+                focused
                 sx={{ mt: 3 }}
                 color="primary"
                 label="Prénom"
@@ -119,25 +120,23 @@ export const EditUserForm = () => {
                 {...register("firstname", {
                   required: "Renseigner votre prénom",
                 })}
-                size="small"
                 value={firstName ? firstName : ""}
                 onChange={(e) => setFirstName(e.target.value)}
               />
               {errors.firstname && <p>{errors.firstname.message}</p>}
               <TextField
-                theme={theme}
+                focused
                 sx={{ mt: 3 }}
                 color="primary"
                 label="Nom"
                 variant="outlined"
                 {...register("lastname", { required: "Renseigner votre Nom" })}
-                size="small"
                 value={lastName ? lastName : ""}
                 onChange={(e) => setLastName(e.target.value)}
               />
               {errors.lastname && <p>{errors.lastname.message}</p>}
               <TextField
-                theme={theme}
+                focused
                 sx={{ mt: 3 }}
                 color="primary"
                 label="Description"
@@ -149,27 +148,26 @@ export const EditUserForm = () => {
                   minLength: { value: 30, message: "Description trop courte" },
                   maxLength: { value: 120, message: "Description trop longue" },
                 })}
-                size="small"
                 value={description ? description : ""}
                 onChange={(e) => setDescription(e.target.value)}
               />
               {errors.description && <p>{errors.description.message}</p>}
               <TextField
-                theme={theme}
-                sx={{ mt: 3, mb: 4 }}
+                focused
+                sx={{ mt: 3 }}
                 color="primary"
                 label="Lien Github"
                 variant="outlined"
                 {...register("githubLink", {
                   required: "Lien Github requis",
                 })}
-                size="small"
                 value={githubLink ? githubLink : ""}
                 onChange={(e) => setGithubLink(e.target.value)}
               />
               {errors.githubLink && <p>{errors.githubLink.message}</p>}
               <div className="container__cta">
                 <UIButton
+                  sx={{ mt: 4}}
                   color="primary"
                   size="small"
                   variant="contained"

@@ -74,11 +74,11 @@ const Header = ({ user }) => {
       <Toolbar>
         <NavTabs />
         <div className={classes.grid_column_auto}>        
-          <ThemeSwitch />
+          {/* <ThemeSwitch /> */}
           {isLogged ? (
             <div className={classes.grid_column_no_gap}>
               <NotificationDrawer />
-              {loggedAs === "user" ?
+              {/* {loggedAs === "user" ?
               (
                 <UserSettingsDrawer />
               )
@@ -86,7 +86,7 @@ const Header = ({ user }) => {
               (
                 <CompanySettingsDrawer />
               )
-              }
+              } */}
               <UserMenu logout={logout}/>
             </div>
           ) : (

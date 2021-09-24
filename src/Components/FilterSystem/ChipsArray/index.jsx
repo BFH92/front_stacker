@@ -1,12 +1,12 @@
 import React, { useEffect, useContext } from "react";
+import { useSelector } from "react-redux";
+import { UserStacksContext } from "../../../Context/UserStacksContext";
+import { v4 as uuidv4 } from "uuid";
+import "./chipsArray.scss";
+import InputStacks from "./InputStacks";
+import ViewerStackManager from "../../../Services/RailsApi/ViewerStackManager ";
 import Chip from "@material-ui/core/Chip";
 import { withStyles } from "@material-ui/core/styles";
-import { v4 as uuidv4 } from "uuid";
-import InputStacks from "./InputStacks";
-import "./chipsArray.scss";
-import { UserStacksContext } from "../../../Context/UserStacksContext";
-import ViewerStackManager from "../../../Services/RailsApi/ViewerStackManager ";
-import { useSelector } from "react-redux";
 
 const ChipsArray = () => {
   const { chipData } = useContext(UserStacksContext);
@@ -37,20 +37,22 @@ const ChipsArray = () => {
   return (
     <div className="container__filter--group">
       <InputStacks />
-      <ul className="container__chips">
-        {chipData.map((data) => {
-          return (
-            <li key={uuidv4()} className="chip--item">
-              <Chip
-                variant="outlined"
-                color="secondary"
-                label={data.label}
-                onDelete={handleDelete(data)}
-              />
-            </li>
-          );
-        })}
-      </ul>
+      <div className="container__chips--all">
+        <ul className="container__chips">
+          {chipData.map((data) => {
+            return (
+              <li key={uuidv4()} className="chip--item">
+                <Chip
+                  variant="outlined"
+                  color="secondary"
+                  label={data.label}
+                  onDelete={handleDelete(data)}
+                />
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </div>
   );
 };

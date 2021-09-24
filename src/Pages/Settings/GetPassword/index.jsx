@@ -8,7 +8,7 @@ import { useSnackbar } from 'notistack';
 import { useHistory } from "react-router";
 
 //MaterialUI
-import Typography from "@mui/material/Typography";
+import CustomTypography from '../../../Components/CustomTypography';
 
 const GetPassword = (user) => {
   const [email, setEmail] = useState("");
@@ -36,13 +36,21 @@ const GetPassword = (user) => {
   return (
     <div className="container__form--bg">
       <div className="container__form--all">
-        <Typography className="title--form" variant="h3" color="secondary">
-          Réinitialiser mot de passe
-        </Typography>
-        <GetPasswordForm user={{ email, setEmail, sendPasswordInstructions }} />
+        <CustomTypography
+          className={"title--form"}
+          color="primary"
+          variant="h3"
+          component="h1"
+          content="Mot de passe oublié"
+        />
+        <GetPasswordForm user={{email, setEmail, sendPasswordInstructions}}/>
         <div className="container__links--all">
-          <Link to="/user/sign-up">Pas de compte ? S'inscrire</Link>
-          <Link to="/user/settings/get-password">Mot de passe oublié</Link>
+          <Link to="/user/sign-up">
+            Pas de compte ? S'inscrire
+          </Link>
+          <Link to="/user/settings/get-password">
+            Mot de passe oublié
+          </Link>
           <Link to="/company/sign-in">
             Vous êtes une entreprise ? Espace entreprise
           </Link>
