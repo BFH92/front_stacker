@@ -41,7 +41,7 @@ const CompanySignIn = ({ user }) => {
   return (
     <div className="company-container__form--bg">
       <div className="container__form--all">
-      <CustomTypography
+        <CustomTypography
           className={"title--form"}
           color="white"
           variant="h3"
@@ -52,9 +52,7 @@ const CompanySignIn = ({ user }) => {
         <div className="container__links--all">
           <Link to="/company/sign-up">Pas de compte ? S'inscrire</Link>
           <Link to="/user/settings/get-password">Mot de passe oublié</Link>
-          <Link to="/user/sign-in">
-          Se connecter en tant que développeur
-          </Link>
+          <Link to="/user/sign-in">Se connecter en tant que développeur</Link>
         </div>
       </div>
     </div>

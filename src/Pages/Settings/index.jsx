@@ -1,13 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 //styles
-import './settings.scss';
-//components
-
-
+import "./settings.scss";
 
 const Settings = () => {
-
   return (
     <div className="">
       <div className="container__title-pane">Settings</div>
