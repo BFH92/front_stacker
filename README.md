@@ -43,7 +43,7 @@ The app's URL in your browser will be http://localhost:3000/
 
 ### Production hosted on heroku:
 
-- Go to [Stacker](https://stacker-front.herokuapp.com) and find companies by there stack!
+- Go to [Stacker](https://stacker-front.herokuapp.com) and find companies by their stack!
 
 ## Stack:
 
