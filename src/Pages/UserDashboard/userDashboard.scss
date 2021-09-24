@@ -1,4 +1,5 @@
 @import '../../Styles/variables.scss';
+@import '../../Styles/mixins.scss';
 
 .container__dashboard--all {
   position: relative;
@@ -10,6 +11,12 @@
 
 .container__dashboard {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
   grid-gap: $padding * 2;
+
+  @include phone {    
+    grid-template-columns: 1fr;
+  }
+  @include desktop-sm  {    
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
