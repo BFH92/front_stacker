@@ -24,6 +24,19 @@
     place-items: center;
     max-width: 800px;
     padding: $padding * 2;
+
+    @include phone {    
+      grid-template-rows: auto;
+      h1{
+        font-size: 80px;
+      }
+    }
+    @include tablet-xs {    
+      grid-template-rows: auto;
+    }
+    @include tablet-ls {    
+      grid-template-columns: 4fr 3fr;
+    }
   }
 
   .container__home--right {
