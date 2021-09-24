@@ -162,7 +162,7 @@ const PreviewSavedSearch = ({ data }) => {
                 </Typography>
                 <Typography color="text.secondary" variant="body2">
                   {data.company_category ? (
-                    `Type d'entreprise: ${data.company_category}`
+                    `Type d'entreprise: ${data.category_name}`
                   ) : (
                     "Type d'entreprise: Toutes"
                   )}
