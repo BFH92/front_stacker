@@ -149,7 +149,7 @@ const PreviewSavedSearch = ({data}) => {
             {data?
             <>
             <Typography color="text.secondary" variant="body2">Effectif Tech: {data.staff_size}</Typography>
-            <Typography color="text.secondary" variant="body2">Type d'entreprise: {data.company_category}</Typography>
+            <Typography color="text.secondary" variant="body2">Type d'entreprise: {data.category_name}</Typography>
             </>
             :""}
         
