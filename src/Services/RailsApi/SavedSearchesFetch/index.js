@@ -18,7 +18,7 @@ export default class SavedSearchesManager {
     return response;
   };
 
-  static async saveSearch(stacks, staff_size, company_category) {
+  static async saveSearch(stacks, staff_size, company_category, category_name) {
     const authorized_config = {
       headers: {
         Accept:'application/json',
@@ -27,6 +27,7 @@ export default class SavedSearchesManager {
     let data = new FormData();
     data.append('staff_size', staff_size);
     data.append('company_category', company_category);
+    data.append('category_name', category_name);
     data.append('stacks', stacks);
   
     const response = await API.post(

@@ -26,12 +26,13 @@ const FilterSystem = () => {
   const {setFilterStacks}= useContext(FilterContext);
   const {setSaveListener} = useContext(FilterContext);
   const {saveListener} = useContext(FilterContext);
-  
+  const {categoryName} = useContext(FilterContext);
+  const {setCategoryName} = useContext(FilterContext);
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   const saveSearch = async() => {
     try{
-      const response = await SavedSearchesManager.saveSearch(filterStacks,staffSize,categories)
+      const response = await SavedSearchesManager.saveSearch(filterStacks, staffSize, categories, categoryName)
       let variant = 'success'
       let message = `Recherche sauvegardée!`
       setSaveListener(saveListener+1)
@@ -57,7 +58,7 @@ const FilterSystem = () => {
           <div className="grid__filter--groups">
             <ChipsArray/>
             <RadioButtonsGroup companies={{filter:"Effectifs",state:staffSize, setState:setStaffSize, value:staffSizeValues }}/>            
-            <RadioButtonsGroup companies={{filter:"Type d'entreprise",state:categories, setState:setCategories, value:categoriesValues }}/>
+            <RadioButtonsGroup companies={{filter:"Type d'entreprise",state:categories, setState:setCategories, value:categoriesValues, setName:setCategoryName }}/>
           </div>
         </div>
         <Divider />
