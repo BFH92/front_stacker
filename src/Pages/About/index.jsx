@@ -35,13 +35,13 @@ const About = () => {
                   .pauseFor(2500)
                   .start()
                   .pauseFor(200)
-                  .deleteChars(8)
-                  .typeString("accompagner :")
+                  .deleteChars(7)
+                  .typeString("accompagner : ")
                   .pauseFor(2500)
                   .start()
                   .pauseFor(200)
                   .deleteChars(14)
-                  .typeString("faire grandir :");
+                  .typeString("faire grandir : ");
               }}
             />
           </Typography>
