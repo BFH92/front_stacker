@@ -49,7 +49,7 @@ const App = () => {
 
   const UserAndVisitorRoute = ({ component: Component, ...rest }) => {
     const LoggedAs = useSelector((state) => state.user.logged_as);
-    const { enqueueSnackbar} = useSnackbar();
+    const { enqueueSnackbar } = useSnackbar();
     if (LoggedAs === "company") {
       let variant = "warning";
       let message = `Il faut te connecter à un compte développeur pour continuer !`;
@@ -70,7 +70,7 @@ const App = () => {
   };
   const CompanyRoute = ({ component: Component, ...rest }) => {
     const LoggedAs = useSelector((state) => state.user.logged_as);
-    const { enqueueSnackbar} = useSnackbar();
+    const { enqueueSnackbar } = useSnackbar();
     if (LoggedAs !== "company") {
       let variant = "warning";
       let message = `Un compte entreprise est nécessaire pour continuer`;
