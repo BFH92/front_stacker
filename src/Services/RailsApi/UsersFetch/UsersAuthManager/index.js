@@ -2,7 +2,6 @@ import { API_URL } from "../../../../Config/API_URL";
 import axios from "axios";
 import { registerToken } from "../../../../Helpers/API_Helper/RegisterToken";
 import Cookies from "js-cookie";
-import { useSnackbar } from 'notistack';
 
 const API = axios.create({ baseURL: API_URL });
 
@@ -35,7 +34,7 @@ export default class UsersAuthManager {
       config
     );
     let token = await response.headers.authorization;
-    console.log(response);
+
 
     token ? registerToken(token) : Cookies.set("isLogged?", "false");
     return response;
@@ -51,7 +50,6 @@ export default class UsersAuthManager {
   }
   static async logout() {
     const cookie = Cookies.get("API_Authentication_token")
-    console.log(cookie);
     const authorizedConfig =  {
       headers: {
         "Content-Type": "application/json",
@@ -59,7 +57,7 @@ export default class UsersAuthManager {
       },
     };
     const response = await API.delete("/users/sign_out", authorizedConfig);
-    console.log(response);
+    
     Cookies.remove("API_Authentication_token");
     return response;
   }

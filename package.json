@@ -2,7 +2,8 @@
   "name": "front_stacker",
   "version": "0.1.0",
   "engines": {
-    "node": "14.17.5"
+    "node": "14.17.5",
+    "npm": "7.21.1"
   },
   "private": true,
   "dependencies": {
@@ -20,11 +21,13 @@
     "axios": "^0.21.4",
     "js-cookie": "^3.0.1",
     "lottie-web": "^5.7.13",
+    "moment": "^2.29.1",
     "node-sass": "^4.14.1",
     "notistack": "^1.0.10",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.15.4",
+    "react-moment": "^1.1.1",
     "react-redux": "^7.2.5",
     "react-router": "^5.2.1",
     "react-router-dom": "^5.3.0",
@@ -41,7 +44,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "heroku-postbuild": "npm run build"
   },
   "eslintConfig": {
     "extends": [

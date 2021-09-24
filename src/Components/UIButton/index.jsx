@@ -15,6 +15,7 @@ const UIButton = (props) => {
       onClick={props.onClick}
       href={props.href}
       target={props.target}
+      sx={props.sx}
     >
       {props.content}
     </Button>

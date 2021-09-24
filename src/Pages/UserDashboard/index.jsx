@@ -1,16 +1,27 @@
-import React from 'react';
-import './userDashboard.scss';
-import UserPresentation from '../../Components/UserPresentation';
-import FavoritesCompanies from '../../Components/FavoritesCompanies';
+import React from "react";
+// Styles
+import "./userDashboard.scss";
+// Components
+import UserPresentation from "../../Components/UserPresentation";
+import FavoritesCompanies from "../../Components/FavoritesCompanies";
+//Material UI
+import CustomTypography from '../../Components/CustomTypography'
 
 const UserDashboard = () => {
   return (
-    <div className="">
-      <div className="container__title-pane">Mon Dashboard</div>
-        <div className="container__results--all">
-          <UserPresentation/>
-          <FavoritesCompanies/>
-        </div>
+    <div className="container__dashboard--all">
+      <header className="dashboard--header">
+        <CustomTypography
+          variant="h3"
+          color="text.primary"
+          content="Mon Dashboard"
+          align="center"
+        />
+      </header>
+      <div className="container__dashboard">
+        <UserPresentation />
+        <FavoritesCompanies />
+      </div>
     </div>
   );
 };

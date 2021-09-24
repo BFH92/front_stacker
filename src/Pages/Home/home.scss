@@ -16,6 +16,16 @@
     padding: $padding * 2;
   }
 
+
+  .container__about--right {
+    color: $white;
+    display: grid;
+    grid-column: span 2;
+    place-items: center;
+    max-width: 800px;
+    padding: $padding * 2;
+  };
+
   .container__home--right {
     position: relative;
     display: grid;
@@ -34,19 +44,6 @@
       border-radius: 50%;
       left: 0;
       background-color: $light-grey;
-    }
-  }
-
-  .container__infos--bottom {
-    position: absolute;
-    display: grid;
-    grid-auto-flow: column;
-    grid-gap: $padding * 2;
-    bottom: $padding * 2;
-    left: $padding * 2;
-
-    & * {
-      color: $white !important;
     }
   }
 }

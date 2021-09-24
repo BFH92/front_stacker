@@ -1,12 +1,65 @@
-.css-2awovp-MuiCardContent-root:last-child {
-  padding-bottom: 16px !important;
-}
+@import './variables.scss';
+
+.css-2awovp-MuiCardContent-root:last-child,
+.css-1d6y1ul-MuiCardContent-root:last-child,
 .css-k5d7cp-MuiCardContent-root:last-child {
   padding-bottom: 16px !important;
 }
-
 .css-1spq9as-MuiTypography-root {
   line-height: 1 !important;
   letter-spacing: 0.04em !important;
   padding-top: 0 !important;
+}
+.css-h0aycp-MuiTypography-root,
+.css-yldr27-MuiTypography-root {
+  line-height: 1 !important;
+}
+.container__filter--group{
+  .MuiInputBase-root {
+    color: $white !important;
+  }
+}
+.container--form {
+  .css-1kty9di-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+    color: $purple !important;
+  }
+  .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: $purple !important;
+  }
+}
+.css-ptiqhd-MuiSvgIcon-root,
+.css-i4bv87-MuiSvgIcon-root {
+  fill: $white !important;
+}
+.makeStyles-grid_column_no_gap-4 {
+  grid-gap: $padding;
+}
+.css-hip9hq-MuiPaper-root-MuiAppBar-root {
+  background-color: $purple !important;
+}
+.css-1kty9di-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+  color: $purple !important;
+}
+.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline,
+.css-dpjnhs-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: $purple !important;
+}
+
+.dashboard--informations {
+  .MuiFormLabel-colorSecondary.Mui-focused {
+    color: $purple !important;
+  }
+  .MuiOutlinedInput-colorSecondary.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: $purple !important;
+  }
+  .css-ptiqhd-MuiSvgIcon-root, .css-i4bv87-MuiSvgIcon-root {
+    fill: $purple !important;
+  }
+  .MuiChip-outlinedSecondary {
+    border-color: $purple !important;
+    color: $purple !important;
+  }
+  .MuiChip-deleteIconOutlinedColorSecondary {
+    color: $purple !important;
+  }
 }

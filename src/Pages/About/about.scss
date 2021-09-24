@@ -2,7 +2,8 @@
 
 .container__about--right {
     color: $white;
-    display: -ms-inline-grid;
+    display: grid;
+    grid-column: span 2;
     place-items: center;
     max-width: 800px;
     padding: $padding * 2;

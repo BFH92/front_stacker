@@ -13,8 +13,6 @@ import UsersAuthManager from "../../Services/RailsApi/UsersFetch/UsersAuthManage
 import { RegisterUserLogoutStatus } from "../../Store";
 import CompaniesAuthManager from "../../Services/RailsApi/CompaniesFetch/CompaniesAuthManager";
 import NotificationDrawer from '../../Components/Header/NotificationDrawer';
-import UserSettingsDrawer from '../../Components/Header/UserSettingsDrawer';
-import CompanySettingsDrawer from '../../Components/Header/CompanySettingsDrawer';
 import { useSnackbar } from 'notistack';
 
 const useStyles = makeStyles(() =>
@@ -62,7 +60,6 @@ const Header = ({ user }) => {
     let message = `Vous avez été déconnecté avec succès`
     enqueueSnackbar(message, { variant });
     user.setIsLogged(false);
-    history.push("/");
   };
 
   useEffect(() => {    
@@ -74,11 +71,11 @@ const Header = ({ user }) => {
       <Toolbar>
         <NavTabs />
         <div className={classes.grid_column_auto}>        
-          <ThemeSwitch />
+          {/* <ThemeSwitch /> */}
           {isLogged ? (
             <div className={classes.grid_column_no_gap}>
               <NotificationDrawer />
-              {loggedAs === "user" ?
+              {/* {loggedAs === "user" ?
               (
                 <UserSettingsDrawer />
               )
@@ -86,7 +83,7 @@ const Header = ({ user }) => {
               (
                 <CompanySettingsDrawer />
               )
-              }
+              } */}
               <UserMenu logout={logout}/>
             </div>
           ) : (

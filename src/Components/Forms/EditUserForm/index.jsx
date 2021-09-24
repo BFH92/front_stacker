@@ -3,23 +3,33 @@ import { useForm } from "react-hook-form";
 import { useHistory } from "react-router";
 import { useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
+//Styles
+import "./edit_user_form.scss";
 //Components
-import UserInfoManager from "../../../Services/RailsApi/UsersFetch/UserInfoManager";
 import ChipsArray from "../../FilterSystem/ChipsArray";
+import CustomTypography from "../../CustomTypography";
+//Services
+import UserInfoManager from "../../../Services/RailsApi/UsersFetch/UserInfoManager";
 import { UserStacksContext } from "../../../Context/UserStacksContext";
 //MaterialUI
 import { useTheme } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import UIButton from "../../UIButton";
+import { Card, CardContent, Divider } from "@material-ui/core";
+import { useSnackbar } from "notistack";
 
 export const EditUserForm = () => {
   const userId = useSelector((state) => state.user.id);
-  console.log(userId);
+  
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [description, setDescription] = useState("");
   const [githubLink, setGithubLink] = useState("");
+  const [chipData, setChipData] = useState([]);
+
+  const history = useHistory();
   const theme = useTheme();
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   const {
     register,
@@ -38,7 +48,6 @@ export const EditUserForm = () => {
 
   const getUserDetail = async () => {
     const detail = await UserInfoManager.getDetails(userId);
-    console.log(detail);
     setFirstName(detail.data.first_name);
     setLastName(detail.data.last_name);
     setDescription(detail.data.description);
@@ -59,8 +68,6 @@ export const EditUserForm = () => {
     getUserDetail();
   }, []);
 
-  const [chipData, setChipData] = useState([]);
-
   const addExistingStacks = (list) => {
     let StackList = [];
     list.map((stack) => {
@@ -69,10 +76,11 @@ export const EditUserForm = () => {
     setChipData(StackList);
   };
 
-  const history = useHistory();
   const addUserStackAuthorization = true;
-
-  const updateUserDetails = async (e) => {
+  
+  const updateUserDetails = async () => {
+    let variant = "success";
+    let message = `Vos données ont été mises a jour !`;
     const response = await UserInfoManager.updateDetails(
       userId,
       firstName,
@@ -80,18 +88,28 @@ export const EditUserForm = () => {
       description,
       githubLink
     );
+    enqueueSnackbar(message, { variant });
     Promise.resolve(response);
     history.push(`/user/dashboard`);
   };
 
   return (
     <UserStacksContext.Provider
-      value={{ chipData, setChipData, addUserStackAuthorization }}
+      value={{ 
+        chipData,
+        setChipData,
+        addUserStackAuthorization
+      }}
     >
-      <div>
-        <h3>Modifier ma présentation</h3>
-        <div className="form__container--user">
-          <form
+      <Card variant="outlined">
+        <CustomTypography
+          variant="h5"
+          content="Mes informations"
+          sx={{ p: 2.5 }}
+        />
+        <Divider />
+        <CardContent className="dashboard--informations">
+          <form className="edit--container--form"
             onSubmit={handleSubmit(updateUserDetails)}
             onClick={() => {
               setValue("firstname", firstName);
@@ -100,73 +118,111 @@ export const EditUserForm = () => {
               setValue("githubLink", githubLink);
             }}
           >
-            <TextField
-              theme={theme}
-              color="primary"
-              label="Prénom"
-              variant="outlined"
-              {...register("firstname", {
-                required: "Renseigner votre prénom",
-              })}
-              size="small"
-              value={firstName ? firstName : ""}
-              onChange={(e) => setFirstName(e.target.value)}
-            />
-            {errors.firstname && <p>{errors.firstname.message}</p>}
-            <TextField
-              theme={theme}
-              color="primary"
-              label="Nom"
-              variant="outlined"
-              {...register("lastname", { required: "Renseigner votre Nom" })}
-              size="small"
-              value={lastName ? lastName : ""}
-              onChange={(e) => setLastName(e.target.value)}
-            />
-            {errors.lastname && <p>{errors.lastname.message}</p>}
-            <TextField
-              theme={theme}
-              color="primary"
-              label="Description"
-              variant="outlined"
-              multiline
-              maxRows={5}
-              {...register("description", {
-                required: "Description requise",
-                minLength: { value: 30, message: "Description trop courte" },
-                maxLength: { value: 120, message: "Description trop longue" },
-              })}
-              size="small"
-              value={description ? description : ""}
-              onChange={(e) => setDescription(e.target.value)}
-            />
-            {errors.description && <p>{errors.description.message}</p>}
-            <TextField
-              theme={theme}
-              color="primary"
-              label="Lien Github"
-              variant="outlined"
-              {...register("githubLink", {
-                required: "Lien Github requis",
-              })}
-              size="small"
-              value={githubLink ? githubLink : ""}
-              onChange={(e) => setGithubLink(e.target.value)}
-            />
-            {errors.githubLink && <p>{errors.githubLink.message}</p>}
-            <UIButton
-              color="primary"
-              size="small"
-              variant="contained"
-              content="Sauvegarder"
-              type="submit"
-            />
+            <div className="item--input">
+              <TextField
+                focused
+                color="primary"
+                label="Prénom"
+                variant="outlined"
+                {...register("firstname", {
+                  required: "Renseigner votre prénom",
+                })}
+                value={firstName ? firstName : ""}
+                onChange={(e) => setFirstName(e.target.value)}
+              />
+              {errors.firstname &&
+                <>
+                  <CustomTypography
+                    content={errors.firstname.message}
+                    variant="body2"
+                    color="error"
+                  />
+                </>
+              }
+            </div>
+            <div className="item--input">
+              <TextField
+                focused
+                color="primary"
+                label="Nom"
+                variant="outlined"
+                {...register("lastname", { required: "Renseigner votre Nom" })}
+                value={lastName ? lastName : ""}
+                onChange={(e) => setLastName(e.target.value)}
+              />
+              {errors.lastname &&
+                <>
+                  <CustomTypography
+                    content={errors.lastname.message}
+                    variant="body2"
+                    color="error"
+                  />
+                </>
+              }
+            </div>
+            <div className="item--input">
+              <TextField
+                focused
+                color="primary"
+                label="Lien Github"
+                variant="outlined"
+                {...register("githubLink", {
+                  required: "Lien Github requis",
+                })}
+                value={githubLink ? githubLink : ""}
+                onChange={(e) => setGithubLink(e.target.value)}
+              />
+              {errors.githubLink &&
+                <>
+                  <CustomTypography
+                    content={errors.githubLink.message}
+                    variant="body2"
+                    color="error"
+                  />
+                </>
+              }
+            </div>
+            <div className="item--input">
+              <TextField
+                focused
+                color="primary"
+                label="Description"
+                variant="outlined"
+                multiline
+                maxRows={5}
+                {...register("description", {
+                  required: "Description requise",
+                  minLength: { value: 30, message: "Description trop courte" },
+                  maxLength: { value: 120, message: "Description trop longue" },
+                })}
+                value={description ? description : ""}
+                onChange={(e) => setDescription(e.target.value)}
+              />
+              {errors.description &&
+                <>
+                  <CustomTypography
+                    content={errors.description.message}
+                    variant="body2"
+                    color="error"
+                  />
+                </>
+              }
+            </div>
+            <div className="container__cta">
+              <UIButton
+                color="primary"
+                size="small"
+                variant="contained"
+                content="Sauvegarder"
+                type="submit"
+              />
+            </div>
           </form>
-          <div>
+          <div className="container--chips">
             <ChipsArray />
           </div>
-        </div>
-      </div>
+        </CardContent>
+      </Card>
     </UserStacksContext.Provider>
   );
 };

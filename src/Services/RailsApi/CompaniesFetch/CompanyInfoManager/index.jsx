@@ -6,6 +6,12 @@ const API = axios.create({ baseURL: API_URL });
 
 
 export default class CompanyInfoManager {
+  static async getAllCompanies(url, shorListIndex) {
+    const response = await API.get(
+      `${url}&short_list=${shorListIndex}`
+    );
+    return response;
+  };
   static async getDetails(id) {
     const authorizedConfig = {
       headers: {
@@ -28,9 +34,8 @@ export default class CompanyInfoManager {
     github_link, 
     staff_size, 
     is_it_recruiting,
-    website_link
-    //company_category_id, 
-    //, stack
+    website_link,
+    company_category_id
     ){
     const authorizedConfig = {
         headers: {
@@ -45,10 +50,10 @@ export default class CompanyInfoManager {
     data.append('staff_size', staff_size);
     data.append('is_it_recruiting', is_it_recruiting);
     data.append('website_link', website_link);
-    //data.append('company_category_id', company_category_id);
-    //data.append('stack', stack);
+    data.append('company_category_id', company_category_id);
+    
 
-    console.log(data)
+    
     const response = await API.put(
         `/companies/${id}`,
         data,

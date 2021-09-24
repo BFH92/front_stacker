@@ -1,12 +1,12 @@
-import React from 'react';
-import StackResults from '../../Components/StacksResults';
+import React from "react";
+
+import StackResults from "../../Components/StacksResults";
 
 const Stacks = () => {
-
   return (
     <div className="">
       <div className="container__title-pane">Stacks</div>
-      <StackResults/>
+      <StackResults />
     </div>
   );
 };

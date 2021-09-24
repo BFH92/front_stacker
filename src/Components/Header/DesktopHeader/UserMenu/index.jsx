@@ -1,26 +1,31 @@
 import * as React from 'react';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+//MaterialUI
 import Box from '@mui/material/Box';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
+//Components
 import UserAvatar from './UserAvatar';
-import DarkStrokeDashboard from '../../../Assets/Svg/Dashboard/StrokeDashboard/DarkStrokeDashboard';
-import DarkStrokeLogout from '../../../Assets/Svg/Logout/StrokeLogout/DarkStrokeLogout';
-import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux';
+//Assets
+import DarkStrokeDashboard from '../../../../Assets/Svg/Dashboard/StrokeDashboard/DarkStrokeDashboard';
+import DarkStrokeLogout from '../../../../Assets/Svg/Logout/StrokeLogout/DarkStrokeLogout';
 
 const UserMenu = ({ logout }) => {
   const logged_as = useSelector(state=> state.user.logged_as)
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
   };
+  
   return (
     <React.Fragment>
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
@@ -63,19 +68,19 @@ const UserMenu = ({ logout }) => {
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
         {logged_as ===  "user" ?
-        (<MenuItem to="/user/dashboard" component={Link}>        
-          <ListItemIcon>
-            <DarkStrokeDashboard fontSize="small" />
-          </ListItemIcon>  
-          Mon dashboard
-        </MenuItem> )
+          (<MenuItem to="/user/dashboard" component={Link}>        
+            <ListItemIcon>
+              <DarkStrokeDashboard fontSize="small" />
+            </ListItemIcon>  
+            Mon dashboard
+          </MenuItem> )
         :
-        (<MenuItem to="/company/dashboard" component={Link}>
-          <ListItemIcon>
-            <DarkStrokeDashboard fontSize="small" />
-          </ListItemIcon>  
-        Dashboard entreprise
-        </MenuItem>)
+          (<MenuItem to="/company/dashboard" component={Link}>
+            <ListItemIcon>
+              <DarkStrokeDashboard fontSize="small" />
+            </ListItemIcon>  
+            Dashboard entreprise
+          </MenuItem>)
         }
         <Divider />
         {/* <MenuItem to="/user/notifications" component={Link}>

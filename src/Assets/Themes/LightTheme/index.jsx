@@ -5,6 +5,9 @@ const LightTheme = createTheme({
     primary: {
       main: 'rgb(92, 30, 226)',
     },
+    secondary: {
+      main: '#fff',
+    },
     success: {
       main: 'rgb(76, 175, 80)',
     }

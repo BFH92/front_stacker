@@ -1,0 +1,26 @@
+@import '../../Styles/variables.scss';
+@import '../../Styles/mixins.scss';
+
+.container__dashboard--favorites {
+
+  .dashboard--favorites {
+    display: grid;
+    grid-gap: $padding;
+
+    @include phone {    
+      grid-template-columns: 1fr;
+    }
+    @include tablet-xs {    
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include tablet-ls {    
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @include desktop-sm  {    
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include desktop-lg {    
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}

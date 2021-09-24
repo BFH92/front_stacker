@@ -8,8 +8,8 @@ import Avatar from '@mui/material/Avatar';
 import ListItem from '@mui/material/ListItem';
 import Divider from '@mui/material/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import Settings from '../../../Assets/Svg/Header/Settings';
-import IconTest from '../../../Assets/Svg/Login/StrokeLogin/DarkStrokeLogin';
+import Settings from '../../../../Assets/Svg/Header/Settings';
+import IconTest from '../../../../Assets/Svg/Login/StrokeLogin/DarkStrokeLogin';
 
 const UserSettingsDrawer = () => {
   const [state, setState] = useState(false);

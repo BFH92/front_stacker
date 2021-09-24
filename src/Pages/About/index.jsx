@@ -1,33 +1,25 @@
 import React, { useEffect, useRef } from "react";
-import lottie from 'lottie-web';
+import lottie from "lottie-web";
 //styles
 import "./about.scss";
-import Aos from 'aos';
-import "aos/dist/aos.css";
 //materialUI
 import Typography from "@mui/material/Typography";
-import Link from "@mui/material/Link";
 //Typewriter
 import Typewriter from "typewriter-effect";
 import { Paper } from "@material-ui/core";
 import UIButton from "../../Components/UIButton";
-
 
 const About = () => {
   const container = useRef(null);
 
   useEffect(() => {
     lottie.loadAnimation({
-     container: container.current,
-     renderer: "svg",
-     loop: true,
+      container: container.current,
+      renderer: "svg",
+      loop: true,
       autoplay: true,
       animationData: require("../../Assets/Svg/Animation/stacker2.json"),
     });
-  }, []);
-
-  useEffect(() => {
-    Aos.init({ duration: 1000 });
   }, []);
 
   return (
@@ -63,7 +55,7 @@ const About = () => {
       <div className="content--svg" ref={container}></div>
     </div>
 
-    <div className="container__home--left">
+    <div className="container__about--right">
       <div className="content--text">
       <Typography variant="h2" component="h2">Pour Devs</Typography>
         <Typography variant="body1" sx={{ mt: 5, mb: 5 }}>
@@ -75,23 +67,23 @@ const About = () => {
       </div>
     </div>
 
-    <div className="container__home--left">
+    <div className="container__about--right">
       <div className="content--text">
       <Typography variant="h2" component="h2">Pour Entreprise</Typography>
         <Typography variant="body1" sx={{ mt: 5, mb: 5 }}>
         Référencez-vous sur Stacker.io et faîtes découvrir vos atouts auprès de nos milliers de développeurs.
         </Typography>
       </div>
-       <div className="container__home--left">
-          <UIButton
-            color="inherit"
-            size="large"
-            variant="outlined"
-            content="découvrir stacker.io"
-          />
-        </div>
-      </div>
+      <div className="container__home--left">
+      <UIButton
+        color="inherit"
+        size="large"
+        variant="outlined"
+        content="découvrir stacker.io"
+      />
     </div>
+    </div>
+  </div>
   );
 };
 

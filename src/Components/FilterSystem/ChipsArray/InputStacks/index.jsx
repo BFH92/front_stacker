@@ -36,6 +36,7 @@ const InputStacks = () => {
       StackList.push({ key: uuidv4(), label: stackName})
       if (addUserStackAuthorization && viewerLoggedAs !== "visitor")(ViewerStackManager.addViewerStack(stackName,viewerLoggedAs))
       if(setFilterStacks)(setFilterStacks(stackNames))
+      return('')
       })
       setChipData(StackList)
     }
@@ -57,8 +58,8 @@ const InputStacks = () => {
         sx={{ width: 250 }}
         renderInput={(params) => (
           <TextField
+            focused
             {...params}
-            focused 
             label="Liste des Stacks"
             variant="outlined"
             color="secondary"

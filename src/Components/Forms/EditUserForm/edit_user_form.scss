@@ -1,43 +1,33 @@
 @import "../../../Styles/variables.scss";
+@import "../../../Styles/mixins.scss";
 
-.form__container--company {
-  display: flex;
-  justify-content: center;
-  margin: 8% 8% 8% 3%;
-  padding: 10%;
+.container__presentation {
+  position: sticky;
+  top: $padding * 2;
+}
 
-  label {
-    color: $blue;
-    font-weight: 600;
-    font-size: $font-size * 2;
-    text-align: center;
+.dashboard--informations {
+  display: grid;
+  grid-gap: $padding * 4;
+}
+
+.edit--container--form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: $padding * 2;
+
+  @include phone {    
+    grid-template-columns: 1fr;
   }
 
-  input {
-    display: flex;
-    height: 50px;
-    margin-bottom: 20px;
-    border: solid 3px $blue;
-    border-radius: 10px;
-    padding: $padding;
-  }
-  
-  button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: $white;
-    width: 65%;
-    height: 10%;
-    background-color: $blue;
-    border-radius: 10px;
-    font-size: 1.2rem;
+  .item--input {
+    display: grid;
+    grid-gap: $padding / 2;
   }
 
-  button:hover {
-    background: $white;
-    color: $blue;
-    border-radius: 12.5px;
-    transition: all 0.2s ease-out;
-  }
+  .container--cta {
+    margin-top: 30px;
+    display: grid;
+    place-items: center;
+  }  
 }
