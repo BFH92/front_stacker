@@ -18,7 +18,7 @@ const UserSignUp = ({ user }) => {
   const [password, setPassword] = useState("");
   const history = useHistory();
   const dispatch = useDispatch();
-  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  const { enqueueSnackbar} = useSnackbar();
 
   const SignUp = async (e) => {
     try {

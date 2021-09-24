@@ -27,12 +27,13 @@ const ResultsCompanies = () => {
       data.map((companyData) => {
         idsList.add(companyData.id);
         itemList.push(companyData);
+        return("")
       });
     }
     idsList = Array.from(idsList);
     let array_list = [];
     idsList.map((id) =>
-      array_list.push(itemList.find((element) => element.id == id))
+      array_list.push(itemList.find((element) => element.id === id))
     );
     setCompaniesList(array_list);
   };
@@ -42,6 +43,7 @@ const ResultsCompanies = () => {
     companiesList.map((company) => {
       idsList.add(company.id);
       itemList.push(company);
+      return("")
     });
     ListIndex = ListIndex + 1;
     getShortList(ListIndex, idsList, itemList);

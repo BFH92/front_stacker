@@ -15,7 +15,7 @@ import CustomTypography from "../../../Components/CustomTypography";
 
 const GetPassword = (user) => {
   const [email, setEmail] = useState("");
-  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  const { enqueueSnackbar} = useSnackbar();
   const history = useHistory();
 
   const sendPasswordInstructions = async () => {
