@@ -1,0 +1,84 @@
+@import "../../Styles/variables.scss";
+@import "../../Styles/mixins.scss";
+
+.container__about {
+  position: relative;
+  display: grid;  
+  background-color: $purple;
+  min-height: 100%;
+  overflow: hidden;
+
+  @include phone {    
+    grid-template-rows: auto;
+  }
+  @include tablet-xs {    
+    grid-template-rows: auto;
+  }
+  @include tablet-ls {    
+    grid-template-columns: 4fr 3fr;
+  }
+
+  .container__about--left {
+    color: $white;
+    display: grid;
+    align-items: flex-start;
+    place-items: center;
+    max-width: 800px;
+    padding: $padding * 2;
+  }
+
+  .CTA--about{
+      display: flex;
+      align-items: flex-start;
+  }
+
+  .container__aboutsvg--right {
+    position: relative;
+    display: grid;
+    place-items: center;
+    z-index: 888;
+
+    .content--svg--about{
+        @include phone {
+            width: 60%;
+        }
+        @include tablet-xs {
+            width: 40%;
+        }
+        @include tablet-pt {
+            width: 45%;
+        }      
+        @include tablet-ls {
+            width: 70%;
+            transform: translateX(11%);
+        }
+    }
+
+    .mask--color--about {
+        background-color: $light-grey;
+
+        @include phone {
+          position: absolute;
+          width: 150%;
+          aspect-ratio: 1/1;
+          border-radius: 50%;
+          transform: translateY(30%);
+        }
+        @include tablet-xs {
+          position: absolute;
+          width: 125%;
+          aspect-ratio: 1/1;
+          border-radius: 50%;
+          transform: translateY(32%);
+        }
+        @include tablet-ls {
+          position: absolute;
+          width: 200%;
+          aspect-ratio: 1/1;
+          border-radius: 50%;
+          left: 0;
+          transform: translateY(0%);
+        }
+    }
+  }
+}
