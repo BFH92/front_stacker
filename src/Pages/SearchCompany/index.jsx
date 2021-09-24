@@ -16,23 +16,29 @@ const SearchCompany = () => {
   const [categoryName, setCategoryName] = useState("");
   const [filterStacks, setFilterStacks] = useState("");
   const [saveListener, setSaveListener] = useState(0);
-  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  const { enqueueSnackbar } = useSnackbar();
 
   const saveSearch = async() => {
-    try{
-      const response = await SavedSearchesManager.saveSearch(filterStacks, staffSize, categories, categoryName)
-      let variant = 'success'
-      let message = `Recherche sauvegardée!`
-      setSaveListener(saveListener+1)
-      enqueueSnackbar(message, { variant });
-    }catch(error){
+    const existingSearchesQuota =  await SavedSearchesManager.getSavedSearchesOfCurrentUser()
+    if (existingSearchesQuota && existingSearchesQuota.data.length < 5){
+      try{
+        const response = await SavedSearchesManager.saveSearch(filterStacks, staffSize, categories, categoryName)
+        let variant = 'success'
+        let message = `Recherche sauvegardée!`
+        setSaveListener(saveListener+1)
+        enqueueSnackbar(message, { variant });
+      }catch(error){
+        let variant = 'warning'
+        let message = `Nous rencontrons une erreur la sauvegarde -> ${error}`
+        if (String(error).includes("401"))(message = `Vous devez vous connecter pour sauvegarder votre recherche.`)
+        enqueueSnackbar(message, { variant });
+      }
+    }else{
       let variant = 'warning'
-      let message = `Nous rencontrons une erreur la sauvegarde -> ${error}`
-      if (String(error).includes("401"))(message = `Vous devez vous connecter pour sauvegarder votre recherche.`)
+      let message = `Tu peux sauvegarder que 5 recherches max ! `
       enqueueSnackbar(message, { variant });
     }
   }
-
   useEffect(() => {
 
     let urlParameters = ['/companies?']

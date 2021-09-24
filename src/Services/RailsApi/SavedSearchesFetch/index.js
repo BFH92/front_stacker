@@ -15,6 +15,9 @@ export default class SavedSearchesManager {
       `/saved_searches`,
       authorized_config
     );
+    console.log("response")
+    console.log(response.data.length)
+    console.log("response")
     return response;
   };
 
@@ -24,6 +27,7 @@ export default class SavedSearchesManager {
         Accept:'application/json',
         Authorization: `Bearer ${Cookies.get("API_Authentication_token")}`,
     }};
+    
     let data = new FormData();
     data.append('staff_size', staff_size);
     data.append('company_category', company_category);
