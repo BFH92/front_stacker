@@ -82,8 +82,16 @@ const About = () => {
         Référencez-vous sur Stacker.io et faîtes découvrir vos atouts auprès de nos milliers de développeurs.
         </Typography>
       </div>
+       <div className="container__home--left">
+          <UIButton
+            color="inherit"
+            size="large"
+            variant="outlined"
+            content="découvrir stacker.io"
+          />
+        </div>
+      </div>
     </div>
-  </div>
   );
 };
 
