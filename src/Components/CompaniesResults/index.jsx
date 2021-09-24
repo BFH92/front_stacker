@@ -34,7 +34,6 @@ const ResultsCompanies = () => {
     idsList.map((id) =>
       array_list.push(itemList.find((element) => element.id == id))
     );
-    console.log(array_list);
     setCompaniesList(array_list);
   };
   const getNextList = (ListIndex) => {
