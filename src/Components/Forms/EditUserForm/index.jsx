@@ -109,7 +109,8 @@ export const EditUserForm = () => {
         />
         <Divider />
         <CardContent className="dashboard--informations">
-          <form className="edit--container--form"
+          <form
+            className="edit--container--form"
             onSubmit={handleSubmit(updateUserDetails)}
             onClick={() => {
               setValue("firstname", firstName);

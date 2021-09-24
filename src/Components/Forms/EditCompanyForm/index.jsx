@@ -10,11 +10,13 @@ import CompanyInfoManager from "../../../Services/RailsApi/CompaniesFetch/Compan
 //components
 import { UserStacksContext } from "../../../Context/UserStacksContext";
 import ChipsArray from "../../FilterSystem/ChipsArray";
+import CustomTypography from "../../CustomTypography";
 //MaterialUI
 import TextField from "@mui/material/TextField";
+import FormControlLabel from '@mui/material/FormControlLabel';
 import UIButton from "../../UIButton";
 import { useTheme } from "@mui/material";
-import { Card, CardContent, Select, Typography } from "@material-ui/core";
+import { Card, CardContent, Select, Divider } from "@material-ui/core";
 import { MenuItem } from "@mui/material";
 import InputLabel from "@mui/material/InputLabel";
 import Checkbox from "@mui/material/Checkbox";
@@ -108,13 +110,16 @@ export const EditCompanyForm = () => {
 
   return (
     <UserStacksContext.Provider value={{ chipData, setChipData, addUserStackAuthorization }}>
-      <Typography variant="h5" color="primary">
-        Modifier son profil
-      </Typography>
-      <Card>
-        <CardContent>
+      <Card variant="outlined">
+        <CustomTypography
+          variant="h5"
+          content="Informations"
+          sx={{ p: 2.5 }}
+        />
+        <Divider />
+        <CardContent className="dashboard--informations">
           <form
-            className="edit-form__container--company"
+            className="edit--container--form"
             onClick={() => {
               setValue("name", name);
               setValue("description", description);
@@ -126,126 +131,197 @@ export const EditCompanyForm = () => {
             }}
             onSubmit={handleSubmit(updateCompanyDetails)}
           >
-            <TextField
-              theme={theme}
-              sx={{ mt: 3 }}
-              color="primary"
-              label="Nom"
-              focused
-              variant="outlined"
-              {...register("name", {
-                required: "Nom d'entreprise requis",
-              })}
-              size="small"
-              value={name ? name : ""}
-              onChange={(e) => setName(e.target.value)}
-            />
-            {errors.name && <p>{errors.name.message}</p>}
-            <TextField
-              theme={theme}
-              sx={{ mt: 3 }}
-              focused
-              color="primary"
-              label="Description"
-              helperText="30 minimum"
-              multiline
-              maxRows={5}
-              variant="outlined"
-              {...register("description", {
-                required: "Description requise",
-                minLength: { value: 30, message: "Description trop courte" },
-                maxLength: { value: 120, message: "Description trop longue" },
-              })}
-              size="small"
-              value={description ? description : ""}
-              onChange={(e) => setDescription(e.target.value)}
-            />
-            {errors.description && <p>{errors.description.message}</p>}
-            <TextField
-              theme={theme}
-              sx={{ mt: 3 }}
-              focused
-              color="primary"
-              label="Lien Github"
-              variant="outlined"
-              {...register("githubLink", {
-                required: "Lien Github requis",
-              })}
-              size="small"
-              value={githubLink ? githubLink : ""}
-              onChange={(e) => setGithubLink(e.target.value)}
-            />
-            {errors.githubLink && <p>{errors.githubLink.message}</p>}
-            <TextField
-              theme={theme}
-              sx={{ mt: 3 }}
-              color="primary"
-              focused
-              label="Site Internet"
-              variant="outlined"
-              {...register("websiteLink", {
-                required: "Lien requis",
-                pattern: {
-                  value:
-                    /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/gi,
-                  message: "Format invalide",
-                },
-              })}
-              size="small"
-              value={websiteLink ? websiteLink : ""}
-              onChange={(e) => setWebsiteLink(e.target.value)}
-            />
-            {errors.websiteLink && <p>{errors.websiteLink.message}</p>}
-            <InputLabel id="Effectif">Effectif</InputLabel>
-            <Select
-              theme={theme}
-              sx={{ mt: 3 }}
-              labelId="Effectif"
-              color="primary"
-              label="Effectif"
-              variant="outlined"
-              {...register("staffSize", {
-                required: "Effectif requis",
-              })}
-              size="large"
-              value={staffSize ? staffSize : ""}
-              onChange={(e) => setStaffSize(e.target.value)}
-            >
-              <MenuItem value="0-9">0-9</MenuItem>
-              <MenuItem value="10-49">10-49</MenuItem>
-              <MenuItem value="50-249">50-249</MenuItem>
-              <MenuItem value="250+">250+</MenuItem>
-            </Select>
-            {errors.staffSize && <p>{errors.staffSize.message}</p>}
-            <InputLabel id="Effectif">Type</InputLabel>
-            <Select
-              theme={theme}
-              sx={{ mt: 3 }}
-              labelId="Type"
-              color="primary"
-              label="Type"
-              variant="outlined"
-              {...register("companyCategoryId", {
-                required: "Type requis",
-              })}
-              size="large"
-              value={companyCategoryId ? companyCategoryId : null}
-              onChange={(e) => setCompanyCategoryId(e.target.value)}
-            >
-              <MenuItem value={1}>startup</MenuItem>
-              <MenuItem value={2}>classic</MenuItem>
-              <MenuItem value={3}>it-services</MenuItem>
-              <MenuItem value={4}>web-agency</MenuItem>
-              <MenuItem value={5}>big-tech-agency</MenuItem>
-            </Select>
-            {errors.companyCategory && <p>{errors.companyCategory.message}</p>}
-            <Checkbox
-              defaultChecked={isItRecruiting ? isItRecruiting : ""}
-              //value={isItRecruiting ? isItRecruiting : ""}
-              {...register("isItRecruiting")}
-              onChange={() => setIsItRecruiting(!!!isItRecruiting)}
-            />
-            {errors.isItRecruiting && <p>{errors.isItRecruiting.message}</p>}
+            <div className="item--input">
+              <TextField
+                theme={theme}
+                sx={{ mt: 3 }}
+                color="primary"
+                label="Nom"
+                focused
+                variant="outlined"
+                {...register("name", {
+                  required: "Nom d'entreprise requis",
+                })}
+                value={name ? name : ""}
+                onChange={(e) => setName(e.target.value)}
+              />
+              {errors.name &&
+                <>
+                  <CustomTypography
+                    content={errors.name.message}
+                    variant="body2"
+                    color="error"
+                  />
+                </>
+              }
+            </div>
+            <div className="item--input">            
+              <TextField
+                theme={theme}
+                sx={{ mt: 3 }}
+                focused
+                color="primary"
+                label="Description"
+                multiline
+                maxRows={5}
+                variant="outlined"
+                {...register("description", {
+                  required: "Description requise",
+                  minLength: { value: 30, message: "Description trop courte" },
+                  maxLength: { value: 120, message: "Description trop longue" },
+                })}
+                value={description ? description : ""}
+                onChange={(e) => setDescription(e.target.value)}
+              />
+              {errors.description &&
+                <>
+                  <CustomTypography
+                    content={errors.description.message}
+                    variant="body2"
+                    color="error"
+                  />
+                </>
+              }
+            </div>
+            <div className="item--input">            
+              <TextField
+                theme={theme}
+                sx={{ mt: 3 }}
+                focused
+                color="primary"
+                label="Lien Github"
+                variant="outlined"
+                {...register("githubLink", {
+                  required: "Lien Github requis",
+                })}
+                value={githubLink ? githubLink : ""}
+                onChange={(e) => setGithubLink(e.target.value)}
+              />
+              {errors.githubLink &&
+                <>
+                  <CustomTypography
+                    content={errors.githubLink.message}
+                    variant="body2"
+                    color="error"
+                  />
+                </>
+              }
+            </div>
+            <div className="item--input">            
+              <TextField
+                theme={theme}
+                sx={{ mt: 3 }}
+                color="primary"
+                focused
+                label="Site Internet"
+                variant="outlined"
+                {...register("websiteLink", {
+                  required: "Lien requis",
+                  pattern: {
+                    value:
+                      /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/gi,
+                    message: "Format invalide",
+                  },
+                })}
+                value={websiteLink ? websiteLink : ""}
+                onChange={(e) => setWebsiteLink(e.target.value)}
+              />
+              {errors.websiteLink &&
+                <>
+                  <CustomTypography
+                    content={errors.websiteLink.message}
+                    variant="body2"
+                    color="error"
+                  />
+                </>
+              }
+            </div>
+            <div className="item--input">
+              <InputLabel id="Effectif">Effectif</InputLabel>
+              <Select
+                theme={theme}
+                sx={{ mt: 3 }}
+                labelId="Effectif"
+                color="primary"
+                label="Effectif"
+                variant="outlined"
+                {...register("staffSize", {
+                  required: "Effectif requis",
+                })}
+                size="large"
+                value={staffSize ? staffSize : ""}
+                onChange={(e) => setStaffSize(e.target.value)}
+              >
+                <MenuItem value="0-9">0-9</MenuItem>
+                <MenuItem value="10-49">10-49</MenuItem>
+                <MenuItem value="50-249">50-249</MenuItem>
+                <MenuItem value="250+">250+</MenuItem>
+              </Select>
+              {errors.staffSize &&
+                <>
+                  <CustomTypography
+                    content={errors.staffSize.message}
+                    variant="body2"
+                    color="error"
+                  />
+                </>
+              }
+            </div>
+            <div className="item--input">
+              <InputLabel id="Effectif">Type</InputLabel>
+              <Select
+                theme={theme}
+                sx={{ mt: 3 }}
+                labelId="Type"
+                color="primary"
+                label="Type"
+                variant="outlined"
+                {...register("companyCategoryId", {
+                  required: "Type requis",
+                })}
+                size="large"
+                value={companyCategoryId ? companyCategoryId : null}
+                onChange={(e) => setCompanyCategoryId(e.target.value)}
+              >
+                <MenuItem value={1}>startup</MenuItem>
+                <MenuItem value={2}>classic</MenuItem>
+                <MenuItem value={3}>it-services</MenuItem>
+                <MenuItem value={4}>web-agency</MenuItem>
+                <MenuItem value={5}>big-tech-agency</MenuItem>
+              </Select>
+              {errors.companyCategoryId &&
+                <>
+                  <CustomTypography
+                    content={errors.companyCategoryId.message}
+                    variant="body2"
+                    color="error"
+                  />
+                </>
+              }
+            </div>
+            <div className="item--input">
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    defaultChecked={isItRecruiting ? isItRecruiting : ""}
+                    //value={isItRecruiting ? isItRecruiting : ""}
+                    {...register("isItRecruiting")}
+                    onChange={() => setIsItRecruiting(!!!isItRecruiting)}
+                  />
+                }
+                label="Êtes-vous en recrutement?"
+                labelPlacement="start"
+              />
+              {errors.isItRecruiting &&
+                <>
+                  <CustomTypography
+                    content={errors.isItRecruiting.message}
+                    variant="body2"
+                    color="error"
+                  />
+                </>
+              }
+            </div>
             <div className="container--cta">
               <UIButton
                 color="primary"

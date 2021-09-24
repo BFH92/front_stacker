@@ -4,8 +4,7 @@ import "./userDashboard.scss";
 // Components
 import UserPresentation from "../../Components/UserPresentation";
 import FavoritesCompanies from "../../Components/FavoritesCompanies";
-//Material UI
-import CustomTypography from '../../Components/CustomTypography'
+import CustomTypography from '../../Components/CustomTypography';
 
 const UserDashboard = () => {
   return (

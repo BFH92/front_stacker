@@ -1,16 +1,9 @@
 @import "../../../Styles/variables.scss";
+@import "../../../Styles/mixins.scss";
 
-.edit-form__container--company {
-  display: grid;
-  place-items: center;
-  margin-bottom: 20px;
-  margin-left: 200px;
-
-  .container--cta {
-    margin-top: 30px;
-    display: grid;
-    place-items: center;
+.container__dashboard--company {
+  @include tablet-ls {
+    width: 50%;
+    margin: auto;
   }
 }
-
-
