@@ -37,20 +37,22 @@ const ChipsArray = () => {
   return (
     <div className="container__filter--group">
       <InputStacks />
-      <ul className="container__chips">
-        {chipData.map((data) => {
-          return (
-            <li key={uuidv4()} className="chip--item">
-              <Chip
-                variant="outlined"
-                color="secondary"
-                label={data.label}
-                onDelete={handleDelete(data)}
-              />
-            </li>
-          );
-        })}
-      </ul>
+      <div className="container__chips--all">
+        <ul className="container__chips">
+          {chipData.map((data) => {
+            return (
+              <li key={uuidv4()} className="chip--item">
+                <Chip
+                  variant="outlined"
+                  color="secondary"
+                  label={data.label}
+                  onDelete={handleDelete(data)}
+                />
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </div>
   );
 };
