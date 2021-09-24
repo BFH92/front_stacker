@@ -189,7 +189,6 @@ export const EditUserForm = () => {
                 label="Description"
                 variant="outlined"
                 multiline
-                helperText="30 minimum"
                 maxRows={5}
                 {...register("description", {
                   required: "Description requise",
