@@ -1,4 +1,5 @@
 @import "../../../Styles/variables.scss";
+@import "../../../Styles/mixins.scss";
 
 .container__presentation {
   position: sticky;
@@ -14,6 +15,10 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: $padding * 2;
+
+  @include phone {    
+    grid-template-columns: 1fr;
+  }
 
   .item--input {
     display: grid;
