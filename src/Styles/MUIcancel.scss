@@ -1,8 +1,7 @@
 @import './variables.scss';
 
-.css-2awovp-MuiCardContent-root:last-child {
-  padding-bottom: 16px !important;
-}
+.css-2awovp-MuiCardContent-root:last-child,
+.css-1d6y1ul-MuiCardContent-root:last-child,
 .css-k5d7cp-MuiCardContent-root:last-child {
   padding-bottom: 16px !important;
 }
@@ -34,4 +33,7 @@
 }
 .makeStyles-grid_column_no_gap-4 {
   grid-gap: $padding;
+}
+.css-hip9hq-MuiPaper-root-MuiAppBar-root {
+  background-color: $purple !important;
 }

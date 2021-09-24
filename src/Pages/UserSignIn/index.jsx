@@ -45,6 +45,7 @@ const UserSignIn = ({ user }) => {
     <div className="container__form--bg">
       <div className="container__form--all">
         <CustomTypography
+          align="center"
           className={"title--form"}
           color="primary"
           variant="h3"
@@ -52,9 +53,13 @@ const UserSignIn = ({ user }) => {
           content="Connexion"
         />
         <SignInForm user={{ email, setEmail, password, setPassword, login }} />
-        <div className="container__links--all">
-          <Link to="/user/sign-up">Pas de compte ? S'inscrire</Link>
-          <Link to="/user/settings/get-password">Mot de passe oublié</Link>
+        <div className="container__links--all">        
+          <Link to="/user/sign-up">
+            Pas de compte ? S'inscrire
+          </Link>
+          <Link to="/user/settings/get-password">
+            Mot de passe oublié
+          </Link>
           <Link to="/company/sign-in">
             Vous êtes une entreprise ? Espace entreprise
           </Link>

@@ -6,12 +6,12 @@ import Divider from "@mui/material/Divider";
 import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
-import CustomTypography from '../../CustomTypography';
+import CustomTypography from '../../../CustomTypography';
 import ListItem from "@mui/material/ListItem";
 import IconButton from "@material-ui/core/IconButton";
 import Badge from "@material-ui/core/Badge";
-import Notifications from "../../../Assets/Svg/Header/Notifications";
-import BinDelete from '../../../Assets/Svg/BinDelete';
+import Notifications from "../../../../Assets/Svg/Header/Notifications";
+import BinDelete from '../../../../Assets/Svg/BinDelete';
 
 const NotificationDrawer = () => {
   const [state, setState] = useState(false);
