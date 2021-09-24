@@ -131,6 +131,7 @@ export const EditCompanyForm = () => {
               sx={{ mt: 3 }}
               color="primary"
               label="Nom"
+              focused
               variant="outlined"
               {...register("name", {
                 required: "Nom d'entreprise requis",
@@ -143,8 +144,10 @@ export const EditCompanyForm = () => {
             <TextField
               theme={theme}
               sx={{ mt: 3 }}
+              focused
               color="primary"
               label="Description"
+              helperText="30 minimum"
               multiline
               maxRows={5}
               variant="outlined"
@@ -161,6 +164,7 @@ export const EditCompanyForm = () => {
             <TextField
               theme={theme}
               sx={{ mt: 3 }}
+              focused
               color="primary"
               label="Lien Github"
               variant="outlined"
@@ -176,6 +180,7 @@ export const EditCompanyForm = () => {
               theme={theme}
               sx={{ mt: 3 }}
               color="primary"
+              focused
               label="Site Internet"
               variant="outlined"
               {...register("websiteLink", {

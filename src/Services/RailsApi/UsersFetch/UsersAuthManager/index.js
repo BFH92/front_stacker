@@ -2,7 +2,6 @@ import { API_URL } from "../../../../Config/API_URL";
 import axios from "axios";
 import { registerToken } from "../../../../Helpers/API_Helper/RegisterToken";
 import Cookies from "js-cookie";
-import { useSnackbar } from 'notistack';
 
 const API = axios.create({ baseURL: API_URL });
 
