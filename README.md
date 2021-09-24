@@ -26,7 +26,7 @@ In the future we want to build a solid platform for junior devs and companies to
 - [Vera T.](https://github.com/VeraTuran)
 - [Cheikh K.](https://github.com/shanksthered)
 
-## Environement:
+## Environment:
 
 ### Development:
 
