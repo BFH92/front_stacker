@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from "react";
 import lottie from "lottie-web";
 //styles
 import "./about.scss";
+import Aos from "aos";
+import "aos/dist/aos.css";
 //materialUI
 import Typography from "@mui/material/Typography";
 //Typewriter
@@ -11,6 +13,10 @@ import UIButton from "../../Components/UIButton";
 
 const About = () => {
   const container = useRef(null);
+
+  useEffect (() => {
+    Aos.init({});
+  }, []);
 
   useEffect(() => {
     lottie.loadAnimation({
@@ -55,7 +61,7 @@ const About = () => {
       <div className="content--svg" ref={container}></div>
     </div>
 
-    <div className="container__about--right">
+    <div className="container__about--right" >
       <div className="content--text">
       <Typography variant="h2" component="h2">Pour Devs</Typography>
         <Typography variant="body1" sx={{ mt: 5, mb: 5 }}>
