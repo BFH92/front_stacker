@@ -21,7 +21,6 @@ const UserSignUp = ({ user }) => {
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   const SignUp = async (e) => {
-    //e.preventDefault();
     try {
       const response = await UsersAuthManager.register(email, password);
       let variant = "success";
