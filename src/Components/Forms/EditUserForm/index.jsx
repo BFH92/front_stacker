@@ -166,9 +166,12 @@ export const EditUserForm = () => {
                 focused
                 color="primary"
                 label="Lien Github"
+                helperText="exemple: https://github.com/username"
                 variant="outlined"
                 {...register("githubLink", {
                   required: "Lien Github requis",
+                  pattern: {value: 
+                    /([A-Za-z0-9]+@|http(|s)\:\/\/)([A-Za-z0-9.]+)(:|\/)([A-Za-z0-9\\]+)/g , message: "format non valide"}
                 })}
                 value={githubLink ? githubLink : ""}
                 onChange={(e) => setGithubLink(e.target.value)}
