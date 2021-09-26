@@ -128,7 +128,7 @@ export const EditUserForm = () => {
                 {...register("firstname", {
                   required: "Renseigner votre prénom",
                 })}
-                value={firstName ? firstName : ""}
+                value={firstName && firstName}
                 onChange={(e) => setFirstName(e.target.value)}
               />
               {errors.firstname &&
@@ -148,7 +148,7 @@ export const EditUserForm = () => {
                 label="Nom"
                 variant="outlined"
                 {...register("lastname", { required: "Renseigner votre Nom" })}
-                value={lastName ? lastName : ""}
+                value={lastName && lastName}
                 onChange={(e) => setLastName(e.target.value)}
               />
               {errors.lastname &&
@@ -166,11 +166,14 @@ export const EditUserForm = () => {
                 focused
                 color="primary"
                 label="Lien Github"
+                helperText="exemple: https://github.com/username"
                 variant="outlined"
                 {...register("githubLink", {
                   required: "Lien Github requis",
+                  pattern: {value: 
+                    /([A-Za-z0-9]+@|http(|s)\:\/\/)([A-Za-z0-9.]+)(:|\/)([A-Za-z0-9\\]+)/g , message: "format non valide"}
                 })}
-                value={githubLink ? githubLink : ""}
+                value={githubLink && githubLink}
                 onChange={(e) => setGithubLink(e.target.value)}
               />
               {errors.githubLink &&
@@ -196,7 +199,7 @@ export const EditUserForm = () => {
                   minLength: { value: 30, message: "Description trop courte" },
                   maxLength: { value: 120, message: "Description trop longue" },
                 })}
-                value={description ? description : ""}
+                value={description && description }
                 onChange={(e) => setDescription(e.target.value)}
               />
               {errors.description &&

@@ -78,7 +78,7 @@ const ResultsCompanies = () => {
               <div className="container__center--btn">
                 <div className="center--btn">
                   <UIButton
-                    content="Plus de résultats"
+                    content="Afficher plus de résultats"
                     color="primary"
                     variant="contained"
                     onClick={() => {
