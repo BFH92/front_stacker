@@ -65,6 +65,9 @@ const PreviewSavedSearch = ({ data }) => {
   };
   const applySearch = () => () => {
     // variant could be success, error, warning, info, or default
+    let variant = "success";
+    let message = `Sauvegarde appliquée !`  
+    enqueueSnackbar(message, { variant });
     setStaffSize(data.staff_size);
     setCategories(data.company_category);
     let stacksList = new Set();
