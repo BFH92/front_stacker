@@ -29,7 +29,7 @@ export const EditCompanyForm = () => {
   const [description, setDescription] = useState("");
   const [githubLink, setGithubLink] = useState("");
   const [staffSize, setStaffSize] = useState("");
-  const [isItRecruiting, setIsItRecruiting] = useState(null);
+  const [isItRecruiting, setIsItRecruiting] = useState(false);
   const [websiteLink, setWebsiteLink] = useState("");
   const [companyCategoryId, setCompanyCategoryId] = useState(0);
   const [chipData, setChipData] = useState([]);
@@ -142,7 +142,7 @@ export const EditCompanyForm = () => {
                 {...register("name", {
                   required: "Nom d'entreprise requis",
                 })}
-                value={name ? name : ""}
+                value={name && name}
                 onChange={(e) => setName(e.target.value)}
               />
               {errors.name &&
@@ -170,7 +170,7 @@ export const EditCompanyForm = () => {
                   minLength: { value: 30, message: "Description trop courte" },
                   maxLength: { value: 120, message: "Description trop longue" },
                 })}
-                value={description ? description : ""}
+                value={description && description}
                 onChange={(e) => setDescription(e.target.value)}
               />
               {errors.description &&
@@ -190,11 +190,14 @@ export const EditCompanyForm = () => {
                 focused
                 color="primary"
                 label="Lien Github"
+                helperText="exemple: https://github.com/username"
                 variant="outlined"
                 {...register("githubLink", {
                   required: "Lien Github requis",
+                  pattern: {value: 
+                    /([A-Za-z0-9]+@|http(|s)\:\/\/)([A-Za-z0-9.]+)(:|\/)([A-Za-z0-9\\]+)/g , message: "format non valide"}
                 })}
-                value={githubLink ? githubLink : ""}
+                value={githubLink && githubLink}
                 onChange={(e) => setGithubLink(e.target.value)}
               />
               {errors.githubLink &&
@@ -223,7 +226,7 @@ export const EditCompanyForm = () => {
                     message: "Format invalide",
                   },
                 })}
-                value={websiteLink ? websiteLink : ""}
+                value={websiteLink && websiteLink}
                 onChange={(e) => setWebsiteLink(e.target.value)}
               />
               {errors.websiteLink &&
@@ -249,7 +252,7 @@ export const EditCompanyForm = () => {
                   required: "Effectif requis",
                 })}
                 size="large"
-                value={staffSize ? staffSize : ""}
+                value={staffSize && staffSize}
                 onChange={(e) => setStaffSize(e.target.value)}
               >
                 <MenuItem value="0-9">0-9</MenuItem>
@@ -268,7 +271,7 @@ export const EditCompanyForm = () => {
               }
             </div>
             <div className="item--input">
-              <InputLabel id="Effectif">Type</InputLabel>
+              <InputLabel id="Type">Type</InputLabel>
               <Select
                 theme={theme}
                 sx={{ mt: 3 }}
@@ -280,14 +283,14 @@ export const EditCompanyForm = () => {
                   required: "Type requis",
                 })}
                 size="large"
-                value={companyCategoryId ? companyCategoryId : null}
+                value={companyCategoryId && companyCategoryId}
                 onChange={(e) => setCompanyCategoryId(e.target.value)}
               >
-                <MenuItem value={1}>startup</MenuItem>
-                <MenuItem value={2}>classic</MenuItem>
-                <MenuItem value={3}>it-services</MenuItem>
-                <MenuItem value={4}>web-agency</MenuItem>
-                <MenuItem value={5}>big-tech-agency</MenuItem>
+                <MenuItem value='1'>startup</MenuItem>
+                <MenuItem value="2">classic</MenuItem>
+                <MenuItem value="3">it-services</MenuItem>
+                <MenuItem value="4">web-agency</MenuItem>
+                <MenuItem value="5">big-tech-agency</MenuItem>
               </Select>
               {errors.companyCategoryId &&
                 <>
@@ -300,18 +303,23 @@ export const EditCompanyForm = () => {
               }
             </div>
             <div className="item--input">
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    defaultChecked={isItRecruiting ? isItRecruiting : ""}
-                    //value={isItRecruiting ? isItRecruiting : ""}
-                    {...register("isItRecruiting")}
-                    onChange={() => setIsItRecruiting(!!!isItRecruiting)}
-                  />
-                }
-                label="Êtes-vous en recrutement?"
-                labelPlacement="start"
-              />
+            <InputLabel id="recruiting">En recrutement?</InputLabel>
+              <Select
+                theme={theme}
+                sx={{ mt: 3 }}
+                color="primary"
+                label="Type"
+                variant="outlined"
+                {...register("isItRecruiting", {
+                  required: "information requise",
+                })}
+                size="large"
+                value={isItRecruiting && isItRecruiting }
+                onChange={(e) => setIsItRecruiting(e.target.value)}
+              >
+                <MenuItem value="true">Oui</MenuItem>
+                <MenuItem value="false">Non</MenuItem>
+              </Select>
               {errors.isItRecruiting &&
                 <>
                   <CustomTypography
