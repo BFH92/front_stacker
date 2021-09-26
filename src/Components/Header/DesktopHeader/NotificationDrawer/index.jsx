@@ -33,7 +33,7 @@ const NotificationDrawer = () => {
       <List sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
           <ListItem
             secondaryAction={
-              <IconButton edge="end" aria-label="delete" color="error">
+              <IconButton edge="end" aria-label="delete" color="error" disabled>
                 <BinDelete />
               </IconButton>
             }
@@ -44,21 +44,21 @@ const NotificationDrawer = () => {
             <div>
               <ListItemText
                 primary="Padberg-Haucks"
-                secondary="Cette entreprise est nouvelle et correspond à ton profil."
+                secondary="Cette fonctionnalité sera disponible prochainement!!"
               />
               <CustomTypography
                 sx={{ py: 1}}
                 variant="overline"
                 component="div"
                 color="primary"
-                content="retrouve là dans la recherche!"
+                content="Merci de votre compréhension"
               />
             </div>
           </ListItem>
         <Divider />
         <ListItem
             secondaryAction={
-              <IconButton edge="end" aria-label="delete" color="error">
+              <IconButton edge="end" aria-label="delete" color="error" disabled>
                 <BinDelete />
               </IconButton>
             }
@@ -69,21 +69,21 @@ const NotificationDrawer = () => {
             <div>
               <ListItemText
                 primary="Adams LLC"
-                secondary="Cette entreprise est nouvelle et correspond à ton profil."
+                secondary="Cette fonctionnalité sera disponible prochainement!!"
               />
               <CustomTypography
                 sx={{ py: 1}}
                 variant="overline"
                 component="div"
                 color="primary"
-                content="retrouve là dans la recherche!"
+                content="Merci de votre compréhension"
               />
             </div>
           </ListItem>
         <Divider />
         <ListItem
             secondaryAction={
-              <IconButton edge="end" aria-label="delete" color="error">
+              <IconButton edge="end" aria-label="delete" color="error" disabled>
                 <BinDelete />
               </IconButton>
             }
@@ -94,21 +94,21 @@ const NotificationDrawer = () => {
             <div>
               <ListItemText
                 primary="Schum Group"
-                secondary="Cette entreprise est nouvelle et correspond à ton profil."
+                secondary="Cette fonctionnalité sera disponible prochainement!!"
               />
               <CustomTypography
                 sx={{ py: 1}}
                 variant="overline"
                 component="div"
                 color="primary"
-                content="retrouve là dans la recherche!"
+                content="Merci de votre compréhension"
               />
             </div>
           </ListItem>
         <Divider />
         <ListItem
             secondaryAction={
-              <IconButton edge="end" aria-label="delete" color="error">
+              <IconButton edge="end" aria-label="delete" color="error" disabled>
                 <BinDelete />
               </IconButton>
             }
@@ -119,14 +119,14 @@ const NotificationDrawer = () => {
             <div>
               <ListItemText
                 primary="Padberg-Hauck"
-                secondary="Cette entreprise est nouvelle et correspond à ton profil."
+                secondary="Cette fonctionnalité sera disponible prochainement!!"
               />
               <CustomTypography
                 sx={{ py: 1}}
                 variant="overline"
                 component="div"
                 color="primary"
-                content="retrouve là dans la recherche!"
+                content="Merci de votre compréhension"
               />
             </div>
           </ListItem>
