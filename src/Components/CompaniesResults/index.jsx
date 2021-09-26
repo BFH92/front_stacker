@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 
 const ResultsCompanies = () => {
   const { url } = useContext(FilterContext);
-  const{saveSearch} = useContext(FilterContext);
+  const { saveSearch } = useContext(FilterContext);
 
   const [companiesList, setCompaniesList] = useState(false);
   const [shortListIndex, setShortListIndex] = useState(0);
@@ -27,7 +27,7 @@ const ResultsCompanies = () => {
       data.map((companyData) => {
         idsList.add(companyData.id);
         itemList.push(companyData);
-        return("")
+        return "";
       });
     }
     idsList = Array.from(idsList);
@@ -43,7 +43,7 @@ const ResultsCompanies = () => {
     companiesList.map((company) => {
       idsList.add(company.id);
       itemList.push(company);
-      return("")
+      return "";
     });
     ListIndex = ListIndex + 1;
     getShortList(ListIndex, idsList, itemList);
