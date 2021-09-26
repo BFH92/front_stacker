@@ -39,7 +39,7 @@ const SearchCompany = () => {
         return response
       } catch (error) {
         let variant = "warning";
-        let message = `Nous rencontrons une erreur la sauvegarde -> ${error}`;
+        let message = `Recherche déja sauvegardée -> ${error}`;
         if (String(error).includes("401"))
           message = `Vous devez vous connecter pour sauvegarder votre recherche.`;
         enqueueSnackbar(message, { variant });

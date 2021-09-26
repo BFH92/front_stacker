@@ -27,21 +27,21 @@ const About = () => {
       <div className="container__about--left">
         <div className="content--text--about">
           <Typography variant="h1" component="h1">
-            Stacker c'est
+            Stacker c'est:
             <Typewriter
               onInit={(typewriter) => {
                 typewriter
-                  .typeString("aider : ")
+                  .typeString("aider")
                   .pauseFor(2500)
                   .start()
                   .pauseFor(200)
                   .deleteChars(8)
-                  .typeString("soutenir : ")
+                  .typeString("soutenir")
                   .pauseFor(2500)
                   .start()
                   .pauseFor(200)
                   .deleteChars(14)
-                  .typeString("faire grandir : ")
+                  .typeString("faire grandir")
               }}
             />
           </Typography>
