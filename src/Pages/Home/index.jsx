@@ -8,8 +8,6 @@ import Typography from "@mui/material/Typography";
 import { Paper, Button } from "@material-ui/core";
 //Typewriter
 import Typewriter from "typewriter-effect";
-//CookieConsent
-import CookieConsent from "react-cookie-consent";
 
 const Home = () => {
   const container = useRef(null);
@@ -57,16 +55,6 @@ const Home = () => {
         <Paper elevation={10} className="mask--color"></Paper>
         <div className="content--svg" ref={container}></div>
       </div>
-      <CookieConsent
-      enableDeclineButton
-      declineButtonText="Refuser"
-      buttonText="Accepter"
-      location="bottom"
-      cookieName="stackerCookie"
-      style={{ background: "rgb(92, 30, 226)", color:"white" }}
-      buttonStyle={{ color: "#4e503b", fontSize: "18px" }}
-      expires={100}
-      >Notre application utilise des cookies afin d'ameliorer votre expérience utilisateur.</CookieConsent>
     </div>
   );
 };
