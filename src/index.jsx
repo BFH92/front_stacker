@@ -17,6 +17,7 @@ import MobileHeader from "./Components/Header/MobileHeader";
 import Home from "./Pages/Home";
 import About from "./Pages/About";
 import Stacks from "./Pages/Stacks";
+import { Map } from "./Pages/Map";
 import SearchCompany from "./Pages/SearchCompany";
 import UserDashboard from "./Pages/UserDashboard";
 import CompanyDashboard from "./Pages/CompanyDashboard";
@@ -138,7 +139,7 @@ const App = () => {
                     <Route path="/" exact render={() => <Home />} />
                     <Route path="/about" render={() => <About />} />
                     <Route path="/stacks" render={() => <Stacks />} />
-
+                    <Route path="/map" render={() => <Map />} />
                     <PrivateRoute
                       path="/user/dashboard"
                       component={UserDashboard}

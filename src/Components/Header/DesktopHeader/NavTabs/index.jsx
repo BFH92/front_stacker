@@ -80,6 +80,15 @@ const NavTabs = () => {
             to="/company/dashboard"
             component={Link}
             style={{
+              marginLeft: 20,
+              color: theme.palette.common.white
+            }}
+          />
+          <Tab
+            label="Carte"
+            to="/map"
+            component={Link}
+            style={{
               color: theme.palette.common.white
             }}
           />  
